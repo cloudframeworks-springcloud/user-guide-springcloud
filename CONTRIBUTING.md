@@ -7,7 +7,7 @@
 
 如果你想要为云框架新增一个技术主题，或是作为某一技术主题负责人，可通过[邮件](mailto:info@goodrain.com)联系我们取得协助。
 
-云框架的技术主题规划可以在[README](README.md)中找到，看看有没有你感兴趣的吧！
+云框架的技术主题规划可以在[README.md](README.md)中找到，看看有没有你感兴趣的吧！
 
 ## 完善现有技术主题代码文档或bug修复
 
@@ -19,7 +19,7 @@
 + 修改代码并发起`pull request`
 + 等待负责人审查
 + 审查通过后，提交代码将被`merge`进项目中
-+ 贡献者名字出现在[贡献者](CONTRIBUTORS.md)名单里
++ 贡献者名字出现在[贡献者名单](CONTRIBUTORS.md)里
 
 ### GitHub Issue
 
