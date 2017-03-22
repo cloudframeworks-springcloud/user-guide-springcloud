@@ -54,6 +54,10 @@
 
 ![](image/screenshot_1481715023954.png)
 
+## 示例学习路径
+
+![](image/screenshot_method.png)
+
 
 ## 版权信息
   
