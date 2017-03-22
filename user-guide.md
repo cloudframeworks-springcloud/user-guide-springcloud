@@ -22,29 +22,30 @@
 ## 微服务如何落地
 * 如何访问这些服务
 
-![](image/screenshot_1481696906259.png =400x400)
+<img src="./image/screenshot_1481696906259.png" width = "300" height = "200" alt="" align=center />
 
 * 服务如何发现
 
-![](image/screenshot_1481696964742.png =400x400)
+<img src="./image/screenshot_1481696964742.png" width = "300" height = "200" alt="" align=center />
 
-![](image/screenshot_1481696995555.png =400x400)
+
+<img src="./image/screenshot_1481696995555.png" width = "300" height = "200" alt="" align=center />
 
 * 服务如何通信
 
-![](image/screenshot_1481697051990.png =400x400)
+<img src="./image/screenshot_1481697051990.png" width = "300" height = "200" alt="" align=center />
 
 * 数据如何管理
 
-![](image/screenshot_1481697088445.png =400x400)
+<img src="./image/screenshot_1481697088445.png" width = "300" height = "200" alt="" align=center />
 
 * 服务如何容错
 
-![](image/screenshot_1481697117246.png =400x400)
+<img src="./image/screenshot_1481697117246.png" width = "300" height = "200" alt="" align=center />
 
 * 服务如何监控
 
-![](image/screenshot_1481697160945.png =400x400)
+<img src="./image/screenshot_1481697160945.png" width = "300" height = "200" alt="" align=center />
 
 ## springcloud 是什么？
 &emsp;&emsp;Spring Cloud是一系列框架的有序集合。它利用Spring Boot的开发便利性巧妙地简化了分布式系统基础设施的开发，如服务发现注册、配置中心、消息总线、负载均衡、断路器、数据监控等，都可以用Spring Boot的开发风格做到一键启动和部署
@@ -52,11 +53,11 @@
 
 ## springcloud 核心组件
 
-![](image/screenshot_1481715023954.png =400x400)
+<img src="./image/screenshot_1481715023954.png" width = "300" height = "200" alt="" align=center />
 
 ## 示例学习路径
 
-![](image/screenshot_method.png =400x400)
+<img src="./image/screenshot_method.png" width = "300" height = "200" alt="" align=center />
 
 
 ## 版权信息
