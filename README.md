@@ -48,7 +48,7 @@ Cloud frameworks
   
 ## 参与贡献
   
-[如何成为云框架贡献者？](COUNTRIBUTING.md)
+[如何成为云框架贡献者？](CONTRIBUTING.md)
   
 ## 版权信息
   
