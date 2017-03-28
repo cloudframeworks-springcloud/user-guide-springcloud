@@ -1,4 +1,3 @@
-
 Copyright 2017 Beijing Goodrain Technology Co.,Ltd. All right reserved.
   
 Licensed under the Apache License, Version 2.0 (the "License");
