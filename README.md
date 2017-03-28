@@ -32,7 +32,7 @@ Cloud frameworks
     |--README.md
     |--CHANGELOG.md
     |--LICENSE.md
-    |--COUNTRIBUTING.md
+    |--CONTRIBUTING.md
     |--DOCUMENTATION.md
 |-- 组件1
 |-- 组件2
