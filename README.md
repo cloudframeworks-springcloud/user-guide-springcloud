@@ -34,6 +34,7 @@ Cloud frameworks
     |--LICENSE.md
     |--CONTRIBUTING.md
     |--DOCUMENTATION.md
+    |--images
 |-- 组件1
 |-- 组件2
 |-- 组件3
