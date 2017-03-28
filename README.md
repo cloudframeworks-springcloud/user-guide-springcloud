@@ -26,8 +26,26 @@
   
 ### 目录结构
   
-### user_guide
-  
+```
+Cloud frameworks
+|-- user-guide
+    |--README.md
+    |--CHANGELOG.md
+    |--LICENSE
+    |--COUNTRIBUTING.md
+    |--DOCUMENTATION.md
+|-- 组件1
+|-- 组件2
+|-- 组件3
+`-- 组件n      
+```
+    
+### user-guide
+  
+每个云框架主题展现为Github上的组织（organization），组织中仓库（repository）包括“user-guide”及一个或多个“组件”。
+  
+在user-guide仓库中，你可以很方便的找到帮助了解和使用云框架的文档，并根据“DOCUMENTATION.md”快速开始。
+  
 ## 参与贡献
   
 [如何成为云框架贡献者？](COUNTRIBUTING.md)
