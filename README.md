@@ -31,7 +31,7 @@ Cloud frameworks
 |-- user-guide
     |--README.md
     |--CHANGELOG.md
-    |--LICENSE
+    |--LICENSE.md
     |--COUNTRIBUTING.md
     |--DOCUMENTATION.md
 |-- 组件1
