@@ -29,7 +29,7 @@ Spring Cloud核心组件包括Spring Cloud Config、Netflix Eureka、Netflix Rib
 
 + 架构图
 
-<img src="./image/screenshot_method.png" width = "450" height = "400" alt="" align=center />
+<img src="./image/云框架-Spring Cloud-学习路径.png" width = "450" height = "400" alt="" align=center />
 
 ### 架构说明
 
@@ -39,30 +39,29 @@ Spring Cloud核心组件包括Spring Cloud Config、Netflix Eureka、Netflix Rib
 
 * **如何访问这些服务**
 
-<img src="./image/screenshot_1481696906259.png" width = "450" height = "300" alt="" align=center />
+<img src="./image/云框架-Spring Cloud-如何访问这些服务.png" width = "450" height = "300" alt="" align=center />
 
 * **服务如何发现**
 
-<img src="./image/screenshot_1481696964742.png" width = "450" height = "300" alt="" align=center />
+<img src="./image/云框架-Spring Cloud-服务如何发现1.png" width = "450" height = "300" alt="" align=center />
 
-
-<img src="./image/screenshot_1481696995555.png" width = "450" height = "300" alt="" align=center />
+<img src="./image/云框架-Spring Cloud-服务如何发现2.png" width = "450" height = "300" alt="" align=center />
 
 * **服务如何通信**
 
-<img src="./image/screenshot_1481697051990.png" width = "450" height = "300" alt="" align=center />
+<img src="./image/云框架-Spring Cloud-服务如何通信.png" width = "450" height = "300" alt="" align=center />
 
 * **数据如何管理**
 
-<img src="./image/screenshot_1481697088445.png" width = "450" height = "300" alt="" align=center />
+<img src="./image/云框架-Spring Cloud-服务如何管理.png" width = "450" height = "300" alt="" align=center />
 
 * **服务如何容错**
 
-<img src="./image/screenshot_1481697117246.png" width = "450" height = "300" alt="" align=center />
+<img src="./image/云框架-Spring Cloud-服务如何容错.png" width = "450" height = "300" alt="" align=center />
 
 * **服务如何监控**
 
-<img src="./image/screenshot_1481697160945.png" width = "450" height = "300" alt="" align=center />
+<img src="./image/云框架-Sprinig Cloud-服务如何监控.png" width = "450" height = "300" alt="" align=center />
 
 ### 适用场景
 
