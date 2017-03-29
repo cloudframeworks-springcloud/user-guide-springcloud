@@ -53,7 +53,7 @@ Spring Cloud核心组件包括Spring Cloud Config、Netflix Eureka、Netflix Rib
 
 * **数据如何管理**
 
-<img src="./image/云框架-Spring Cloud-服务如何管理.png" width = "450" height = "300" alt="" align=center />
+<img src="./image/云框架-Spring Cloud-数据如何管理.png" width = "450" height = "300" alt="" align=center />
 
 * **服务如何容错**
 
