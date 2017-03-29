@@ -9,7 +9,7 @@ Spring Cloud是Pivotal提供的云应用开发工具，基于Spring Boot实现�
 
 Spring Cloud核心组件包括Spring Cloud Config、Netflix Eureka、Netflix Ribbon、Netflix Hystrix、Netflix Zuul等。
 
-<img src="./image/screenshot_1481715023954.png" width = "400" height = "400" alt="" align=center />
+![](./image/云框架-Spring Cloud-核心组件.png）
 
 | 名称 | 功能 | 简介 |
 | --- | --- | --- |
