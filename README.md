@@ -1,5 +1,7 @@
 <h1 align=center><a href="http://www.goodrain.com/" title="Goodrain Cloudframeworks"><img style="float: left" width="900" src="http://7xihe6.com1.z0.glb.clouddn.com/CLOUDFRAMEWORKS9x3.jpg" alt="Goodrain Cloudframeworks logo"/></a></h1>
 
+[![Goodrain Cloud Frameworks](http://7xihe6.com1.z0.glb.clouddn.com/CLOUDFRAMEWORKS9x3.jpg)](http://app.goodrain.com)
+
 # [云框架]基于Spring Cloud的微服务架构 v0.1
 
 
