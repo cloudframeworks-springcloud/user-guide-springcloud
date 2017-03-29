@@ -1,4 +1,4 @@
-<h1><a href="http://www.goodrain.com/" title="Goodrain Cloudframeworks"><img style="float: left" width="360" src="http://7xihe6.com1.z0.glb.clouddn.com/CLOUDFRAMEWORKS  header.jpg" alt="Goodrain Cloudframeworks logo"/></a></h1>
+[![Goodrain Cloud Frameworks](http://7xihe6.com1.z0.glb.clouddn.com/CLOUDFRAMEWORKS9x3.jpg)](http://app.goodrain.com)
 
 云框架（Cloud Frameworks）是即插即用的云端技术框架，使用Git控制版本，目前托管在GitHub上。
 
