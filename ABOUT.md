@@ -29,11 +29,11 @@
 ```
 Cloud frameworks
 |-- user-guide
-    |--README.md
-    |--CHANGELOG.md
-    |--LICENSE.md
-    |--CONTRIBUTING.md
-    |--DOCUMENTATION.md
+    |--README.md   云框架文档
+    |--CHANGELOG.md   更新日志
+    |--LICENSE.md   版权信息
+    |--CONTRIBUTING.md   参与贡献
+    |--ABOUT.md   关于云框架
     |--images
 |-- 组件1
 |-- 组件2
