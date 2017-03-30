@@ -62,19 +62,23 @@ Spring Cloud是Pivotal提供的云应用开发工具，基于Spring Boot实现�
 
 ### <a neme="组件说明"></a>组件说明
 
-#### Spring Cloud Config
+#### [Spring Cloud Config - server](https://github.com/cloudframeworks-springcloud/config-client)
 
-#### Netflix Eureka
+#### [Spring Cloud Config - client](https://github.com/cloudframeworks-springcloud/config-server)
 
-#### Netflix Hystrix
+#### [Netflix Eureka - server](https://github.com/cloudframeworks-springcloud/eureka-server)
 
-#### Netflix Zuul
+#### [Netflix Eureka - service](https://github.com/cloudframeworks-springcloud/eureka-service)
 
-#### Netflix Feign
+#### [Netflix Hystrix](https://github.com/cloudframeworks-springcloud/hystrix)
 
-#### Netflix Ribbon
+#### [Netflix Zuul](https://github.com/cloudframeworks-springcloud/zuul)
 
-#### Spring Cloud Sleuth
+#### [Netflix Feign](https://github.com/cloudframeworks-springcloud/feign)
+
+#### [Netflix Ribbon](https://github.com/cloudframeworks-springcloud/ribbon)
+
+#### [Spring Cloud Sleuth](https://github.com/cloudframeworks-springcloud/sleuth)
 
 ### <a name="组件关系"></a>组件关系
 
