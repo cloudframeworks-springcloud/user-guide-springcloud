@@ -32,7 +32,7 @@ Spring Cloud是Pivotal提供的云应用开发工具，基于Spring Boot实现�
 
 <img src="./image/云框架-Spring Cloud-核心组件.png" width = "450" height = "" alt="" align=center />
 
-Spring Cloud核心组件
+**Spring Cloud核心组件**
 
 | 名称 | 功能 | 简介 |
 | --- | --- | --- |
