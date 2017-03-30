@@ -11,7 +11,20 @@
   * [适用场景](#适用场景)
   
 * [使用](#使用)
-     
+
+  * [使用向导](#使用向导)
+  * [高级操作](#高级操作)
+  * [已知问题](#已知问题)
+  * [性能测试](#性能测试)
+
+* [常见问题](#常见问题)
+* [更新日志](#更新日志)
+* [贡献者](#贡献者)
+* [社区](#社区)
+* [扩展阅读](#扩展阅读)
+* [版权声明](#版权声明)
+
+
 ## <a name="简介"></a>简介
 
 Spring Cloud是Pivotal提供的云应用开发工具，基于Spring Boot实现，用于简化分布式系统构建。
@@ -84,34 +97,32 @@ Spring Cloud核心组件
 
 ## <a name="使用"></a>使用
 
-### 使用向导
-
-#### 部署方式1
+### <a name="使用向导"></a>使用向导
 
 + 第一步
 + 第二步
 + 第三步
 + ···
 
-### 高级
+### <a name="高级操作"></a>高级操作
 
 + 高级操作1
 + 高级操作2
 + 高级操作3
 + ···
 
-### 已知问题
+### <a name="已知问题"></a>已知问题
 
 + 已知问题1
 + 已知问题2
 + 已知问题3
 + ···
 
-### 性能测试
+### <a name="性能测试"></a>性能测试
 
 如何进行性能测试？性能标准？
 
-## 常见问题
+## <a name="常见问题"></a>常见问题
 
 *常见问题指阅读／使用过程中经常会问的问题
 
@@ -125,13 +136,13 @@ Spring Cloud核心组件
   
 + ···
 
-## 更新日志
+## <a name="更新日志"></a>更新日志
 
 + 2017.03.28 
   + 新增user-guide
 + [历史更新](CHANGLOG.md)
 
-## 贡献者
+## <a name="贡献者"></a>贡献者
 
 `出品人` 张斌 [zhangb@goodrain.com](mailto:zhangb@goodrain.com) WeChat：elvis_123456
 
@@ -139,19 +150,19 @@ Spring Cloud核心组件
 
 `贡献者` 田夜雨 [tianyy@goodrain.com](mailto:tianyy@goodrain.com) WeChat：yeyu_t
 
-## 社区
+## <a name="社区"></a>社区
 
 + [订阅邮件](http://goodrain.us15.list-manage.com/subscribe?u=1874f1de4ed82a52890cefb4c&id=b88f73ca56)
 + QQ群1: 531980120
 + 微信二维码（发布时补充）
 + [联系我们](mailto:info@goodrain.com)
 
-## 扩展阅读
+## <a name="扩展阅读"></a>扩展阅读
 
 + [干货下载：谷歌、亚马逊等十大公司微服务案例精选](https://mp.weixin.qq.com/s?__biz=MzIwMDA2OTI0Mw==&mid=2653449136&idx=2&sn=0e6bc2215646064c9a35398a8fb00299&chksm=8d5e12a4ba299bb2bf75f5b8aebb645c186932b6507dbd2ca9372dbd5b0f4d0a5a43e9fce72d#rd)
 + [部署微服务：Spring Cloud vs. Kubernetes](http://www.jianshu.com/p/2f443a5a9d99)
 
-## 版权声明
+## <a name="版权声明"></a>版权声明
 
 云框架遵循APACHE LICENSE 2.0协议发布，并提供免费使用。
 
