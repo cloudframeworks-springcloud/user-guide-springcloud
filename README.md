@@ -1,15 +1,15 @@
 [![Goodrain Cloud Frameworks](http://7xihe6.com1.z0.glb.clouddn.com/CLOUDFRAMEWORKS9x3.jpg)](http://app.goodrain.com)
 
-<a name="quick-start"></a>Quick Start
-
 # [云框架]基于Spring Cloud的微服务架构 v0.1
 
 * [简介](#简介)
 * [说明](#说明)
- * [架构图](#架构图)
- * [架构说明](#架构说明)
- * [组件关系](#组件关系)
- * [适用场景](#适用场景)
+
+  * [架构图](#架构图)
+  * [架构说明](#架构说明)
+  * [组件关系](#组件关系)
+  * [适用场景](#适用场景)
+  
 * [使用](#使用)
      
 ## <a name="简介"></a>简介
