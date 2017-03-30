@@ -11,6 +11,7 @@
 * [说明](#说明)
   * [架构图](#架构图)
   * [架构说明](#架构说明)
+  * [组件说明](#组件说明)
   * [组件关系](#组件关系)
   * [适用场景](#适用场景)  
 * [使用](#使用)
@@ -58,6 +59,22 @@ Spring Cloud是Pivotal提供的云应用开发工具，基于Spring Boot实现�
 ### <a name="架构说明"></a>架构说明
 
 + [云框架]架构为什么要这么做？为什么这么做是最佳实践？
+
+### <a neme="组件说明"></a>组件说明
+
+#### Spring Cloud Config
+
+#### Netflix Eureka
+
+#### Netflix Hystrix
+
+#### Netflix Zuul
+
+#### Netflix Feign
+
+#### Netflix Ribbon
+
+#### Spring Cloud Sleth
 
 ### <a name="组件关系"></a>组件关系
 
