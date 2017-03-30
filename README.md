@@ -62,51 +62,17 @@ Spring Cloud是Pivotal提供的云应用开发工具，基于Spring Boot实现�
 
 ### <a neme="组件说明"></a>组件说明
 
-**[Spring Cloud Config - server](https://github.com/cloudframeworks-springcloud/config-client)**
-
-**[Spring Cloud Config - client](https://github.com/cloudframeworks-springcloud/config-server)**
-
-**[Netflix Eureka - server](https://github.com/cloudframeworks-springcloud/eureka-server)**
-
-**[Netflix Eureka - service](https://github.com/cloudframeworks-springcloud/eureka-service)**
-
-**[Netflix Hystrix](https://github.com/cloudframeworks-springcloud/hystrix)**
-
-**[Netflix Zuul](https://github.com/cloudframeworks-springcloud/zuul)**
-
-**[Netflix Feign](https://github.com/cloudframeworks-springcloud/feign)**
-
-**[Netflix Ribbon](https://github.com/cloudframeworks-springcloud/ribbon)**
-
-**[Spring Cloud Sleuth](https://github.com/cloudframeworks-springcloud/sleuth)**
+* **[Spring Cloud Config - server](https://github.com/cloudframeworks-springcloud/config-client)**
+* **[Spring Cloud Config - client](https://github.com/cloudframeworks-springcloud/config-server)**
+* **[Netflix Eureka - server](https://github.com/cloudframeworks-springcloud/eureka-server)**
+* **[Netflix Eureka - service](https://github.com/cloudframeworks-springcloud/eureka-service)**
+* **[Netflix Hystrix](https://github.com/cloudframeworks-springcloud/hystrix)**
+* **[Netflix Zuul](https://github.com/cloudframeworks-springcloud/zuul)**
+* **[Netflix Feign](https://github.com/cloudframeworks-springcloud/feign)**
+* **[Netflix Ribbon](https://github.com/cloudframeworks-springcloud/ribbon)**
+* **[Spring Cloud Sleuth](https://github.com/cloudframeworks-springcloud/sleuth)**
 
 ### <a name="组件关系"></a>组件关系
-
-* **如何访问这些服务**
-
-<img src="./image/云框架-Spring Cloud-如何访问这些服务.png" width = "450" height = "" alt="" align=center />
-
-* **服务如何发现**
-
-<img src="./image/云框架-Spring Cloud-服务如何发现1.png" width = "450" height = "" alt="" align=center />
-
-<img src="./image/云框架-Spring Cloud-服务如何发现2.png" width = "450" height = "" alt="" align=center />
-
-* **服务如何通信**
-
-<img src="./image/云框架-Spring Cloud-服务如何通信.png" width = "450" height = "" alt="" align=center />
-
-* **数据如何管理**
-
-<img src="./image/云框架-Spring Cloud-数据如何管理.png" width = "450" height = "" alt="" align=center />
-
-* **服务如何容错**
-
-<img src="./image/云框架-Spring Cloud-服务如何容错.png" width = "450" height = "" alt="" align=center />
-
-* **服务如何监控**
-
-<img src="./image/云框架-Spring Cloud-服务如何监控.png" width = "450" height = "" alt="" align=center />
 
 ### <a name="适用场景"></a>适用场景
 
@@ -145,15 +111,31 @@ Spring Cloud是Pivotal提供的云应用开发工具，基于Spring Boot实现�
 
 *常见问题指阅读／使用过程中经常会问的问题
 
-+ Q：
-  
-  A：
-  
-+ Q：
-  
-  A：
-  
-+ ···
+* Q：如何访问这些服务？
+
+<img src="./image/云框架-Spring Cloud-如何访问这些服务.png" width = "450" height = "" alt="" align=center />
+
+* Q：服务如何发现？
+
+<img src="./image/云框架-Spring Cloud-服务如何发现1.png" width = "450" height = "" alt="" align=center />
+
+<img src="./image/云框架-Spring Cloud-服务如何发现2.png" width = "450" height = "" alt="" align=center />
+
+* Q：服务如何通信？
+
+<img src="./image/云框架-Spring Cloud-服务如何通信.png" width = "450" height = "" alt="" align=center />
+
+* Q：数据如何管理？
+
+<img src="./image/云框架-Spring Cloud-数据如何管理.png" width = "450" height = "" alt="" align=center />
+
+* Q：服务如何容错？
+
+<img src="./image/云框架-Spring Cloud-服务如何容错.png" width = "450" height = "" alt="" align=center />
+
+* Q：服务如何监控？
+
+<img src="./image/云框架-Spring Cloud-服务如何监控.png" width = "450" height = "" alt="" align=center />
 
 ## <a name="更新日志"></a>更新日志
 
