@@ -7,7 +7,7 @@
 
 ## 目录
 
-* [简介](#简介)
+* [背景](#背景)
 * [说明](#说明)
   * [架构图](#架构图)
   * [架构说明](#架构说明)
@@ -26,9 +26,9 @@
 * [扩展阅读](#扩展阅读)
 * [版权声明](#版权声明)
 
-## <a name="简介"></a>简介
+## <a name="背景"></a>背景
 
-Spring Cloud是Pivotal提供的云应用开发工具，基于Spring Boot实现，用于简化分布式系统构建。
+[Spring Cloud](http://projects.spring.io/spring-cloud/)是Pivotal提供的云应用开发工具，基于Spring Boot实现，用于简化分布式系统构建。
 
 利用Spring Boot的开发便利性，Spring Cloud为JVM云应用开发中的配置管理、服务发现、断路器、智能路由、微代理、控制总线、全局锁、决策竞选、分布式会话和集群状态管理等操作提供了一种简单的实现方式。
 
@@ -48,8 +48,6 @@ Spring Cloud是Pivotal提供的云应用开发工具，基于Spring Boot实现�
 
 ## <a name="说明"></a>说明
 
-+ [云框架]架构怎么做的？
-
 ### <a name="架构图"></a>架构图
 
 + [架构图]
@@ -59,6 +57,8 @@ Spring Cloud是Pivotal提供的云应用开发工具，基于Spring Boot实现�
 ### <a name="架构说明"></a>架构说明
 
 + [云框架]架构为什么要这么做？为什么这么做是最佳实践？
+
+### <a name="组件关系"></a>组件关系
 
 ### <a neme="组件说明"></a>组件说明
 
@@ -71,8 +71,6 @@ Spring Cloud是Pivotal提供的云应用开发工具，基于Spring Boot实现�
 * **[Netflix Feign](https://github.com/cloudframeworks-springcloud/feign)**
 * **[Netflix Ribbon](https://github.com/cloudframeworks-springcloud/ribbon)**
 * **[Spring Cloud Sleuth](https://github.com/cloudframeworks-springcloud/sleuth)**
-
-### <a name="组件关系"></a>组件关系
 
 ### <a name="适用场景"></a>适用场景
 
@@ -109,31 +107,29 @@ Spring Cloud是Pivotal提供的云应用开发工具，基于Spring Boot实现�
 
 ## <a name="常见问题"></a>常见问题
 
-*常见问题指阅读／使用过程中经常会问的问题
-
-* Q：如何访问这些服务？
+### Q：如何访问这些服务？
 
 <img src="./image/云框架-Spring Cloud-如何访问这些服务.png" width = "450" height = "" alt="" align=center />
 
-* Q：服务如何发现？
+### Q：服务如何发现？
 
 <img src="./image/云框架-Spring Cloud-服务如何发现1.png" width = "450" height = "" alt="" align=center />
 
 <img src="./image/云框架-Spring Cloud-服务如何发现2.png" width = "450" height = "" alt="" align=center />
 
-* Q：服务如何通信？
+### Q：服务如何通信？
 
 <img src="./image/云框架-Spring Cloud-服务如何通信.png" width = "450" height = "" alt="" align=center />
 
-* Q：数据如何管理？
+### Q：数据如何管理？
 
 <img src="./image/云框架-Spring Cloud-数据如何管理.png" width = "450" height = "" alt="" align=center />
 
-* Q：服务如何容错？
+### Q：服务如何容错？
 
 <img src="./image/云框架-Spring Cloud-服务如何容错.png" width = "450" height = "" alt="" align=center />
 
-* Q：服务如何监控？
+### Q：服务如何监控？
 
 <img src="./image/云框架-Spring Cloud-服务如何监控.png" width = "450" height = "" alt="" align=center />
 
@@ -160,8 +156,9 @@ Spring Cloud是Pivotal提供的云应用开发工具，基于Spring Boot实现�
 
 ## <a name="扩展阅读"></a>扩展阅读
 
-+ [干货下载：谷歌、亚马逊等十大公司微服务案例精选](https://mp.weixin.qq.com/s?__biz=MzIwMDA2OTI0Mw==&mid=2653449136&idx=2&sn=0e6bc2215646064c9a35398a8fb00299&chksm=8d5e12a4ba299bb2bf75f5b8aebb645c186932b6507dbd2ca9372dbd5b0f4d0a5a43e9fce72d#rd)
++ [Microservices by Martin Flowler](https://martinfowler.com/articles/microservices.html)
 + [部署微服务：Spring Cloud vs. Kubernetes](http://www.jianshu.com/p/2f443a5a9d99)
++ [干货下载：谷歌、亚马逊等十大公司微服务案例精选](https://mp.weixin.qq.com/s?__biz=MzIwMDA2OTI0Mw==&mid=2653449136&idx=2&sn=0e6bc2215646064c9a35398a8fb00299&chksm=8d5e12a4ba299bb2bf75f5b8aebb645c186932b6507dbd2ca9372dbd5b0f4d0a5a43e9fce72d#rd)
 
 ## <a name="版权声明"></a>版权声明
 

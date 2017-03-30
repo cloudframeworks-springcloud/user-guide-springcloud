@@ -1,4 +1,4 @@
-[![Goodrain Cloud Frameworks](http://7xihe6.com1.z0.glb.clouddn.com/CLOUDFRAMEWORKS9x3.jpg)](http://app.goodrain.com)
+[![Goodrain Cloud Frameworks](http://7xihe6.com1.z0.glb.clouddn.com/CLOUDFRAMEWORKS9x3d.jpg)](http://app.goodrain.com)
 
 云框架（Cloud Frameworks）是即插即用的云端技术框架，使用Git控制版本，目前托管在GitHub上。
 
@@ -45,7 +45,7 @@ Cloud frameworks
 
 云框架主题展现为Github上的组织（organization），组织中仓库（repository）包括“user-guide”及一个或多个“组件”。
 
-在user-guide仓库中，你可以很方便的找到帮助了解和使用云框架的文档，并根据“DOCUMENTATION.md”快速开始。
+在user-guide仓库中，你可以很方便的找到帮助了解和使用云框架的文档，并根据“[README](README.md)”快速开始。
 
 ## 参与贡献
 
