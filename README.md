@@ -33,8 +33,6 @@ Spring Cloud是Pivotal提供的云应用开发工具，基于Spring Boot实现�
 
 相比Dubbo等RPC（远程过程调用协议）框架，Spring Cloud是一个比较新的微服务架构基础框架选择，2016年才推出的1.0 release版本，不过Spring Cloud的方案完整度非常高，各个子项目几乎覆盖了微服务架构的方方面面。
 
-<img src="./image/云框架-Spring Cloud-核心组件.png" width = "450" height = "" alt="" align=center />
-
 **Spring Cloud核心组件**
 
 | 名称 | 功能 | 简介 |
@@ -53,7 +51,7 @@ Spring Cloud是Pivotal提供的云应用开发工具，基于Spring Boot实现�
 
 ### <a name="架构图"></a>架构图
 
-+ 架构图
++ [架构图]
 
 <img src="./image/云框架-Spring Cloud-学习路径.png" width = "450" height = "" alt="" align=center />
 
