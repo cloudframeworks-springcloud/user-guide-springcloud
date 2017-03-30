@@ -1,4 +1,4 @@
-[![Goodrain Cloud Frameworks](http://7xihe6.com1.z0.glb.clouddn.com/CLOUDFRAMEWORKS9x3.jpg)](http://app.goodrain.com)
+[![Goodrain Cloud Frameworks](http://7xihe6.com1.z0.glb.clouddn.com/CLOUDFRAMEWORKS9x3c.jpg)](http://app.goodrain.com)
 
 # [云框架]基于Spring Cloud的微服务架构 v0.1
 
