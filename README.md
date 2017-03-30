@@ -6,10 +6,10 @@
 
 * [简介](#简介)
 * [说明](#说明)
-    - [架构图](#架构图)
-    - [架构说明](#架构说明)
-    - [组件关系](#组件关系)
-    - [适用场景](#适用场景)
+   - [架构图](#架构图)
+   - [架构说明](#架构说明)
+   - [组件关系](#组件关系)
+   - [适用场景](#适用场景)
      
 ## <a name="简介"></a>简介
 
@@ -22,6 +22,7 @@ Spring Cloud是Pivotal提供的云应用开发工具，基于Spring Boot实现�
 <img src="./image/云框架-Spring Cloud-核心组件.png" width = "450" height = "" alt="" align=center />
 
 Spring Cloud核心组件
+
 | 名称 | 功能 | 简介 |
 | --- | --- | --- |
 | Spring Cloud Config | 配置管理开发工具包 | 允许用户把配置放到远程服务器，支持本地存储、Git及Subversion |
