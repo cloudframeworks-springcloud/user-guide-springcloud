@@ -1,7 +1,17 @@
 [![Goodrain Cloud Frameworks](http://7xihe6.com1.z0.glb.clouddn.com/CLOUDFRAMEWORKS9x3.jpg)](http://app.goodrain.com)
 
+<a name="quick-start"></a>Quick Start
 
 # [云框架]基于Spring Cloud的微服务架构 v0.1
+
+* [简介](#简介)
+* [说明](#说明)
+     * [架构图](#架构图)
+     * [架构说明](#架构说明)
+     * [组件关系](#组件关系)
+     * [适用场景](#适用场景)
+     
+## <a name="简介"></a>简介
 
 Spring Cloud是Pivotal提供的云应用开发工具，基于Spring Boot实现，用于简化分布式系统构建。
 
@@ -9,10 +19,9 @@ Spring Cloud是Pivotal提供的云应用开发工具，基于Spring Boot实现�
 
 相比Dubbo等RPC（远程过程调用协议）框架，Spring Cloud是一个比较新的微服务架构基础框架选择，2016年才推出的1.0 release版本，不过Spring Cloud的方案完整度非常高，各个子项目几乎覆盖了微服务架构的方方面面。
 
-Spring Cloud核心组件包括Spring Cloud Config、Netflix Eureka、Netflix Ribbon、Netflix Hystrix、Netflix Zuul等。
-
 <img src="./image/云框架-Spring Cloud-核心组件.png" width = "450" height = "" alt="" align=center />
 
+Spring Cloud核心组件
 | 名称 | 功能 | 简介 |
 | --- | --- | --- |
 | Spring Cloud Config | 配置管理开发工具包 | 允许用户把配置放到远程服务器，支持本地存储、Git及Subversion |
@@ -23,21 +32,21 @@ Spring Cloud核心组件包括Spring Cloud Config、Netflix Eureka、Netflix Rib
 | Netflix Ribbon | 云端负载均衡 | 有多种负载均衡策略可供选择，可配合服务发现和断路器使用 |
 | Spring Cloud Sleuth | 日志收集工具包 | 封装了Dapper、Zipkin和HTrace操作 |
 
-## 说明
+## <a name="说明"></a>说明
 
 + [云框架]架构怎么做的？
 
-### 架构图
+### <a name="架构图"></a>架构图
 
 + 架构图
 
 <img src="./image/云框架-Spring Cloud-学习路径.png" width = "450" height = "" alt="" align=center />
 
-### 架构说明
+### <a name="架构说明"></a>架构说明
 
 + [云框架]架构为什么要这么做？为什么这么做是最佳实践？
 
-### 关系说明
+### <a name="组件关系"></a>组件关系
 
 * **如何访问这些服务**
 
@@ -65,7 +74,7 @@ Spring Cloud核心组件包括Spring Cloud Config、Netflix Eureka、Netflix Rib
 
 <img src="./image/云框架-Spring Cloud-服务如何监控.png" width = "450" height = "" alt="" align=center />
 
-### 适用场景
+### <a name="适用场景"></a>适用场景
 
 + 大规模开发
 + 有业务模块松耦合需求
