@@ -74,7 +74,7 @@ Spring Cloud是Pivotal提供的云应用开发工具，基于Spring Boot实现�
 
 #### Netflix Ribbon
 
-#### Spring Cloud Sleth
+#### Spring Cloud Sleuth
 
 ### <a name="组件关系"></a>组件关系
 
