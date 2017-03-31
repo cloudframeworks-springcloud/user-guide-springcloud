@@ -135,7 +135,7 @@ Spring Cloud官方提供了非常详实的文档，不过如果你想要快速�
 ## <a name="更新日志"></a>更新日志
 
 + 2017.03.28 
-  + 新增user-guide
+  + v0.1 测试
 + [历史更新](CHANGLOG.md)
 
 ## <a name="贡献者"></a>贡献者
@@ -145,6 +145,8 @@ Spring Cloud官方提供了非常详实的文档，不过如果你想要快速�
 `贡献者` 孙丽川 [sunlc@goodrain.com](mailto:sunlc@goodrain.com) WeChat：linmu0001
 
 `贡献者` 田夜雨 [tianyy@goodrain.com](mailto:tianyy@goodrain.com) WeChat：yeyu_t
+
+[如何成为云框架贡献者？](CONTRIBUTING.md)
 
 ## <a name="社区"></a>社区
 
@@ -159,12 +161,8 @@ Spring Cloud官方提供了非常详实的文档，不过如果你想要快速�
 + [部署微服务：Spring Cloud vs. Kubernetes](http://www.jianshu.com/p/2f443a5a9d99)
 + [干货下载：谷歌、亚马逊等十大公司微服务案例精选](https://mp.weixin.qq.com/s?__biz=MzIwMDA2OTI0Mw==&mid=2653449136&idx=2&sn=0e6bc2215646064c9a35398a8fb00299&chksm=8d5e12a4ba299bb2bf75f5b8aebb645c186932b6507dbd2ca9372dbd5b0f4d0a5a43e9fce72d#rd)
 
-## <a name="版权声明"></a>版权声明
-
-云框架遵循APACHE LICENSE 2.0协议发布，并提供免费使用。
-
-细节参阅 [LICENSE.md](链接)
-
 -------
 
 [云框架](ABOUT.md)，即插即用的云端技术框架。
+
+遵循[APACHE LICENSE 2.0](LICENSE.md)协议发布，并提供免费使用。
