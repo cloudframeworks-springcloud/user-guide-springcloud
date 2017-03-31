@@ -50,13 +50,7 @@
 
 ### <a name="架构图"></a>架构图
 
-+ [架构图]
-
-<img src="./image/云框架-Spring Cloud-学习路径.png" width = "450" height = "" alt="" align=center />
-
 ### <a name="架构说明"></a>架构说明
-
-+ [云框架]架构为什么要这么做？为什么这么做是最佳实践？
 
 ### <a name="组件关系"></a>组件关系
 
