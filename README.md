@@ -55,15 +55,16 @@ Spring Cloud官方提供了非常详实的[文档](https://spring.io/docs)，不
 
 ### <a neme="组件说明"></a>组件说明
 
-* [Spring Cloud Config - server](https://github.com/cloudframeworks-springcloud/config-client)
-* [Spring Cloud Config - client](https://github.com/cloudframeworks-springcloud/config-server)
-* [Netflix Eureka - server](https://github.com/cloudframeworks-springcloud/eureka-server)
-* [Netflix Eureka - service](https://github.com/cloudframeworks-springcloud/eureka-service)
-* [Netflix Hystrix](https://github.com/cloudframeworks-springcloud/hystrix)
-* [Netflix Zuul](https://github.com/cloudframeworks-springcloud/zuul)
-* [Netflix Feign](https://github.com/cloudframeworks-springcloud/feign)
-* [Netflix Ribbon](https://github.com/cloudframeworks-springcloud/ribbon)
-* [Spring Cloud Sleuth](https://github.com/cloudframeworks-springcloud/sleuth)
+* [Spring Cloud Config - server](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-client)
+* [Spring Cloud Config - client](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-server)
+* [Spring Cloud Config](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config)
+* [Netflix Eureka - server](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server)
+* [Netflix Eureka - service](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-service)
+* [Netflix Hystrix](https://github.com/cloudframeworks-springcloud/Netflix-Hystrix)
+* [Netflix Zuul](https://github.com/cloudframeworks-springcloud/Netflix-Zuul)
+* [Netflix Feign](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Feign)
+* [Netflix Ribbon](https://github.com/cloudframeworks-springcloud/Netflix-Ribbon)
+* [Spring Cloud Sleuth](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Sleuth)
 
 ## <a name="使用"></a>使用
 
