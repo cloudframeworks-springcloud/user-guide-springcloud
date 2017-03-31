@@ -5,6 +5,7 @@
 ![](https://img.shields.io/badge/Version-v0.1-green.svg)
 [![](https://img.shields.io/badge/CHANGELOG-v0.1-red.svg)](CHANGELOG.md)
 ![](https://img.shields.io/badge/License-APACHE2.0-blue.svg)
+[![](https:img.shields.io/badge/Producer-Bin Zhang-orange.svg)](CONTRIBUTORS.md)
 
 ## 目录
 
@@ -19,7 +20,6 @@
    * [已知问题](#已知问题)
    * [性能测试](#性能测试)  
 * [常见问题](#常见问题)
-* [贡献者](#贡献者)
 * [社区](#社区)
 * [扩展阅读](#扩展阅读)
 
@@ -99,16 +99,6 @@ Spring Cloud官方提供了非常详实的[文档](https://spring.io/docs)，不
 * [Netflix Feign](https://github.com/cloudframeworks-springcloud/user-guide/blob/master/QA/Netflix%20Feign)
 * [Netflix Ribbon](https://github.com/cloudframeworks-springcloud/user-guide/blob/master/QA/Netflix%20Ribbon)
 * [Spring Cloud Sleuth](https://github.com/cloudframeworks-springcloud/user-guide/blob/master/QA/Spring%20Cloud%20Sleuth)
-
-## <a name="贡献者"></a>贡献者
-
-`出品人` 张斌 [zhangb@goodrain.com](mailto:zhangb@goodrain.com) WeChat：elvis_123456
-
-`贡献者` 孙丽川 [sunlc@goodrain.com](mailto:sunlc@goodrain.com) WeChat：linmu0001
-
-`贡献者` 田夜雨 [tianyy@goodrain.com](mailto:tianyy@goodrain.com) WeChat：yeyu_t
-
-[如何成为云框架贡献者？](CONTRIBUTING.md)
 
 ## <a name="社区"></a>社区
 
