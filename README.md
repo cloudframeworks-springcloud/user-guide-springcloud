@@ -34,7 +34,14 @@
 
 相比Dubbo等RPC（远程过程调用协议）框架，Spring Cloud是一个比较新的微服务架构基础框架选择，2016年才推出的1.0 release版本，不过Spring Cloud的方案完整度非常高，各个子项目几乎覆盖了微服务架构的方方面面。
 
-**Spring Cloud核心组件**
+从目前的关注度和活跃度来看，Spring Cloud很可能会成为微服务架构的标准。
+
+## <a name="说明"></a>说明
+
+Spring Cloud官方提供了非常详实的文档，不过如果你想要快速上手、快速落地基于Spring Cloud的微服务架构
+不过，如果你想要快速上手、快速落地基于Spring Cloud的微服务架构，云框架会是一个不错的选择。
+
+总结实战经验，云框架主要包括以下核心组件：
 
 | 名称 | 功能 | 简介 |
 | --- | --- | --- |
@@ -45,8 +52,6 @@
 | Netflix Feign | 客户端 | 声明式、模板化的HTTP客户端 |
 | Netflix Ribbon | 云端负载均衡 | 有多种负载均衡策略可供选择，可配合服务发现和断路器使用 |
 | Spring Cloud Sleuth | 日志收集工具包 | 封装了Dapper、Zipkin和HTrace操作 |
-
-## <a name="说明"></a>说明
 
 ### <a name="架构图"></a>架构图
 
