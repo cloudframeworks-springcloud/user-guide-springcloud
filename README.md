@@ -57,7 +57,7 @@ Spring Cloud官方提供了非常详实的[文档](https://spring.io/docs)，不
 
 * [Spring Cloud Config - server](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-client)
 * [Spring Cloud Config - client](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-server)
-* [Spring Cloud Config - 配置文件](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-配置文件)
+* [Spring Cloud Config - 配置文件](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config)
 * [Netflix Eureka - server](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server)
 * [Netflix Eureka - service](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-service)
 * [Netflix Hystrix](https://github.com/cloudframeworks-springcloud/Netflix-Hystrix)
