@@ -121,10 +121,8 @@ Spring Cloud官方提供了非常详实的文档，不过如果你想要快速�
 
 ## <a name="常见问题"></a>常见问题
 
-* [Spring Cloud Config - server](https://github.com/cloudframeworks-springcloud/user-guide/blob/master/QA/Spring%20Cloud%20Config%20-%20server)
-* [Spring Cloud Config - client](https://github.com/cloudframeworks-springcloud/user-guide/blob/master/QA/Spring%20Cloud%20Config%20-%20client)
-* [Netflix Eureka - server](https://github.com/cloudframeworks-springcloud/user-guide/blob/master/QA/Netflix%20Eureka%20-%20server)
-* [Netflix Eureka - service](https://github.com/cloudframeworks-springcloud/user-guide/blob/master/QA/Netflix%20Eureka%20-%20service)
+* [Spring Cloud Config](https://github.com/cloudframeworks-springcloud/user-guide/blob/master/QA/Spring%20Cloud%20Config)
+* [Netflix Eureka](https://github.com/cloudframeworks-springcloud/user-guide/blob/master/QA/Netflix%20Eureka)
 * [Netflix Hystrix](https://github.com/cloudframeworks-springcloud/user-guide/blob/master/QA/Netflix%20Hystrix)
 * [Netflix Zuul](https://github.com/cloudframeworks-springcloud/user-guide/blob/master/QA/Netflix%20Zuul)
 * [Netflix Feign](https://github.com/cloudframeworks-springcloud/user-guide/blob/master/QA/Netflix%20Feign)
@@ -139,7 +137,7 @@ Spring Cloud官方提供了非常详实的文档，不过如果你想要快速�
 
 `贡献者` 田夜雨 [tianyy@goodrain.com](mailto:tianyy@goodrain.com) WeChat：yeyu_t
 
-[参与贡献](CONTRIBUTING.md)
+* [如何成为云框架贡献者？](CONTRIBUTING.md)
 
 ## <a name="社区"></a>社区
 
