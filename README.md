@@ -85,14 +85,10 @@ Spring Cloud官方提供了非常详实的[文档](https://spring.io/docs)，不
 
 ## <a name="常见问题"></a>常见问题
 
-* [Spring Cloud Config](https://github.com/cloudframeworks-springcloud/user-guide/blob/master/QA/Spring%20Cloud%20Config)
-* [Netflix Eureka](https://github.com/cloudframeworks-springcloud/user-guide/blob/master/QA/Netflix%20Eureka)
-* [Netflix Hystrix](https://github.com/cloudframeworks-springcloud/user-guide/blob/master/QA/Netflix%20Hystrix)
-* [Netflix Zuul](https://github.com/cloudframeworks-springcloud/user-guide/blob/master/QA/Netflix%20Zuul)
-* [Netflix Feign](https://github.com/cloudframeworks-springcloud/user-guide/blob/master/QA/Netflix%20Feign)
-* [Netflix Ribbon](https://github.com/cloudframeworks-springcloud/user-guide/blob/master/QA/Netflix%20Ribbon)
-* [Spring Cloud Sleuth](https://github.com/cloudframeworks-springcloud/user-guide/blob/master/QA/Spring%20Cloud%20Sleuth)
+相关问题可通过GitHub ISSUE提交或讨论，点击查看[常见问题汇总](QA.md)
 
+* [Netflix Eureka](https://github.com/cloudframeworks-springcloud/user-guide/blob/master/QA/Netflix%20Eureka)
+* [Netflix Eureka](https://github.com/cloudframeworks-springcloud/user-guide/blob/master/QA/Netflix%20Eureka)
 ## <a name="社区"></a>社区
 
 + [订阅邮件](http://goodrain.us15.list-manage.com/subscribe?u=1874f1de4ed82a52890cefb4c&id=b88f73ca56)
