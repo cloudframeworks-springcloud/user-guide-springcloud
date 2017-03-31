@@ -53,8 +53,6 @@ Spring Cloud官方提供了非常详实的[文档](https://spring.io/docs)，不
 
 ### <a name="架构说明"></a>架构说明
 
-### <a name="组件关系"></a>组件关系
-
 ### <a neme="组件说明"></a>组件说明
 
 * [Spring Cloud Config - server](https://github.com/cloudframeworks-springcloud/config-client)
