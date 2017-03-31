@@ -2,7 +2,8 @@
 
 # [云框架]基于Spring Cloud的微服务架构 v0.1
 
-![](https://img.shields.io/badge/Version-0.1-brightgreen.svg)
+![](https://img.shields.io/badge/Version-0.1-green.svg)
+[![](https://img.shields.io/badge/CHANGELOG-v0.1-red.svg)](CHANGELOG.md)
 ![](https://img.shields.io/badge/License-APACHE2.0-blue.svg)
 
 ## 目录
@@ -19,11 +20,9 @@
    * [已知问题](#已知问题)
    * [性能测试](#性能测试)  
 * [常见问题](#常见问题)
-* [更新日志](#更新日志)
 * [贡献者](#贡献者)
 * [社区](#社区)
 * [扩展阅读](#扩展阅读)
-* [版权声明](#版权声明)
 
 ## <a name="背景"></a>背景
 
@@ -132,12 +131,6 @@ Spring Cloud官方提供了非常详实的文档，不过如果你想要快速�
 * [Netflix Ribbon](https://github.com/cloudframeworks-springcloud/user-guide/blob/master/QA/Netflix%20Ribbon)
 * [Spring Cloud Sleuth](https://github.com/cloudframeworks-springcloud/user-guide/blob/master/QA/Spring%20Cloud%20Sleuth)
 
-## <a name="更新日志"></a>更新日志
-
-+ 2017.03.28 
-    * v0.1 测试
-+ [历史更新](CHANGLOG.md)
-
 ## <a name="贡献者"></a>贡献者
 
 `出品人` 张斌 [zhangb@goodrain.com](mailto:zhangb@goodrain.com) WeChat：elvis_123456
@@ -146,7 +139,7 @@ Spring Cloud官方提供了非常详实的文档，不过如果你想要快速�
 
 `贡献者` 田夜雨 [tianyy@goodrain.com](mailto:tianyy@goodrain.com) WeChat：yeyu_t
 
-[如何成为云框架贡献者？](CONTRIBUTING.md)
+* [如何成为云框架贡献者？](CONTRIBUTING.md)
 
 ## <a name="社区"></a>社区
 
