@@ -108,7 +108,7 @@ Spring Cloud官方提供了非常详实的[文档](https://spring.io/docs)，不
 
 `贡献者` 田夜雨 [tianyy@goodrain.com](mailto:tianyy@goodrain.com) WeChat：yeyu_t
 
-* [如何成为云框架贡献者？](CONTRIBUTING.md)
+[如何成为云框架贡献者？](CONTRIBUTING.md)
 
 ## <a name="社区"></a>社区
 
