@@ -54,6 +54,32 @@
 
 ### <a name="组件关系"></a>组件关系
 
+### Q：如何访问这些服务？
+
+<img src="./image/云框架-Spring Cloud-如何访问这些服务.png" width = "450" height = "" alt="" align=center />
+
+### Q：服务如何发现？
+
+<img src="./image/云框架-Spring Cloud-服务如何发现1.png" width = "450" height = "" alt="" align=center />
+
+<img src="./image/云框架-Spring Cloud-服务如何发现2.png" width = "450" height = "" alt="" align=center />
+
+### Q：服务如何通信？
+
+<img src="./image/云框架-Spring Cloud-服务如何通信.png" width = "450" height = "" alt="" align=center />
+
+### Q：数据如何管理？
+
+<img src="./image/云框架-Spring Cloud-数据如何管理.png" width = "450" height = "" alt="" align=center />
+
+### Q：服务如何容错？
+
+<img src="./image/云框架-Spring Cloud-服务如何容错.png" width = "450" height = "" alt="" align=center />
+
+### Q：服务如何监控？
+
+<img src="./image/云框架-Spring Cloud-服务如何监控.png" width = "450" height = "" alt="" align=center />
+
 ### <a neme="组件说明"></a>组件说明
 
 * **[Spring Cloud Config - server](https://github.com/cloudframeworks-springcloud/config-client)**
@@ -99,31 +125,15 @@
 
 ## <a name="常见问题"></a>常见问题
 
-### Q：如何访问这些服务？
-
-<img src="./image/云框架-Spring Cloud-如何访问这些服务.png" width = "450" height = "" alt="" align=center />
-
-### Q：服务如何发现？
-
-<img src="./image/云框架-Spring Cloud-服务如何发现1.png" width = "450" height = "" alt="" align=center />
-
-<img src="./image/云框架-Spring Cloud-服务如何发现2.png" width = "450" height = "" alt="" align=center />
-
-### Q：服务如何通信？
-
-<img src="./image/云框架-Spring Cloud-服务如何通信.png" width = "450" height = "" alt="" align=center />
-
-### Q：数据如何管理？
-
-<img src="./image/云框架-Spring Cloud-数据如何管理.png" width = "450" height = "" alt="" align=center />
-
-### Q：服务如何容错？
-
-<img src="./image/云框架-Spring Cloud-服务如何容错.png" width = "450" height = "" alt="" align=center />
-
-### Q：服务如何监控？
-
-<img src="./image/云框架-Spring Cloud-服务如何监控.png" width = "450" height = "" alt="" align=center />
+* **[Spring Cloud Config - server]()**
+* **[Spring Cloud Config - client]()**
+* **[Netflix Eureka - server]()**
+* **[Netflix Eureka - service]()**
+* **[Netflix Hystrix]()**
+* **[Netflix Zuul]()**
+* **[Netflix Feign]()**
+* **[Netflix Ribbon]()**
+* **[Spring Cloud Sleuth]()**
 
 ## <a name="更新日志"></a>更新日志
 
