@@ -18,7 +18,7 @@
    * [使用向导](#使用向导)
    * [高级操作](#高级操作)
    * [已知问题](#已知问题)
-   * [性能测试](#性能测试)  
+   * [可用性测试](#可用性测试)  
 * [常见问题](#常见问题)
 * [社区](#社区)
 * [扩展阅读](#扩展阅读)
@@ -37,34 +37,26 @@
 
 Spring Cloud官方提供了非常详实的[文档](https://spring.io/docs)，不过如果你想要快速上手、快速落地，云框架会是一个不错的选择。
 
-总结实战经验，**[云框架]基于Spring Cloud的微服务架构**主要包括以下核心组件：
-
-| 名称 | 功能 | 简介 |
-| --- | --- | --- |
-| Spring Cloud Config | 配置管理开发工具包 | 允许用户把配置放到远程服务器，支持本地存储、Git及Subversion |
-| Netflix Eureka | 云端负载均衡 | 基于 REST 的服务，用于定位服务，以实现云端的负载均衡和中间层服务器的故障转移 |
-| Netflix Hystrix | 容错管理工具 | 通过控制服务和第三方库的节点，从而对延迟和故障提供更强大的容错能力 |
-| Netflix Zuul | 边缘服务工具 | 提供动态路由，监控，弹性，安全等的边缘服务 |
-| Netflix Feign | 客户端 | 声明式、模板化的HTTP客户端 |
-| Netflix Ribbon | 云端负载均衡 | 有多种负载均衡策略可供选择，可配合服务发现和断路器使用 |
-| Spring Cloud Sleuth | 日志收集工具包 | 封装了Dapper、Zipkin和HTrace操作 |
-
 ### <a name="架构图"></a>架构图
 
 ### <a name="架构说明"></a>架构说明
 
 ### <a neme="组件说明"></a>组件说明
 
-* [Spring Cloud Config - server](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-client)
-* [Spring Cloud Config - client](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-server)
-* [Spring Cloud Config - 配置文件](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config)
-* [Netflix Eureka - server](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server)
-* [Netflix Eureka - service](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-service)
-* [Netflix Hystrix](https://github.com/cloudframeworks-springcloud/Netflix-Hystrix)
-* [Netflix Zuul](https://github.com/cloudframeworks-springcloud/Netflix-Zuul)
-* [Netflix Feign](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Feign)
-* [Netflix Ribbon](https://github.com/cloudframeworks-springcloud/Netflix-Ribbon)
-* [Spring Cloud Sleuth](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Sleuth)
+点击名称跳转至组件源码
+
+| 名称 | 功能 | 简介 |
+| --- | --- | --- |
+| [Spring Cloud Config - server](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-client) | 配置管理开发工具包 | 允许用户把配置放到远程服务器，支持本地存储、Git及Subversion |
+| [Spring Cloud Config - client](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-server) |  |   |
+| [Spring Cloud Config - 配置文件](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config) |  |  |
+| [Netflix Eureka - server](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server) | 云端负载均衡 | 基于REST的服务，用于定位服务，以实现云端的负载均衡和中间层服务器的故障转移 |
+| [Netflix Eureka - service](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-service) |  |  |
+| [Netflix Hystrix](https://github.com/cloudframeworks-springcloud/Netflix-Hystrix) | 容错管理工具 | 通过控制服务和第三方库的节点，从而对延迟和故障提供更强大的容错能力 |
+| [Netflix Zuul](https://github.com/cloudframeworks-springcloud/Netflix-Zuul) | 边缘服务工具 | 提供动态路由，监控，弹性，安全等的边缘服务 |
+| [Netflix Feign](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Feign) | 客户端 | 声明式、模板化的HTTP客户端 |
+| [Netflix Ribbon](https://github.com/cloudframeworks-springcloud/Netflix-Ribbon) | 云端负载均衡 | 有多种负载均衡策略可供选择，可配合服务发现和断路器使用 |
+| [Spring Cloud Sleuth](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Sleuth) | 日志收集工具包 | 封装了Dapper、Zipkin和HTrace操作 |
 
 ## <a name="使用"></a>使用
 
@@ -89,18 +81,14 @@ Spring Cloud官方提供了非常详实的[文档](https://spring.io/docs)，不
 + 已知问题3
 + ···
 
-### <a name="性能测试"></a>性能测试
+### <a name="可用性测试"></a>可用性测试
 
 ## <a name="常见问题"></a>常见问题
 
-* [Spring Cloud Config](https://github.com/cloudframeworks-springcloud/user-guide/blob/master/QA/Spring%20Cloud%20Config)
-* [Netflix Eureka](https://github.com/cloudframeworks-springcloud/user-guide/blob/master/QA/Netflix%20Eureka)
-* [Netflix Hystrix](https://github.com/cloudframeworks-springcloud/user-guide/blob/master/QA/Netflix%20Hystrix)
-* [Netflix Zuul](https://github.com/cloudframeworks-springcloud/user-guide/blob/master/QA/Netflix%20Zuul)
-* [Netflix Feign](https://github.com/cloudframeworks-springcloud/user-guide/blob/master/QA/Netflix%20Feign)
-* [Netflix Ribbon](https://github.com/cloudframeworks-springcloud/user-guide/blob/master/QA/Netflix%20Ribbon)
-* [Spring Cloud Sleuth](https://github.com/cloudframeworks-springcloud/user-guide/blob/master/QA/Spring%20Cloud%20Sleuth)
+相关问题可通过GitHub ISSUE提交或讨论，点击查看[常见问题汇总](QA.md)
 
+* [Netflix Eureka](https://github.com/cloudframeworks-springcloud/user-guide/blob/master/QA/Netflix%20Eureka)
+* [Netflix Eureka](https://github.com/cloudframeworks-springcloud/user-guide/blob/master/QA/Netflix%20Eureka)
 ## <a name="社区"></a>社区
 
 + [订阅邮件](http://goodrain.us15.list-manage.com/subscribe?u=1874f1de4ed82a52890cefb4c&id=b88f73ca56)
