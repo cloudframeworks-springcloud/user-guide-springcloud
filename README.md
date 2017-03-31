@@ -56,32 +56,6 @@ Spring Cloud官方提供了非常详实的文档，不过如果你想要快速�
 
 ### <a name="组件关系"></a>组件关系
 
-### Q：如何访问这些服务？
-
-<img src="./image/云框架-Spring Cloud-如何访问这些服务.png" width = "450" height = "" alt="" align=center />
-
-### Q：服务如何发现？
-
-<img src="./image/云框架-Spring Cloud-服务如何发现1.png" width = "450" height = "" alt="" align=center />
-
-<img src="./image/云框架-Spring Cloud-服务如何发现2.png" width = "450" height = "" alt="" align=center />
-
-### Q：服务如何通信？
-
-<img src="./image/云框架-Spring Cloud-服务如何通信.png" width = "450" height = "" alt="" align=center />
-
-### Q：数据如何管理？
-
-<img src="./image/云框架-Spring Cloud-数据如何管理.png" width = "450" height = "" alt="" align=center />
-
-### Q：服务如何容错？
-
-<img src="./image/云框架-Spring Cloud-服务如何容错.png" width = "450" height = "" alt="" align=center />
-
-### Q：服务如何监控？
-
-<img src="./image/云框架-Spring Cloud-服务如何监控.png" width = "450" height = "" alt="" align=center />
-
 ### <a neme="组件说明"></a>组件说明
 
 * [Spring Cloud Config - server](https://github.com/cloudframeworks-springcloud/config-client)
