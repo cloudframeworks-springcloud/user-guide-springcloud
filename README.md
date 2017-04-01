@@ -39,7 +39,7 @@ Spring Cloud官方提供了非常详实的[文档](https://spring.io/docs)，不
 
 ### <a name="架构图"></a>架构图
 
-<div align=center><img width="150" height="150" src="./image/云框架-Spring-Cloud-架构图"/></div>
+<div align=center><img width="150" height="150" src="./image/云框架-Spring Cloud-架构图"/></div>
 
 ### <a name="架构说明"></a>架构说明
 
