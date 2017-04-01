@@ -43,13 +43,13 @@ Spring Cloud官方提供了非常详实的[文档](https://spring.io/docs)，不
 * 实线箭头：注册
 * 虚线箭头：调用
 
-**建议学习路径**
+***建议学习路径***
 
 <div align=center><img width="900" height="" src="./image/云框架-Spring Cloud-架构图.png"/></div>
 
 ### <a neme="组件说明"></a>组件说明
 
-点击名称跳转至组件源码
+***点击名称跳转至组件源码***
 
 | 名称 | 功能 | 简介 |
 | --- | --- | --- |
