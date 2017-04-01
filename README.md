@@ -12,7 +12,6 @@
 * [背景](#背景)
 * [说明](#说明)
    * [架构图](#架构图)
-   * [架构说明](#架构说明)
    * [组件说明](#组件说明)  
 * [使用](#使用)
    * [使用向导](#使用向导)
@@ -39,13 +38,20 @@ Spring Cloud官方提供了非常详实的[文档](https://spring.io/docs)，不
 
 ### <a name="架构图"></a>架构图
 
-### <a name="架构说明"></a>架构说明
+<div align=center><img width="900" height="" src="./image/云框架-Spring Cloud-架构图.png"/></div>
+
+* 实线箭头：注册
+* 虚线箭头：调用
+
+***建议学习路径***
+
+<div align=center><img width="900" height="" src="./image/云框架-Spring Cloud-学习路径.png"/></div>
 
 ### <a neme="组件说明"></a>组件说明
 
-点击名称跳转至组件源码
+***点击[组件名称](#组件名称)跳转至组件源码***
 
-| 名称 | 功能 | 简介 |
+| <a name="组件名称"></a>核心组件 | 功能 | 简介 |
 | --- | --- | --- |
 | [Spring Cloud Config - server](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-client) | 配置管理开发工具包 | 允许用户把配置放到远程服务器，支持本地存储、Git及Subversion |
 | [Spring Cloud Config - client](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-server) |  |   |
@@ -62,24 +68,9 @@ Spring Cloud官方提供了非常详实的[文档](https://spring.io/docs)，不
 
 ### <a name="使用向导"></a>使用向导
 
-+ 第一步
-+ 第二步
-+ 第三步
-+ ···
-
 ### <a name="高级操作"></a>高级操作
 
-+ 高级操作1
-+ 高级操作2
-+ 高级操作3
-+ ···
-
 ### <a name="已知问题"></a>已知问题
-
-+ 已知问题1
-+ 已知问题2
-+ 已知问题3
-+ ···
 
 ### <a name="可用性测试"></a>可用性测试
 
