@@ -51,7 +51,7 @@ Spring Cloud官方提供了非常详实的[文档](https://spring.io/docs)，不
 
 ***点击[组件名称](#组件名称)跳转至组件源码***
 
-| <a name="组件名称"></a>组件名称 | 功能 | 简介 |
+| <a name="组件名称"></a>核心组件 | 功能 | 简介 |
 | --- | --- | --- |
 | [Spring Cloud Config - server](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-client) | 配置管理开发工具包 | 允许用户把配置放到远程服务器，支持本地存储、Git及Subversion |
 | [Spring Cloud Config - client](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-server) |  |   |
