@@ -45,7 +45,7 @@ Spring Cloud官方提供了非常详实的[文档](https://spring.io/docs)，不
 
 ***建议学习路径***
 
-<div align=center><img width="900" height="" src="./image/云框架-Spring Cloud-架构图.png"/></div>
+<div align=center><img width="900" height="" src="./image/云框架-Spring Cloud-学习路径.png"/></div>
 
 ### <a neme="组件说明"></a>组件说明
 
