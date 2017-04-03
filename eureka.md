@@ -16,17 +16,46 @@ Eureka是用Java编写的，但它会将所有注册信息和心跳连接地址�
 
 #如何搭建一个Eureka server
 
-第一步：创建eureka server 参见：https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server
+第一步：下载eureka server git地址：https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server.git
+命令：git clone https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server
+
+第二步：构建eureka server镜像；
+命令：cd  Netflix-Eureka-server && docker build -t eureka-server .
 第二步：运行eureka server
+命令：docker run -d -p 5000:5000 eureka-server
 第三步：访问http://127.0.0.1:5000
 
+完整代码：
 
-#如何注册一个Eureka service
+    <code>
+        git clone https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server
+        
+        cd  Netflix-Eureka-server && docker build -t eureka-server .
+        
+        docker run -d -p 5000:5000 eureka-server
+    </code>
+
+
+#注册一个服务到Eureka server
 
 第一步：创建普通的应用服务
-第二步：将该服务注册到eureka中（通过@EnableDiscoveryClient）参见：https://github.com/cloudframeworks-springcloud/Netflix-Eureka-service
-第三步：运行eureka service
-第四步：去eureka中查看是否已注册成功
-备注：用户可以定义自己的业务逻辑
+第二步：将该服务注册到eureka中（通过@EnableDiscoveryClient）
+第三步：设置Eureka server的地址
+修改配置文件(根据自己的环境设置EUREKA_HOST和EUREKA_PORT)
+eureka.client.serviceUrl.defaultZone=http://127.0.0.1:5000/eureka/v2/
+第四步：运行eureka service
+第五步：去eureka中查看是否已注册成功(备注：用户可以定义自己的业务逻辑)
+
+参见：https://github.com/cloudframeworks-springcloud/Netflix-Eureka-service.git
+
+完整代码：
+
+    <code>
+        git https://github.com/cloudframeworks-springcloud/Netflix-Eureka-service
+        
+        cd  Netflix-Eureka-service && docker build -t eureka-service .
+        
+        docker run -d -p 5000:5000 eureka-service
+    </code>
 
 
