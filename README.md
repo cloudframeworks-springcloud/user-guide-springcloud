@@ -69,6 +69,26 @@ Spring Cloud微服务套件也提供了配置管理组件Spring Cloud Config，�
 
 第五步：运行`cloud-config server`和`cloud-config client`
 
+完整代码：
+
+```
+       git clone https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-server.git
+        
+        cd  Spring-Cloud-Config-server && docker build -t config-server .
+        
+        docker run -d -p 5000:5000 config-server
+
+        git clone https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-client.git
+        
+        cd Spring-Cloud-Config-client && docker build -t config-client .
+        
+        docker run -ti -p 6000:5000 -e "CONFIG_HOST=172.17.0.2" -e "CONFIG_PORT=5000" config-client
+        
+```
+
+第六步：访问 http://127.0.0.1:6000/from
+
+
 ### 2&3. Netflix Eureka
 
 <div align=center><img width="900" height="" src="./image/学习路径23.png"/></div>
@@ -108,18 +128,18 @@ Git地址：[https://github.com/cloudframeworks-springcloud/Netflix-Eureka-serve
 
 第三步：运行Netflix Eureka server
 
-命令：`docker run -d -p 5000:5000 eureka-server`
+命令：`docker run -d -p 8761:8761 eureka-server`
 
-第四步：访问[http://127.0.0.1:5000](http://127.0.0.1:5000)
+第四步：访问[http://127.0.0.1:8761](http://127.0.0.1:8761)
 
 完整代码：
 
 ```
-        git clone https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server
+       git clone https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server
         
         cd  Netflix-Eureka-server && docker build -t eureka-server .
         
-        docker run -d -p 5000:5000 eureka-server
+        docker run -d -p 8761:8761 eureka-server
 ```
 
 
@@ -143,11 +163,11 @@ Git地址：[https://github.com/cloudframeworks-springcloud/Netflix-Eureka-serve
 完整代码：
 
 ```
-        git https://github.com/cloudframeworks-springcloud/Netflix-Eureka-service
+       git https://github.com/cloudframeworks-springcloud/Netflix-Eureka-service
         
         cd  Netflix-Eureka-service && docker build -t eureka-service .
         
-        docker run -d -p 5000:5000 eureka-service
+        docker run -ti -e "EUREKA_HOST=172.17.0.4" -e "EUREKA_PORT=8761" -p 5000:5000 eureka-service
 ```
 
 ### 4. Netflix Hystrix
@@ -165,11 +185,11 @@ Git地址：[https://github.com/cloudframeworks-springcloud/Netflix-Eureka-serve
 完整代码：
 
 ```
-        git https://github.com/cloudframeworks-springcloud/Netflix-Hystrix.git
+       git https://github.com/cloudframeworks-springcloud/Netflix-Hystrix.git
         
         cd  Netflix-Hystrix && docker build -t hystrix .
         
-        docker run -d -p 5000:5000 hystrix
+        docker run -ti -e "EUREKA_HOST=172.17.0.4" -e "EUREKA_PORT=8761" -p 5000:5000 hystrix
 ```
 
 ### 5. Netflix Ribbon
@@ -187,11 +207,11 @@ Git地址：[https://github.com/cloudframeworks-springcloud/Netflix-Eureka-serve
 完整代码：
 
 ```
-        git https://github.com/cloudframeworks-springcloud/Netflix-Ribbon.git
+       git https://github.com/cloudframeworks-springcloud/Netflix-Ribbon.git
         
         cd  Netflix-Ribbon && docker build -t ribbon .
         
-        docker run -d -p 5000:5000 ribbon
+        docker run -ti -e "EUREKA_HOST=172.17.0.4" -e "EUREKA_PORT=8761" -p 5000:5000 ribbon
 ```
 
 ### 6. Netflix Feign
@@ -223,11 +243,11 @@ Netflix Feign是一个声明式、模板化的HTTP客户端，因此编写起来
 完整代码：
 
 ```
-        git https://github.com/cloudframeworks-springcloud/Spring-Cloud-Feign.git
+       git https://github.com/cloudframeworks-springcloud/Spring-Cloud-Feign.git
         
         cd  Spring-Cloud-Feign && docker build -t feign .
         
-        docker run -d -p 5000:5000 feign
+        docker run -ti -e "EUREKA_HOST=172.17.0.4" -e "EUREKA_PORT=8761" -p 5000:5000 feign
 ```
 
 ### 7. Netflix Zuul
@@ -247,11 +267,11 @@ Netflix Feign是一个声明式、模板化的HTTP客户端，因此编写起来
 完整代码：
 
 ```
-        git https://github.com/cloudframeworks-springcloud/Netflix-Zuul.git
+       git https://github.com/cloudframeworks-springcloud/Netflix-Zuul.git
         
         cd  Netflix-Zuul && docker build -t zuul .
         
-        docker run -d -p 5000:5000 zuul
+        docker run -ti -e "EUREKA_HOST=172.17.0.4" -e "EUREKA_PORT=8761" -p 5000:5000 zuul
 ```
 
 ### 8. Spring Cloud Sleuth
@@ -269,11 +289,11 @@ Netflix Feign是一个声明式、模板化的HTTP客户端，因此编写起来
 完整代码：
 
 ```
-        git https://github.com/cloudframeworks-springcloud/Spring-Cloud-Sleuth.git
+       git https://github.com/cloudframeworks-springcloud/Spring-Cloud-Sleuth.git
         
         cd  Spring-Cloud-Sleuth && docker build -t sleuth .
         
-        docker run -d -p 5000:5000 sleuth
+        docker run -ti -e "EUREKA_HOST=172.17.0.4" -e "EUREKA_PORT=8761" -p 5000:5000 sleuth
 ```
 
 ## <a name="一条命令部署"></a>一条命令部署
