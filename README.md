@@ -5,19 +5,19 @@
 [![](https://img.shields.io/badge/CHANGELOG-v0.1-yellow.svg)](CHANGELOG.md)
 ![](https://img.shields.io/badge/License-Apache_2.0-blue.svg)
 [![](https://img.shields.io/badge/Prodcuer-Bin%20Zhang-orange.svg)](CONTRIBUTORS.md)
+微服务架构概念近年来非常火，
 
-## Contents
+## 内容概览
 
 * [组件说明](#组件说明) 
 * [使用向导](#使用向导)
-   * [一条命令部署](#一条命令部署)
-   * [高级操作](#高级操作)
+   * [一条命令部署](#一条命令部署)
+   * [高级操作](#高级操作)
    * [可用性测试](#可用性测试)  
 * [常见问题](#常见问题)
-* [社区](#社区)
+* [参与贡献](#参与贡献)
+* [加入社群](#加入社群)
 * [扩展阅读](#扩展阅读)
-
-## <a name="背景"></a>背景
 
 [Spring Cloud](http://projects.spring.io/spring-cloud/)是Pivotal提供的云应用开发工具，基于Spring Boot实现，用于简化分布式系统构建。
 
@@ -25,11 +25,9 @@
 
 相比Dubbo等RPC（远程过程调用协议）框架，Spring Cloud是一个比较新的微服务架构基础框架选择，2016年才推出的1.0 release版本，不过Spring Cloud的方案完整度非常高，各个子项目几乎覆盖了微服务架构的方方面面。
 
-从目前的关注度和活跃度来看，Spring Cloud很可能会成为微服务架构的标准。
+从目前的关注度和活跃度来看，Spring Cloud[文档](https://spring.io/docs)很可能会成为微服务架构的标准。
 
-## <a name="说明"></a>说明
-
-Spring Cloud官方提供了非常详实的[文档](https://spring.io/docs)，不过如果你想要快速上手、快速落地，云框架会是一个不错的选择。
+## <a name="组件说明"></a>组件说明
 
 ### <a name="架构图"></a>架构图
 
