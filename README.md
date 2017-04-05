@@ -24,7 +24,6 @@
 * [常见问题](#常见问题)
 * [参与贡献](#参与贡献)
 * [加入社群](#加入社群)
-* [扩展阅读](#扩展阅读)
 
 # <a name="DEMO演示"></a>DEMO演示
 
@@ -53,7 +52,7 @@
 
 # <a name="使用向导"></a>使用向导
 
-<div align=center><img width="900" height="" src="./image/云框架-学习路径1.png"/></div>
+<div align=center><img width="900" height="" src="./image/学习路径1.png"/></div>
 
 ### 1. Spring Cloud Config
 
@@ -73,9 +72,9 @@ Spring Cloud微服务套件也提供了配置管理组件Spring Cloud Config，�
 
 第五步：运行`cloud-config server`和`cloud-config client`
 
-<div align=center><img width="900" height="" src="./image/云框架-学习路径2.png"/></div>
+<div align=center><img width="900" height="" src="./image/学习路径2.png"/></div>
 
-<div align=center><img width="900" height="" src="./image/云框架-学习路径3.png"/></div>
+<div align=center><img width="900" height="" src="./image/学习路径3.png"/></div>
 
 ### 2&3. Netflix Eureka
 
@@ -156,7 +155,7 @@ Git地址：[https://github.com/cloudframeworks-springcloud/Netflix-Eureka-serve
         docker run -d -p 5000:5000 eureka-service
 ```
 
-<div align=center><img width="900" height="" src="./image/云框架-学习路径4.png"/></div>
+<div align=center><img width="900" height="" src="./image/学习路径4.png"/></div>
 
 ### 4. Netflix Hystrix
 
@@ -178,7 +177,7 @@ Git地址：[https://github.com/cloudframeworks-springcloud/Netflix-Eureka-serve
         docker run -d -p 5000:5000 hystrix
 ```
 
-<div align=center><img width="900" height="" src="./image/云框架-学习路径5.png"/></div>
+<div align=center><img width="900" height="" src="./image/学习路径5.png"/></div>
 
 ### 5. Netflix Ribbon
 
@@ -200,7 +199,7 @@ Git地址：[https://github.com/cloudframeworks-springcloud/Netflix-Eureka-serve
         docker run -d -p 5000:5000 ribbon
 ```
 
-<div align=center><img width="900" height="" src="./image/云框架-学习路径6.png"/></div>
+<div align=center><img width="900" height="" src="./image/学习路径6.png"/></div>
 
 ### 6. Netflix Feign
 
@@ -236,7 +235,7 @@ Netflix Feign是一个声明式、模板化的HTTP客户端，因此编写起来
         docker run -d -p 5000:5000 feign
 ```
 
-<div align=center><img width="900" height="" src="./image/云框架-学习路径7.png"/></div>
+<div align=center><img width="900" height="" src="./image/学习路径7.png"/></div>
 
 ### 7. Netflix Zuul
 
@@ -260,7 +259,7 @@ Netflix Feign是一个声明式、模板化的HTTP客户端，因此编写起来
         docker run -d -p 5000:5000 zuul
 ```
 
-<div align=center><img width="900" height="" src="./image/云框架-学习路径8.png"/></div>
+<div align=center><img width="900" height="" src="./image/学习路径8.png"/></div>
 
 ### 8. Spring Cloud Sleuth
 
