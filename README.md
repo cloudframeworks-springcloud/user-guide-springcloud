@@ -32,7 +32,7 @@
 
 ## <a name="组件说明"></a>组件说明
 
-DEMO中核心组件包括如下核心组件（*点击[组件名称](#组件名称)跳转至组件源码*）：
+**DEMO中核心组件包括如下核心组件（*点击[组件名称](#组件名称)跳转至组件源码*）：**
 
 | <a name="组件名称"></a>核心组件 | 功能 | 简介 |
 | --- | --- | --- |
@@ -47,7 +47,7 @@ DEMO中核心组件包括如下核心组件（*点击[组件名称](#组件名�
 | [Netflix Ribbon](https://github.com/cloudframeworks-springcloud/Netflix-Ribbon) | 云端负载均衡 | 有多种负载均衡策略可供选择，可配合服务发现和断路器使用 |
 | [Spring Cloud Sleuth](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Sleuth) | 日志收集工具包 | 封装了Dapper、Zipkin和HTrace操作 |
 
-架构图如下，其中实线箭头代表**注册关系**、虚线箭头代表**调用关系**。
+**架构图如下，其中实线箭头代表注册关系、虚线箭头代表调用关系：**
 
 <div align=center><img width="900" height="" src="./image/云框架-Spring Cloud-架构图.png"/></div>
 
