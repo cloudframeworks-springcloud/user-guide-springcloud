@@ -1,5 +1,3 @@
-[![Goodrain Cloud Frameworks](http://7xihe6.com1.z0.glb.clouddn.com/CLOUDFRAMEWORKS9x3d.jpg)](http://app.goodrain.com)
-
 # [云框架]基于Spring Cloud的微服务架构 v0.1
 
 ![](https://img.shields.io/badge/Version-v0.1-green.svg)
@@ -113,6 +111,4 @@ Spring Cloud官方提供了非常详实的[文档](https://spring.io/docs)，不
 
 -------
 
-[云框架](ABOUT.md)，即插即用的云端技术框架。
-
-遵循[APACHE LICENSE 2.0](LICENSE.md)协议发布，并提供免费使用。
+[云框架](ABOUT.md)系列主题，遵循[APACHE LICENSE 2.0](LICENSE.md)协议发布。
