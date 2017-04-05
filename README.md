@@ -79,6 +79,14 @@ Spring Cloud官方提供了非常详实的[文档](https://spring.io/docs)，不
 
 ### <a name="使用向导"></a>使用向导
 
+[Spring Cloud Config](./components wizards/Spring Cloud Config)
+[Netflix Eureka](./components wizards/Netflix Eureka)
+[Netflix Feign](./components wizards/Netflix Feign)
+[Netflix Hystrix](./components wizards/netflix Hystrix)
+[Netflix Ribbon](./components wizards/Netflix Ribbon)
+[Netflix Zuul](./components wizards/Netflix Zuul)
+[Spring Cloud Sleuth](./components wizards/Spring Cloud Sleuth)
+
 ### <a name="高级"></a>高级
 
 ### <a name="已知问题"></a>已知问题
