@@ -4,7 +4,7 @@
 
 Spring Cloud微服务套件也提供了配置管理组件Spring Cloud Config，基于使用中心配置仓库的思想（版本控制），支持Git、SVN。
 
-# 如何搭建一个config server
+## 如何搭建一个config server
 
 **第一步：选择Git或SVN作为你的配置仓库**（这里选择git作为配置仓库）
 
