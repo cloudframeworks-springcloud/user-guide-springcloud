@@ -6,6 +6,8 @@
 
 **张斌**
 
+12年年互联⽹网开发和架构经验，擅⻓分布式系统和微服务架构
+
 [zhangb@goodrain.com](mailto:zhangb@goodrain.com) 
 
 WeChat：elvis_123456
