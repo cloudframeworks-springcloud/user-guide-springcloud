@@ -10,10 +10,13 @@
 
 目前主流微服务框架包括Spring Cloud、Dubbo、API Gateway等，其中[Spring Cloud](http://projects.spring.io/spring-cloud/)是Pivotal提供的云应用开发工具，利用Spring Boot的开发便利性，Spring Cloud为JVM云应用开发中的配置管理、服务发现、断路器、智能路由、微代理、控制总线、全局锁、决策竞选、分布式会话和集群状态管理等操作提供了一种简单的实现方式。
 
-相比Dubbo等RPC（远程过程调用协议）框架，Spring Cloud是一个比较新的微服务架构基础框架选择，2016年才推出的1.0 release版本，不过Spring Cloud的方案完整度非常高，各个子项目几乎覆盖了微服务架构的方方面面。从目前的关注度和活跃度来看，Spring Cloud[文档](https://spring.io/docs)很可能会成为微服务架构的标准。
+相比Dubbo等RPC（远程过程调用协议）框架，Spring Cloud是一个比较新的微服务架构基础框架选择，2016年才推出的1.0 release版本，不过Spring Cloud的方案完整度非常高，各个子项目几乎覆盖了微服务架构的方方面面。从目前的关注度和活跃度来看，Spring Cloud很可能会成为微服务架构的标准。
 
-**[云框架]基于Spring Cloud的微服务架构**目的在于啊
+本篇[**[云框架]**](ABOUT.md)目的不在于重复造轮（[Spring Cloud官方文档](https://spring.io/docs)），而是总结过去数十个微服务架构项目落地的成功经验，为开发者提供**基于Spring Cloud的微服务架构**的最佳实践。不必从零开始开发，开发者仅需在[云框架]基础上替换部分业务代码，就可以将基于Spring Cloud的微服务架构应用于生产环境并立即产生价值。
 
+如果你是初学者，可顺序阅读操作，快速上手；如果你想要快速部署，可跳转至[一条命令部署](#一条命令部署)。
+
+* [DEMO](#DEMO)
 * [组件说明](#组件说明) 
 * [使用向导](#使用向导)
    * [一条命令部署](#一条命令部署)
