@@ -1,21 +1,17 @@
 # [云框架]基于Spring Cloud的微服务架构 v0.1
 
 ![](https://img.shields.io/badge/build-passing-green.svg)
-![](https://img.shields.io/badge/release-v0.1-yellow.svg)
-[![](https://img.shields.io/badge/CHANGELOG-v0.1-red.svg)](CHANGELOG.md)
+![](https://img.shields.io/badge/release-v0.1-red.svg)
+[![](https://img.shields.io/badge/CHANGELOG-v0.1-yellow.svg)](CHANGELOG.md)
 ![](https://img.shields.io/badge/License-Apache_2.0-blue.svg)
 [![](https://img.shields.io/badge/Prodcuer-Bin%20Zhang-orange.svg)](CONTRIBUTORS.md)
 
-## 目录
+## Contents
 
-* [背景](#背景)
-* [说明](#说明)
-   * [架构图](#架构图)
-   * [组件说明](#组件说明)  
-* [使用](#使用)
-   * [使用向导](#使用向导)
-   * [高级](#高级)
-   * [已知问题](#已知问题)
+* [组件说明](#组件说明) 
+* [使用向导](#使用向导)
+   * [一条命令部署](#一条命令部署)
+   * [高级操作](#高级操作)
    * [可用性测试](#可用性测试)  
 * [常见问题](#常见问题)
 * [社区](#社区)
@@ -63,20 +59,13 @@ Spring Cloud官方提供了非常详实的[文档](https://spring.io/docs)，不
 | [Netflix Ribbon](https://github.com/cloudframeworks-springcloud/Netflix-Ribbon) | 云端负载均衡 | 有多种负载均衡策略可供选择，可配合服务发现和断路器使用 |
 | [Spring Cloud Sleuth](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Sleuth) | 日志收集工具包 | 封装了Dapper、Zipkin和HTrace操作 |
 
-## <a name="使用"></a>使用
+## <a name="使用向导"></a>使用向导
 
-如果你没有基础，可能需要在使用前掌握一些docker、git等相关的操作，网上有非常多教程可以参考。
+### <a name="一条命令部署"></a>一条命令部署
 
-简单来说，[云框架]基于Spring Cloud的微服务架构简要使用步骤为：
 
-1. 安装Docker
-2. 安装Git
-3. 克隆代码
-4. docker build -t 构建镜像
-5. 运行镜像
-6. 访问
 
-### <a name="使用向导"></a>使用向导
+### <a name="高级操作"></a>高级操作
 
 * [Spring Cloud Config](https://github.com/cloudframeworks-springcloud/user-guide/blob/master/components%20wizards/Spring%20Cloud%20Config.md)
 * [Netflix Eureka](https://github.com/cloudframeworks-springcloud/user-guide/blob/master/components%20wizards/Netflix%20Eureka.md)
@@ -85,10 +74,6 @@ Spring Cloud官方提供了非常详实的[文档](https://spring.io/docs)，不
 * [Netflix Ribbon](https://github.com/cloudframeworks-springcloud/user-guide/blob/master/components%20wizards/Netflix%20Ribbon.md)
 * [Netflix Zuul](https://github.com/cloudframeworks-springcloud/user-guide/blob/master/components%20wizards/Netflix%20Zuul.md)
 * [Spring Cloud Sleuth](https://github.com/cloudframeworks-springcloud/user-guide/blob/master/components%20wizards/Spring%20Cloud%20Sleuth.md)
-
-### <a name="高级"></a>高级
-
-### <a name="已知问题"></a>已知问题
 
 ### <a name="可用性测试"></a>可用性测试
 
