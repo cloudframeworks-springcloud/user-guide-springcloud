@@ -32,20 +32,7 @@
 
 ## <a name="组件说明"></a>组件说明
 
-### <a name="架构图"></a>架构图
-
-<div align=center><img width="900" height="" src="./image/云框架-Spring Cloud-架构图.png"/></div>
-
-* 实线箭头：注册
-* 虚线箭头：调用
-
-***建议学习路径***
-
-<div align=center><img width="900" height="" src="./image/云框架-Spring Cloud-学习路径.png"/></div>
-
-### <a neme="组件说明"></a>组件说明
-
-***点击[组件名称](#组件名称)跳转至组件源码***
+DEMO中核心组件包括如下核心组件（*点击[组件名称](#组件名称)跳转至组件源码*）：
 
 | <a name="组件名称"></a>核心组件 | 功能 | 简介 |
 | --- | --- | --- |
@@ -60,7 +47,13 @@
 | [Netflix Ribbon](https://github.com/cloudframeworks-springcloud/Netflix-Ribbon) | 云端负载均衡 | 有多种负载均衡策略可供选择，可配合服务发现和断路器使用 |
 | [Spring Cloud Sleuth](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Sleuth) | 日志收集工具包 | 封装了Dapper、Zipkin和HTrace操作 |
 
+架构图如下，其中实线箭头代表**注册关系**、虚线箭头代表**调用关系**。
+
+<div align=center><img width="900" height="" src="./image/云框架-Spring Cloud-架构图.png"/></div>
+
 ## <a name="使用向导"></a>使用向导
+
+
 
 ### <a name="一条命令部署"></a>一条命令部署
 
