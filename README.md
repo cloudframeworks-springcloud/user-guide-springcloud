@@ -15,7 +15,7 @@
    * [组件说明](#组件说明)  
 * [使用](#使用)
    * [使用向导](#使用向导)
-   * [高级操作](#高级操作)
+   * [高级](#高级)
    * [已知问题](#已知问题)
    * [可用性测试](#可用性测试)  
 * [常见问题](#常见问题)
@@ -66,9 +66,28 @@ Spring Cloud官方提供了非常详实的[文档](https://spring.io/docs)，不
 
 ## <a name="使用"></a>使用
 
+如果你没有基础，可能需要在使用前掌握一些docker、git等相关的操作，网上有非常多教程可以参考。
+
+简单来说，[云框架]基于Spring Cloud的微服务架构简要使用步骤为：
+
+* 安装Docker
+* 安装Git
+* 克隆代码
+* docker build -t 构建镜像
+* 运行镜像
+* 访问
+
 ### <a name="使用向导"></a>使用向导
 
-### <a name="高级操作"></a>高级操作
+* [Spring Cloud Config]()
+* [Netflix Eureka]()
+* [Netflix Feign]()
+* [Netflix Hystrix]()
+* [Netflix Ribbon]()
+* [Netflix Zuul]()
+* [Spring Cloud Sleuth]()
+
+### <a name="高级"></a>高级
 
 ### <a name="已知问题"></a>已知问题
 
