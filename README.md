@@ -24,7 +24,6 @@
 * [常见问题](#常见问题)
 * [参与贡献](#参与贡献)
 * [加入社群](#加入社群)
-* [扩展阅读](#扩展阅读)
 
 # <a name="DEMO演示"></a>DEMO演示
 
@@ -53,15 +52,15 @@
 
 # <a name="使用向导"></a>使用向导
 
-<div align=center><img width="900" height="" src="./image/云框架-学习路径1.png"/></div>
-
 ### 1. Spring Cloud Config
+
+<div align=center><img width="900" height="" src="./image/学习路径1.png"/></div>
 
 目前在项目中用到的配置切换方式经常是通过配置文件进行切换的，比如java语言开发的项目使用Maven定义profile进行，配置的修改需要重新打包，当部署节点大量增加，打包和部署就变成了一项大工程。现阶段流行的配置管理平台有disconf、diamond、qconf等。
 
 Spring Cloud微服务套件也提供了配置管理组件Spring Cloud Config，基于使用中心配置仓库的思想（版本控制），支持Git、SVN。
 
-#### 如何搭建Spring Cloud config
+#### [如何搭建Spring Cloud config]
 
 第一步：选择Git或SVN作为你的配置仓库（这里选择git作为配置仓库）
 
@@ -73,11 +72,9 @@ Spring Cloud微服务套件也提供了配置管理组件Spring Cloud Config，�
 
 第五步：运行`cloud-config server`和`cloud-config client`
 
-<div align=center><img width="900" height="" src="./image/云框架-学习路径2.png"/></div>
-
-<div align=center><img width="900" height="" src="./image/云框架-学习路径3.png"/></div>
-
 ### 2&3. Netflix Eureka
+
+<div align=center><img width="900" height="" src="./image/学习路径23.png"/></div>
 
 相比传统SOA架构，微服务架构中的服务粒度更小、服务数量更多，如何有效管理各个服务就显得尤为重要，也因此出现了服务注册的概念。
 
@@ -100,13 +97,13 @@ Netflix Eureka的易用性体现在两方面：
 
 Netflix Eureka使用Java编写，但它会将所有注册信息和心跳连接地址都暴露为HTTP REST接口，客户端实际是通过HTTP请求与Server进行通讯的，因此Client完全可以使用其它语言进行编写，只需要即时调用注册服务、注销服务、获取服务列表和心跳请求的HTTP REST接口即可。
 
-#### 如何搭建Netflix Eureka server
+#### [如何搭建Netflix Eureka server]
 
 第一步：下载Netflix Eureka server
 
 Git地址：[https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server.git](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server.git)
 
-命令：Git clone [https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server)
+命令：`Git clone` [https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server)
 
 第二步：构建Netflix Eureka server镜像
 
@@ -118,7 +115,7 @@ Git地址：[https://github.com/cloudframeworks-springcloud/Netflix-Eureka-serve
 
 第四步：访问[http://127.0.0.1:5000](http://127.0.0.1:5000)
 
-***完整代码：***
+**完整代码：**
 
 ```
         git clone https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server
@@ -129,7 +126,7 @@ Git地址：[https://github.com/cloudframeworks-springcloud/Netflix-Eureka-serve
 ```
 
 
-#### 注册一个服务到Eureka server
+#### [注册一个服务到Eureka server]
 
 第一步：创建普通的应用服务
 
@@ -146,7 +143,7 @@ Git地址：[https://github.com/cloudframeworks-springcloud/Netflix-Eureka-serve
 
 参见：[https://github.com/cloudframeworks-springcloud/Netflix-Eureka-service.git](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-service.git)
 
-***完整代码：***
+**完整代码：**
 
 ```
         git https://github.com/cloudframeworks-springcloud/Netflix-Eureka-service
@@ -156,11 +153,11 @@ Git地址：[https://github.com/cloudframeworks-springcloud/Netflix-Eureka-serve
         docker run -d -p 5000:5000 eureka-service
 ```
 
-<div align=center><img width="900" height="" src="./image/云框架-学习路径4.png"/></div>
-
 ### 4. Netflix Hystrix
 
-代码参考：
+<div align=center><img width="900" height="" src="./image/学习路径4.png"/></div>
+
+组件说明：
 
 第一步：
 
@@ -178,9 +175,9 @@ Git地址：[https://github.com/cloudframeworks-springcloud/Netflix-Eureka-serve
         docker run -d -p 5000:5000 hystrix
 ```
 
-<div align=center><img width="900" height="" src="./image/云框架-学习路径5.png"/></div>
-
 ### 5. Netflix Ribbon
+
+<div align=center><img width="900" height="" src="./image/学习路径5.png"/></div>
 
 代码参考：
 
@@ -190,7 +187,7 @@ Git地址：[https://github.com/cloudframeworks-springcloud/Netflix-Eureka-serve
 
 第三步：
 
-***完整代码：***
+**完整代码：**
 
 ```
         git https://github.com/cloudframeworks-springcloud/Netflix-Ribbon.git
@@ -200,9 +197,9 @@ Git地址：[https://github.com/cloudframeworks-springcloud/Netflix-Eureka-serve
         docker run -d -p 5000:5000 ribbon
 ```
 
-<div align=center><img width="900" height="" src="./image/云框架-学习路径6.png"/></div>
-
 ### 6. Netflix Feign
+
+<div align=center><img width="900" height="" src="./image/学习路径6.png"/></div>
 
 Spring Cloud集成Netflix Ribbon和Netflix Eureka提供的负载均衡的HTTP客户端Netflix Feign.
 
@@ -210,7 +207,7 @@ Netflix Feign是一个声明式、模板化的HTTP客户端，因此编写起来
 
 使用Netflix Feign创建一个接口并对它进行注解（可插拔的注解支持，包括Feign注解），在应用主类中通过`@EnableFeignClients`注解开启Feign功能，并使用`@FeignClient`(服务ID)注解来绑定该接口对应服务。
 
-#### 如何创建一个Netflix Feign
+#### [如何创建一个Netflix Feign]
 
 代码参考：[https://github.com/cloudframeworks-springcloud/Spring-Cloud-Feign.git](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Feign.git)
 
@@ -226,7 +223,7 @@ Netflix Feign是一个声明式、模板化的HTTP客户端，因此编写起来
 
 第五步：构建镜像，运行service
 
-***完整代码：***
+**完整代码：**
 
 ```
         git https://github.com/cloudframeworks-springcloud/Spring-Cloud-Feign.git
@@ -236,11 +233,11 @@ Netflix Feign是一个声明式、模板化的HTTP客户端，因此编写起来
         docker run -d -p 5000:5000 feign
 ```
 
-<div align=center><img width="900" height="" src="./image/云框架-学习路径7.png"/></div>
-
 ### 7. Netflix Zuul
 
-#### 如何创建一个Netflix Zuul
+<div align=center><img width="900" height="" src="./image/学习路径7.png"/></div>
+
+#### [如何创建一个Netflix Zuul]
 
 代码参考：[https://github.com/cloudframeworks-springcloud/Netflix-Zuul.git](https://github.com/cloudframeworks-springcloud/Netflix-Zuul.git)
 
@@ -250,7 +247,7 @@ Netflix Feign是一个声明式、模板化的HTTP客户端，因此编写起来
 
 第三步：
 
-***完整代码：***
+**完整代码：**
 
 ```
         git https://github.com/cloudframeworks-springcloud/Netflix-Zuul.git
@@ -260,13 +257,13 @@ Netflix Feign是一个声明式、模板化的HTTP客户端，因此编写起来
         docker run -d -p 5000:5000 zuul
 ```
 
-<div align=center><img width="900" height="" src="./image/云框架-学习路径8.png"/></div>
-
 ### 8. Spring Cloud Sleuth
 
-#### 如何创建一个Sleuth
+<div align=center><img width="900" height="" src="./image/学习路径8.png"/></div>
 
-***完整代码：***
+#### [如何创建一个Sleuth]
+
+**完整代码：**
 
 ```
         git https://github.com/cloudframeworks-springcloud/Spring-Cloud-Sleuth.git
