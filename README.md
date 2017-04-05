@@ -70,12 +70,12 @@ Spring Cloud官方提供了非常详实的[文档](https://spring.io/docs)，不
 
 简单来说，[云框架]基于Spring Cloud的微服务架构简要使用步骤为：
 
-* 安装Docker
-* 安装Git
-* 克隆代码
-* docker build -t 构建镜像
-* 运行镜像
-* 访问
+1. 安装Docker
+2. 安装Git
+3. 克隆代码
+4. docker build -t 构建镜像
+5. 运行镜像
+6. 访问
 
 ### <a name="使用向导"></a>使用向导
 

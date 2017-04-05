@@ -77,5 +77,3 @@ Git地址：[https://github.com/cloudframeworks-springcloud/Netflix-Eureka-serve
         
         docker run -d -p 5000:5000 eureka-service
 ```
-
-
