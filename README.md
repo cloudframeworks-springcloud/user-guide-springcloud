@@ -2,7 +2,7 @@
 
 ![](https://img.shields.io/badge/Version-v0.1-green.svg)
 [![](https://img.shields.io/badge/CHANGELOG-v0.1-red.svg)](CHANGELOG.md)
-[![](https://img.shields.io/badge/Prodcuer-Bin%20Zhang-orange.svg)](CONTRIBUTORS.md)
+[![](https://img.shields.io/badge/Prodcuer-Bin%20Zhang-blue.svg)](CONTRIBUTORS.md)
 
 ## 目录
 
