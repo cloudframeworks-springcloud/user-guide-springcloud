@@ -16,22 +16,21 @@
 
 如果你是初学者，可顺序阅读操作，快速上手；如果你想要快速部署，可直接跳转至[一条命令部署](#一条命令部署)。
 
-## 内容概览
+# 内容概览
 
 * [DEMO演示](#DEMO演示)
 * [组件说明](#组件说明) 
 * [使用向导](#使用向导)
-* [一条命令部署](一条命令部署)
 * [常见问题](#常见问题)
 * [参与贡献](#参与贡献)
 * [加入社群](#加入社群)
 * [扩展阅读](#扩展阅读)
 
-## <a name="DEMO演示"></a>DEMO演示
+# <a name="DEMO演示"></a>DEMO演示
 
 地址：[]()
 
-## <a name="组件说明"></a>组件说明
+# <a name="组件说明"></a>组件说明
 
 **DEMO中核心组件包括如下核心组件（*点击[组件名称](#组件名称)跳转至组件源码*）：**
 
@@ -52,7 +51,7 @@
 
 <div align=center><img width="900" height="" src="./image/云框架-Spring Cloud-架构图.png"/></div>
 
-## <a name="使用向导"></a>使用向导
+# <a name="使用向导"></a>使用向导
 
 ### Spring Cloud Config
 
@@ -245,29 +244,24 @@ Netflix Feign是一个声明式、模板化的HTTP客户端，因此编写起来
 
 <div align=center><img width="900" height="" src="./image/云框架-学习路径8.png"/></div>
 
-### <a name="一条命令部署"></a>一条命令部署
+## <a name="一条命令部署"></a>一条命令部署
 
-### <a name="高级操作"></a>高级操作
+## <a name="高级操作"></a>高级操作
 
-### <a name="可用性测试"></a>可用性测试
+## <a name="可用性测试"></a>可用性测试
 
-## <a name="常见问题"></a>常见问题
+# <a name="常见问题"></a>常见问题
 
 相关问题可通过[GitHub ISSUE](https://github.com/cloudframeworks-springcloud/user-guide/issues)提交或讨论，点击查看[常见问题汇总](QA.md)
 
-## <a name="社区"></a>社区
+# <a name="参与贡献"></a>参与贡献
+
+# <a name="加入社群"></a>加入社群
 
 + [订阅邮件](http://goodrain.us15.list-manage.com/subscribe?u=1874f1de4ed82a52890cefb4c&id=b88f73ca56)
 + QQ群1: 531980120
 + 微信二维码（发布时补充）
 + [联系我们](mailto:info@goodrain.com)
-
-## <a name="扩展阅读"></a>扩展阅读
-
-+ [Microservices by Martin Fowler](https://martinfowler.com/articles/microservices.html)
-+ [Microservices Resource Guide by Martin Fowler](https://martinfowler.com/microservices/)
-+ [部署微服务：Spring Cloud vs. Kubernetes](http://www.jianshu.com/p/2f443a5a9d99)
-+ [干货下载：谷歌、亚马逊等十大公司微服务案例精选](https://mp.weixin.qq.com/s?__biz=MzIwMDA2OTI0Mw==&mid=2653449136&idx=2&sn=0e6bc2215646064c9a35398a8fb00299&chksm=8d5e12a4ba299bb2bf75f5b8aebb645c186932b6507dbd2ca9372dbd5b0f4d0a5a43e9fce72d#rd)
 
 -------
 
