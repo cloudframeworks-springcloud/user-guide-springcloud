@@ -14,7 +14,7 @@
 
 本篇[**[云框架]**](ABOUT.md)目的不在于重复造轮（[Spring Cloud官方文档](https://spring.io/docs)），而是总结过去数十个微服务架构项目的成功经验，绕过前人踩过的坑，为开发者提供微服务落地的最佳实践。不必从零开始开发，开发者仅需在[云框架]基础上替换部分业务代码，就可以将[基于Spring Cloud的微服务架构](README.md)应用于生产环境并立即产生价值。
 
-如果你是初学者，可顺序阅读操作，快速上手；如果你想要快速部署，可直接跳转至[一条命令部署](#一条命令部署)。
+如果你是初学者，可按顺序阅读操作，快速上手；如果你想要快速部署，可直接跳转至[一键部署](#一键部署)。
 
 # 内容概览
 
@@ -26,6 +26,7 @@
    * [Netflix Feign](#Netflix-Feign)
    * [Netflix Zuul](#Netflix-Zuul)
    * [Spring Cloud Sleuth](#Spring-Cloud-Sleuth)
+* [一键部署](#一键部署)
 * [常见问题](#常见问题)
 * [参与贡献](#参与贡献)
 * [加入社群](#加入社群)
@@ -59,9 +60,12 @@
 
 <div align=center><img width="900" height="" src="./image/学习路径1.png"/></div>
 
-目前在项目中用到的配置切换方式经常是通过配置文件进行切换的，比如java语言开发的项目使用Maven定义profile进行，配置的修改需要重新打包，当部署节点大量增加，打包和部署就变成了一项大工程。现阶段流行的配置管理平台有disconf、diamond、qconf等。
+Spring Cloud Config提供解决分布式系统的配置管理方案，分server、client两个模块：
 
-Spring Cloud微服务套件也提供了配置管理组件Spring Cloud Config，基于使用中心配置仓库的思想（版本控制），支持Git、SVN。
+* config_server 配置服务器：统一配置系统中需要的各种服务
+* config_client 配置客户端：根据Spring框架的Environment和PropertySource从spring cloud config sever获取各种配置
+
+Spring Cloud Config基于使用中心配置仓库的思想（版本控制），支持Git（默认）、SVN、File等三种储存方式。
 
 ### 如何搭建Spring Cloud config
 
@@ -102,11 +106,7 @@ Spring Cloud微服务套件也提供了配置管理组件Spring Cloud Config，�
 
 相比传统SOA架构，微服务架构中的服务粒度更小、服务数量更多，如何有效管理各个服务就显得尤为重要，也因此出现了服务注册的概念。
 
-服务注册的本质：
-
-* 简单易用，对用户透明
-* 高可用，满足CAP理论
-* 多语言支持
+服务注册的本质：1）简单易用，对用户透明；2）高可用，满足CAP理论；3）多语言支持
 
 在基于Spring Cloud的微服务架构中，通常采用Netflix Eureka作为注册中心，某些情况下也会采用Zookeeper作为替代。
 
@@ -320,11 +320,17 @@ Netflix Feign是一个声明式、模板化的HTTP客户端，因此编写起来
 ```
 
 
-# <a name="一条命令部署"></a>一条命令部署
+# <a name="一键部署"></a>一键部署
 
 # <a name="常见问题"></a>常见问题
 
 相关问题可通过[GitHub ISSUE](https://github.com/cloudframeworks-springcloud/user-guide/issues)提交或讨论，点击查看[常见问题汇总](QA.md)
+
+# <a name="更新计划"></a>更新计划
+
+[x]电商行业业务结合操作指引
+[x]金融行业业务结合操作指引
+[x]大型网站业务结合操作指引
 
 # <a name="参与贡献"></a>参与贡献
 
