@@ -335,7 +335,7 @@ Netflix Feign是一个声明式、模板化的HTTP客户端，因此编写起来
 
 # <a name="常见问题"></a>常见问题
 
-相关问题可通过[GitHub ISSUE](https://github.com/cloudframeworks-springcloud/user-guide/issues)提交或讨论，更多问题请查看[QA.md](QA.md)
+任何相关问题均可可通过[GitHub ISSUE](https://github.com/cloudframeworks-springcloud/user-guide/issues)提交或讨论，更多问题请查看[[QA](QA.md)]
 
 ## 服务如何访问？
 
