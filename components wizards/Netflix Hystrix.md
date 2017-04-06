@@ -1,6 +1,6 @@
 # Netflix Hystrix 使用向导
 
-代码参考：[https://github.com/cloudframeworks-springcloud/Netflix-Hystrix](https://github.com/cloudframeworks-springcloud/Netflix-Hystrix.git)
+代码参考：[https://github.com/cloudframeworks-springcloud/Netflix-Hystrix.git](https://github.com/cloudframeworks-springcloud/Netflix-Hystrix.git)
 
 1. 创建普通的应用
 
