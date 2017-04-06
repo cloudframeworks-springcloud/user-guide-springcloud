@@ -14,8 +14,6 @@
 
 本篇[**[云框架]**](ABOUT.md)目的不在于重复造轮（[Spring Cloud官方文档](https://spring.io/docs)），而是总结过去数十个微服务架构项目的成功经验，绕过前人踩过的坑，为开发者提供微服务落地的最佳实践。不必从零开始开发，开发者仅需在[云框架]基础上替换部分业务代码，就可以将[基于Spring Cloud的微服务架构](README.md)应用于生产环境并立即产生价值。
 
-# Quick Start
-
 如果你是初学者，可顺序阅读操作，快速上手；如果你想要快速部署，可直接跳转至[一条命令部署](#一条命令部署)。
 
 # 内容概览
@@ -57,7 +55,7 @@
 
 # <a name="使用向导"></a>使用向导
 
-### <a name="Spring-Cloud-Config"></a>Spring Cloud Config
+## <a name="Spring-Cloud-Config"></a>Spring Cloud Config
 
 <div align=center><img width="900" height="" src="./image/学习路径1.png"/></div>
 
@@ -65,7 +63,7 @@
 
 Spring Cloud微服务套件也提供了配置管理组件Spring Cloud Config，基于使用中心配置仓库的思想（版本控制），支持Git、SVN。
 
-**[如何搭建Spring Cloud config]**
+### 如何搭建Spring Cloud config
 
 第一步：选择Git或SVN作为你的配置仓库（这里选择git作为配置仓库）
 
@@ -77,7 +75,9 @@ Spring Cloud微服务套件也提供了配置管理组件Spring Cloud Config，�
 
 第五步：运行`cloud-config server`和`cloud-config client`
 
-完整代码：
+第六步：访问 http://127.0.0.1:6000/from
+
+**[完整代码]**
 
 ```
         git clone https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-server.git
@@ -94,10 +94,9 @@ Spring Cloud微服务套件也提供了配置管理组件Spring Cloud Config，�
         
 ```
 
-第六步：访问 http://127.0.0.1:6000/from
 
 
-### <a name="Netflix-Eureka"></a>Netflix Eureka
+## <a name="Netflix-Eureka"></a>Netflix Eureka
 
 <div align=center><img width="900" height="" src="./image/学习路径23.png"/></div>
 
@@ -122,7 +121,7 @@ Netflix Eureka的易用性体现在两方面：
 
 Netflix Eureka使用Java编写，但它会将所有注册信息和心跳连接地址都暴露为HTTP REST接口，客户端实际是通过HTTP请求与Server进行通讯的，因此Client完全可以使用其它语言进行编写，只需要即时调用注册服务、注销服务、获取服务列表和心跳请求的HTTP REST接口即可。
 
-**[如何搭建Netflix Eureka server]**
+### 如何搭建Netflix Eureka server
 
 第一步：下载Netflix Eureka server
 
@@ -140,7 +139,7 @@ Git地址：[https://github.com/cloudframeworks-springcloud/Netflix-Eureka-serve
 
 第四步：访问[http://127.0.0.1:8761](http://127.0.0.1:8761)
 
-完整代码：
+**[完整代码]**
 
 ```
         git clone https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server
@@ -151,7 +150,7 @@ Git地址：[https://github.com/cloudframeworks-springcloud/Netflix-Eureka-serve
 ```
 
 
-**[注册一个服务到Eureka server]**
+### 注册一个服务到Eureka server
 
 第一步：创建普通的应用服务
 
@@ -168,7 +167,7 @@ Git地址：[https://github.com/cloudframeworks-springcloud/Netflix-Eureka-serve
 
 参见：[https://github.com/cloudframeworks-springcloud/Netflix-Eureka-service.git](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-service.git)
 
-完整代码：
+**[完整代码]**
 
 ```
         git https://github.com/cloudframeworks-springcloud/Netflix-Eureka-service
@@ -178,7 +177,7 @@ Git地址：[https://github.com/cloudframeworks-springcloud/Netflix-Eureka-serve
         docker run -ti -e "EUREKA_HOST=172.17.0.4" -e "EUREKA_PORT=8761" -p 5000:5000 eureka-service
 ```
 
-### <a name="Netflix-Hystrix"></a>Netflix Hystrix
+## <a name="Netflix-Hystrix"></a>Netflix Hystrix
 
 <div align=center><img width="900" height="" src="./image/学习路径4.png"/></div>
 
@@ -194,7 +193,7 @@ Git地址：[https://github.com/cloudframeworks-springcloud/Netflix-Eureka-serve
 
 第五步：构建镜像，运行service
 
-完整代码：
+**[完整代码]**
 
 ```
         git https://github.com/cloudframeworks-springcloud/Netflix-Hystrix.git
@@ -204,7 +203,7 @@ Git地址：[https://github.com/cloudframeworks-springcloud/Netflix-Eureka-serve
         docker run -ti -e "EUREKA_HOST=172.17.0.4" -e "EUREKA_PORT=8761" -p 5000:5000 hystrix
 ```
 
-### <a name="Netflix-Ribbon"></a>Netflix Ribbon
+## <a name="Netflix-Ribbon"></a>Netflix Ribbon
 
 <div align=center><img width="900" height="" src="./image/学习路径5.png"/></div>
 
@@ -220,7 +219,7 @@ Git地址：[https://github.com/cloudframeworks-springcloud/Netflix-Eureka-serve
 
 第五步：构建镜像，运行service
 
-完整代码：
+**[完整代码]**
 
 ```
        git https://github.com/cloudframeworks-springcloud/Netflix-Ribbon.git
@@ -230,7 +229,7 @@ Git地址：[https://github.com/cloudframeworks-springcloud/Netflix-Eureka-serve
         docker run -ti -e "EUREKA_HOST=172.17.0.4" -e "EUREKA_PORT=8761" -p 5000:5000 ribbon
 ```
 
-### <a name="Netflix-Feign"></a>Netflix Feign
+## <a name="Netflix-Feign"></a>Netflix Feign
 
 <div align=center><img width="900" height="" src="./image/学习路径6.png"/></div>
 
@@ -240,7 +239,7 @@ Netflix Feign是一个声明式、模板化的HTTP客户端，因此编写起来
 
 使用Netflix Feign创建一个接口并对它进行注解（可插拔的注解支持，包括Feign注解），在应用主类中通过`@EnableFeignClients`注解开启Feign功能，并使用`@FeignClient`(服务ID)注解来绑定该接口对应服务。
 
-**[如何创建一个Netflix Feign]**
+### 如何创建一个Netflix Feign
 
 代码参考：[https://github.com/cloudframeworks-springcloud/Spring-Cloud-Feign.git](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Feign.git)
 
@@ -256,7 +255,7 @@ Netflix Feign是一个声明式、模板化的HTTP客户端，因此编写起来
 
 第五步：构建镜像，运行service
 
-完整代码：
+**[完整代码]**
 
 ```
        git https://github.com/cloudframeworks-springcloud/Spring-Cloud-Feign.git
@@ -266,11 +265,11 @@ Netflix Feign是一个声明式、模板化的HTTP客户端，因此编写起来
         docker run -ti -e "EUREKA_HOST=172.17.0.4" -e "EUREKA_PORT=8761" -p 5000:5000 feign
 ```
 
-### <a name="Netflix-Zuul"></a>Netflix Zuul
+## <a name="Netflix-Zuul"></a>Netflix Zuul
 
 <div align=center><img width="900" height="" src="./image/学习路径7.png"/></div>
 
-**[如何创建一个Netflix Zuul]**
+### 如何创建一个Netflix Zuul
 
 代码参考：[https://github.com/cloudframeworks-springcloud/Netflix-Zuul.git](https://github.com/cloudframeworks-springcloud/Netflix-Zuul.git)
 
@@ -282,7 +281,7 @@ Netflix Feign是一个声明式、模板化的HTTP客户端，因此编写起来
 
 第四步：构建镜像，运行service
 
-完整代码：
+**[完整代码]**
 
 ```
         git https://github.com/cloudframeworks-springcloud/Netflix-Zuul.git
@@ -292,11 +291,11 @@ Netflix Feign是一个声明式、模板化的HTTP客户端，因此编写起来
         docker run -ti -e "EUREKA_HOST=172.17.0.4" -e "EUREKA_PORT=8761" -p 5000:5000 zuul
 ```
 
-### <a name="Spring-Cloud-Sleuth"></a>Spring Cloud Sleuth
+## <a name="Spring-Cloud-Sleuth"></a>Spring Cloud Sleuth
 
 <div align=center><img width="900" height="" src="./image/学习路径8.png"/></div>
 
-**[如何创建一个Sleuth]**
+### 如何创建一个Sleuth
 
 第一步：创建普通的应用
 
@@ -308,7 +307,7 @@ Netflix Feign是一个声明式、模板化的HTTP客户端，因此编写起来
 
 第五步：构建镜像，运行service
 
-完整代码：
+**[完整代码]**
 
 ```
         git https://github.com/cloudframeworks-springcloud/Spring-Cloud-Sleuth.git
@@ -318,7 +317,8 @@ Netflix Feign是一个声明式、模板化的HTTP客户端，因此编写起来
         docker run -ti -e "EUREKA_HOST=172.17.0.4" -e "EUREKA_PORT=8761" -p 5000:5000 sleuth
 ```
 
-## <a name="一条命令部署"></a>一条命令部署
+
+# <a name="一条命令部署"></a>一条命令部署
 
 # <a name="常见问题"></a>常见问题
 
