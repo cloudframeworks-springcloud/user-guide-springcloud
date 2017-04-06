@@ -1,17 +1,41 @@
 # Spring Cloud Config 使用向导
 
-目前在项目中用到的配置切换方式经常是通过配置文件进行切换的，比如java语言开发的项目使用Maven定义profile进行，配置的修改需要重新打包，当部署节点大量增加，打包和部署就变成了一项大工程。现阶段流行的配置管理平台有disconf、diamond、qconf等。
+<div align=center><img width="900" height="" src="./image/学习路径1.png"/></div>
 
-Spring Cloud微服务套件也提供了配置管理组件Spring Cloud Config，基于使用中心配置仓库的思想（版本控制），支持Git、SVN。
+Spring Cloud Config提供解决分布式系统的配置管理方案，分server、client两个模块：
 
-## 如何搭建一个config server
+* config_server 配置服务器：统一配置系统中需要的各种服务
+* config_client 配置客户端：根据Spring框架的Environment和PropertySource从spring cloud config sever获取各种配置
 
-**第一步：选择Git或SVN作为你的配置仓库**（这里选择git作为配置仓库）
+Spring Cloud Config基于使用中心配置仓库的思想（版本控制），支持Git（默认）、SVN、File等三种储存方式。
 
-**第二步：创建相应的配置文件**，如：[https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config.git](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config.git)
+### 如何搭建Spring Cloud config
 
-**第三步：创建Spring Cloud Config server**，参考：[https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-server](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-server)
+1. 选择Git或SVN作为你的配置仓库（这里选择git作为配置仓库）
 
-**第四步：创建Spring Cloud Config client，并从config server获取配置仓库中的信息**，参考：[https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-client](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-client)
+2. 创建相应的配置文件，如：[https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config.git](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config.git)
 
-**第五步：运行`cloud-config server`和`cloud-config client`**
+3. 创建Spring Cloud Config server，参考：[https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-server](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-server)
+
+4. 创建Spring Cloud Config client，并从config server获取配置仓库中的信息，参考：[https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-client](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-client)
+
+5. 运行cloud-config server和cloud-config client
+
+6. 访问 http://127.0.0.1:6000/from
+
+**[完整代码]**
+
+```
+        git clone https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-server.git
+        
+        cd  Spring-Cloud-Config-server && docker build -t config-server .
+        
+        docker run -d -p 5000:5000 config-server
+
+        git clone https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-client.git
+        
+        cd Spring-Cloud-Config-client && docker build -t config-client .
+        
+        docker run -ti -p 6000:5000 -e "CONFIG_HOST=172.17.0.2" -e "CONFIG_PORT=5000" config-client
+        
+```
