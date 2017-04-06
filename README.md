@@ -99,8 +99,6 @@ Spring Cloud Config基于使用中心配置仓库的思想（版本控制），�
         
 ```
 
-
-
 ## <a name="Netflix-Eureka"></a>Netflix Eureka
 
 <div align=center><img width="900" height="" src="./image/学习路径23.png"/></div>
@@ -323,15 +321,19 @@ Netflix Feign是一个声明式、模板化的HTTP客户端，因此编写起来
 
 # <a name="一键部署"></a>一键部署
 
+
+
 # <a name="常见问题"></a>常见问题
 
 相关问题可通过[GitHub ISSUE](https://github.com/cloudframeworks-springcloud/user-guide/issues)提交或讨论，点击查看[常见问题汇总](QA.md)
 
 # <a name="更新计划"></a>更新计划
 
-`Ongoing`电商行业业务结合操作指引
-`Ongoing`金融行业业务结合操作指引
-`Ongoing`大型网站业务结合操作指引
+`+`电商行业业务结合操作指引
+
+`+`金融行业业务结合操作指引
+
+`+`大型网站业务结合操作指引
 
 # <a name="参与贡献"></a>参与贡献
 
