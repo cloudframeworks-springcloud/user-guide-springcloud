@@ -19,6 +19,9 @@
 # 内容概览
 
 * [组件说明](#组件说明) 
+   * [DEMO](#DEMO)
+   * [架构图](#架构图)
+   * [核心组件](#核心组件)
 * [使用向导](#使用向导)
    * [Spring Cloud Config](#Spring-Cloud-Config)
    * [Netflix Eureka](#Netflix-Eureka)
@@ -34,13 +37,19 @@
 
 # <a name="组件说明"></a>组件说明
 
+## <a name="DEMO"></a>DEMO
+
 **DEMO地址：**[]()
+
+## <a name="架构图"></a>架构图
 
 **架构图如下，其中实线箭头代表注册关系、虚线箭头代表调用关系：**
 
 <div align=center><img width="900" height="" src="./image/云框架-Spring Cloud-架构图.png"/></div>
 
-**核心组件介绍（点击[组件名称](#组件名称)跳转至组件源码）：**
+## <a name="核心组件"></a>核心组件
+
+**点击[组件名称](#组件名称)跳转至组件源码**
 
 | <a name="组件名称"></a>核心组件 | 功能 | 简介 |
 | --- | --- | --- |
