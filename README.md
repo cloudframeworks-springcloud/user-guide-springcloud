@@ -22,12 +22,12 @@
 
 * [组件说明](#组件说明) 
 * [使用向导](#使用向导)
- * [Spring Cloud Config](#Spring Cloud Config)
- * [Netflix Eureka](#Netflix Eureka)
- * [Netflix Ribbon](#Netflix Ribbon)
- * [Netflix Feign](#Netflix Feign)
- * [Netflix Zuul](#Netflix Zuul)
- * [Spring Cloud Sleuth](#Spring Cloud Sleuth)
+   * [Spring Cloud Config](#Spring-Cloud-Config)
+   * [Netflix Eureka](#Netflix-Eureka)
+   * [Netflix Ribbon](#Netflix-Ribbon)
+   * [Netflix Feign](#Netflix-Feign)
+   * [Netflix Zuul](#Netflix-Zuul)
+   * [Spring Cloud Sleuth](#Spring Cloud-Sleuth)
 * [常见问题](#常见问题)
 * [参与贡献](#参与贡献)
 * [加入社群](#加入社群)
@@ -57,7 +57,7 @@
 
 # <a name="使用向导"></a>使用向导
 
-### <a name="Spring Cloud Config"></a>Spring Cloud Config
+### <a name="Spring-Cloud-Config"></a>Spring Cloud Config
 
 <div align=center><img width="900" height="" src="./image/学习路径1.png"/></div>
 
@@ -97,7 +97,7 @@ Spring Cloud微服务套件也提供了配置管理组件Spring Cloud Config，�
 第六步：访问 http://127.0.0.1:6000/from
 
 
-### <a name="Netflix Eureka"></a>Netflix Eureka
+### <a name="Netflix-Eureka"></a>Netflix Eureka
 
 <div align=center><img width="900" height="" src="./image/学习路径23.png"/></div>
 
@@ -178,7 +178,7 @@ Git地址：[https://github.com/cloudframeworks-springcloud/Netflix-Eureka-serve
         docker run -ti -e "EUREKA_HOST=172.17.0.4" -e "EUREKA_PORT=8761" -p 5000:5000 eureka-service
 ```
 
-### <a name="Netflix Hystrix"></a>Netflix Hystrix
+### <a name="Netflix-Hystrix"></a>Netflix Hystrix
 
 <div align=center><img width="900" height="" src="./image/学习路径4.png"/></div>
 
@@ -204,7 +204,7 @@ Git地址：[https://github.com/cloudframeworks-springcloud/Netflix-Eureka-serve
         docker run -ti -e "EUREKA_HOST=172.17.0.4" -e "EUREKA_PORT=8761" -p 5000:5000 hystrix
 ```
 
-### <a name="Netflix Ribbon"></a>Netflix Ribbon
+### <a name="Netflix-Ribbon"></a>Netflix Ribbon
 
 <div align=center><img width="900" height="" src="./image/学习路径5.png"/></div>
 
@@ -230,7 +230,7 @@ Git地址：[https://github.com/cloudframeworks-springcloud/Netflix-Eureka-serve
         docker run -ti -e "EUREKA_HOST=172.17.0.4" -e "EUREKA_PORT=8761" -p 5000:5000 ribbon
 ```
 
-### <a name="Netflix Feign"></a>Netflix Feign
+### <a name="Netflix-Feign"></a>Netflix Feign
 
 <div align=center><img width="900" height="" src="./image/学习路径6.png"/></div>
 
@@ -266,7 +266,7 @@ Netflix Feign是一个声明式、模板化的HTTP客户端，因此编写起来
         docker run -ti -e "EUREKA_HOST=172.17.0.4" -e "EUREKA_PORT=8761" -p 5000:5000 feign
 ```
 
-### <a name="Netflix Zuul"></a>Netflix Zuul
+### <a name="Netflix-Zuul"></a>Netflix Zuul
 
 <div align=center><img width="900" height="" src="./image/学习路径7.png"/></div>
 
@@ -292,7 +292,7 @@ Netflix Feign是一个声明式、模板化的HTTP客户端，因此编写起来
         docker run -ti -e "EUREKA_HOST=172.17.0.4" -e "EUREKA_PORT=8761" -p 5000:5000 zuul
 ```
 
-### <a name="Spring Cloud Sleuth"></a>Spring Cloud Sleuth
+### <a name="Spring-Cloud-Sleuth"></a>Spring Cloud Sleuth
 
 <div align=center><img width="900" height="" src="./image/学习路径8.png"/></div>
 
