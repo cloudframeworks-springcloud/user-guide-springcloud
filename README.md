@@ -51,7 +51,7 @@
 
 ## <a name="核心组件"></a>核心组件
 
-*点击[组件名称](#组件名称)跳转至组件源码*
+点击[组件名称](#组件名称)跳转至组件源码
 
 | <a name="组件名称"></a>核心组件 | 功能 | 简介 |
 | --- | --- | --- |
@@ -335,7 +335,7 @@ Netflix Feign是一个声明式、模板化的HTTP客户端，因此编写起来
 
 # <a name="常见问题"></a>常见问题
 
-相关问题可通过[GitHub ISSUE](https://github.com/cloudframeworks-springcloud/user-guide/issues)提交或讨论，更多问题请查看[QA.md](QA.md)
+任何相关问题均可可通过[GitHub ISSUE](https://github.com/cloudframeworks-springcloud/user-guide/issues)提交或讨论，更多问题请查看[[QA](QA.md)]
 
 ## 服务如何访问？
 
@@ -351,7 +351,7 @@ Netflix Feign是一个声明式、模板化的HTTP客户端，因此编写起来
 
 |  | 一对一 | 一对多 |
 | --- | --- | --- |
-| 同步 | 请求／响应 | ————— |
+| 同步 | 请求／响应 | ——— |
 | 异步 | 通知 | 发布／订阅 |
 |  | 请求／异步响应 | 发布／异步响应 |
 
