@@ -85,9 +85,9 @@ Spring Cloud Config基于使用中心配置仓库的思想（版本控制），�
 
 2. 创建相应的配置文件，如：[https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config.git](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config.git)
 
-3. 创建Spring Cloud Config server，参考：[https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-server](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-server)
+3. 创建Spring Cloud Config server，参考：[https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-server.git](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-server.got)
 
-4. 创建Spring Cloud Config client，并从config server获取配置仓库中的信息，参考：[https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-client](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-client)
+4. 创建Spring Cloud Config client，并从config server获取配置仓库中的信息，参考：[https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-client.git](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-client.git)
 
 5. 运行cloud-config server和cloud-config client
 
@@ -137,7 +137,7 @@ Netflix Eureka使用Java编写，但它会将所有注册信息和心跳连接�
 
 Git地址：[https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server.git](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server.git)
 
-命令：`Git clone` [https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server)
+命令：`Git clone` [https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server.git](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server.git)
 
 2. 构建Netflix Eureka server镜像
 
@@ -158,7 +158,6 @@ Git地址：[https://github.com/cloudframeworks-springcloud/Netflix-Eureka-serve
         
         docker run -d -p 8761:8761 eureka-server
 ```
-
 
 ### 注册一个服务到Eureka server
 
@@ -191,7 +190,7 @@ Git地址：[https://github.com/cloudframeworks-springcloud/Netflix-Eureka-serve
 
 <div align=center><img width="900" height="" src="./image/学习路径4.png"/></div>
 
-代码参考：[https://github.com/cloudframeworks-springcloud/Netflix-Hystrix](https://github.com/cloudframeworks-springcloud/Netflix-Hystrix.git)
+代码参考：[https://github.com/cloudframeworks-springcloud/Netflix-Hystrix.git](https://github.com/cloudframeworks-springcloud/Netflix-Hystrix.git)
 
 1. 创建普通的应用
 
@@ -217,7 +216,7 @@ Git地址：[https://github.com/cloudframeworks-springcloud/Netflix-Eureka-serve
 
 <div align=center><img width="900" height="" src="./image/学习路径5.png"/></div>
 
-代码参考：[https://github.com/cloudframeworks-springcloud/Netflix-Ribbon](https://github.com/cloudframeworks-springcloud/Netflix-Ribbon.git)
+代码参考：[https://github.com/cloudframeworks-springcloud/Netflix-Ribbon.git](https://github.com/cloudframeworks-springcloud/Netflix-Ribbon.git)
 
 1. 创建普通的应用
 
@@ -307,7 +306,7 @@ Netflix Feign是一个声明式、模板化的HTTP客户端，因此编写起来
 
 ### 如何创建一个Spring Cloud Sleuth
 
-代码参考：[https://github.com/cloudframeworks-springcloud/Spring-Cloud-Sleuth](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Sleuth.git)
+代码参考：[https://github.com/cloudframeworks-springcloud/Spring-Cloud-Sleuth.git](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Sleuth.git)
 
 1. 创建普通的应用
 
