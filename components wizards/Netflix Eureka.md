@@ -23,7 +23,7 @@ Netflix Eureka使用Java编写，但它会将所有注册信息和心跳连接�
 
 Git地址：[https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server.git](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server.git)
 
-命令：`Git clone` [https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server)
+命令：`Git clone` [https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server.git](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server.git)
 
 2. 构建Netflix Eureka server镜像
 
@@ -38,7 +38,7 @@ Git地址：[https://github.com/cloudframeworks-springcloud/Netflix-Eureka-serve
 **[完整代码]**
 
 ```
-        git clone https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server
+        git clone https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server.git
         
         cd  Netflix-Eureka-server && docker build -t eureka-server .
         
@@ -65,7 +65,7 @@ Git地址：[https://github.com/cloudframeworks-springcloud/Netflix-Eureka-serve
 **[完整代码]**
 
 ```
-        git https://github.com/cloudframeworks-springcloud/Netflix-Eureka-service
+        git https://github.com/cloudframeworks-springcloud/Netflix-Eureka-service.git
         
         cd  Netflix-Eureka-service && docker build -t eureka-service .
         
