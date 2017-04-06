@@ -73,7 +73,7 @@ Spring Cloud微服务套件也提供了配置管理组件Spring Cloud Config，�
 
 第四步：创建Spring Cloud Config client，并从config server获取配置仓库中的信息，参考：[https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-client](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-client)
 
-第五步：运行`cloud-config server`和`cloud-config client`
+第五步：运行cloud-config server和cloud-config client
 
 第六步：访问 http://127.0.0.1:6000/from
 
@@ -165,7 +165,7 @@ Git地址：[https://github.com/cloudframeworks-springcloud/Netflix-Eureka-serve
 
 第五步：去Netflix Eureka中查看是否已注册成功(备注：用户可以定义自己的业务逻辑)
 
-参见：[https://github.com/cloudframeworks-springcloud/Netflix-Eureka-service.git](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-service.git)
+代码参考：[https://github.com/cloudframeworks-springcloud/Netflix-Eureka-service.git](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-service.git)
 
 **[完整代码]**
 
@@ -181,13 +181,13 @@ Git地址：[https://github.com/cloudframeworks-springcloud/Netflix-Eureka-serve
 
 <div align=center><img width="900" height="" src="./image/学习路径4.png"/></div>
 
-组件说明：
+代码参考：[https://github.com/cloudframeworks-springcloud/Netflix-Hystrix](https://github.com/cloudframeworks-springcloud/Netflix-Hystrix.git)
 
 第一步：创建普通的应用
 
-第二步：将该应用主类中加入@EnableFeignClients
+第二步：将该应用主类中加入`@EnableFeignClients`
 
-第三步：在service中用@HystrixCommand来设置熔断
+第三步：在service中用`@HystrixCommand`来设置熔断
 
 第四步：修改配置文件(根据自己的环境设置EUREKA_HOST和EUREKA_PORT)
 
@@ -207,15 +207,15 @@ Git地址：[https://github.com/cloudframeworks-springcloud/Netflix-Eureka-serve
 
 <div align=center><img width="900" height="" src="./image/学习路径5.png"/></div>
 
-代码参考：
+代码参考：[https://github.com/cloudframeworks-springcloud/Netflix-Ribbon](https://github.com/cloudframeworks-springcloud/Netflix-Ribbon.git)
 
 第一步：创建普通的应用
 
-第二步：将该应用主类中加入@EnableFeignClients
+第二步：将该应用主类中加入`@EnableFeignClients`
 
-第三步：在service中用@FeignClient(服务ID)注解来绑定该接口对应服务
+第三步：在service中用`@FeignClient`(服务ID)注解来绑定该接口对应服务
 
-第四步：修改配置文件(根据自己的环境设置EUREKA_HOST和EUREKA_PORT) 
+第四步：修改配置文件(根据自己的环境设置`EUREKA_HOST`和`EUREKA_PORT`) 
 
 第五步：构建镜像，运行service
 
@@ -247,9 +247,9 @@ Netflix Feign是一个声明式、模板化的HTTP客户端，因此编写起来
 
 第二步：将该应用主类中加入`@EnableFeignClients`
 
-第三步：在service中用@FeignClient(服务ID)注解来绑定该接口对应服务
+第三步：在service中用`@FeignClient`(服务ID)注解来绑定该接口对应服务
 
-第四步：修改配置文件(根据自己的环境设置EUREKA_HOST和EUREKA_PORT)
+第四步：修改配置文件(根据自己的环境设置`EUREKA_HOST`和`EUREKA_PORT`)
 
 `eureka.client.serviceUrl.defaultZone=http://127.0.0.1:5000/eureka/v2/`
 
@@ -275,9 +275,9 @@ Netflix Feign是一个声明式、模板化的HTTP客户端，因此编写起来
 
 第一步：创建普通的应用
 
-第二步：将该应用主类中加入@EnableZuulProxy
+第二步：将该应用主类中加入`@EnableZuulProxy`
 
-第三步：修改配置文件(根据自己的环境设置EUREKA_HOST和EUREKA_PORT)
+第三步：修改配置文件(根据自己的环境设置`EUREKA_HOST`和`EUREKA_PORT`)
 
 第四步：构建镜像，运行service
 
@@ -297,13 +297,15 @@ Netflix Feign是一个声明式、模板化的HTTP客户端，因此编写起来
 
 ### 如何创建一个Sleuth
 
+代码参考：[https://github.com/cloudframeworks-springcloud/Spring-Cloud-Sleuth](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Sleuth.git)
+
 第一步：创建普通的应用
 
-第二步：将该应用主类中加入@EnableFeignClients
+第二步：将该应用主类中加入`@EnableFeignClients`
 
-第三步：在service中用@FeignClient(服务ID)注解来绑定该接口对应服务
+第三步：在service中用`@FeignClient`(服务ID)注解来绑定该接口对应服务
 
-第四步：修改配置文件(根据自己的环境设置EUREKA_HOST和EUREKA_PORT)
+第四步：修改配置文件(根据自己的环境设置`EUREKA_HOST`和`EUREKA_PORT`)
 
 第五步：构建镜像，运行service
 
