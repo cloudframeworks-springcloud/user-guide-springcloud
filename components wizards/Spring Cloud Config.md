@@ -1,7 +1,5 @@
 # Spring Cloud Config 使用向导
 
-<div align=center><img width="900" height="" src="./image/学习路径1.png"/></div>
-
 Spring Cloud Config提供解决分布式系统的配置管理方案，分server、client两个模块：
 
 * config_server 配置服务器：统一配置系统中需要的各种服务
