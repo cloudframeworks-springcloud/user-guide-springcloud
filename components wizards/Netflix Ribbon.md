@@ -1,6 +1,6 @@
 # Netflix Ribbon 使用向导
 
-代码参考：[https://github.com/cloudframeworks-springcloud/Netflix-Ribbon](https://github.com/cloudframeworks-springcloud/Netflix-Ribbon.git)
+代码参考：[https://github.com/cloudframeworks-springcloud/Netflix-Ribbon.git](https://github.com/cloudframeworks-springcloud/Netflix-Ribbon.git)
 
 1. 创建普通的应用
 
