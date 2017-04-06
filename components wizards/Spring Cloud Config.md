@@ -13,9 +13,9 @@ Spring Cloud Config基于使用中心配置仓库的思想（版本控制），�
 
 2. 创建相应的配置文件，如：[https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config.git](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config.git)
 
-3. 创建Spring Cloud Config server，参考：[https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-server](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-server)
+3. 创建Spring Cloud Config server，参考：[https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-server.git](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-server.git)
 
-4. 创建Spring Cloud Config client，并从config server获取配置仓库中的信息，参考：[https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-client](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-client)
+4. 创建Spring Cloud Config client，并从config server获取配置仓库中的信息，参考：[https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-client.git](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-client.git)
 
 5. 运行cloud-config server和cloud-config client
 
