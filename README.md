@@ -19,9 +19,9 @@
 # 内容概览
 
 * [组件说明](#组件说明) 
-   * [DEMO](#DEMO)
-   * [架构图](#架构图)
-   * [核心组件](#核心组件)
+   * [DEMO](#DEMO)
+   * [架构图](#架构图)
+   * [核心组件](#核心组件)
 * [使用向导](#使用向导)
    * [Spring Cloud Config](#Spring-Cloud-Config)
    * [Netflix Eureka](#Netflix-Eureka)
