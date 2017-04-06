@@ -152,7 +152,7 @@ Git地址：[https://github.com/cloudframeworks-springcloud/Netflix-Eureka-serve
 **[完整代码]**
 
 ```
-        git clone https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server
+        git clone https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server.git
         
         cd  Netflix-Eureka-server && docker build -t eureka-server .
         
@@ -179,7 +179,7 @@ Git地址：[https://github.com/cloudframeworks-springcloud/Netflix-Eureka-serve
 **[完整代码]**
 
 ```
-        git https://github.com/cloudframeworks-springcloud/Netflix-Eureka-service
+        git https://github.com/cloudframeworks-springcloud/Netflix-Eureka-service.git
         
         cd  Netflix-Eureka-service && docker build -t eureka-service .
         
