@@ -12,7 +12,9 @@
 
 相比Dubbo等RPC（远程过程调用协议）框架，Spring Cloud是一个比较新的微服务架构基础框架选择，2016年才推出的1.0 release版本，不过Spring Cloud的方案完整度非常高，各个子项目几乎覆盖了微服务架构的方方面面。从目前的关注度和活跃度来看，Spring Cloud很可能会成为微服务架构的标准。
 
-本篇[**[云框架]**](ABOUT.md)目的不在于重复造轮（[Spring Cloud官方文档](https://spring.io/docs)），而是总结过去数十个微服务架构项目的成功经验，为开发者提供微服务落地的最佳实践。不必从零开始开发，开发者仅需在[云框架]基础上替换部分业务代码，就可以将[基于Spring Cloud的微服务架构](README.md)应用于生产环境并立即产生价值。
+本篇[**[云框架]**](ABOUT.md)目的不在于重复造轮（[Spring Cloud官方文档](https://spring.io/docs)），而是总结过去数十个微服务架构项目的成功经验，绕过前人踩过的坑，为开发者提供微服务落地的最佳实践。不必从零开始开发，开发者仅需在[云框架]基础上替换部分业务代码，就可以将[基于Spring Cloud的微服务架构](README.md)应用于生产环境并立即产生价值。
+
+# Quick Start
 
 如果你是初学者，可顺序阅读操作，快速上手；如果你想要快速部署，可直接跳转至[一条命令部署](#一条命令部署)。
 
@@ -20,6 +22,12 @@
 
 * [组件说明](#组件说明) 
 * [使用向导](#使用向导)
+   * [Spring Cloud Config](#Spring Cloud Config)
+   * [Netflix Eureka](#Netflix Eureka)
+   * [Netflix Ribbon](#Netflix Ribbon)
+   * [Netflix Feign](#Netflix Feign)
+   * [Netflix Zuul](#Netflix Zuul)
+   * [Spring Cloud Sleuth](#Spring Cloud Sleuth)
 * [常见问题](#常见问题)
 * [参与贡献](#参与贡献)
 * [加入社群](#加入社群)
@@ -49,7 +57,7 @@
 
 # <a name="使用向导"></a>使用向导
 
-### 1. Spring Cloud Config
+### <a name="Spring Cloud Config"></a>Spring Cloud Config
 
 <div align=center><img width="900" height="" src="./image/学习路径1.png"/></div>
 
@@ -89,7 +97,7 @@ Spring Cloud微服务套件也提供了配置管理组件Spring Cloud Config，�
 第六步：访问 http://127.0.0.1:6000/from
 
 
-### 2&3. Netflix Eureka
+### <a name="Netflix Eureka"></a>Netflix Eureka
 
 <div align=center><img width="900" height="" src="./image/学习路径23.png"/></div>
 
@@ -170,7 +178,7 @@ Git地址：[https://github.com/cloudframeworks-springcloud/Netflix-Eureka-serve
         docker run -ti -e "EUREKA_HOST=172.17.0.4" -e "EUREKA_PORT=8761" -p 5000:5000 eureka-service
 ```
 
-### 4. Netflix Hystrix
+### <a name="Netflix Hystrix"></a>Netflix Hystrix
 
 <div align=center><img width="900" height="" src="./image/学习路径4.png"/></div>
 
@@ -196,7 +204,7 @@ Git地址：[https://github.com/cloudframeworks-springcloud/Netflix-Eureka-serve
         docker run -ti -e "EUREKA_HOST=172.17.0.4" -e "EUREKA_PORT=8761" -p 5000:5000 hystrix
 ```
 
-### 5. Netflix Ribbon
+### <a name="Netflix Ribbon"></a>Netflix Ribbon
 
 <div align=center><img width="900" height="" src="./image/学习路径5.png"/></div>
 
@@ -222,7 +230,7 @@ Git地址：[https://github.com/cloudframeworks-springcloud/Netflix-Eureka-serve
         docker run -ti -e "EUREKA_HOST=172.17.0.4" -e "EUREKA_PORT=8761" -p 5000:5000 ribbon
 ```
 
-### 6. Netflix Feign
+### <a name="Netflix Feign"></a>Netflix Feign
 
 <div align=center><img width="900" height="" src="./image/学习路径6.png"/></div>
 
@@ -258,7 +266,7 @@ Netflix Feign是一个声明式、模板化的HTTP客户端，因此编写起来
         docker run -ti -e "EUREKA_HOST=172.17.0.4" -e "EUREKA_PORT=8761" -p 5000:5000 feign
 ```
 
-### 7. Netflix Zuul
+### <a name="Netflix Zuul"></a>Netflix Zuul
 
 <div align=center><img width="900" height="" src="./image/学习路径7.png"/></div>
 
@@ -284,7 +292,7 @@ Netflix Feign是一个声明式、模板化的HTTP客户端，因此编写起来
         docker run -ti -e "EUREKA_HOST=172.17.0.4" -e "EUREKA_PORT=8761" -p 5000:5000 zuul
 ```
 
-### 8. Spring Cloud Sleuth
+### <a name="Spring Cloud Sleuth"></a>Spring Cloud Sleuth
 
 <div align=center><img width="900" height="" src="./image/学习路径8.png"/></div>
 
