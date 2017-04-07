@@ -18,26 +18,111 @@
 
 # 内容概览
 
+* [在线演示](#在线演示)
+* [快速部署](#快速部署)
 * [组件说明](#组件说明) 
-   * [DEMO](#DEMO)
-   * [架构图](#架构图)
-   * [核心组件](#核心组件)
-* [使用向导](#使用向导)
-   * [Spring Cloud Config](#Spring-Cloud-Config)
-   * [Netflix Eureka](#Netflix-Eureka)
-   * [Netflix Ribbon](#Netflix-Ribbon)
-   * [Netflix Feign](#Netflix-Feign)
-   * [Netflix Zuul](#Netflix-Zuul)
-   * [Spring Cloud Sleuth](#Spring-Cloud-Sleuth)
-* [一键部署](#一键部署)
+* [实例应用](#实例应用)
 * [常见问题](#常见问题)
 * [更新计划](#更新计划)
 * [参与贡献](#参与贡献)
 * [加入社群](#加入社群)
 
+# <a name="在线演示"></a>在线演示
+
+# <a name="快速部署"></a>快速部署
+
 # <a name="组件说明"></a>组件说明
 
-## <a name="DEMO"></a>DEMO
+<div align=center><img width="900" height="" src="./image/云框架-Spring Cloud-架构图.png"/></div>
+
+|   |   |
+| --- | --- |
+| Spring Cloud Config - server | [[操作指引]]()[[配置说明]]() |
+| Spring Cloud Config - client | [[操作指引]]()[[配置说明]]() |
+| Spring Cloud Config - 配置文件 | [[操作指引]]()[[配置说明]]() |
+| Netflix Eureka - server | [[操作指引]]()[[配置说明]]() |
+| Netflix Eureka - service | [[操作指引]]()[[配置说明]]() |
+| Netflix Hystrix | [[操作指引]]()[[配置说明]]() |
+| Netflix Zuul | [[操作指引]]()[[配置说明]]() |
+| Netflix Feign | [[操作指引]]()[[配置说明]]() |
+| Netflix Ribbon | [[操作指引]]()[[配置说明]]() |
+| Spring Cloud Sleuth | [[操作指引]]()[[配置说明]]() |
+
+# <a name="实例应用"></a>实例应用
+
+### 业务架构
+
+### 核心组件配置
+
+### 附加组件配置
+
+# <a name="常见问题"></a>常见问题
+
+任何相关问题均可可通过[GitHub ISSUE](https://github.com/cloudframeworks-springcloud/user-guide/issues)提交或讨论，更多问题请查看[[QA](QA.md)]
+
+### 服务如何访问？
+
+<div align=center><img width="900" height="" src="./image/如何访问这些服务.png"/></div>
+
+### 服务如何发现？
+
+<div align=center><img width="900" height="" src="./image/服务如何发现1.png"/></div>
+
+<div align=center><img width="900" height="" src="./image/服务如何发现2.png"/></div>
+
+### 服务如何通信？
+
+|  | 一对一 | 一对多 |
+| --- | --- | --- |
+| 同步 | 请求／响应 | ——— |
+| 异步 | 通知 | 发布／订阅 |
+|  | 请求／异步响应 | 发布／异步响应 |
+
+同步调用：REST（JAX-RS、Spring Boot）、RPC（Thrift、Dubbo）
+
+异步调用：Akka Actor、Kafka、Notify、MQ
+
+### 数据如何管理？
+
+<div align=center><img width="900" height="" src="./image/数据如何管理.png"/></div>
+
+常见方式：共享数据库、消息队列事件驱动：Event Sourcing、CQRS
+
+### 服务如何容错？
+
+<div align=center><img width="900" height="" src="./image/服务如何容错.png"/></div>
+
+防⽌应⽤用程序试图调⽤远程服务或访问共享资源失败
+
+异常处理理、⽇日志记录、测试失败操作、资源分化、并发等等
+
+### 服务如何监控？
+
+<div align=center><img width="900" height="" src="./image/服务如何监控.png"/></div>
+
+# <a name="更新计划"></a>更新计划
+
+## 组件说明
+## 特性实现
+## 部署方式
+
+# <a name="参与贡献"></a>参与贡献
+
+[如何成为云框架贡献者](CONTRIBUTING.md)
+
+# <a name="加入社群"></a>加入社群
+
++ [订阅邮件](http://goodrain.us15.list-manage.com/subscribe?u=1874f1de4ed82a52890cefb4c&id=b88f73ca56)
++ QQ群1: 531980120
++ 微信二维码（发布时补充）
++ [联系我们](mailto:info@goodrain.com)
+
+-------
+
+[云框架](ABOUT.md)系列主题，遵循[APACHE LICENSE 2.0](LICENSE.md)协议发布。
+
+
+
 
 点击查看运行效果演示：
 
