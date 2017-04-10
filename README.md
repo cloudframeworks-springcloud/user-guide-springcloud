@@ -40,13 +40,11 @@ PiggyMetrics基础服务设施中用到了Spring Cloud Config、Netflix Eureka�
 
 <div align=center><img width="900" height="" src="./image/piggymetrics.png"/></div>
 
-*piggymetrics整体架构图*
+### 统计服务（STATISTICS SERVICE）
 
-### 统计服务
+### 账户服务（ACCOUNT SERVICE）
 
-### 账户服务
-
-### 通知服务
+### 通知服务（NOTIFICATION SERVICE）
 
 # <a name="常见问题"></a>常见问题
 
