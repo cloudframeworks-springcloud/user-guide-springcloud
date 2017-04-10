@@ -55,23 +55,145 @@ PiggyMetrics基础服务设施中用到了Spring Cloud Config、Netflix Eureka�
 
 ### 账户服务模块（ACCOUNT SERVICE）
 
+在Piggymetrics项目中，账户服务模块包含一般用户输入逻辑和验证：收入/费用项目，储蓄和帐户设置。
 
+Method	| Path	| Description	| User authenticated	| Available from UI
+------------- | ------------------------- | ------------- |:-------------:|:----------------:|
+GET	| /accounts/{account}	| Get specified account data	|  | 	
+GET	| /accounts/current	| Get current account data	| × | ×
+GET	| /accounts/demo	| Get demo account data (pre-filled incomes/expenses items, etc)	|   | 	×
+PUT	| /accounts/current	| Save current account data	| × | ×
+POST	| /accounts/	| Register new account	|   | ×
+
+#### Netflix Zuul
+
+##### 完整代码
+
+##### 业务代码标注
+
+#### Netflix Ribbon
+
+##### 完整代码
+
+##### 业务代码标注
+
+#### Netflix Hystrix
+
+##### 完整代码
+
+##### 业务代码标注
+
+#### 数据库
+
+##### 完整代码
+
+##### 业务代码标注
 
 ### 统计服务模块（STATISTICS SERVICE）
 
+在Piggymetris项目中，统计服务模块对主要统计参数执行计算，并为每个帐户的时间序列。数据点包含基准货币和时间段的值。此数据用于跟踪帐户生命周期中的现金流动动态（尚未在UI中实现的花式图表）。
 
+Method	| Path	| Description	| User authenticated	| Available from UI
+------------- | ------------------------- | ------------- |:-------------:|:----------------:|
+GET	| /statistics/{account}	| Get specified account statistics	          |  | 	
+GET	| /statistics/current	| Get current account statistics	| × | × 
+GET	| /statistics/demo	| Get demo account statistics	|   | × 
+PUT	| /statistics/{account}	| Create or update time series datapoint for specified account	|   | 
+
+#### Netflix Zuul
+
+##### 完整代码
+
+##### 业务代码标注
+
+#### Netflix Ribbon
+
+##### 完整代码
+
+##### 业务代码标注
+
+#### Netflix Hystrix
+
+##### 完整代码
+
+##### 业务代码标注
+
+#### 数据库
+
+##### 完整代码
+
+##### 业务代码标注
 
 ### 通知服务模块（NOTIFICATION SERVICE）
 
+在Piggymetrics项目中，存储用户联系信息和通知设置（如提醒和备份频率）。计划工作人员从其他服务收集所需的信息，并向订阅的客户发送电子邮件。
 
+Method	| Path	| Description	| User authenticated	| Available from UI
+------------- | ------------------------- | ------------- |:-------------:|:----------------:|
+GET	| /notifications/settings/current	| Get current account notification settings	| × | ×	
+PUT	| /notifications/settings/current	| Save current account notification settings	| × | ×
+
+#### Netflix Zuul
+
+##### 完整代码
+
+##### 业务代码标注
+
+#### Netflix Ribbon
+
+##### 完整代码
+
+##### 业务代码标注
+
+#### Netflix Hystrix
+
+##### 完整代码
+
+##### 业务代码标注
+
+#### 数据库
+
+##### 完整代码
+
+##### 业务代码标注
 
 ## <a name="其他组件"></a>其他组件
 
+### Spring Cloud Config
 
+##### 完整代码
+
+##### 业务代码标注
+
+### Netflix Eureka
+
+##### 完整代码
+
+##### 业务代码标注
+
+### Spring Cloud Sleuth
+
+##### 完整代码
+
+##### 业务代码标注
+
+### Netflix Turbine
+
+##### 完整代码
+
+##### 业务代码标注
 
 ## <a name="高级操作"></a>高级操作
 
+### CI/CD
 
+### 日志
+
+### 监控
+
+### 安全
+
+### ...
 
 # <a name="常见问题"></a>常见问题
 
@@ -80,7 +202,7 @@ PiggyMetrics基础服务设施中用到了Spring Cloud Config、Netflix Eureka�
 # <a name="更新计划"></a>更新计划
 
 * 增加Turbine、Consul组件
-* 增加CI/CD、日志监控实现方案
+* 增加CI/CD、日志、监控、安全实现方案
 * 增加好雨云帮部署
 * 增加云框架在线演示
 
