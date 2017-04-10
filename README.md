@@ -12,7 +12,7 @@
 
 相比Dubbo等RPC（远程过程调用协议）框架，Spring Cloud是一个比较新的微服务架构基础框架选择，2016年才推出的1.0 release版本，不过Spring Cloud的方案完整度非常高，各个子项目几乎覆盖了微服务架构的方方面面。从目前的关注度和活跃度来看，Spring Cloud很可能会成为微服务架构的标准。
 
-本篇[云框架](ABOUT.md)目的不在于重复造轮，而是总结过去数十个微服务架构项目的成功经验，绕过前人踩过的坑，以一个实际项目（[PiggyMetrics](https://github.com/sqshq/PiggyMetrics)）为例，为开发者提供微服务落地的最佳实践。
+本篇[云框架](ABOUT.md)目的不在于重复造轮，而是总结过去数十个微服务架构项目的成功经验，绕过前人踩过的坑，以一个实际项目（[PiggyMetrics](https://github.com/sqshq/PiggyMetrics)，一款个人财务管理应用）为例，为开发者提供微服务落地的最佳实践。
 
 不必从零开始开发，开发者仅需在[云框架]基础上替换部分业务代码，就可以将[基于Spring Cloud的微服务架构](README.md)应用于生产环境并立即产生价值。
 
@@ -32,7 +32,7 @@
 
 # <a name="组件说明"></a>组件说明
 
-[PiggyMetrics](http://my-piggymetrics.rhcloud.com/)是一款个人财务管理应用，由统计服务（STATISTICS SERVICE）、账户服务（ACCOUNT SERVICE）、通知服务（NOTIFICATION SERVICE）等三个核心微服务组成：
+Piggymetrics（[查看应用](http://my-piggymetrics.rhcloud.com/)）由统计服务（STATISTICS SERVICE）、账户服务（ACCOUNT SERVICE）、通知服务（NOTIFICATION SERVICE）等三个核心微服务组成：
 
 * 每个微服务都是围绕业务能力组织的可独立部署的应用程序，
 * 每个微服务都拥有独立的数据库（MangoDB，支持多种编程语言持久性架构）
@@ -64,10 +64,10 @@ PiggyMetrics基础服务设施中用到了Spring Cloud Config、Netflix Eureka�
 
 # <a name="更新计划"></a>更新计划
 
-* `文档内容`+ 在线演示
-* `组件说明`+ TURBINE
-* `功能特性`+ CI/CD
-* `快速部署`+ 云帮部署
+* 增加在线演示
+* 增加TURBINE组件说明
+* 增加CI/CD、日志实现方法
+* 增加云帮部署
 
 # <a name="参与贡献"></a>参与贡献
 
