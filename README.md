@@ -18,14 +18,44 @@
 
 # 内容概览
 
+* [完整框架](#完整框架)
+* [在线演示](#在线演示)
 * [快速部署](#快速部署)
 * [框架说明](#框架说明) 
-  * [架构图](#架构图)
-  * [组件说明](#组件说明)
+   * [整体架构](#整体架构)
+   * [模块说明](#模块说明)
+   * [其他组件](#其他组件)
+   * [高级操作](#高级操作)
 * [常见问题](#常见问题)
 * [更新计划](#更新计划)
 * [参与贡献](#参与贡献)
 * [加入社群](#加入社群)
+
+# <a name="完整框架"></a>完整框架（不含业务代码）
+
+[云框架]基于Spring Cloud的微服务架构核心组件有：
+
+[Spring Cloud Config - server](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-server)
+
+[Spring Cloud Config - client](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-client)
+
+[Spring Cloud Config - 配置文件](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-client)
+
+[Netflix Eureka - server](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server)
+
+[Netflix Eureka - service](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-service)
+
+[Netflix Ribbon](https://github.com/cloudframeworks-springcloud/Netflix-Ribbon)
+
+[Netflix Hystrix](https://github.com/cloudframeworks-springcloud/Netflix-Hystrix)
+
+[Netflix Feign](https://github.com/cloudframeworks-springcloud/Netflix-Feign)
+
+[Spring Cloud Sleuth](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Sleuth)
+
+**以下内容以PiggyMetrics为例说明**
+
+# <a name="在线演示"></a>在线演示
 
 # <a name="快速部署"></a>快速部署
 
@@ -34,7 +64,7 @@
 
 # <a name="框架说明"></a>框架说明
 
-Piggymetrics（[查看应用](http://my-piggymetrics.rhcloud.com/)）由统计服务（[STATISTICS SERVICE](https://github.com/sqshq/PiggyMetrics#statistics-service)）、账户服务（[ACCOUNT SERVICE](https://github.com/sqshq/PiggyMetrics#account-service)）、通知服务（[NOTIFICATION SERVICE](https://github.com/sqshq/PiggyMetrics#notification-service)）等三个核心微服务组成，其中：
+Piggymetrics（[查看应用](http://my-piggymetrics.rhcloud.com/)）由账户服务（[ACCOUNT SERVICE](https://github.com/sqshq/PiggyMetrics#account-service)）、统计服务（[STATISTICS SERVICE](https://github.com/sqshq/PiggyMetrics#statistics-service)）、通知服务（[NOTIFICATION SERVICE](https://github.com/sqshq/PiggyMetrics#notification-service)）等三个核心微服务组成，其中：
 
 * 每个微服务都是围绕业务能力组织的可独立部署的应用程序
 * 每个微服务都拥有独立的数据库（MangoDB，支持多种编程语言持久性架构）
@@ -42,202 +72,153 @@ Piggymetrics（[查看应用](http://my-piggymetrics.rhcloud.com/)）由统计�
 
 PiggyMetrics基础服务设施中用到了Spring Cloud Config、Netflix Eureka、Netflix Hystrix、Netflix Zuul、Netflix Ribbon等组件，而这也正是Spring Cloud分布式开发中最核心的5个组件。
 
-## <a name="架构图"></a>架构图
+## <a name="整体架构"></a>整体架构
 
 <div align=center><img width="900" height="" src="./image/piggymetrics.png"/></div>
 
-## <a name="组件说明"></a>组件说明
+## <a name="模块说明"></a>模块说明
+
+### 账户服务模块（ACCOUNT SERVICE）
+
+在Piggymetrics项目中，账户服务模块包含一般用户输入逻辑和验证：收入/费用项目，储蓄和帐户设置。
+
+Method	| Path	| Description	| User authenticated	| Available from UI
+------------- | ------------------------- | ------------- |:-------------:|:----------------:|
+GET	| /accounts/{account}	| Get specified account data	|  | 	
+GET	| /accounts/current	| Get current account data	| × | ×
+GET	| /accounts/demo	| Get demo account data (pre-filled incomes/expenses items, etc)	|   | 	×
+PUT	| /accounts/current	| Save current account data	| × | ×
+POST	| /accounts/	| Register new account	|   | ×
+
+#### Netflix Zuul
+
+##### 完整代码
+
+##### 业务代码标注
+
+#### Netflix Ribbon
+
+##### 完整代码
+
+##### 业务代码标注
+
+#### Netflix Hystrix
+
+##### 完整代码
+
+##### 业务代码标注
+
+#### 数据库
+
+##### 完整代码
+
+##### 业务代码标注
+
+### 统计服务模块（STATISTICS SERVICE）
+
+在Piggymetris项目中，统计服务模块对主要统计参数执行计算，并为每个帐户的时间序列。数据点包含基准货币和时间段的值。此数据用于跟踪帐户生命周期中的现金流动动态（尚未在UI中实现的花式图表）。
+
+Method	| Path	| Description	| User authenticated	| Available from UI
+------------- | ------------------------- | ------------- |:-------------:|:----------------:|
+GET	| /statistics/{account}	| Get specified account statistics	          |  | 	
+GET	| /statistics/current	| Get current account statistics	| × | × 
+GET	| /statistics/demo	| Get demo account statistics	|   | × 
+PUT	| /statistics/{account}	| Create or update time series datapoint for specified account	|   | 
+
+#### Netflix Zuul
+
+##### 完整代码
+
+##### 业务代码标注
+
+#### Netflix Ribbon
+
+##### 完整代码
+
+##### 业务代码标注
+
+#### Netflix Hystrix
+
+##### 完整代码
+
+##### 业务代码标注
+
+#### 数据库
+
+##### 完整代码
+
+##### 业务代码标注
+
+### 通知服务模块（NOTIFICATION SERVICE）
+
+在Piggymetrics项目中，存储用户联系信息和通知设置（如提醒和备份频率）。计划工作人员从其他服务收集所需的信息，并向订阅的客户发送电子邮件。
+
+Method	| Path	| Description	| User authenticated	| Available from UI
+------------- | ------------------------- | ------------- |:-------------:|:----------------:|
+GET	| /notifications/settings/current	| Get current account notification settings	| × | ×	
+PUT	| /notifications/settings/current	| Save current account notification settings	| × | ×
+
+#### Netflix Zuul
+
+##### 完整代码
+
+##### 业务代码标注
+
+#### Netflix Ribbon
+
+##### 完整代码
+
+##### 业务代码标注
+
+#### Netflix Hystrix
+
+##### 完整代码
+
+##### 业务代码标注
+
+#### 数据库
+
+##### 完整代码
+
+##### 业务代码标注
+
+## <a name="其他组件"></a>其他组件
 
 ### Spring Cloud Config
 
-Spring Cloud Config提供解决分布式系统的配置管理方案，分server、client两个模块：
+##### 完整代码
 
-* config_server 配置服务器：统一配置系统中需要的各种服务
-* config_client 配置客户端：根据Spring框架的Environment和PropertySource从spring cloud config sever获取各种配置
-
-Spring Cloud Config基于使用中心配置仓库的思想（版本控制），支持Git（默认）、SVN、File等三种储存方式。
-
-#### 使用向导
-
-1. 
-2.
-3.
-4.
-5.
-
-#### 完整代码
-
-
-
-#### 业务代码
-
-
-
-#### 原始框架
-
-[Spring Cloud Config - server](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-server) • [Spring Cloud Config - client](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-client) • [Spring Cloud Config - 配置文件](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-client)
-
-### Netflix Zuul
-
-Netflix Zuul提供动态路由、监控、弹性、安全等的边缘服务。
-
-在通过服务网关统一向外的提供REST API的微服务架构中，Netflix Zuul为微服务机构提供了前门保护的作用，同时将权限控制这些较重的非业务逻辑内容迁移到服务路由层面，使得服务集群主体能够具备更高的可复用性和可测试性。
-
-#### 使用向导
-
-1. 
-2.
-3.
-4.
-5.
-
-#### 完整代码
-
-
-
-#### 业务代码
-
-
-
-#### 原始框架
-
-[Netflix Zuul](https://github.com/cloudframeworks-springcloud/Netflix-Zuul)
+##### 业务代码标注
 
 ### Netflix Eureka
 
-相比传统SOA架构，微服务架构中的服务粒度更小、服务数量更多，如何有效管理各个服务就显得尤为重要，也因此出现了服务注册的概念。
+##### 完整代码
 
-服务注册的本质：1）简单易用，对用户透明；2）高可用，满足CAP理论；3）多语言支持
-
-在基于Spring Cloud的微服务架构中，通常采用Netflix Eureka作为注册中心，某些情况下也会采用Zookeeper作为替代。
-
-Netflix Eureka的易用性体现在两方面：
-
-* 通过与Spring Boot(Cloud)结合达到只用注解和Maven依赖即可部署和启动服务的效果
-* Netflix Eureka自带Client包，使得使用Eureka作为注册中心的客户端（即服务）不需要关心自己与Eureka的通讯机制，只需要引入Client依赖即可，当然前提是使用Java
-
-**Netflix Eureka通过“伙伴”机制实现高可用**，每一台Eureka都需要在配置中指定另一个Eureka的地址作为伙伴，Eureka启动时会向自己的伙伴节点获取当前已经存在的注册列表，这样在向Eureka集群中增加新机器时就不需要担心注册列表不完整的问题，在CAP理论中满足AP原则。
-
-除此之外，**Netflix Eureka支持Region和Zone的概念**，其中一个Region可以包含多个Zone。Eureka在启动时需要指定一个Zone名，即指定当前Eureka属于哪个Zone, 如果不指定则属于defaultZone。值得注意的是，Eureka Client也需要指定Zone。
-
-Netflix Eureka使用Java编写，但它会将所有注册信息和心跳连接地址都暴露为HTTP REST接口，客户端实际是通过HTTP请求与Server进行通讯的，因此Client完全可以使用其它语言进行编写，只需要即时调用注册服务、注销服务、获取服务列表和心跳请求的HTTP REST接口即可。
-
-#### 使用向导
-
-1. 
-2.
-3.
-4.
-5.
-
-#### 完整代码
-
-#### 业务代码
-
-#### 原始框架
-
-[Netflix Eureka - server](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server) • [Netflix Eureka - service](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-service)
-
-### Netflix Ribbon
-
-简单来说，Netflix Ribbon是一个客户端负载均衡器，有多种负载均衡策略可选（包括自定义的负载均衡算法），并可配合服务发现及断路器使用。在配置文件中列出Load Balancer后面所有的机器，Ribbon会自动的帮助你基于某种规则（如简单轮询，随机连接等）去连接这些机器。
-
-#### 使用向导
-
-1. 
-2.
-3.
-4.
-5.
-
-#### 完整代码
-
-
-
-#### 业务代码
-
-
-
-#### 原始框架
-
-[Netflix Ribbon](https://github.com/cloudframeworks-springcloud/Netflix-Ribbon)
-
-
-### Netflix Hystrix
-
-Netflix Hystrix是微服务分布式系统的熔断保护中间件，通过熔断机制控制服务和第三方库的节点，从而对延迟和故障提供更强大的容错能力。
-
-#### 使用向导
-
-1. 
-2.
-3.
-4.
-5.
-
-#### 完整代码
-
-
-
-#### 业务代码
-
-
-
-#### 原始框架
-
-[Netflix Hystrix](https://github.com/cloudframeworks-springcloud/Netflix-Hystrix)
-
-### Netflix Feign
-
-Spring Cloud集成Netflix Ribbon和Netflix Eureka提供的负载均衡的HTTP客户端Netflix Feign.
-
-Netflix Feign是一个声明式、模板化的HTTP客户端，因此编写起来会更容易一些。Spring Cloud集成了Netflix Feign，并通过Netflix Ribbon和Netflix Eureka提供负载均衡。
-
-使用Netflix Feign创建一个接口并对它进行注解（可插拔的注解支持，包括Feign注解），在应用主类中通过`@EnableFeignClients`注解开启Feign功能，并使用`@FeignClient`(服务ID)注解来绑定该接口对应服务。
-
-#### 使用向导
-
-1. 
-2.
-3.
-4.
-5.
-
-#### 完整代码
-
-
-
-#### 业务代码
-
-
-
-#### 原始框架
-
-[Netflix Feign](https://github.com/cloudframeworks-springcloud/Netflix-Feign)
+##### 业务代码标注
 
 ### Spring Cloud Sleuth
 
-Spring Cloud Sleuth是日志手机工具包，其中封装了Zipkin、HTrace和log-based追踪。
+##### 完整代码
 
-#### 使用向导
+##### 业务代码标注
 
-1. 
-2.
-3.
-4.
-5.
+### Netflix Turbine
 
-#### 完整代码
+##### 完整代码
 
+##### 业务代码标注
 
+## <a name="高级操作"></a>高级操作
 
-#### 业务代码
+### CI/CD
 
+### 日志
 
+### 监控
 
-#### 原始框架
+### 安全
 
-[Spring Cloud Sleuth](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Sleuth)
+### ...
 
 # <a name="常见问题"></a>常见问题
 
@@ -245,10 +226,10 @@ Spring Cloud Sleuth是日志手机工具包，其中封装了Zipkin、HTrace和l
 
 # <a name="更新计划"></a>更新计划
 
-* `组件说明`增加Turbine、Consul组件
-* `高级`增加CI/CD、日志监控实现方案
-* `快速部署`增加好雨云帮部署
-* 增加云框架`在线演示`
+* 增加Turbine、Consul组件
+* 增加CI/CD、日志、监控、安全实现方案
+* 增加好雨云帮部署
+* 增加云框架在线演示
 
 # <a name="参与贡献"></a>参与贡献
 
