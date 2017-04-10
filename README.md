@@ -18,9 +18,9 @@
 
 # 内容概览
 
+* [完整框架](#完整框架)
 * [在线演示](#在线演示)
 * [快速部署](#快速部署)
-* [完整框架](#完整框架)
 * [框架说明](#框架说明) 
    * [整体架构](#整体架构)
    * [模块说明](#模块说明)
@@ -31,14 +31,9 @@
 * [参与贡献](#参与贡献)
 * [加入社群](#加入社群)
 
-# <a name="在线演示"></a>在线演示
-
-# <a name="快速部署"></a>快速部署
-
-* 开发环境（准备工作、操作步骤）
-* 生产环境（准备工作、操作步骤）
-
 # <a name="完整框架"></a>完整框架（不含业务代码）
+
+[云框架]基于Spring Cloud的微服务架构核心组件有：
 
 [Spring Cloud Config - server](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-server)
 
@@ -57,6 +52,15 @@
 [Netflix Feign](https://github.com/cloudframeworks-springcloud/Netflix-Feign)
 
 [Spring Cloud Sleuth](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Sleuth)
+
+**以下内容以PiggyMetrics为例说明**
+
+# <a name="在线演示"></a>在线演示
+
+# <a name="快速部署"></a>快速部署
+
+* 开发环境（准备工作、操作步骤）
+* 生产环境（准备工作、操作步骤）
 
 # <a name="框架说明"></a>框架说明
 
