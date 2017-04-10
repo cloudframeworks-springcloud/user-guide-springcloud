@@ -32,7 +32,7 @@
 
 # <a name="框架说明"></a>框架说明
 
-Piggymetrics（[查看应用](http://my-piggymetrics.rhcloud.com/)）由统计服务（STATISTICS SERVICE）、账户服务（ACCOUNT SERVICE）、通知服务（NOTIFICATION SERVICE）等三个核心微服务组成，其中：
+Piggymetrics（[查看应用](http://my-piggymetrics.rhcloud.com/)）由统计服务（[STATISTICS SERVICE](https://github.com/sqshq/PiggyMetrics#statistics-service)）、账户服务（[ACCOUNT SERVICE](https://github.com/sqshq/PiggyMetrics#account-service)）、通知服务（[NOTIFICATION SERVICE](https://github.com/sqshq/PiggyMetrics#notification-service)）等三个核心微服务组成，其中：
 
 * 每个微服务都是围绕业务能力组织的可独立部署的应用程序
 * 每个微服务都拥有独立的数据库（MangoDB，支持多种编程语言持久性架构）
