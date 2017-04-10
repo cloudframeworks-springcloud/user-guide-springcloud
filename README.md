@@ -71,9 +71,7 @@ Spring Cloud Config基于使用中心配置仓库的思想（版本控制），�
 
 #### 无业务代码组件
 
-[Spring Cloud Config - server](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-server)
-[Spring Cloud Config - client](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-client)
-[Spring Cloud Config - 配置文件](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-client)
+[Spring Cloud Config - server](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-server) • [Spring Cloud Config - client](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-client) • [Spring Cloud Config - 配置文件](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-client)
 
 ### Netflix Zuul
 
@@ -134,8 +132,7 @@ Netflix Eureka使用Java编写，但它会将所有注册信息和心跳连接�
 
 #### 无业务代码组件
 
-[Netflix Eureka - server](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server)
-[Netflix Eureka - service](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-service)
+[Netflix Eureka - server](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server) • [Netflix Eureka - service](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-service)
 
 ### Netflix Ribbon
 
