@@ -20,6 +20,8 @@
 
 * [快速部署](#快速部署)
 * [框架说明](#框架说明) 
+  * [架构图](#架构图)
+  * [组件说明](#组件说明)
 * [常见问题](#常见问题)
 * [更新计划](#更新计划)
 * [参与贡献](#参与贡献)
@@ -40,9 +42,11 @@ Piggymetrics（[查看应用](http://my-piggymetrics.rhcloud.com/)）由统计�
 
 PiggyMetrics基础服务设施中用到了Spring Cloud Config、Netflix Eureka、Netflix Hystrix、Netflix Zuul、Netflix Ribbon等组件，而这也正是Spring Cloud分布式开发中最核心的5个组件。
 
-整体架构如下：
+## <a name="架构图"></a>架构图
 
 <div align=center><img width="900" height="" src="./image/piggymetrics.png"/></div>
+
+## <a name="组件说明"></a>组件说明
 
 ### Spring Cloud Config
 
