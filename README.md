@@ -12,19 +12,18 @@
 
 相比Dubbo等RPC（远程过程调用协议）框架，Spring Cloud是一个比较新的微服务架构基础框架选择，2016年才推出的1.0 release版本，不过Spring Cloud的方案完整度非常高，各个子项目几乎覆盖了微服务架构的方方面面。从目前的关注度和活跃度来看，Spring Cloud很可能会成为微服务架构的标准。
 
-本篇[**[云框架]**](ABOUT.md)目的不在于重复造轮（[Spring Cloud官方文档](https://spring.io/docs)），而是总结过去数十个微服务架构项目的成功经验，绕过前人踩过的坑，以一个实际项目[[PiggyMetrics]](https://github.com/sqshq/PiggyMetrics)为例，为开发者提供微服务落地的最佳实践。不必从零开始开发，开发者仅需在[云框架]基础上替换部分业务代码，就可以将[基于Spring Cloud的微服务架构](README.md)应用于生产环境并立即产生价值。
+本篇[**[云框架]**](ABOUT.md)目的不在于重复造轮（[Spring Cloud官方文档](https://spring.io/docs)），而是总结过去数十个微服务架构项目的成功经验，绕过前人踩过的坑，以一个实际项目[[PiggyMetrics]](https://github.com/sqshq/PiggyMetrics)为例，为开发者提供微服务落地的最佳实践。
+
+不必从零开始开发，开发者仅需在[云框架]基础上替换部分业务代码，就可以将[基于Spring Cloud的微服务架构](README.md)应用于生产环境并立即产生价值。
 
 # 内容概览
 
-* [在线演示](#在线演示)
 * [快速部署](#快速部署)
 * [组件说明](#组件说明) 
 * [常见问题](#常见问题)
 * [更新计划](#更新计划)
 * [参与贡献](#参与贡献)
 * [加入社群](#加入社群)
-
-# <a name="在线演示"></a>在线演示
 
 # <a name="快速部署"></a>快速部署
 
@@ -40,425 +39,28 @@ PiggyMetrics基础服务设施中用到了Spring Cloud Config、Netflix Eureka�
 
 <div align=center><img width="900" height="" src="./image/piggymetrics.png"/></div>
 
-### 统计服务（STATISTICS SERVICE）
+### Spring Cloud Config
 
-### 账户服务（ACCOUNT SERVICE）
+### Netflix Zuul
 
-### 通知服务（NOTIFICATION SERVICE）
+### Netflix Eureka
+
+### Netflix Ribbon
+
+### Netflix Hystrix
+
+### Netflix Feign
 
 # <a name="常见问题"></a>常见问题
 
-任何相关问题均可可通过[GitHub ISSUE](https://github.com/cloudframeworks-springcloud/user-guide/issues)提交或讨论，更多问题请查看[[QA](QA.md)]
-
-### 服务如何访问？
-
-<div align=center><img width="900" height="" src="./image/如何访问这些服务.png"/></div>
-
-### 服务如何发现？
-
-<div align=center><img width="900" height="" src="./image/服务如何发现1.png"/></div>
-
-<div align=center><img width="900" height="" src="./image/服务如何发现2.png"/></div>
-
-### 服务如何通信？
-
-|  | 一对一 | 一对多 |
-| --- | --- | --- |
-| 同步 | 请求／响应 | ——— |
-| 异步 | 通知 | 发布／订阅 |
-|  | 请求／异步响应 | 发布／异步响应 |
-
-同步调用：REST（JAX-RS、Spring Boot）、RPC（Thrift、Dubbo）
-
-异步调用：Akka Actor、Kafka、Notify、MQ
-
-### 数据如何管理？
-
-<div align=center><img width="900" height="" src="./image/数据如何管理.png"/></div>
-
-常见方式：共享数据库、消息队列事件驱动：Event Sourcing、CQRS
-
-### 服务如何容错？
-
-<div align=center><img width="900" height="" src="./image/服务如何容错.png"/></div>
-
-防⽌应⽤用程序试图调⽤远程服务或访问共享资源失败
-
-异常处理理、⽇日志记录、测试失败操作、资源分化、并发等等
-
-### 服务如何监控？
-
-<div align=center><img width="900" height="" src="./image/服务如何监控.png"/></div>
+任何相关问题均可通过[GitHub ISSUE](https://github.com/cloudframeworks-springcloud/user-guide/issues)提交或讨论，常见问题请查看[[QA](QA.md)]
 
 # <a name="更新计划"></a>更新计划
 
-## 组件说明
-## 特性实现
-## 部署方式
-
-# <a name="参与贡献"></a>参与贡献
-
-[如何成为云框架贡献者](CONTRIBUTING.md)
-
-# <a name="加入社群"></a>加入社群
-
-+ [订阅邮件](http://goodrain.us15.list-manage.com/subscribe?u=1874f1de4ed82a52890cefb4c&id=b88f73ca56)
-+ QQ群1: 531980120
-+ 微信二维码（发布时补充）
-+ [联系我们](mailto:info@goodrain.com)
-
--------
-
-[云框架](ABOUT.md)系列主题，遵循[APACHE LICENSE 2.0](LICENSE.md)协议发布。
-
-
-
-
-点击查看运行效果演示：
-
-[地址]()
-
-## <a name="架构图"></a>架构图
-
-架构图如下，其中实线箭头代表注册关系、虚线箭头代表调用关系：
-
-<div align=center><img width="900" height="" src="./image/云框架-Spring Cloud-架构图.png"/></div>
-
-## <a name="核心组件"></a>核心组件
-
-点击[组件名称](#组件名称)跳转至组件源码
-
-| <a name="组件名称"></a>核心组件 | 功能 | 简介 |
-| --- | --- | --- |
-| [Spring Cloud Config - server](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-client) | 配置管理开发工具包 | 允许用户把配置放到远程服务器，支持本地存储、Git及Subversion |
-| [Spring Cloud Config - client](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-server) |  |  |
-| [Spring Cloud Config - 配置文件](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config) |  |  |
-| [Netflix Eureka - server ](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server) | 云端负载均衡 | 基于REST的服务，用于定位服务，以实现云端的负载均衡和中间层服务器的故障转移 |
-| [Netflix Eureka - service](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-service) |  |  |
-| [Netflix Hystrix](https://github.com/cloudframeworks-springcloud/Netflix-Hystrix) | 容错管理工具 | 通过控制服务和第三方库的节点，从而对延迟和故障提供更强大的容错能力 |
-| [Netflix Zuul](https://github.com/cloudframeworks-springcloud/Netflix-Zuul) | 边缘服务工具 | 提供动态路由，监控，弹性，安全等的边缘服务 |
-| [Netflix Feign](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Feign) | 客户端 | 声明式、模板化的HTTP客户端 |
-| [Netflix Ribbon](https://github.com/cloudframeworks-springcloud/Netflix-Ribbon) | 云端负载均衡 | 有多种负载均衡策略可供选择，可配合服务发现和断路器使用 |
-| [Spring Cloud Sleuth](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Sleuth) | 日志收集工具包 | 封装了Dapper、Zipkin和HTrace操作 |
-
-# <a name="使用向导"></a>使用向导
-
-## <a name="Spring-Cloud-Config"></a>Spring Cloud Config
-
-<div align=center><img width="900" height="" src="./image/学习路径1.png"/></div>
-
-Spring Cloud Config提供解决分布式系统的配置管理方案，分server、client两个模块：
-
-* config_server 配置服务器：统一配置系统中需要的各种服务
-* config_client 配置客户端：根据Spring框架的Environment和PropertySource从spring cloud config sever获取各种配置
-
-Spring Cloud Config基于使用中心配置仓库的思想（版本控制），支持Git（默认）、SVN、File等三种储存方式。
-
-### 如何搭建Spring Cloud config
-
-1. 选择Git或SVN作为你的配置仓库（这里选择git作为配置仓库）
-
-2. 创建相应的配置文件，如：[https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config.git](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config.git)
-
-3. 创建Spring Cloud Config server，参考：[https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-server.git](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-server.got)
-
-4. 创建Spring Cloud Config client，并从config server获取配置仓库中的信息，参考：[https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-client.git](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-client.git)
-
-5. 运行cloud-config server和cloud-config client
-
-6. 访问 http://127.0.0.1:6000/from
-
-**[完整代码]**
-
-```
-        git clone https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-server.git
-        
-        cd  Spring-Cloud-Config-server && docker build -t config-server .
-        
-        docker run -d -p 5000:5000 config-server
-
-        git clone https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-client.git
-        
-        cd Spring-Cloud-Config-client && docker build -t config-client .
-        
-        docker run -ti -p 6000:5000 -e "CONFIG_HOST=172.17.0.2" -e "CONFIG_PORT=5000" config-client
-        
-```
-
-## <a name="Netflix-Eureka"></a>Netflix Eureka
-
-<div align=center><img width="900" height="" src="./image/学习路径23.png"/></div>
-
-相比传统SOA架构，微服务架构中的服务粒度更小、服务数量更多，如何有效管理各个服务就显得尤为重要，也因此出现了服务注册的概念。
-
-服务注册的本质：1）简单易用，对用户透明；2）高可用，满足CAP理论；3）多语言支持
-
-在基于Spring Cloud的微服务架构中，通常采用Netflix Eureka作为注册中心，某些情况下也会采用Zookeeper作为替代。
-
-Netflix Eureka的易用性体现在两方面：
-
-* 通过与Spring Boot(Cloud)结合达到只用注解和Maven依赖即可部署和启动服务的效果
-* Netflix Eureka自带Client包，使得使用Eureka作为注册中心的客户端（即服务）不需要关心自己与Eureka的通讯机制，只需要引入Client依赖即可，当然前提是使用Java
-
-**Netflix Eureka通过“伙伴”机制实现高可用**，每一台Eureka都需要在配置中指定另一个Eureka的地址作为伙伴，Eureka启动时会向自己的伙伴节点获取当前已经存在的注册列表，这样在向Eureka集群中增加新机器时就不需要担心注册列表不完整的问题，在CAP理论中满足AP原则。
-
-除此之外，**Netflix Eureka支持Region和Zone的概念**，其中一个Region可以包含多个Zone。Eureka在启动时需要指定一个Zone名，即指定当前Eureka属于哪个Zone, 如果不指定则属于defaultZone。值得注意的是，Eureka Client也需要指定Zone。
-
-Netflix Eureka使用Java编写，但它会将所有注册信息和心跳连接地址都暴露为HTTP REST接口，客户端实际是通过HTTP请求与Server进行通讯的，因此Client完全可以使用其它语言进行编写，只需要即时调用注册服务、注销服务、获取服务列表和心跳请求的HTTP REST接口即可。
-
-### 如何搭建Netflix Eureka server
-
-1. 下载Netflix Eureka server
-
-Git地址：[https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server.git](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server.git)
-
-命令：`Git clone` [https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server.git](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server.git)
-
-2. 构建Netflix Eureka server镜像
-
-命令：`cd  Netflix-Eureka-server && docker build -t eureka-server .`
-
-3. 运行Netflix Eureka server
-
-命令：`docker run -d -p 8761:8761 eureka-server`
-
-4. 访问[http://127.0.0.1:8761](http://127.0.0.1:8761)
-
-**[完整代码]**
-
-```
-        git clone https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server.git
-        
-        cd  Netflix-Eureka-server && docker build -t eureka-server .
-        
-        docker run -d -p 8761:8761 eureka-server
-```
-
-### 注册一个服务到Eureka server
-
-1. 创建普通的应用服务
-
-2. 将该服务注册到Netflix Eureka中（通过`@EnableDiscoveryClient`）
-
-3. 设置Eureka server的地址
-
-修改配置文件(根据自己的环境设置`EUREKA_HOST`和`EUREKA_PORT`)
-`eureka.client.serviceUrl.defaultZone=http://127.0.0.1:5000/eureka/v2/`
-
-4. 运行Netflix Eureka service
-
-5. 去Netflix Eureka中查看是否已注册成功(备注：用户可以定义自己的业务逻辑)
-
-代码参考：[https://github.com/cloudframeworks-springcloud/Netflix-Eureka-service.git](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-service.git)
-
-**[完整代码]**
-
-```
-        git https://github.com/cloudframeworks-springcloud/Netflix-Eureka-service.git
-        
-        cd  Netflix-Eureka-service && docker build -t eureka-service .
-        
-        docker run -ti -e "EUREKA_HOST=172.17.0.4" -e "EUREKA_PORT=8761" -p 5000:5000 eureka-service
-```
-
-## <a name="Netflix-Hystrix"></a>Netflix Hystrix
-
-<div align=center><img width="900" height="" src="./image/学习路径4.png"/></div>
-
-代码参考：[https://github.com/cloudframeworks-springcloud/Netflix-Hystrix.git](https://github.com/cloudframeworks-springcloud/Netflix-Hystrix.git)
-
-1. 创建普通的应用
-
-2. 将该应用主类中加入`@EnableFeignClients`
-
-3. 在service中用`@HystrixCommand`来设置熔断
-
-4. 修改配置文件(根据自己的环境设置EUREKA_HOST和EUREKA_PORT)
-
-5. 构建镜像，运行service
-
-**[完整代码]**
-
-```
-        git https://github.com/cloudframeworks-springcloud/Netflix-Hystrix.git
-        
-        cd  Netflix-Hystrix && docker build -t hystrix .
-        
-        docker run -ti -e "EUREKA_HOST=172.17.0.4" -e "EUREKA_PORT=8761" -p 5000:5000 hystrix
-```
-
-## <a name="Netflix-Ribbon"></a>Netflix Ribbon
-
-<div align=center><img width="900" height="" src="./image/学习路径5.png"/></div>
-
-代码参考：[https://github.com/cloudframeworks-springcloud/Netflix-Ribbon.git](https://github.com/cloudframeworks-springcloud/Netflix-Ribbon.git)
-
-1. 创建普通的应用
-
-2. 将该应用主类中加入`@EnableFeignClients`
-
-3. 在service中用`@FeignClient`(服务ID)注解来绑定该接口对应服务
-
-4. 修改配置文件(根据自己的环境设置`EUREKA_HOST`和`EUREKA_PORT`) 
-
-5. 构建镜像，运行service
-
-**[完整代码]**
-
-```
-       git https://github.com/cloudframeworks-springcloud/Netflix-Ribbon.git
-        
-        cd  Netflix-Ribbon && docker build -t ribbon .
-        
-        docker run -ti -e "EUREKA_HOST=172.17.0.4" -e "EUREKA_PORT=8761" -p 5000:5000 ribbon
-```
-
-## <a name="Netflix-Feign"></a>Netflix Feign
-
-<div align=center><img width="900" height="" src="./image/学习路径6.png"/></div>
-
-Spring Cloud集成Netflix Ribbon和Netflix Eureka提供的负载均衡的HTTP客户端Netflix Feign.
-
-Netflix Feign是一个声明式、模板化的HTTP客户端，因此编写起来会更容易一些。Spring Cloud集成了Netflix Feign，并通过Netflix Ribbon和Netflix Eureka提供负载均衡。
-
-使用Netflix Feign创建一个接口并对它进行注解（可插拔的注解支持，包括Feign注解），在应用主类中通过`@EnableFeignClients`注解开启Feign功能，并使用`@FeignClient`(服务ID)注解来绑定该接口对应服务。
-
-### 如何创建一个Netflix Feign
-
-代码参考：[https://github.com/cloudframeworks-springcloud/Spring-Cloud-Feign.git](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Feign.git)
-
-1. 创建普通的应用
-
-2. 将该应用主类中加入`@EnableFeignClients`
-
-3. 在service中用`@FeignClient`(服务ID)注解来绑定该接口对应服务
-
-4. 修改配置文件(根据自己的环境设置`EUREKA_HOST`和`EUREKA_PORT`)
-
-`eureka.client.serviceUrl.defaultZone=http://127.0.0.1:5000/eureka/v2/`
-
-5. 构建镜像，运行service
-
-**[完整代码]**
-
-```
-       git https://github.com/cloudframeworks-springcloud/Spring-Cloud-Feign.git
-        
-        cd  Spring-Cloud-Feign && docker build -t feign .
-        
-        docker run -ti -e "EUREKA_HOST=172.17.0.4" -e "EUREKA_PORT=8761" -p 5000:5000 feign
-```
-
-## <a name="Netflix-Zuul"></a>Netflix Zuul
-
-<div align=center><img width="900" height="" src="./image/学习路径7.png"/></div>
-
-### 如何创建一个Netflix Zuul
-
-代码参考：[https://github.com/cloudframeworks-springcloud/Netflix-Zuul.git](https://github.com/cloudframeworks-springcloud/Netflix-Zuul.git)
-
-1. 创建普通的应用
-
-2. 将该应用主类中加入`@EnableZuulProxy`
-
-3. 修改配置文件(根据自己的环境设置`EUREKA_HOST`和`EUREKA_PORT`)
-
-4. 构建镜像，运行service
-
-**[完整代码]**
-
-```
-        git https://github.com/cloudframeworks-springcloud/Netflix-Zuul.git
-        
-        cd  Netflix-Zuul && docker build -t zuul .
-        
-        docker run -ti -e "EUREKA_HOST=172.17.0.4" -e "EUREKA_PORT=8761" -p 5000:5000 zuul
-```
-
-## <a name="Spring-Cloud-Sleuth"></a>Spring Cloud Sleuth
-
-<div align=center><img width="900" height="" src="./image/学习路径8.png"/></div>
-
-### 如何创建一个Spring Cloud Sleuth
-
-代码参考：[https://github.com/cloudframeworks-springcloud/Spring-Cloud-Sleuth.git](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Sleuth.git)
-
-1. 创建普通的应用
-
-2. 将该应用主类中加入`@EnableFeignClients`
-
-3. 在service中用`@FeignClient`(服务ID)注解来绑定该接口对应服务
-
-4. 修改配置文件(根据自己的环境设置`EUREKA_HOST`和`EUREKA_PORT`)
-
-5. 构建镜像，运行service
-
-**[完整代码]**
-
-```
-        git https://github.com/cloudframeworks-springcloud/Spring-Cloud-Sleuth.git
-        
-        cd  Spring-Cloud-Sleuth && docker build -t sleuth .
-        
-        docker run -ti -e "EUREKA_HOST=172.17.0.4" -e "EUREKA_PORT=8761" -p 5000:5000 sleuth
-```
-
-
-# <a name="一键部署"></a>一键部署
-
-
-
-# <a name="常见问题"></a>常见问题
-
-任何相关问题均可可通过[GitHub ISSUE](https://github.com/cloudframeworks-springcloud/user-guide/issues)提交或讨论，更多问题请查看[[QA](QA.md)]
-
-## 服务如何访问？
-
-<div align=center><img width="900" height="" src="./image/如何访问这些服务.png"/></div>
-
-## 服务如何发现？
-
-<div align=center><img width="900" height="" src="./image/服务如何发现1.png"/></div>
-
-<div align=center><img width="900" height="" src="./image/服务如何发现2.png"/></div>
-
-## 服务如何通信？
-
-|  | 一对一 | 一对多 |
-| --- | --- | --- |
-| 同步 | 请求／响应 | ——— |
-| 异步 | 通知 | 发布／订阅 |
-|  | 请求／异步响应 | 发布／异步响应 |
-
-同步调用：REST（JAX-RS、Spring Boot）、RPC（Thrift、Dubbo）
-
-异步调用：Akka Actor、Kafka、Notify、MQ
-
-## 数据如何管理？
-
-<div align=center><img width="900" height="" src="./image/数据如何管理.png"/></div>
-
-常见方式：共享数据库、消息队列事件驱动：Event Sourcing、CQRS
-
-## 服务如何容错？
-
-<div align=center><img width="900" height="" src="./image/服务如何容错.png"/></div>
-
-防⽌应⽤用程序试图调⽤远程服务或访问共享资源失败
-
-异常处理理、⽇日志记录、测试失败操作、资源分化、并发等等
-
-## 服务如何监控？
-
-<div align=center><img width="900" height="" src="./image/服务如何监控.png"/></div>
-
-# <a name="更新计划"></a>更新计划
-
-`+`电商行业业务结合指引
-
-`+`金融行业业务结合指引
-
-`+`大型网站业务结合指引
+* `文档内容`+ 在线演示
+* `组件说明`+ TURBINE
+* `功能特性`+ CI/CD
+* `快速部署`+ 云帮部署
 
 # <a name="参与贡献"></a>参与贡献
 
