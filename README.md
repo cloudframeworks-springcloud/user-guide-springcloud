@@ -12,7 +12,7 @@
 
 相比Dubbo等RPC（远程过程调用协议）框架，Spring Cloud是一个比较新的微服务架构基础框架选择，2016年才推出的1.0 release版本，不过Spring Cloud的方案完整度非常高，各个子项目几乎覆盖了微服务架构的方方面面。从目前的关注度和活跃度来看，Spring Cloud很可能会成为微服务架构的标准。
 
-本篇[[云框架]](ABOUT.md)目的不在于重复造轮（[[Spring Cloud官方文档]](https://spring.io/docs)），而是总结过去数十个微服务架构项目的成功经验，绕过前人踩过的坑，以一个实际项目（[[PiggyMetrics]](https://github.com/sqshq/PiggyMetrics)）为例，为开发者提供微服务落地的最佳实践。
+本篇[[云框架]](ABOUT.md)目的不在于重复造轮，而是总结过去数十个微服务架构项目的成功经验，绕过前人踩过的坑，以一个实际项目（[[PiggyMetrics]](https://github.com/sqshq/PiggyMetrics)）为例，为开发者提供微服务落地的最佳实践。
 
 不必从零开始开发，开发者仅需在[云框架]基础上替换部分业务代码，就可以将[[基于Spring Cloud的微服务架构]](README.md)应用于生产环境并立即产生价值。
 
@@ -26,6 +26,9 @@
 * [加入社群](#加入社群)
 
 # <a name="快速部署"></a>快速部署
+
+* 准备工作
+* 操作步骤
 
 # <a name="组件说明"></a>组件说明
 
@@ -41,7 +44,11 @@ PiggyMetrics基础服务设施中用到了Spring Cloud Config、Netflix Eureka�
 
 ### Spring Cloud Config
 
+[[使用向导]](https://github.com/cloudframeworks-springcloud/user-guide/blob/master/components%20wizards/Spring%20Cloud%20Config.md)[[client-配置说明]](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-client)[[server-配置说明]](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-server)[[config-配置说明]](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config)
+
 ### Netflix Zuul
+
+
 
 ### Netflix Eureka
 
@@ -53,7 +60,7 @@ PiggyMetrics基础服务设施中用到了Spring Cloud Config、Netflix Eureka�
 
 # <a name="常见问题"></a>常见问题
 
-任何相关问题均可通过[GitHub ISSUE](https://github.com/cloudframeworks-springcloud/user-guide/issues)提交或讨论，常见问题请查看[[QA](QA.md)]
+任何相关问题均可通过[GitHub ISSUE](https://github.com/cloudframeworks-springcloud/user-guide/issues)提交或讨论，问题总结请查看[[QA](QA.md)]
 
 # <a name="更新计划"></a>更新计划
 
