@@ -245,10 +245,10 @@ Spring Cloud Sleuth是日志手机工具包，其中封装了Zipkin、HTrace和l
 
 # <a name="更新计划"></a>更新计划
 
-* 增加Turbine、Consul组件
-* 增加CI/CD、日志监控实现方案
-* 增加好雨云帮部署
-* 增加云框架在线演示
+* `组件说明`增加Turbine、Consul组件
+* `高级`增加CI/CD、日志监控实现方案
+* `快速部署`增加好雨云帮部署
+* 增加云框架`在线演示`
 
 # <a name="参与贡献"></a>参与贡献
 
