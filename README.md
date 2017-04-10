@@ -33,28 +33,23 @@
 
 # <a name="组件说明"></a>组件说明
 
-<div align=center><img width="900" height="" src="./image/云框架-Spring Cloud-架构图.png"/></div>
+[[PiggyMetrics]](http://my-piggymetrics.rhcloud.com/)是一款个人财务管理应用，由统计服务（STATISTICS SERVICE）、账户服务（ACCOUNT SERVICE）、通知服务（NOTIFICATION SERVICE）等三个核心微服务组成：
 
-|   |   |
-| --- | --- |
-| Spring Cloud Config - server | [[操作指引]]()[[配置说明]]() |
-| Spring Cloud Config - client | [[操作指引]]()[[配置说明]]() |
-| Spring Cloud Config - 配置文件 | [[操作指引]]()[[配置说明]]() |
-| Netflix Eureka - server | [[操作指引]]()[[配置说明]]() |
-| Netflix Eureka - service | [[操作指引]]()[[配置说明]]() |
-| Netflix Hystrix | [[操作指引]]()[[配置说明]]() |
-| Netflix Zuul | [[操作指引]]()[[配置说明]]() |
-| Netflix Feign | [[操作指引]]()[[配置说明]]() |
-| Netflix Ribbon | [[操作指引]]()[[配置说明]]() |
-| Spring Cloud Sleuth | [[操作指引]]()[[配置说明]]() |
+* 每个微服务都是围绕业务能力组织的可独立部署的应用程序，
+* 每个微服务都拥有独立的数据库（MangoDB，支持多种编程语言持久性架构）
+* 微服务与微服务之间通信使用同步的REST API
 
-# <a name="实例应用"></a>实例应用
+PiggyMetrics基础服务设施中用到了Spring Cloud Config、Netflix Eureka、Netflix Hystrix、Netflix Zuul、Netflix Ribbon等组件，而这也正是Spring Cloud分布式开发中最核心的5个组件。
 
-### 业务架构
+<div align=center><img width="900" height="" src="./image/piggymetrics.png"/></div>
 
-### 核心组件配置
+*piggymetrics整体架构图*
 
-### 附加组件配置
+### 统计服务
+
+### 账户服务
+
+### 通知服务
 
 # <a name="常见问题"></a>常见问题
 
