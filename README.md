@@ -69,7 +69,7 @@ Spring Cloud Config基于使用中心配置仓库的思想（版本控制），�
 
 
 
-#### 无业务代码组件
+#### 原始框架
 
 [Spring Cloud Config - server](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-server) • [Spring Cloud Config - client](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-client) • [Spring Cloud Config - 配置文件](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-client)
 
@@ -95,7 +95,7 @@ Netflix Zuul提供动态路由、监控、弹性、安全等的边缘服务。
 
 
 
-#### 无业务代码组件
+#### 原始框架
 
 [Netflix Zuul](https://github.com/cloudframeworks-springcloud/Netflix-Zuul)
 
@@ -130,7 +130,7 @@ Netflix Eureka使用Java编写，但它会将所有注册信息和心跳连接�
 
 #### 业务代码
 
-#### 无业务代码组件
+#### 原始框架
 
 [Netflix Eureka - server](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server) • [Netflix Eureka - service](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-service)
 
@@ -154,7 +154,7 @@ Netflix Eureka使用Java编写，但它会将所有注册信息和心跳连接�
 
 
 
-#### 无业务代码组件
+#### 原始框架
 
 [Netflix Ribbon](https://github.com/cloudframeworks-springcloud/Netflix-Ribbon)
 
@@ -179,7 +179,7 @@ Netflix Hystrix是微服务分布式系统的熔断保护中间件，通过熔�
 
 
 
-#### 无业务代码组件
+#### 原始框架
 
 [Netflix Hystrix](https://github.com/cloudframeworks-springcloud/Netflix-Hystrix)
 
@@ -207,7 +207,7 @@ Netflix Feign是一个声明式、模板化的HTTP客户端，因此编写起来
 
 
 
-#### 无业务代码组件
+#### 原始框架
 
 [Netflix Feign](https://github.com/cloudframeworks-springcloud/Netflix-Feign)
 
@@ -231,7 +231,7 @@ Spring Cloud Sleuth是日志手机工具包，其中封装了Zipkin、HTrace和l
 
 
 
-#### 无业务代码组件
+#### 原始框架
 
 [Spring Cloud Sleuth](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Sleuth)
 
