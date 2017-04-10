@@ -69,7 +69,11 @@ Spring Cloud Config基于使用中心配置仓库的思想（版本控制），�
 
 
 
-[[点击查看无业务代码组件说明]](https://github.com/cloudframeworks-springcloud/user-guide/blob/master/components%20wizards/Spring%20Cloud%20Config.md)
+#### 无业务代码组件
+
+[Spring Cloud Config - server](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-server)
+[Spring Cloud Config - client](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-client)
+[Spring Cloud Config - 配置文件](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-client)
 
 ### Netflix Zuul
 
@@ -93,7 +97,9 @@ Netflix Zuul提供动态路由、监控、弹性、安全等的边缘服务。
 
 
 
-[[点击查看无业务代码组件说明]](https://github.com/cloudframeworks-springcloud/user-guide/blob/master/components%20wizards/Netflix%20Zuul.md)
+#### 无业务代码组件
+
+[Netflix Zuul](https://github.com/cloudframeworks-springcloud/Netflix-Zuul)
 
 ### Netflix Eureka
 
@@ -126,7 +132,10 @@ Netflix Eureka使用Java编写，但它会将所有注册信息和心跳连接�
 
 #### 业务代码
 
-[[点击查看无业务代码组件说明]](https://github.com/cloudframeworks-springcloud/user-guide/blob/master/components%20wizards/Netflix%20Eureka.md)
+#### 无业务代码组件
+
+[Netflix Eureka - server](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server)
+[Netflix Eureka - service](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-service)
 
 ### Netflix Ribbon
 
@@ -148,7 +157,10 @@ Netflix Eureka使用Java编写，但它会将所有注册信息和心跳连接�
 
 
 
-[[点击查看无业务代码组件说明]](https://github.com/cloudframeworks-springcloud/user-guide/blob/master/components%20wizards/Netflix%20Ribbon.md)
+#### 无业务代码组件
+
+[Netflix Ribbon](https://github.com/cloudframeworks-springcloud/Netflix-Ribbon)
+
 
 ### Netflix Hystrix
 
@@ -170,7 +182,9 @@ Netflix Hystrix是微服务分布式系统的熔断保护中间件，通过熔�
 
 
 
-[[点击查看无业务代码组件说明]](https://github.com/cloudframeworks-springcloud/user-guide/blob/master/components%20wizards/Netflix%20Hystrix.md)
+#### 无业务代码组件
+
+[Netflix Hystrix](https://github.com/cloudframeworks-springcloud/Netflix-Hystrix)
 
 ### Netflix Feign
 
@@ -196,7 +210,9 @@ Netflix Feign是一个声明式、模板化的HTTP客户端，因此编写起来
 
 
 
-[[点击查看无业务代码组件说明]](https://github.com/cloudframeworks-springcloud/user-guide/blob/master/components%20wizards/Netflix%20Feign.md)
+#### 无业务代码组件
+
+[Netflix Feign](https://github.com/cloudframeworks-springcloud/Netflix-Feign)
 
 ### Spring Cloud Sleuth
 
@@ -218,7 +234,9 @@ Spring Cloud Sleuth是日志手机工具包，其中封装了Zipkin、HTrace和l
 
 
 
-[[点击查看无业务代码组件说明]](https://github.com/cloudframeworks-springcloud/user-guide/blob/master/components%20wizards/Spring%20Cloud%20Sleuth.md)
+#### 无业务代码组件
+
+[Spring Cloud Sleuth](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Sleuth)
 
 # <a name="常见问题"></a>常见问题
 
