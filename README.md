@@ -47,7 +47,7 @@
 
 **以下内容以[PiggyMetrics](https://github.com/sqshq/PiggyMetrics)（一款个人财务管理应用）为例说明**
 
-# <a name="在线演示"></a>在线演示
+# <a name="在线演示"></a>在线演示 x
 
 # <a name="快速部署"></a>快速部署
 
@@ -185,7 +185,7 @@ PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
 
 #### 组件关系
 
-## <a name="其他组件"></a>其他组件
+## <a name="其他组件"></a>其他组件 x
 
 ### Spring Cloud Sleuth
 
@@ -199,7 +199,7 @@ PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
 
 ##### 业务代码标注
 
-## <a name="高级操作"></a>高级操作
+## <a name="高级操作"></a>高级操作 x
 
 ### CI/CD
 
