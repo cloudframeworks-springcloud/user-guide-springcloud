@@ -122,7 +122,7 @@ POST	| /accounts/	| 注册新账户	|   | ×
 
 ##### 业务代码标注
 
-### 组件关系
+#### 组件关系
 
 ### 统计服务模块（STATISTICS SERVICE）
 
@@ -153,7 +153,7 @@ PUT	| /statistics/{account}	| 创建或更新时间系列数据点指定的帐�
 
 ##### 业务代码标注
 
-### 组件关系
+#### 组件关系
 
 ### 通知服务模块（NOTIFICATION SERVICE）
 
@@ -182,7 +182,7 @@ PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
 
 ##### 业务代码标注
 
-### 组件关系
+#### 组件关系
 
 ## <a name="其他组件"></a>其他组件
 
