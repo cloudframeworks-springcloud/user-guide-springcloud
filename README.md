@@ -65,7 +65,7 @@ TODO
 
 Piggymetrics<a name="业务架构"></a>业务架构如下图所示：
 
-![](https://cloud.githubusercontent.com/assets/6069066/13900465/730f2922-ee20-11e5-8df0-e7b51c668847.png)
+<div align=center><img width="900" height="" src="./image/pm业务架构.png"/></div>
 
 其中<a name="业务模块"></a>**账户服务**模块包含一般用户输入逻辑和验证：收入/费用项目，储蓄和帐户设置。
 
@@ -99,7 +99,7 @@ PiggyMetrics基础服务设施中用到了Spring Cloud Config、Netflix Eureka�
 
 <a name="组件架构"></a>组件架构如下图所示：
 
-![](https://cloud.githubusercontent.com/assets/6069066/13906840/365c0d94-eefa-11e5-90ad-9d74804ca412.png)
+<div align=center><img width="900" height="" src="./image/pm组件架构.png"/></div>
 
 ### 组件架构图 @YY
 
