@@ -35,23 +35,15 @@
 
 [云框架]基于Spring Cloud的微服务架构核心组件有：
 
-[Spring Cloud Config - server](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-server)
-
-[Spring Cloud Config - client](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-client)
-
-[Spring Cloud Config - 配置文件](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-client)
-
-[Netflix Eureka - server](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server)
-
-[Netflix Eureka - service](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-service)
-
-[Netflix Ribbon](https://github.com/cloudframeworks-springcloud/Netflix-Ribbon)
-
-[Netflix Hystrix](https://github.com/cloudframeworks-springcloud/Netflix-Hystrix)
-
-[Netflix Feign](https://github.com/cloudframeworks-springcloud/Netflix-Feign)
-
-[Spring Cloud Sleuth](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Sleuth)
+* [Spring Cloud Config - server](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-server)
+* [Spring Cloud Config - client](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-client)
+* [Spring Cloud Config - 配置文件](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-client)
+* [Netflix Eureka - server](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server)
+* [Netflix Eureka - service](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-service)
+* [Netflix Ribbon](https://github.com/cloudframeworks-springcloud/Netflix-Ribbon)
+* [Netflix Hystrix](https://github.com/cloudframeworks-springcloud/Netflix-Hystrix)
+* [Netflix Feign](https://github.com/cloudframeworks-springcloud/Netflix-Feign)
+* [Spring Cloud Sleuth](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Sleuth)
 
 **以下内容以PiggyMetrics为例说明**
 
