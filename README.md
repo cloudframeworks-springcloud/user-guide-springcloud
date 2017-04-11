@@ -34,8 +34,8 @@
       * [Netflix Hystrix](#Netflix-Hystrix)
       * [Netflix Feign](#Netflix-Feign)
       * [Spring Cloud Sleuth](#Spring-Cloud-Sleuth)
-   * [高级](#组件)
-* [性能测试](#性能测试)
+* [变成自己的项目](#变成自己的项目)
+* [生产环境](#生产环境)
 * [常见问题](#常见问题)
 * [更新计划](#更新计划)
 * [参与贡献](#参与贡献)
@@ -106,11 +106,11 @@ TODO
 
 #### 业务关系 @BIN
 
-## <a name="高级"></a>高级
+## <a name="变成自己的项目"></a>变成自己的项目
 
 TODO
 
-# <a name="性能测试"></a>性能测试
+# <a name="生产环境"></a>生产环境
 
 TODO
 
