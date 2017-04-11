@@ -191,6 +191,8 @@ TODO 跑起来了Piggymetrics、看懂了组件，如何把他变成自己的项
 * `快速部署`增加好雨云帮部署
 * `常见问题`补充问题总结[QA](QA.md)
 
+点击查看[历史更新](CHANGELOG.md)
+
 # <a name="参与贡献"></a>参与贡献
 
 [如何成为云框架贡献者](CONTRIBUTING.md)
