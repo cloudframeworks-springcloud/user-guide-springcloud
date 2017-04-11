@@ -72,19 +72,19 @@ PiggyMetrics基础服务设施中用到了Spring Cloud Config、Netflix Eureka�
 
 ## <a name="共用组件"></a>共用组件
 
-### Spring Cloud Config
+### Spring Cloud Config （配置管理）
 
 ##### 完整代码
 
 ##### 业务代码标注
 
-### Netflix Eureka
+### Netflix Eureka （服务发现）
 
 ##### 完整代码
 
 ##### 业务代码标注
 
-### Netflix Zuul
+### Netflix Zuul （API网关）
 
 ##### 完整代码
 
@@ -104,19 +104,19 @@ GET	| /accounts/demo	| 获取demo账户数据 (预填充收入/支出项目等)	
 PUT	| /accounts/current	| 保存当前账户数据	| × | ×
 POST	| /accounts/	| 注册新账户	|   | ×
 
-#### Netflix Ribbon
+#### Netflix Ribbon （负载均衡）
 
 ##### 完整代码
 
 ##### 业务代码标注
 
-#### Netflix Hystrix
+#### Netflix Hystrix （熔断器）
 
 ##### 完整代码
 
 ##### 业务代码标注
 
-#### 数据库
+#### MangoDB （数据库）
 
 ##### 完整代码
 
@@ -135,19 +135,19 @@ GET	| /statistics/current	| 获取当前账户统计	| × | ×
 GET	| /statistics/demo	| 获取demo账户统计	|   | × 
 PUT	| /statistics/{account}	| 创建或更新时间系列数据点指定的帐户	|   | 
 
-#### Netflix Ribbon
+#### Netflix Ribbon （负载均衡）
 
 ##### 完整代码
 
 ##### 业务代码标注
 
-#### Netflix Hystrix
+#### Netflix Hystrix （熔断器）
 
 ##### 完整代码
 
 ##### 业务代码标注
 
-#### 数据库
+#### MangoDB （数据库）
 
 ##### 完整代码
 
@@ -164,19 +164,20 @@ PUT	| /statistics/{account}	| 创建或更新时间系列数据点指定的帐�
 GET	| /notifications/settings/current	| 获取当前账户通知设置	| × | ×	
 PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
 
-#### Netflix Ribbon
+
+#### Netflix Ribbon （负载均衡）
 
 ##### 完整代码
 
 ##### 业务代码标注
 
-#### Netflix Hystrix
+#### Netflix Hystrix （熔断器）
 
 ##### 完整代码
 
 ##### 业务代码标注
 
-#### 数据库
+#### MangoDB （数据库）
 
 ##### 完整代码
 
