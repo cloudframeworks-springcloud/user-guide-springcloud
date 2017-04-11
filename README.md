@@ -23,7 +23,8 @@
 * [快速部署](#快速部署)
 * [框架说明](#框架说明) 
    * [整体架构](#整体架构)
-   * [模块说明](#模块说明)
+   * [共用组件](#共用组件)
+   * [业务模块](#业务模块)
    * [其他组件](#其他组件)
    * [高级操作](#高级操作)
 * [常见问题](#常见问题)
@@ -69,7 +70,27 @@ PiggyMetrics基础服务设施中用到了Spring Cloud Config、Netflix Eureka�
 
 <div align=center><img width="900" height="" src="./image/piggymetrics.png"/></div>
 
-## <a name="模块说明"></a>模块说明
+## <a name="共用组件"></a>共用组件
+
+### Spring Cloud Config
+
+##### 完整代码
+
+##### 业务代码标注
+
+### Netflix Eureka
+
+##### 完整代码
+
+##### 业务代码标注
+
+### Netflix Zuul
+
+##### 完整代码
+
+##### 业务代码标注
+
+## <a name="业务模块"></a>业务模块
 
 ### 账户服务模块（ACCOUNT SERVICE）
 
@@ -83,12 +104,6 @@ GET	| /accounts/demo	| 获取demo账户数据 (预填充收入/支出项目等)	
 PUT	| /accounts/current	| 保存当前账户数据	| × | ×
 POST	| /accounts/	| 注册新账户	|   | ×
 
-#### Netflix Zuul
-
-##### 完整代码
-
-##### 业务代码标注
-
 #### Netflix Ribbon
 
 ##### 完整代码
@@ -106,6 +121,8 @@ POST	| /accounts/	| 注册新账户	|   | ×
 ##### 完整代码
 
 ##### 业务代码标注
+
+### 组件关系
 
 ### 统计服务模块（STATISTICS SERVICE）
 
@@ -118,12 +135,6 @@ GET	| /statistics/current	| 获取当前账户统计	| × | ×
 GET	| /statistics/demo	| 获取demo账户统计	|   | × 
 PUT	| /statistics/{account}	| 创建或更新时间系列数据点指定的帐户	|   | 
 
-#### Netflix Zuul
-
-##### 完整代码
-
-##### 业务代码标注
-
 #### Netflix Ribbon
 
 ##### 完整代码
@@ -141,6 +152,8 @@ PUT	| /statistics/{account}	| 创建或更新时间系列数据点指定的帐�
 ##### 完整代码
 
 ##### 业务代码标注
+
+### 组件关系
 
 ### 通知服务模块（NOTIFICATION SERVICE）
 
@@ -151,12 +164,6 @@ PUT	| /statistics/{account}	| 创建或更新时间系列数据点指定的帐�
 GET	| /notifications/settings/current	| 获取当前账户通知设置	| × | ×	
 PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
 
-#### Netflix Zuul
-
-##### 完整代码
-
-##### 业务代码标注
-
 #### Netflix Ribbon
 
 ##### 完整代码
@@ -175,19 +182,9 @@ PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
 
 ##### 业务代码标注
 
+### 组件关系
+
 ## <a name="其他组件"></a>其他组件
-
-### Spring Cloud Config
-
-##### 完整代码
-
-##### 业务代码标注
-
-### Netflix Eureka
-
-##### 完整代码
-
-##### 业务代码标注
 
 ### Spring Cloud Sleuth
 
