@@ -23,7 +23,7 @@
 * [快速部署](#快速部署)
 * [框架说明](#框架说明) 
    * [整体架构](#整体架构)
-   * [共用组件](#共用组件)
+   * [基础模块](#基础模块)
    * [业务模块](#业务模块)
    * [其他组件](#其他组件)
    * [高级操作](#高级操作)
@@ -70,7 +70,7 @@ PiggyMetrics基础服务设施中用到了Spring Cloud Config、Netflix Eureka�
 
 <div align=center><img width="900" height="" src="./image/piggymetrics.png"/></div>
 
-## <a name="共用组件"></a>共用组件
+## <a name="基础模块"></a>基础模块
 
 ### Spring Cloud Config （配置管理）
 
