@@ -12,7 +12,10 @@
 
 相比Dubbo等RPC（远程过程调用协议）框架，Spring Cloud是一个比较新的微服务架构基础框架选择，2016年才推出的1.0 release版本，不过Spring Cloud的方案完整度非常高，各个子项目几乎覆盖了微服务架构的方方面面。从目前的关注度和活跃度来看，Spring Cloud很可能会成为微服务架构的标准。
 
-本篇[云框架](ABOUT.md)目的不在于重复造轮，而是总结过去数十个微服务架构项目的成功经验，绕过前人踩过的坑，结合典型案例，为开发者提供微服务落地的最佳实践。不必从零开始开发，开发者仅需在[云框架]基础上替换部分业务代码，就可以将[基于Spring Cloud的微服务架构](README.md)应用于生产环境并立即产生价值。
+本篇[云框架](ABOUT.md)目的不在于重复造轮，而是总结过去数十个微服务架构项目的成功经验，绕过前人踩过的坑，结合典型案例，为开发者提供微服务落地的最佳实践。
+
+* 对于初学者来说，可以通过结合实例的代码、文档快速学习Spring Cloud及微服务，并在社群中交流讨论；
+* 对于已有一定了解，想要使用Spring Cloud实现微服务架构的开发者来说，不必从零开始开发，仅需在[云框架]基础上替换部分业务代码，就可以将[基于Spring Cloud的微服务架构](README.md)应用于生产环境并立即产生价值。
 
 **以下内容以[PiggyMetrics](https://github.com/sqshq/PiggyMetrics)（一款个人财务管理应用）为例说明**
 
@@ -52,15 +55,51 @@ TODO
 
 # <a name="框架说明"></a>框架说明
 
-## <a name="业务"></a>业务 @YY
+## <a name="业务"></a>业务
 
-### <a name="业务背景"></a>业务背景
+<a name="业务背景"></a>Piggymetrics是一款个人财务管理应用。
 
-### <a name="业务架构"></a>业务架构
+通过Spring Cloud实现微服务架构，Piggymetrics应用被分解为账户服务（ACCOUNT SERVICE）、统计服务（STATISTICS SERVICE）、通知服务（NOTIFICATION SERVICE）等三个核心微服务。每个微服务都是围绕业务能力组织的可独立部署的应用程序，拥有独立的数据库，并使用同步的REST API实现微服务与微服务之间的通信。
 
-### <a name="业务模块"></a>业务模块
+相比传统架构模式，基于Spring Cloud的微服务架构为Piggymetrics带来了包括1）可独立部署、升级、替换、伸缩，2）自由选择开发语言，3）高效利用资源，4）故障隔离在内的多项好处。
+
+Piggymetrics<a name="业务架构"></a>业务架构如下图所示：
+
+![](https://cloud.githubusercontent.com/assets/6069066/13900465/730f2922-ee20-11e5-8df0-e7b51c668847.png)
+
+其中<a name="业务模块"></a>**账户服务**模块包含一般用户输入逻辑和验证：收入/费用项目，储蓄和帐户设置。
+
+方法	| 路径	| 描述	| 用户验证	| UI可用
+------------- | ------------------------- | ------------- |:-------------:|:----------------:|
+GET	| /accounts/{account}	| 获取特定账户数据	|  | 	
+GET	| /accounts/current	| 获取当前账户数据	| × | ×
+GET	| /accounts/demo	| 获取demo账户数据 (预填充收入/支出项目等)	|   | 	×
+PUT	| /accounts/current	| 保存当前账户数据	| × | ×
+POST	| /accounts/	| 注册新账户	|   | ×
+
+**统计服务**模块对主要统计参数执行计算，并为每个帐户的时间序列。数据点包含基准货币和时间段的值。此数据用于跟踪帐户生命周期中的现金流动动态（尚未在UI中实现的花式图表）。
+
+方法	| 路径	| 描述 | 用户验证	| UI可用
+------------- | ------------------------- | ------------- |:-------------:|:----------------:|
+GET	| /statistics/{account}	| 获取特定账户统计	          |  | 	
+GET	| /statistics/current	| 获取当前账户统计	| × | × 
+GET	| /statistics/demo	| 获取demo账户统计	|   | × 
+PUT	| /statistics/{account}	| 创建或更新时间系列数据点指定的帐户	|   | 
+
+**通知服务**模块存储用户联系信息和通知设置（如提醒和备份频率）。计划工作人员从其他服务收集所需的信息，并向订阅的客户发送电子邮件。
+
+方法	| 路径	| 描述	| 用户验证	| UI可用
+------------- | ------------------------- | ------------- |:-------------:|:----------------:|
+GET	| /notifications/settings/current	| 获取当前账户通知设置	| × | ×	
+PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
 
 ## <a name="组件"></a>组件
+
+PiggyMetrics基础服务设施中用到了Spring Cloud Config、Netflix Eureka、Netflix Hystrix、Netflix Zuul、Netflix Ribbon、Netflix Feign等组件，而这也正是Spring Cloud分布式开发中最核心组件。
+
+<a name="组件架构"></a>组件架构如下图所示：
+
+![](https://cloud.githubusercontent.com/assets/6069066/13906840/365c0d94-eefa-11e5-90ad-9d74804ca412.png)
 
 ### 组件架构图 @YY
 
