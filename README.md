@@ -201,7 +201,7 @@ PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
 + [联系我们](mailto:info@goodrain.com)
 + QQ群1: 531980120
 + 微信二维码（2017.04.18日前有效）
-<div align=center><img width="200" height="" src="http://7xihe6.com1.z0.glb.clouddn.com/WechatIMG11.jpeg"/></div>
+<div align=left><img width="200" height="" src="http://7xihe6.com1.z0.glb.clouddn.com/WechatIMG11.jpeg"/></div>
 
 -------
 
