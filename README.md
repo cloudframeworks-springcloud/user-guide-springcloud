@@ -74,13 +74,13 @@ PiggyMetrics基础服务设施中用到了Spring Cloud Config、Netflix Eureka�
 
 在Piggymetrics项目中，账户服务模块包含一般用户输入逻辑和验证：收入/费用项目，储蓄和帐户设置。
 
-Method	| Path	| Description	| User authenticated	| Available from UI
+方法	| 路径	| 描述	| 用户验证	| UI可用
 ------------- | ------------------------- | ------------- |:-------------:|:----------------:|
-GET	| /accounts/{account}	| Get specified account data	|  | 	
-GET	| /accounts/current	| Get current account data	| × | ×
-GET	| /accounts/demo	| Get demo account data (pre-filled incomes/expenses items, etc)	|   | 	×
-PUT	| /accounts/current	| Save current account data	| × | ×
-POST	| /accounts/	| Register new account	|   | ×
+GET	| /accounts/{account}	| 获取特定账户数据	|  | 	
+GET	| /accounts/current	| 获取当前账户数据	| × | ×
+GET	| /accounts/demo	| 获取demo账户数据 (预填充收入/支出项目等)	|   | 	×
+PUT	| /accounts/current	| 保存当前账户数据	| × | ×
+POST	| /accounts/	| 注册新账户	|   | ×
 
 #### Netflix Zuul
 
@@ -110,12 +110,12 @@ POST	| /accounts/	| Register new account	|   | ×
 
 在Piggymetris项目中，统计服务模块对主要统计参数执行计算，并为每个帐户的时间序列。数据点包含基准货币和时间段的值。此数据用于跟踪帐户生命周期中的现金流动动态（尚未在UI中实现的花式图表）。
 
-Method	| Path	| Description	| User authenticated	| Available from UI
+方法	| 路径	| 描述 | 用户验证	| UI可用
 ------------- | ------------------------- | ------------- |:-------------:|:----------------:|
-GET	| /statistics/{account}	| Get specified account statistics	          |  | 	
-GET	| /statistics/current	| Get current account statistics	| × | × 
-GET	| /statistics/demo	| Get demo account statistics	|   | × 
-PUT	| /statistics/{account}	| Create or update time series datapoint for specified account	|   | 
+GET	| /statistics/{account}	| 获取特定账户统计	          |  | 	
+GET	| /statistics/current	| 获取当前账户统计	| × | × 
+GET	| /statistics/demo	| 获取demo账户统计	|   | × 
+PUT	| /statistics/{account}	| 创建或更新时间系列数据点指定的帐户	|   | 
 
 #### Netflix Zuul
 
@@ -145,10 +145,10 @@ PUT	| /statistics/{account}	| Create or update time series datapoint for specifi
 
 在Piggymetrics项目中，存储用户联系信息和通知设置（如提醒和备份频率）。计划工作人员从其他服务收集所需的信息，并向订阅的客户发送电子邮件。
 
-Method	| Path	| Description	| User authenticated	| Available from UI
+方法	| 路径	| 描述	| 用户验证	| UI可用
 ------------- | ------------------------- | ------------- |:-------------:|:----------------:|
-GET	| /notifications/settings/current	| Get current account notification settings	| × | ×	
-PUT	| /notifications/settings/current	| Save current account notification settings	| × | ×
+GET	| /notifications/settings/current	| 获取当前账户通知设置	| × | ×	
+PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
 
 #### Netflix Zuul
 
