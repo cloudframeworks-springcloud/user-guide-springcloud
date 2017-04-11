@@ -18,12 +18,12 @@
 
 # 内容概览
 
-* [完整框架](#完整框架)
+* [框架组件](#框架组件)
 * [在线演示](#在线演示)
 * [快速部署](#快速部署)
 * [框架说明](#框架说明) 
    * [整体架构](#整体架构)
-   * [共用组件](#共用组件)
+   * [基础模块](#基础模块)
    * [业务模块](#业务模块)
    * [其他组件](#其他组件)
    * [高级操作](#高级操作)
@@ -32,7 +32,7 @@
 * [参与贡献](#参与贡献)
 * [加入社群](#加入社群)
 
-# <a name="完整框架"></a>完整框架（不含业务代码）
+# <a name="框架组件"></a>框架组件（不含业务代码）
 
 [云框架]基于Spring Cloud的微服务架构核心组件有：
 
@@ -70,21 +70,21 @@ PiggyMetrics基础服务设施中用到了Spring Cloud Config、Netflix Eureka�
 
 <div align=center><img width="900" height="" src="./image/piggymetrics.png"/></div>
 
-## <a name="共用组件"></a>共用组件
+## <a name="基础模块"></a>基础模块
 
-### Spring Cloud Config
-
-##### 完整代码
-
-##### 业务代码标注
-
-### Netflix Eureka
+### Spring Cloud Config （配置管理）
 
 ##### 完整代码
 
 ##### 业务代码标注
 
-### Netflix Zuul
+### Netflix Eureka （服务发现）
+
+##### 完整代码
+
+##### 业务代码标注
+
+### Netflix Zuul （API网关）
 
 ##### 完整代码
 
@@ -104,19 +104,19 @@ GET	| /accounts/demo	| 获取demo账户数据 (预填充收入/支出项目等)	
 PUT	| /accounts/current	| 保存当前账户数据	| × | ×
 POST	| /accounts/	| 注册新账户	|   | ×
 
-#### Netflix Ribbon
+#### Netflix Ribbon （负载均衡）
 
 ##### 完整代码
 
 ##### 业务代码标注
 
-#### Netflix Hystrix
+#### Netflix Hystrix （熔断器）
 
 ##### 完整代码
 
 ##### 业务代码标注
 
-#### 数据库
+#### MangoDB （数据库）
 
 ##### 完整代码
 
@@ -135,19 +135,19 @@ GET	| /statistics/current	| 获取当前账户统计	| × | ×
 GET	| /statistics/demo	| 获取demo账户统计	|   | × 
 PUT	| /statistics/{account}	| 创建或更新时间系列数据点指定的帐户	|   | 
 
-#### Netflix Ribbon
+#### Netflix Ribbon （负载均衡）
 
 ##### 完整代码
 
 ##### 业务代码标注
 
-#### Netflix Hystrix
+#### Netflix Hystrix （熔断器）
 
 ##### 完整代码
 
 ##### 业务代码标注
 
-#### 数据库
+#### MangoDB （数据库）
 
 ##### 完整代码
 
@@ -164,19 +164,20 @@ PUT	| /statistics/{account}	| 创建或更新时间系列数据点指定的帐�
 GET	| /notifications/settings/current	| 获取当前账户通知设置	| × | ×	
 PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
 
-#### Netflix Ribbon
+
+#### Netflix Ribbon （负载均衡）
 
 ##### 完整代码
 
 ##### 业务代码标注
 
-#### Netflix Hystrix
+#### Netflix Hystrix （熔断器）
 
 ##### 完整代码
 
 ##### 业务代码标注
 
-#### 数据库
+#### MangoDB （数据库）
 
 ##### 完整代码
 
