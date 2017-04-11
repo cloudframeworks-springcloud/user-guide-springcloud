@@ -17,14 +17,11 @@
 # 内容概览
 
 * [框架组件](#框架组件)
-* [在线演示](#在线演示)
 * [快速部署](#快速部署)
 * [框架说明](#框架说明) 
    * [整体架构](#整体架构)
    * [基础模块](#基础模块)
    * [业务模块](#业务模块)
-   * [其他组件](#其他组件)
-   * [高级操作](#高级操作)
 * [常见问题](#常见问题)
 * [更新计划](#更新计划)
 * [参与贡献](#参与贡献)
@@ -46,8 +43,6 @@
 * [Spring Cloud Sleuth](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Sleuth)
 
 **以下内容以[PiggyMetrics](https://github.com/sqshq/PiggyMetrics)（一款个人财务管理应用）为例说明**
-
-# <a name="在线演示"></a>在线演示 x
 
 # <a name="快速部署"></a>快速部署
 
@@ -183,32 +178,6 @@ PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
 
 #### 组件关系
 
-## <a name="其他组件"></a>其他组件 x
-
-### Spring Cloud Sleuth
-
-##### 完整代码
-
-##### 业务代码标注
-
-### Netflix Turbine
-
-##### 完整代码
-
-##### 业务代码标注
-
-## <a name="高级操作"></a>高级操作 x
-
-### CI/CD
-
-### 日志
-
-### 监控
-
-### 安全
-
-### ...
-
 # <a name="常见问题"></a>常见问题
 
 任何相关问题均可通过[GitHub ISSUE](https://github.com/cloudframeworks-springcloud/user-guide/issues)提交或讨论，问题总结请查看[[QA](QA.md)]
@@ -220,6 +189,7 @@ PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
 * 增加版本依赖关系说明
 * 增加好雨云帮部署
 * 增加云框架在线演示
+* 补充问题总结说明
 
 # <a name="参与贡献"></a>参与贡献
 
