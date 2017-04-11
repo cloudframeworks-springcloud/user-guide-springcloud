@@ -108,6 +108,8 @@ TODO
 
 # <a name="性能测试"></a>性能测试
 
+TODO
+
 # <a name="常见问题"></a>常见问题
 
 任何相关问题均可通过[GitHub ISSUE](https://github.com/cloudframeworks-springcloud/user-guide/issues)提交或讨论，问题总结请查看[[QA](QA.md)]
@@ -119,6 +121,7 @@ TODO
 * 增加版本依赖关系说明
 * 增加好雨云帮部署
 * 增加云框架在线演示
+* 增加新能测试说明
 * 补充问题总结说明
 
 # <a name="参与贡献"></a>参与贡献
