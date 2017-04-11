@@ -14,42 +14,128 @@
 
 本篇[云框架](ABOUT.md)目的不在于重复造轮，而是总结过去数十个微服务架构项目的成功经验，绕过前人踩过的坑，为开发者提供微服务落地的最佳实践。不必从零开始开发，开发者仅需在[云框架]基础上替换部分业务代码，就可以将[基于Spring Cloud的微服务架构](README.md)应用于生产环境并立即产生价值。
 
+**以下内容以[PiggyMetrics](https://github.com/sqshq/PiggyMetrics)（一款个人财务管理应用）为例说明**
+
 # 内容概览
 
-* [框架组件](#框架组件)
+* [在线演示](#在线演示)
 * [快速部署](#快速部署)
 * [框架说明](#框架说明) 
-   * [整体架构](#整体架构)
-   * [基础模块](#基础模块)
-   * [业务模块](#业务模块)
+   * [业务](#业务)
+      * [业务背景](#业务背景)
+      * [业务架构](#业务架构)
+      * [业务模块](#业务模块)
+   * [组件](#组件)
+      * [组件架构](#组件架构)
+      * [Spring Cloud Config](#Spring-Cloud-Config)
+      * [Netflix Eureka](#Netflix-Eureka)
+      * [Netflix Zuul](#Netflix-Zuul)
+      * [Netflix Ribbon](#Netflix-Ribbon)
+      * [Netflix Hystrix](#Netflix-Hystrix)
+      * [Netflix Feign](#Netflix-Feign)
+      * [Spring Cloud Sleuth](#Spring-Cloud-Sleuth)
+   * [高级](#组件)
+* [性能测试](#性能测试)
 * [常见问题](#常见问题)
 * [更新计划](#更新计划)
 * [参与贡献](#参与贡献)
 * [加入社群](#加入社群)
 
-# <a name="框架组件"></a>框架组件（不含业务代码）
+# <a name="在线演示"></a>在线演示
 
-[云框架]基于Spring Cloud的微服务架构核心组件有：
-
-* [Spring Cloud Config - server](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-server)
-* [Spring Cloud Config - client](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-client)
-* [Spring Cloud Config - 配置文件](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-client)
-* [Netflix Eureka - server](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server)
-* [Netflix Eureka - service](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-service)
-* [Netflix Zuul](https://github.com/cloudframeworks-springcloud/Netflix-Zuul)
-* [Netflix Ribbon](https://github.com/cloudframeworks-springcloud/Netflix-Ribbon)
-* [Netflix Hystrix](https://github.com/cloudframeworks-springcloud/Netflix-Hystrix)
-* [Netflix Feign](https://github.com/cloudframeworks-springcloud/Netflix-Feign)
-* [Spring Cloud Sleuth](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Sleuth)
-
-**以下内容以[PiggyMetrics](https://github.com/sqshq/PiggyMetrics)（一款个人财务管理应用）为例说明**
+TODO
 
 # <a name="快速部署"></a>快速部署
 
-* 开发环境（准备工作、操作步骤）
-* 生产环境（准备工作、操作步骤）
+* 准备工作
+* 操作步骤
 
 # <a name="框架说明"></a>框架说明
+
+## <a name="业务"></a>业务
+
+### <a name="业务北京"></a>业务背景
+
+### <a name="业务架构"></a>业务架构
+
+### <a name="业务模块"></a>业务模块
+
+## <a name="组件"></a>组件
+
+### 组件架构图
+
+### <a name="Spring-Cloud-Config"></a>Spring Cloud Config
+
+#### 组件介绍
+
+#### 业务关系
+
+### <a name="Netflix-Eureka"></a>Netflix Eureka
+
+#### 组件介绍
+
+#### 业务关系
+
+### <a name="Netflix-Zuul"></a>Netflix Zuul
+
+#### 组件介绍
+
+#### 业务关系
+
+### <a name="Netflix-Ribbon"></a>Netflix Ribbon
+
+#### 组件介绍
+
+#### 业务关系
+
+### <a name="Netflix-Hystrix"></a>Netflix Hystrix
+
+#### 组件介绍
+
+#### 业务关系
+
+### <a name="Netflix-Feign"></a>Netflix Feign
+
+#### 组件介绍
+
+#### 业务关系
+
+### <a name="Spring-Cloud-Sleuth"></a>Spring Cloud Sleuth
+
+## <a name="高级"></a>高级
+
+TODO
+
+# <a name="性能测试"></a>性能测试
+
+# <a name="常见问题"></a>常见问题
+
+任何相关问题均可通过[GitHub ISSUE](https://github.com/cloudframeworks-springcloud/user-guide/issues)提交或讨论，问题总结请查看[[QA](QA.md)]
+
+# <a name="更新计划"></a>更新计划
+
+* 增加Turbine、Consul组件
+* 增加CI/CD、日志、监控、安全实现方案
+* 增加版本依赖关系说明
+* 增加好雨云帮部署
+* 增加云框架在线演示
+* 补充问题总结说明
+
+# <a name="参与贡献"></a>参与贡献
+
+[如何成为云框架贡献者](CONTRIBUTING.md)
+
+# <a name="加入社群"></a>加入社群
+
++ [订阅邮件](http://goodrain.us15.list-manage.com/subscribe?u=1874f1de4ed82a52890cefb4c&id=b88f73ca56)
++ [联系我们](mailto:info@goodrain.com)
++ QQ群1: 531980120
++ 微信二维码（2017.04.18日前有效）
+<div align=left><img width="200" height="" src="http://7xihe6.com1.z0.glb.clouddn.com/WechatIMG11.jpeg"/></div>
+
+-------
+
+[云框架](ABOUT.md)系列主题，遵循[APACHE LICENSE 2.0](LICENSE.md)协议发布。
 
 Piggymetrics（[查看应用](http://my-piggymetrics.rhcloud.com/)）由账户服务（ACCOUNT SERVICE）、统计服务（STATISTICS SERVICE）、通知服务（NOTIFICATION SERVICE）等三个核心微服务组成，其中：
 
