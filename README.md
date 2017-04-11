@@ -23,7 +23,8 @@
 * [快速部署](#快速部署)
 * [框架说明](#框架说明) 
    * [整体架构](#整体架构)
-   * [模块说明](#模块说明)
+   * [共用组件](#共用组件)
+   * [业务模块](#业务模块)
    * [其他组件](#其他组件)
    * [高级操作](#高级操作)
 * [常见问题](#常见问题)
@@ -35,23 +36,16 @@
 
 [云框架]基于Spring Cloud的微服务架构核心组件有：
 
-[Spring Cloud Config - server](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-server)
-
-[Spring Cloud Config - client](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-client)
-
-[Spring Cloud Config - 配置文件](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-client)
-
-[Netflix Eureka - server](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server)
-
-[Netflix Eureka - service](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-service)
-
-[Netflix Ribbon](https://github.com/cloudframeworks-springcloud/Netflix-Ribbon)
-
-[Netflix Hystrix](https://github.com/cloudframeworks-springcloud/Netflix-Hystrix)
-
-[Netflix Feign](https://github.com/cloudframeworks-springcloud/Netflix-Feign)
-
-[Spring Cloud Sleuth](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Sleuth)
+* [Spring Cloud Config - server](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-server)
+* [Spring Cloud Config - client](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-client)
+* [Spring Cloud Config - 配置文件](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-client)
+* [Netflix Eureka - server](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server)
+* [Netflix Eureka - service](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-service)
+* [Netflix Zuul](https://github.com/cloudframeworks-springcloud/Netflix-Zuul)
+* [Netflix Ribbon](https://github.com/cloudframeworks-springcloud/Netflix-Ribbon)
+* [Netflix Hystrix](https://github.com/cloudframeworks-springcloud/Netflix-Hystrix)
+* [Netflix Feign](https://github.com/cloudframeworks-springcloud/Netflix-Feign)
+* [Spring Cloud Sleuth](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Sleuth)
 
 **以下内容以PiggyMetrics为例说明**
 
@@ -76,113 +70,7 @@ PiggyMetrics基础服务设施中用到了Spring Cloud Config、Netflix Eureka�
 
 <div align=center><img width="900" height="" src="./image/piggymetrics.png"/></div>
 
-## <a name="模块说明"></a>模块说明
-
-### 账户服务模块（ACCOUNT SERVICE）
-
-在Piggymetrics项目中，账户服务模块包含一般用户输入逻辑和验证：收入/费用项目，储蓄和帐户设置。
-
-Method	| Path	| Description	| User authenticated	| Available from UI
-------------- | ------------------------- | ------------- |:-------------:|:----------------:|
-GET	| /accounts/{account}	| Get specified account data	|  | 	
-GET	| /accounts/current	| Get current account data	| × | ×
-GET	| /accounts/demo	| Get demo account data (pre-filled incomes/expenses items, etc)	|   | 	×
-PUT	| /accounts/current	| Save current account data	| × | ×
-POST	| /accounts/	| Register new account	|   | ×
-
-#### Netflix Zuul
-
-##### 完整代码
-
-##### 业务代码标注
-
-#### Netflix Ribbon
-
-##### 完整代码
-
-##### 业务代码标注
-
-#### Netflix Hystrix
-
-##### 完整代码
-
-##### 业务代码标注
-
-#### 数据库
-
-##### 完整代码
-
-##### 业务代码标注
-
-### 统计服务模块（STATISTICS SERVICE）
-
-在Piggymetris项目中，统计服务模块对主要统计参数执行计算，并为每个帐户的时间序列。数据点包含基准货币和时间段的值。此数据用于跟踪帐户生命周期中的现金流动动态（尚未在UI中实现的花式图表）。
-
-Method	| Path	| Description	| User authenticated	| Available from UI
-------------- | ------------------------- | ------------- |:-------------:|:----------------:|
-GET	| /statistics/{account}	| Get specified account statistics	          |  | 	
-GET	| /statistics/current	| Get current account statistics	| × | × 
-GET	| /statistics/demo	| Get demo account statistics	|   | × 
-PUT	| /statistics/{account}	| Create or update time series datapoint for specified account	|   | 
-
-#### Netflix Zuul
-
-##### 完整代码
-
-##### 业务代码标注
-
-#### Netflix Ribbon
-
-##### 完整代码
-
-##### 业务代码标注
-
-#### Netflix Hystrix
-
-##### 完整代码
-
-##### 业务代码标注
-
-#### 数据库
-
-##### 完整代码
-
-##### 业务代码标注
-
-### 通知服务模块（NOTIFICATION SERVICE）
-
-在Piggymetrics项目中，存储用户联系信息和通知设置（如提醒和备份频率）。计划工作人员从其他服务收集所需的信息，并向订阅的客户发送电子邮件。
-
-Method	| Path	| Description	| User authenticated	| Available from UI
-------------- | ------------------------- | ------------- |:-------------:|:----------------:|
-GET	| /notifications/settings/current	| Get current account notification settings	| × | ×	
-PUT	| /notifications/settings/current	| Save current account notification settings	| × | ×
-
-#### Netflix Zuul
-
-##### 完整代码
-
-##### 业务代码标注
-
-#### Netflix Ribbon
-
-##### 完整代码
-
-##### 业务代码标注
-
-#### Netflix Hystrix
-
-##### 完整代码
-
-##### 业务代码标注
-
-#### 数据库
-
-##### 完整代码
-
-##### 业务代码标注
-
-## <a name="其他组件"></a>其他组件
+## <a name="共用组件"></a>共用组件
 
 ### Spring Cloud Config
 
@@ -195,6 +83,108 @@ PUT	| /notifications/settings/current	| Save current account notification settin
 ##### 完整代码
 
 ##### 业务代码标注
+
+### Netflix Zuul
+
+##### 完整代码
+
+##### 业务代码标注
+
+## <a name="业务模块"></a>业务模块
+
+### 账户服务模块（ACCOUNT SERVICE）
+
+在Piggymetrics项目中，账户服务模块包含一般用户输入逻辑和验证：收入/费用项目，储蓄和帐户设置。
+
+方法	| 路径	| 描述	| 用户验证	| UI可用
+------------- | ------------------------- | ------------- |:-------------:|:----------------:|
+GET	| /accounts/{account}	| 获取特定账户数据	|  | 	
+GET	| /accounts/current	| 获取当前账户数据	| × | ×
+GET	| /accounts/demo	| 获取demo账户数据 (预填充收入/支出项目等)	|   | 	×
+PUT	| /accounts/current	| 保存当前账户数据	| × | ×
+POST	| /accounts/	| 注册新账户	|   | ×
+
+#### Netflix Ribbon
+
+##### 完整代码
+
+##### 业务代码标注
+
+#### Netflix Hystrix
+
+##### 完整代码
+
+##### 业务代码标注
+
+#### 数据库
+
+##### 完整代码
+
+##### 业务代码标注
+
+#### 组件关系
+
+### 统计服务模块（STATISTICS SERVICE）
+
+在Piggymetris项目中，统计服务模块对主要统计参数执行计算，并为每个帐户的时间序列。数据点包含基准货币和时间段的值。此数据用于跟踪帐户生命周期中的现金流动动态（尚未在UI中实现的花式图表）。
+
+方法	| 路径	| 描述 | 用户验证	| UI可用
+------------- | ------------------------- | ------------- |:-------------:|:----------------:|
+GET	| /statistics/{account}	| 获取特定账户统计	          |  | 	
+GET	| /statistics/current	| 获取当前账户统计	| × | × 
+GET	| /statistics/demo	| 获取demo账户统计	|   | × 
+PUT	| /statistics/{account}	| 创建或更新时间系列数据点指定的帐户	|   | 
+
+#### Netflix Ribbon
+
+##### 完整代码
+
+##### 业务代码标注
+
+#### Netflix Hystrix
+
+##### 完整代码
+
+##### 业务代码标注
+
+#### 数据库
+
+##### 完整代码
+
+##### 业务代码标注
+
+#### 组件关系
+
+### 通知服务模块（NOTIFICATION SERVICE）
+
+在Piggymetrics项目中，存储用户联系信息和通知设置（如提醒和备份频率）。计划工作人员从其他服务收集所需的信息，并向订阅的客户发送电子邮件。
+
+方法	| 路径	| 描述	| 用户验证	| UI可用
+------------- | ------------------------- | ------------- |:-------------:|:----------------:|
+GET	| /notifications/settings/current	| 获取当前账户通知设置	| × | ×	
+PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
+
+#### Netflix Ribbon
+
+##### 完整代码
+
+##### 业务代码标注
+
+#### Netflix Hystrix
+
+##### 完整代码
+
+##### 业务代码标注
+
+#### 数据库
+
+##### 完整代码
+
+##### 业务代码标注
+
+#### 组件关系
+
+## <a name="其他组件"></a>其他组件
 
 ### Spring Cloud Sleuth
 
