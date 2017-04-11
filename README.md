@@ -95,15 +95,15 @@ PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
 
 ## <a name="组件"></a>组件
 
-PiggyMetrics基础服务设施中用到了Spring Cloud Config、Netflix Eureka、Netflix Hystrix、Netflix Zuul、Netflix Ribbon、Netflix Feign等组件，而这也正是Spring Cloud分布式开发中最核心组件。
+<a name="组件架构"></a>Piggymetrics基础服务设施中用到了Spring Cloud Config、Netflix Eureka、Netflix Hystrix、Netflix Zuul、Netflix Ribbon、Netflix Feign、Spring Cloud Sleuth等组件，而这也正是Spring Cloud分布式开发中最核心组件。
 
-<a name="组件架构"></a>组件架构如下图所示：
+Piggymetrics组件架构如下图所示：
 
 <div align=center><img width="900" height="" src="./image/pm组件架构.png"/></div>
 
 ### <a name="Spring-Cloud-Config"></a>Spring Cloud Config
 
-Spring Cloud Config（配置管理开发包）提供解决分布式系统的配置管理方案，分config_server、config_client两个模块：
+Spring Cloud Config可以理解为配置管理开发包，提供解决分布式系统的配置管理方案，分config_server、config_client两个模块：
 
 * [[config_server]](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-client) (配置服务器)：统一配置系统中需要的各种服务
 * [[config_client]](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-server) (配置客户端)：根据Spring框架的`Environment`和`PropertySource`从config_sever获取各种[[配置文件]](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config)
@@ -114,9 +114,7 @@ Spring Cloud Config基于使用中心配置仓库的思想（版本控制），�
 
 ### <a name="Netflix-Eureka"></a>Netflix Eureka
 
-相比传统SOA架构，微服务架构中的服务粒度更小、服务数量更多，如何有效管理各个服务就显得尤为重要，也因此出现了服务注册的概念。
-
-服务注册的本质：1）简单易用，对用户透明；2）高可用，满足CAP理论；3）多语言支持
+相比传统SOA架构，微服务架构中的服务粒度更小、服务数量更多，如何有效管理各个服务就显得尤为重要，也因此出现了服务注册的概念，它的本质是1）简单易用，对用户透明；2）高可用，满足CAP理论；3）多语言支持。
 
 在基于Spring Cloud的微服务架构中，通常采用Netflix Eureka([[Eureka Server]](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server)[[ureka service]](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-service))作为注册中心，某些情况下也会采用Zookeeper作为替代。
 
@@ -125,9 +123,9 @@ Netflix Eureka的易用性体现在两方面：
 * 通过与Spring Boot(Cloud)结合达到只用注解和Maven依赖即可部署和启动服务的效果
 * Netflix Eureka自带Client包，使得使用Eureka作为注册中心的客户端（即服务）不需要关心自己与Eureka的通讯机制，只需要引入Client依赖即可，当然前提是使用Java
 
-**Netflix Eureka通过“伙伴”机制实现高可用**，每一台Eureka都需要在配置中指定另一个Eureka的地址作为伙伴，Eureka启动时会向自己的伙伴节点获取当前已经存在的注册列表，这样在向Eureka集群中增加新机器时就不需要担心注册列表不完整的问题，在CAP理论中满足AP原则。
+Netflix Eureka通过“伙伴”机制实现高可用，每一台Eureka都需要在配置中指定另一个Eureka的地址作为伙伴，Eureka启动时会向自己的伙伴节点获取当前已经存在的注册列表，这样在向Eureka集群中增加新机器时就不需要担心注册列表不完整的问题，在CAP理论中满足AP原则。
 
-除此之外，**Netflix Eureka支持Region和Zone的概念**，其中一个Region可以包含多个Zone。Eureka在启动时需要指定一个Zone名，即指定当前Eureka属于哪个Zone, 如果不指定则属于defaultZone。值得注意的是，Eureka Client也需要指定Zone。
+除此之外，Netflix Eureka支持Region和Zone的概念，其中一个Region可以包含多个Zone。Eureka在启动时需要指定一个Zone名，即指定当前Eureka属于哪个Zone, 如果不指定则属于defaultZone。值得注意的是，Eureka Client也需要指定Zone。
 
 Netflix Eureka使用Java编写，但它会将所有注册信息和心跳连接地址都暴露为HTTP REST接口，客户端实际是通过HTTP请求与Server进行通讯的，因此Client完全可以使用其它语言进行编写，只需要即时调用注册服务、注销服务、获取服务列表和心跳请求的HTTP REST接口即可。
 
@@ -167,13 +165,17 @@ Netflix Ribbon的主要特点包括：1）负载均衡，2）容错，3）在异
 
 #### 业务关系 @BIN
 
-## <a name="如何变成自己的项目"></a>如何变成自己的项目
+## <a name="如何变成自己的项目"></a>如何变成自己的项目 @BIN
 
-TODO
+TODO 跑起来了Piggymetrics、看懂了组件，如何把他变成自己的项目的**操作步骤**
 
-# <a name="生产环境"></a>生产环境
+# <a name="生产环境"></a>生产环境 @YY
 
-TODO
+* CI/CD`TODO`
+* 扩容`TODO`
+* 服务容错`TODO`
+* 业务监控／性能分析`TODO`
+* K8s部署`TODO`
 
 # <a name="常见问题"></a>常见问题
 
@@ -181,13 +183,13 @@ TODO
 
 # <a name="更新计划"></a>更新计划
 
-* 增加Turbine、Consul组件
-* 增加CI/CD、日志、监控、安全实现方案
-* 增加版本依赖关系说明
-* 增加好雨云帮部署
-* 增加云框架在线演示
-* 增加新能测试说明
-* 补充问题总结说明
+## Roadmap
+
+* `文档`增加在线演示
+* `组件`增加组件内容，如Turbine、Consul等
+* `生产环境`增加生产环境下各项扩展操作，如性能测试及各类部署、特性、技术实现等
+* `快速部署`增加好雨云帮部署
+* `常见问题`补充问题总结[QA](QA.md)
 
 # <a name="参与贡献"></a>参与贡献
 
