@@ -12,9 +12,7 @@
 
 相比Dubbo等RPC（远程过程调用协议）框架，Spring Cloud是一个比较新的微服务架构基础框架选择，2016年才推出的1.0 release版本，不过Spring Cloud的方案完整度非常高，各个子项目几乎覆盖了微服务架构的方方面面。从目前的关注度和活跃度来看，Spring Cloud很可能会成为微服务架构的标准。
 
-本篇[云框架](ABOUT.md)目的不在于重复造轮，而是总结过去数十个微服务架构项目的成功经验，绕过前人踩过的坑，以一个实际项目（[PiggyMetrics](https://github.com/sqshq/PiggyMetrics)，一款个人财务管理应用）为例，为开发者提供微服务落地的最佳实践。
-
-不必从零开始开发，开发者仅需在[云框架]基础上替换部分业务代码，就可以将[基于Spring Cloud的微服务架构](README.md)应用于生产环境并立即产生价值。
+本篇[云框架](ABOUT.md)目的不在于重复造轮，而是总结过去数十个微服务架构项目的成功经验，绕过前人踩过的坑，为开发者提供微服务落地的最佳实践。不必从零开始开发，开发者仅需在[云框架]基础上替换部分业务代码，就可以将[基于Spring Cloud的微服务架构](README.md)应用于生产环境并立即产生价值。
 
 # 内容概览
 
@@ -47,7 +45,7 @@
 * [Netflix Feign](https://github.com/cloudframeworks-springcloud/Netflix-Feign)
 * [Spring Cloud Sleuth](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Sleuth)
 
-**以下内容以PiggyMetrics为例说明**
+**以下内容以[PiggyMetrics](https://github.com/sqshq/PiggyMetrics)（一款个人财务管理应用）为例说明**
 
 # <a name="在线演示"></a>在线演示
 
@@ -65,6 +63,8 @@ Piggymetrics（[查看应用](http://my-piggymetrics.rhcloud.com/)）由账户�
 * 微服务与微服务之间通信使用同步的REST API
 
 PiggyMetrics基础服务设施中用到了Spring Cloud Config、Netflix Eureka、Netflix Hystrix、Netflix Zuul、Netflix Ribbon等组件，而这也正是Spring Cloud分布式开发中最核心的5个组件。
+
+整体架构如下图所示
 
 ## <a name="整体架构"></a>整体架构
 
@@ -219,6 +219,7 @@ PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
 
 * 增加Turbine、Consul组件
 * 增加CI/CD、日志、监控、安全实现方案
+* 增加版本依赖关系说明
 * 增加好雨云帮部署
 * 增加云框架在线演示
 
