@@ -37,7 +37,7 @@
       * [Netflix Hystrix](#Netflix-Hystrix)
       * [Netflix Feign](#Netflix-Feign)
       * [Spring Cloud Sleuth](#Spring-Cloud-Sleuth)
-* [变成自己的项目](#变成自己的项目)
+* [如何变成自己的项目](#如何变成自己的项目)
 * [生产环境](#生产环境)
 * [常见问题](#常见问题)
 * [更新计划](#更新计划)
@@ -101,51 +101,115 @@ PiggyMetrics基础服务设施中用到了Spring Cloud Config、Netflix Eureka�
 
 <div align=center><img width="900" height="" src="./image/pm组件架构.png"/></div>
 
-### 组件架构图 @YY
-
 ### <a name="Spring-Cloud-Config"></a>Spring Cloud Config
 
-#### 组件介绍 @YY 介绍组件简介、特点等
+#### 组件介绍
+
+Spring Cloud Config提供解决分布式系统的配置管理方案，分server、client两个模块：
+
+* config_server 配置服务器：统一配置系统中需要的各种服务
+* config_client 配置客户端：根据Spring框架的Environment和PropertySource从spring cloud config sever获取各种配置
+
+Spring Cloud Config基于使用中心配置仓库的思想（版本控制），支持Git（默认）、SVN、File等三种储存方式。
 
 #### 业务关系 @BIN 文字+代码介绍组件如何与业务结合
 
 ### <a name="Netflix-Eureka"></a>Netflix Eureka
 
-#### 组件介绍 @YY
+#### 组件介绍
+
+Eureka是基于REST（表述性状态转移）的服务，主要用于定位服务，以实现中间层服务器的负载平衡和故障转移。
+
+在实践测试中3个Eureka Server组成的集群中，单点可注册30000个服务，性能上不会随着服务的增多而降级。
+
+### 特点
+
+* Eureka服务：用以提供服务注册、发现. 建议至少3个节点。在CAP理论中，它是AP的实践，只有一个节点也是可用的，数据持久化在内存，不会到磁盘.
+* Eureka-server：相对client端的服务端，为客户端提供服务，通常情况下为一个集群
+* Eureka-client：客户端，通过向eureka服务发现注册的可用的eureka-server，向后端发送请求
+
+### 重要组件
+
+* @EnableEurekaClient: 该注解表明应用既作为eureka实例又为eureka client 可以发现注册的服务
+* @EnableEurekaServer: 该注解表明应用为eureka服务，有可以联合多个服务作为集群，对外提供服务注册以及发现功能
+
+## 使用向导
+
+相比传统SOA架构，微服务架构中的服务粒度更小、服务数量更多，如何有效管理各个服务就显得尤为重要，也因此出现了服务注册的概念。
+
+服务注册的本质：1）简单易用，对用户透明；2）高可用，满足CAP理论；3）多语言支持
+
+在基于Spring Cloud的微服务架构中，通常采用Netflix Eureka作为注册中心，某些情况下也会采用Zookeeper作为替代。
+
+Netflix Eureka的易用性体现在两方面：
+
+* 通过与Spring Boot(Cloud)结合达到只用注解和Maven依赖即可部署和启动服务的效果
+* Netflix Eureka自带Client包，使得使用Eureka作为注册中心的客户端（即服务）不需要关心自己与Eureka的通讯机制，只需要引入Client依赖即可，当然前提是使用Java
+
+**Netflix Eureka通过“伙伴”机制实现高可用**，每一台Eureka都需要在配置中指定另一个Eureka的地址作为伙伴，Eureka启动时会向自己的伙伴节点获取当前已经存在的注册列表，这样在向Eureka集群中增加新机器时就不需要担心注册列表不完整的问题，在CAP理论中满足AP原则。
+
+除此之外，**Netflix Eureka支持Region和Zone的概念**，其中一个Region可以包含多个Zone。Eureka在启动时需要指定一个Zone名，即指定当前Eureka属于哪个Zone, 如果不指定则属于defaultZone。值得注意的是，Eureka Client也需要指定Zone。
+
+Netflix Eureka使用Java编写，但它会将所有注册信息和心跳连接地址都暴露为HTTP REST接口，客户端实际是通过HTTP请求与Server进行通讯的，因此Client完全可以使用其它语言进行编写，只需要即时调用注册服务、注销服务、获取服务列表和心跳请求的HTTP REST接口即可。
 
 #### 业务关系 @BIN
 
 ### <a name="Netflix-Zuul"></a>Netflix Zuul
 
-#### 组件介绍 @YY
+#### 组件介绍
+
+Netflix Zuul提供动态路由、监控、弹性、安全等的边缘服务。
+
+在通过服务网关统一向外的提供REST API的微服务架构中，Netflix Zuul为微服务机构提供了前门保护的作用，同时将权限控制这些较重的非业务逻辑内容迁移到服务路由层面，使得服务集群主体能够具备更高的可复用性和可测试性。
 
 #### 业务关系 @BIN
 
 ### <a name="Netflix-Ribbon"></a>Netflix Ribbon
 
-#### 组件介绍 @YY
+#### 组件介绍
+
+简单来说，Netflix Ribbon是一个客户端负载均衡器，有多种负载均衡策略可选（包括自定义的负载均衡算法），并可配合服务发现及断路器使用。在配置文件中列出Load Balancer后面所有的机器，Ribbon会自动的帮助你基于某种规则（如简单轮询，随机连接等）去连接这些机器。
+
+特点
+
+负载均衡
+容错
+在异步和反应模型中支持多协议（HTTP，TCP，UDP）
+缓存和批处理
 
 #### 业务关系 @BIN
 
 ### <a name="Netflix-Hystrix"></a>Netflix Hystrix
 
-#### 组件介绍 @YY
+#### 组件介绍
+
+Netflix Hystrix是一个延迟和容错库，旨在隔离远程系统，服务和第三方库的访问点，停止级联故障，并在不可避免的故障的复杂分布式系统中启用弹性。
 
 #### 业务关系 @BIN
 
 ### <a name="Netflix-Feign"></a>Netflix Feign
 
-#### 组件介绍 @YY
+#### 组件介绍
+
+Feign是一种声明式、模板化的HTTP客户端，同时是一个种声明式的REST客户端.
+
+Spring Cloud集成Netflix Ribbon和Netflix Eureka提供的负载均衡的HTTP客户端Netflix Feign.
+
+Netflix Feign是一个声明式、模板化的HTTP客户端，因此编写起来会更容易一些。Spring Cloud集成了Netflix Feign，并通过Netflix Ribbon和Netflix Eureka提供负载均衡。
+
+使用Netflix Feign创建一个接口并对它进行注解（可插拔的注解支持，包括Feign注解），在应用主类中通过@EnableFeignClients注解开启Feign功能，并使用@FeignClient(服务ID)注解来绑定该接口对应服务。
 
 #### 业务关系 @BIN
 
 ### <a name="Spring-Cloud-Sleuth"></a>Spring Cloud Sleuth
 
-#### 组件介绍 @YY
+#### 组件介绍
+
+Spring Cloud Sleuth是日志手机工具包，其中封装了Zipkin、HTrace和log-based操作，为SpringCloud应用实现了一种分布式追踪解决方案。
 
 #### 业务关系 @BIN
 
-## <a name="变成自己的项目"></a>变成自己的项目
+## <a name="如何变成自己的项目"></a>如何变成自己的项目
 
 TODO
 
