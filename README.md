@@ -12,7 +12,7 @@
 
 相比Dubbo等RPC（远程过程调用协议）框架，Spring Cloud是一个比较新的微服务架构基础框架选择，2016年才推出的1.0 release版本，不过Spring Cloud的方案完整度非常高，各个子项目几乎覆盖了微服务架构的方方面面。从目前的关注度和活跃度来看，Spring Cloud很可能会成为微服务架构的标准。
 
-本篇[云框架](ABOUT.md)目的不在于重复造轮，而是总结过去数十个微服务架构项目的成功经验，绕过前人踩过的坑，为开发者提供微服务落地的最佳实践。不必从零开始开发，开发者仅需在[云框架]基础上替换部分业务代码，就可以将[基于Spring Cloud的微服务架构](README.md)应用于生产环境并立即产生价值。
+本篇[云框架](ABOUT.md)目的不在于重复造轮，而是总结过去数十个微服务架构项目的成功经验，绕过前人踩过的坑，结合典型案例，为开发者提供微服务落地的最佳实践。不必从零开始开发，开发者仅需在[云框架]基础上替换部分业务代码，就可以将[基于Spring Cloud的微服务架构](README.md)应用于生产环境并立即产生价值。
 
 **以下内容以[PiggyMetrics](https://github.com/sqshq/PiggyMetrics)（一款个人财务管理应用）为例说明**
 
@@ -41,20 +41,20 @@
 * [参与贡献](#参与贡献)
 * [加入社群](#加入社群)
 
-# <a name="在线演示"></a>在线演示
+# <a name="在线演示"></a>在线演示 @BIN
 
 TODO
 
-# <a name="快速部署"></a>快速部署
+# <a name="快速部署"></a>快速部署 @BIN
 
 * 准备工作
 * 操作步骤
 
 # <a name="框架说明"></a>框架说明
 
-## <a name="业务"></a>业务
+## <a name="业务"></a>业务 @YY
 
-### <a name="业务北京"></a>业务背景
+### <a name="业务背景"></a>业务背景
 
 ### <a name="业务架构"></a>业务架构
 
@@ -62,45 +62,49 @@ TODO
 
 ## <a name="组件"></a>组件
 
-### 组件架构图
+### 组件架构图 @YY
 
 ### <a name="Spring-Cloud-Config"></a>Spring Cloud Config
 
-#### 组件介绍
+#### 组件介绍 @YY 介绍组件简介、特点等
 
-#### 业务关系
+#### 业务关系 @BIN 文字+代码介绍组件如何与业务结合
 
 ### <a name="Netflix-Eureka"></a>Netflix Eureka
 
-#### 组件介绍
+#### 组件介绍 @YY
 
-#### 业务关系
+#### 业务关系 @BIN
 
 ### <a name="Netflix-Zuul"></a>Netflix Zuul
 
-#### 组件介绍
+#### 组件介绍 @YY
 
-#### 业务关系
+#### 业务关系 @BIN
 
 ### <a name="Netflix-Ribbon"></a>Netflix Ribbon
 
-#### 组件介绍
+#### 组件介绍 @YY
 
-#### 业务关系
+#### 业务关系 @BIN
 
 ### <a name="Netflix-Hystrix"></a>Netflix Hystrix
 
-#### 组件介绍
+#### 组件介绍 @YY
 
-#### 业务关系
+#### 业务关系 @BIN
 
 ### <a name="Netflix-Feign"></a>Netflix Feign
 
-#### 组件介绍
+#### 组件介绍 @YY
 
-#### 业务关系
+#### 业务关系 @BIN
 
 ### <a name="Spring-Cloud-Sleuth"></a>Spring Cloud Sleuth
+
+#### 组件介绍 @YY
+
+#### 业务关系 @BIN
 
 ## <a name="高级"></a>高级
 
