@@ -40,6 +40,7 @@
 * [Spring Cloud Config - 配置文件](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-client)
 * [Netflix Eureka - server](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server)
 * [Netflix Eureka - service](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-service)
+* [Netflix Zuul](https://github.com/cloudframeworks-springcloud/Netflix-Zuul)
 * [Netflix Ribbon](https://github.com/cloudframeworks-springcloud/Netflix-Ribbon)
 * [Netflix Hystrix](https://github.com/cloudframeworks-springcloud/Netflix-Hystrix)
 * [Netflix Feign](https://github.com/cloudframeworks-springcloud/Netflix-Feign)
