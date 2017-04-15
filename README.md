@@ -50,9 +50,74 @@ TODO
 
 # <a name="快速部署"></a>快速部署 @BIN
 
-* 准备工作
+* docker环境按照
+
+    ### centos
+    
+        1、清除docker 旧版本
+            rpm -qa |grep docker
+            yum  -y  remove docker* 
+            
+        2、安装新的docker
+            yum install -y docker-engine
+            
+        3、systemctl  start docker
+        
+        4、docker info 查看docker状态
+    
+    ### ubuntu
+    
+        1、更新apt包
+            sudo apt-get update
+            
+        2、安装 Docker
+            sudo apt-get install docker-engine
+            
+        3、sudo service docker start
+        
+        4、docker info 查看docker状态
+    
+    ### mac
+        参考https://docs.docker.com/docker-for-mac/
+    
 * 操作步骤
 
+    1.设置环境变量
+    
+        export CONFIG_SERVICE_PASSWORD=root
+        export NOTIFICATION_SERVICE_PASSWORD=root
+        export STATISTICS_SERVICE_PASSWORD=root
+        export ACCOUNT_SERVICE_PASSWORD=root
+        export MONGODB_PASSWORD=root
+        mongo密码必须的，其它变量可以不用设置使用默认空
+        
+    2.基于docker-compose运行
+    
+        docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d
+        
+    3.通过脚本运行
+    
+        docker run -d -p15672:15672 --name=rabbitmq rabbitmq:3-management
+        docker run -d -p 8888:8888 --name=config goodrain.me/piggymetrics-config
+        docker run -d --link config:config --name=registry -p 8761:8761 goodrain.me/piggymetrics-registry
+        
+        docker run -d --name auth-mongodb goodrain.me/piggymetrics-mongodb
+        docker run -d --link config:config --link auth-mongodb:auth-mongodb --link registry:registry --name=auth-service goodrain.me/piggymetrics-auth-service
+
+
+        docker run -d --name account-mongodb goodrain.me/piggymetrics-mongodb
+        docker run -d --link config:config --link account-mongodb:account-mongodb --link registry:registry --link auth-service:auth-service --link rabbitmq:rabbitmq --name=account-service goodrain.me/piggymetrics-account-service
+
+        docker run -d --name statistics-mongodb goodrain.me/piggymetrics-mongodb
+        docker run -ti --link config:config --link statistics-mongodb:statistics-mongodb --link registry:registry --link auth-service:auth-service --link rabbitmq:rabbitmq --name=statistics-service goodrain.me/piggymetrics-statistics-service
+        
+        docker run -d --name notification-mongodb goodrain.me/piggymetrics-mongodb
+        docker run -d --link config:config --link statistics-mongodb:statistics-mongodb --link registry:registry --link auth-service:auth-service --link rabbitmq:rabbitmq --name=notification-service goodrain.me/piggymetrics-notification-service
+        
+        docker run -d --link config:config --link registry:registry --link rabbitmq:rabbitmq --name=monitoring -p 9000:8080 -p 8989:8989 goodrain.me/piggymetrics-monitoring
+        
+        docker run -d --link config:config --link registry:registry --link auth-service:auth-service --name=gateway -p 80:4000 goodrain.me/piggymetrics-gateway
+        
 # <a name="框架说明"></a>框架说明
 
 ## <a name="业务"></a>业务
@@ -110,7 +175,31 @@ Spring Cloud Config可以理解为配置管理开发包，提供解决分布式�
 
 Spring Cloud Config基于使用中心配置仓库的思想（版本控制），支持Git（默认）、SVN、File等三种储存方式。
 
-#### 业务关系 @BIN 文字+代码介绍组件如何与业务结合
+#### 业务关系
+    
+     ** 本项目中基于spring cloud config server管理所有服务的配置文件，它简单地从本地类路径加载配置文件，如图
+     
+     <div align=center><img width="900" height="" src="./image/piggymetrics-config.png"/></div>
+     
+     您可以在项目的config service 查看shard目录资源，其中application.yml被所有客户端应用共享，比如当Notification-service请求配置时，使用shared/notification-service.yml和shared/application.yml（在所有客户端应用程序之间共享）配置服务响应；这样的好处所有的配置统一管理，业务应用本身不维护配置文件
+     
+     ** 使用方式
+     
+     1、在pom.xml中添加spring-cloud-starter-config，它从自动配置中心自动获取配置
+     2、在资源目录中bootstrap.yml填加
+     
+        <code>
+         spring:
+          application:
+            name: 服务名
+          cloud:
+            config:
+              uri: http://config:8888
+              fail-fast: true
+         </code>
+         
+      3、当你的配置文件修改后可以方式 http://127.0.0.1:8000/notifications/refresh 刷新配置，从而不用重启服务
+     
 
 ### <a name="Netflix-Eureka"></a>Netflix Eureka
 
@@ -129,7 +218,22 @@ Netflix Eureka通过“伙伴”机制实现高可用，每一台Eureka都需要
 
 Netflix Eureka使用Java编写，但它会将所有注册信息和心跳连接地址都暴露为HTTP REST接口，客户端实际是通过HTTP请求与Server进行通讯的，因此Client完全可以使用其它语言进行编写，只需要即时调用注册服务、注销服务、获取服务列表和心跳请求的HTTP REST接口即可。
 
-#### 业务关系 @BIN
+#### 业务关系
+
+     ** 本项目中registy就是eureka server, 代码逻辑比较简单和标准，不用做任何修改，需要注意的时在bootstrap.yml加入配置中心服务地址信息
+     
+     <code>
+         spring:
+          cloud:
+            config:
+              uri: http://config:8888
+              fail-fast: true
+              password: ${CONFIG_SERVICE_PASSWORD}
+              username: user
+     </code>
+     
+     ** Eureka server 中的优化参数可以参考[[Eureka Server]](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server)设置
+     
 
 ### <a name="Netflix-Zuul"></a>Netflix Zuul
 
@@ -137,7 +241,53 @@ Netflix Eureka使用Java编写，但它会将所有注册信息和心跳连接�
 
 在通过服务网关统一向外的提供REST API的微服务架构中，Netflix Zuul为微服务机构提供了前门保护的作用，同时将权限控制这些较重的非业务逻辑内容迁移到服务路由层面，使得服务集群主体能够具备更高的可复用性和可测试性。
 
-#### 业务关系 @BIN
+#### 业务关系 
+
+     ** 本项目中gateway就是zuul的具体实现，它的代码比较简单，基本标准的，不需要修改
+     
+     <code>
+        @EnableZuulProxy            ##----------增加zuul proxy代理功能
+        public class GatewayApplication {
+            public static void main(String[] args) {
+                SpringApplication.run(GatewayApplication.class, args);
+            }
+        }
+     </code>
+     
+     ** 在resources目录下增加static录存放你的静态资源(html、css、images等)
+     
+     ** 在zuul的配置文件中增加代理服务的配置
+     
+     <code>
+        zuul:
+          ignoredServices: '*'
+          host:
+            connect-timeout-millis: 20000        ##超时时间
+            socket-timeout-millis: 20000
+          routes:
+            auth-service:                        ## 认证服务
+                path: /uaa/**                    ## 匹配路径
+                url: http://auth-service:5000    ## 服务路径（http方式）
+                stripPrefix: false               ## 是否包括前缀
+                sensitiveHeaders:
+            account-service:
+                path: /accounts/**
+                serviceId: account-service       ## 通过服务ID动态查找
+                stripPrefix: false
+                sensitiveHeaders:
+            statistics-service:
+                path: /statistics/**
+                serviceId: statistics-service
+                stripPrefix: false
+                sensitiveHeaders:
+            notification-service:
+                path: /notifications/**
+                serviceId: notification-service
+                stripPrefix: false
+                sensitiveHeaders:
+     </code>
+     
+     本项目中zuul代理授权服务、帐户服务、统计服务和通知服务，可以根据具体业务替换相应的服务即可     
 
 ### <a name="Netflix-Ribbon"></a>Netflix Ribbon
 
@@ -145,19 +295,60 @@ Netflix Eureka使用Java编写，但它会将所有注册信息和心跳连接�
 
 Netflix Ribbon的主要特点包括：1）负载均衡，2）容错，3）在异步和反应模型中支持多协议（HTTP，TCP，UDP），4）缓存和批处理
 
-#### 业务关系 @BIN
+#### 业务关系 
+
+    ** 项目中并没有显式地去定义Ribbon的使用，但是很多组件隐式地使用到如zuul、feign；在实际的项目中如没有特殊需求，不用刻意定义自己的ribbon
 
 ### <a name="Netflix-Hystrix"></a>Netflix Hystrix
 
 [[Netflix Hystrix]](https://github.com/cloudframeworks-springcloud/Netflix-Hystrix)是一个延迟和容错库，旨在隔离远程系统，服务和第三方库的访问点，停止级联故障，并在不可避免的故障的复杂分布式系统中启用弹性。
 
-#### 业务关系 @BIN
+#### 业务关系 
+
+    ** 项目中统一定义了熔断策略（不涉及代码侵入）：
+       
+        <code>
+            hystrix:
+              command:
+                default:
+                  execution:
+                    isolation:
+                      thread:
+                        timeoutInMilliseconds: 10000   ## 10000ms 超时限制
+        </code>
+        
+     ** 通过代码侵入方式定义你的熔断机制 
+        [[Hystrix 示例]](https://github.com/cloudframeworks-springcloud/Netflix-Hystrix)
 
 ### <a name="Netflix-Feign"></a>Netflix Feign
 
 [[Netflix Feign]](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Feign)是一种声明式、模板化的HTTP客户端。Spring Cloud集成了Netflix Feign，并通过Netflix Ribbon和Netflix Eureka提供负载均衡。
 
-#### 业务关系 @BIN
+#### 业务关系
+     
+     ** 在项目中用到次数比较多，比如帐户服务中掉用统计服务和认证服务，如：
+     
+     <code>
+        @FeignClient(name = "auth-service")      ##声明一个认证服务的一个客户端，通过组册中心去查找auth-service
+        public interface AuthServiceClient {
+        
+            @RequestMapping(method = RequestMethod.POST, value = "/uaa/users", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+            void createUser(User user);
+        
+        }
+     </code>
+     
+     ** feign也可以引用注册中心以外的服务
+     
+     <code>
+        @FeignClient(url = "${rates.url}", name = "rates-client") ##声明一个汇率客户端，根据具体的url（这个可以是外部的服务）
+        public interface ExchangeRatesClient {
+        
+            @RequestMapping(method = RequestMethod.GET, value = "/latest")
+            ExchangeRatesContainer getRates(@RequestParam("base") Currency base);
+        
+        }
+     </code>
 
 ### <a name="Spring-Cloud-Sleuth"></a>Spring Cloud Sleuth
 
@@ -165,10 +356,22 @@ Netflix Ribbon的主要特点包括：1）负载均衡，2）容错，3）在异
 
 #### 业务关系 @BIN
 
-# <a name="如何变成自己的项目"></a>如何变成自己的项目 @BIN
 
-TODO 跑起来了Piggymetrics、看懂了组件，如何把他变成自己的项目的**操作步骤**
 
+# <a name="如何变成自己的项目"></a>如何变成自己的项目 
+
+     ** git clone项目到本地，并基于该项目创建自己的mvn项目
+     
+     ** config、registry、gateway、monitoring 4个组件不用去修改代码
+     
+     ** auth-service、account-service、notification-service、statistics-service 替换中自己的服务
+     
+     ** 去config中修改统一的配置文件，比如新增服务的服务名，端口，等等
+     
+     ** 通过mvn构建后生成镜像
+     
+     ** 运行所有的镜像，参考本例中的快速部署
+     
 # <a name="生产环境"></a>生产环境
 
 * CI/CD`TODO`
