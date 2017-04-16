@@ -17,7 +17,7 @@
 * 对于初学者来说，可以通过结合实例的代码、文档快速学习Spring Cloud及微服务，并在社群中交流讨论；
 * 对于已有一定了解，想要使用Spring Cloud实现微服务架构的开发者来说，不必从零开始开发，仅需在云框架基础上替换部分业务代码，就可以将[基于Spring Cloud的微服务架构](README.md)应用于生产环境并立即产生价值。
 
-**以下内容以[PiggyMetrics](https://github.com/sqshq/PiggyMetrics)（一款个人财务管理应用）为例说明**
+**以下内容以[PiggyMetrics](https://github.com/cloudframeworks-springcloud/PiggyMetrics)（一款个人财务管理应用）为例说明**
 
 # 内容概览
 
@@ -48,7 +48,7 @@
 
 TODO
 
-# <a name="快速部署"></a>快速部署 @BIN
+# <a name="快速部署"></a>快速部署
 
 * docker环境按照
 
@@ -93,7 +93,7 @@ TODO
         
     2.基于docker-compose运行
     
-        docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d
+        docker-compose -f docker-compose.yml up -d
         
     3.通过脚本运行
     
@@ -327,10 +327,12 @@ Netflix Ribbon的主要特点包括：1）负载均衡，2）容错，3）在异
         
      ** turbine是聚合服务器发送事件流数据的一个工具，hystrix的监控中，只能监控单个节点，因此可以通过turbine来监控集群下hystrix的metrics情况
         所有客户端需要将Hystrix命令推送到turbine，客户端只需要引入
+        
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-netflix-hystrix-stream</artifactId>
         </dependency>
+        
      ** 使用方式（代码详情见monitoring）
         http://DOCKER-HOST:9000/hystrix ，输入：http://DOCKER-HOST:8989
 
