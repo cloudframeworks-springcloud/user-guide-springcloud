@@ -98,26 +98,31 @@ TODO
     3.通过脚本运行
     
         docker run -d -p15672:15672 --name=rabbitmq rabbitmq:3-management
-        docker run -d -p 8888:8888 --name=config goodrain.me/piggymetrics-config
-        docker run -d --link config:config --name=registry -p 8761:8761 goodrain.me/piggymetrics-registry
-        
-        docker run -d --name auth-mongodb goodrain.me/piggymetrics-mongodb
-        docker run -d --link config:config --link auth-mongodb:auth-mongodb --link registry:registry --name=auth-service goodrain.me/piggymetrics-auth-service
 
+        docker run -d -e CONFIG_SERVICE_PASSWORD=${CONFIG_SERVICE_PASSWORD} -p 8888:8888 --name=config goodrain.me/piggymetrics-config
+        
+        docker run -d -e CONFIG_SERVICE_PASSWORD=${CONFIG_SERVICE_PASSWORD} --link config:config --name=registry -p 8761:8761 goodrain.me/piggymetrics-registry
+        
+        docker run -d -e MONGODB_PASSWORD=${MONGODB_PASSWORD} --name auth-mongodb goodrain.me/piggymetrics-mongodb
+        
+        docker run -d  -e CONFIG_SERVICE_PASSWORD=${CONFIG_SERVICE_PASSWORD} -e NOTIFICATION_SERVICE_PASSWORD=${NOTIFICATION_SERVICE_PASSWORD} -e STATISTICS_SERVICE_PASSWORD=${STATISTICS_SERVICE_PASSWORD} -e ACCOUNT_SERVICE_PASSWORD=${ACCOUNT_SERVICE_PASSWORD} -e MONGODB_PASSWORD=${MONGODB_PASSWORD} --link config:config --link auth-mongodb:auth-mongodb --link registry:registry --name=auth-service goodrain.me/piggymetrics-auth-service
+        
+        docker run -d -e MONGODB_PASSWORD=${MONGODB_PASSWORD} --name account-mongodb goodrain.me/piggymetrics-mongodb
 
-        docker run -d --name account-mongodb goodrain.me/piggymetrics-mongodb
-        docker run -d --link config:config --link account-mongodb:account-mongodb --link registry:registry --link auth-service:auth-service --link rabbitmq:rabbitmq --name=account-service goodrain.me/piggymetrics-account-service
+        docker run -d -e CONFIG_SERVICE_PASSWORD=${CONFIG_SERVICE_PASSWORD} -e ACCOUNT_SERVICE_PASSWORD=${ACCOUNT_SERVICE_PASSWORD} -e MONGODB_PASSWORD=${MONGODB_PASSWORD} --link config:config --link account-mongodb:account-mongodb --link registry:registry --link auth-service:auth-service --link rabbitmq:rabbitmq --name=account-service goodrain.me/piggymetrics-account-service
+        
+        docker run -d -e MONGODB_PASSWORD=${MONGODB_PASSWORD} --name statistics-mongodb goodrain.me/piggymetrics-mongodb
 
-        docker run -d --name statistics-mongodb goodrain.me/piggymetrics-mongodb
-        docker run -ti --link config:config --link statistics-mongodb:statistics-mongodb --link registry:registry --link auth-service:auth-service --link rabbitmq:rabbitmq --name=statistics-service goodrain.me/piggymetrics-statistics-service
+        docker run -d -e CONFIG_SERVICE_PASSWORD=${CONFIG_SERVICE_PASSWORD} -e STATISTICS_SERVICE_PASSWORD=${STATISTICS_SERVICE_PASSWORD} -e MONGODB_PASSWORD=${MONGODB_PASSWORD} --link config:config --link statistics-mongodb:statistics-mongodb --link registry:registry --link auth-service:auth-service --link rabbitmq:rabbitmq --name=statistics-service goodrain.me/piggymetrics-statistics-service
         
-        docker run -d --name notification-mongodb goodrain.me/piggymetrics-mongodb
-        docker run -d --link config:config --link statistics-mongodb:statistics-mongodb --link registry:registry --link auth-service:auth-service --link rabbitmq:rabbitmq --name=notification-service goodrain.me/piggymetrics-notification-service
+        docker run -d -e MONGODB_PASSWORD=${MONGODB_PASSWORD} --name notification-mongodb goodrain.me/piggymetrics-mongodb
         
-        docker run -d --link config:config --link registry:registry --link rabbitmq:rabbitmq --name=monitoring -p 9000:8080 -p 8989:8989 goodrain.me/piggymetrics-monitoring
+        docker run -d -e CONFIG_SERVICE_PASSWORD=${CONFIG_SERVICE_PASSWORD} -e NOTIFICATION_SERVICE_PASSWORD=${NOTIFICATION_SERVICE_PASSWORD} -e MONGODB_PASSWORD=${MONGODB_PASSWORD} --link config:config --link statistics-mongodb:statistics-mongodb --link registry:registry --link auth-service:auth-service --link rabbitmq:rabbitmq --name=notification-service goodrain.me/piggymetrics-notification-service
         
-        docker run -d --link config:config --link registry:registry --link auth-service:auth-service --name=gateway -p 80:4000 goodrain.me/piggymetrics-gateway
+        docker run -ti -e CONFIG_SERVICE_PASSWORD=${CONFIG_SERVICE_PASSWORD} --link config:config --link registry:registry --link rabbitmq:rabbitmq --name=monitoring -p 9000:8080 -p 8989:8989 goodrain.me/piggymetrics-monitoring
         
+        docker run -d -e CONFIG_SERVICE_PASSWORD=${CONFIG_SERVICE_PASSWORD} --link config:config --link registry:registry --link auth-service:auth-service --name=gateway -p 80:4000 goodrain.me/piggymetrics-gateway
+                
 # <a name="框架说明"></a>框架说明
 
 ## <a name="业务"></a>业务
@@ -319,6 +324,15 @@ Netflix Ribbon的主要特点包括：1）负载均衡，2）容错，3）在异
         
      ** 通过代码侵入方式定义你的熔断机制 
         [[Hystrix 示例]](https://github.com/cloudframeworks-springcloud/Netflix-Hystrix)
+        
+     ** turbine是聚合服务器发送事件流数据的一个工具，hystrix的监控中，只能监控单个节点，因此可以通过turbine来监控集群下hystrix的metrics情况
+        所有客户端需要将Hystrix命令推送到turbine，客户端只需要引入
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-netflix-hystrix-stream</artifactId>
+        </dependency>
+     ** 使用方式（代码详情见monitoring）
+        http://DOCKER-HOST:9000/hystrix ，输入：http://DOCKER-HOST:8989
 
 ### <a name="Netflix-Feign"></a>Netflix Feign
 
@@ -349,14 +363,6 @@ Netflix Ribbon的主要特点包括：1）负载均衡，2）容错，3）在异
         
         }
      </code>
-
-### <a name="Spring-Cloud-Sleuth"></a>Spring Cloud Sleuth
-
-[[Spring Cloud Sleuth]](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Sleuth)是日志手机工具包，其中封装了Zipkin、HTrace和log-based操作，为SpringCloud应用实现了一种分布式追踪解决方案。
-
-#### 业务关系 @BIN
-
-
 
 # <a name="如何变成自己的项目"></a>如何变成自己的项目 
 
@@ -389,7 +395,7 @@ Netflix Ribbon的主要特点包括：1）负载均衡，2）容错，3）在异
 ### Roadmap
 
 * `文档`增加在线演示
-* `组件`增加组件内容，如Turbine、Consul等
+* `组件`增加组件内容，如Sleuth、Consul等
 * `生产环境`增加生产环境下各项扩展操作，如性能测试及各类部署、特性、技术实现等
 * `快速部署`增加好雨云帮部署
 * `常见问题`补充问题总结[QA](QA.md)
