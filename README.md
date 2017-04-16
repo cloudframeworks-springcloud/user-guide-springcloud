@@ -36,7 +36,6 @@
       * [Netflix Ribbon](#Netflix-Ribbon)
       * [Netflix Hystrix](#Netflix-Hystrix)
       * [Netflix Feign](#Netflix-Feign)
-      * [Spring Cloud Sleuth](#Spring-Cloud-Sleuth)
 * [如何变成自己的项目](#如何变成自己的项目)
 * [生产环境](#生产环境)
 * [常见问题](#常见问题)
@@ -184,7 +183,7 @@ Spring Cloud Config基于使用中心配置仓库的思想（版本控制），�
     
      ** 本项目中基于spring cloud config server管理所有服务的配置文件，它简单地从本地类路径加载配置文件，如图
      
-     <div align=center><img width="900" height="" src="./image/piggymetrics-config.png"/></div>
+<div align=center><img width="900" height="" src="./image/piggymetrics-config.png"/></div>
      
      您可以在项目的config service 查看shard目录资源，其中application.yml被所有客户端应用共享，比如当Notification-service请求配置时，使用shared/notification-service.yml和shared/application.yml（在所有客户端应用程序之间共享）配置服务响应；这样的好处所有的配置统一管理，业务应用本身不维护配置文件
      
@@ -203,7 +202,7 @@ Spring Cloud Config基于使用中心配置仓库的思想（版本控制），�
               fail-fast: true
          </code>
          
-      3、当你的配置文件修改后可以方式 http://127.0.0.1:8000/notifications/refresh 刷新配置，从而不用重启服务
+      3、当你的配置文件修改后可以方式 http://DOCKER-HOST:DOCKER-PORT/notifications/refresh 刷新配置，从而不用重启服务
      
 
 ### <a name="Netflix-Eureka"></a>Netflix Eureka
