@@ -422,11 +422,11 @@ http://DOCKER-HOST:9000/hystrix ，输入：http://DOCKER-HOST:8989
 
 ### Roadmap
 
-* `文档`增加在线演示
-* `组件`增加组件内容，如Spring Cloud Sleuth、Spring Cloud Consul等
-* `生产环境`增加生产环境下各项扩展操作，如性能测试及各类部署、特性、技术实现等
-* `快速部署`增加好雨云帮部署
-* `常见问题`补充问题总结[QA](QA.md)
+* `文档` 增加在线演示
+* `组件` 增加组件内容，如Spring Cloud Sleuth、Spring Cloud Consul等
+* `生产环境` 增加生产环境下各项扩展操作，如性能测试及各类部署、特性、技术实现等
+* `快速部署` 增加好雨云帮部署
+* `常见问题` 补充问题总结[QA](QA.md)
 
 点击查看[历史更新](CHANGELOG.md)
 
