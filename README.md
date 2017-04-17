@@ -83,9 +83,8 @@
 
 * mac
 
-```
-        参考[https://docs.docker.com/docker-for-mac/](https://docs.docker.com/docker-for-mac/)
-```
+参考[https://docs.docker.com/docker-for-mac/](https://docs.docker.com/docker-for-mac/)
+
 
 ### 操作步骤
 
