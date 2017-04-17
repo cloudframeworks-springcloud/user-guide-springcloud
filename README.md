@@ -46,7 +46,7 @@
 
 ## Dockerfile部署
 
-### Docker环境准备
+### 环境准备
 
 * centos
 
