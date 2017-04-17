@@ -392,6 +392,8 @@ http://DOCKER-HOST:9000/hystrix ，输入：http://DOCKER-HOST:8989
 
 # <a name="如何变成自己的项目"></a>如何变成自己的项目 
 
+**步骤：**
+
 1. git clone项目到本地，并基于该项目创建自己的mvn项目
      
 2. config、registry、gateway、monitoring，这4个组件不需要修改代码
