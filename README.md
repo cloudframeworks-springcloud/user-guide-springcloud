@@ -205,6 +205,7 @@ PiggyMetrics通过Spring Cloud config server管理所有服务的配置文件，
 * 使用方式
      
 1.在pom.xml中添加spring-cloud-starter-config，它从自动配置中心自动获取配置
+
 2.在资源目录中bootstrap.yml添加    
      
 ```
