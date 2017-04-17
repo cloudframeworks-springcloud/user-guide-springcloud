@@ -15,13 +15,12 @@
 本篇[云框架](ABOUT.md)目的不在于重复造轮，而是总结过去数十个微服务架构项目的成功经验，绕过前人踩过的坑，结合典型案例，为开发者提供微服务落地的最佳实践。
 
 * 对于初学者来说，可以通过结合实例的代码、文档快速学习Spring Cloud及微服务，并在社群中交流讨论；
-* 对于已有一定了解，想要使用Spring Cloud实现微服务架构的开发者来说，不必从零开始开发，仅需在云框架基础上替换部分业务代码，就可以将[基于Spring Cloud的微服务架构](README.md)应用于生产环境并立即产生价值。
+* 对于已有一定了解，想要使用的开发者来说，不必从零开始开发，仅需在云框架基础上替换部分业务代码，就可以将[基于Spring Cloud的微服务架构](README.md)应用于生产环境并立即产生价值。
 
 **以下内容以[PiggyMetrics](https://github.com/cloudframeworks-springcloud/PiggyMetrics)（一款个人财务管理应用）为例说明**
 
 # 内容概览
 
-* [在线演示](#在线演示)
 * [快速部署](#快速部署)
 * [框架说明](#框架说明) 
    * [业务](#业务)
@@ -43,59 +42,74 @@
 * [参与贡献](#参与贡献)
 * [加入社群](#加入社群)
 
-# <a name="在线演示"></a>在线演示 @BIN
-
-TODO
-
 # <a name="快速部署"></a>快速部署
 
-* docker环境按照
+## Dockerfile部署
 
-    ### centos
-    
-        1、清除docker 旧版本
-            rpm -qa |grep docker
-            yum  -y  remove docker* 
-            
-        2、安装新的docker
-            yum install -y docker-engine
-            
-        3、systemctl  start docker
-        
-        4、docker info 查看docker状态
-    
-    ### ubuntu
-    
-        1、更新apt包
-            sudo apt-get update
-            
-        2、安装 Docker
-            sudo apt-get install docker-engine
-            
-        3、sudo service docker start
-        
-        4、docker info 查看docker状态
-    
-    ### mac
-        参考https://docs.docker.com/docker-for-mac/
-    
-* 操作步骤
+### 环境准备
 
-    1.设置环境变量
-    
+* centos
+
+```
+        1.清除docker 旧版本
+        
+          rpm -qa |grep docker
+          yum  -y  remove docker* 
+            
+        2.安装新的docker
+        
+          yum install -y docker-engine
+            
+        3.systemctl  start docker
+        
+        4.docker info 查看docker状态
+```
+
+* ubuntu
+
+```
+        1.更新apt包
+        
+          sudo apt-get update
+            
+        2.安装 Docker
+        
+          sudo apt-get install docker-engine
+            
+        3.sudo service docker start
+        
+        4.docker info 查看docker状态
+```
+
+* mac
+
+```
+        参考[https://docs.docker.com/docker-for-mac/](https://docs.docker.com/docker-for-mac/)
+```
+
+### 操作步骤
+
+1. 设置环境变量
+
+```
         export CONFIG_SERVICE_PASSWORD=root
         export NOTIFICATION_SERVICE_PASSWORD=root
         export STATISTICS_SERVICE_PASSWORD=root
         export ACCOUNT_SERVICE_PASSWORD=root
         export MONGODB_PASSWORD=root
-        mongo密码必须的，其它变量可以不用设置使用默认空
         
-    2.基于docker-compose运行
-    
+        mongo_password为必填项，其它变量可以不用设置
+```
+
+2. 基于docker-compose运行
+
+```
         docker-compose -f docker-compose.yml up -d
-        
-    3.通过脚本运行
-    
+```
+
+3. 通过脚本运行
+
+```
         docker run -d -p15672:15672 --name=rabbitmq rabbitmq:3-management
 
         docker run -d -e CONFIG_SERVICE_PASSWORD=${CONFIG_SERVICE_PASSWORD} -p 8888:8888 --name=config goodraincloudframeworks/piggymetrics-config
@@ -121,7 +135,8 @@ TODO
         docker run -ti -e CONFIG_SERVICE_PASSWORD=${CONFIG_SERVICE_PASSWORD} --link config:config --link registry:registry --link rabbitmq:rabbitmq --name=monitoring -p 9000:8080 -p 8989:8989 goodraincloudframeworks/piggymetrics-monitoring
         
         docker run -d -e CONFIG_SERVICE_PASSWORD=${CONFIG_SERVICE_PASSWORD} --link config:config --link registry:registry --link auth-service:auth-service --name=gateway -p 80:4000 goodraincloudframeworks/piggymetrics-gateway
-                
+```
+
 # <a name="框架说明"></a>框架说明
 
 ## <a name="业务"></a>业务
@@ -164,7 +179,7 @@ PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
 
 ## <a name="组件"></a>组件
 
-<a name="组件架构"></a>Piggymetrics基础服务设施中用到了Spring Cloud Config、Netflix Eureka、Netflix Hystrix、Netflix Zuul、Netflix Ribbon、Netflix Feign、Spring Cloud Sleuth等组件，而这也正是Spring Cloud分布式开发中最核心组件。
+<a name="组件架构"></a>Piggymetrics基础服务设施中用到了Spring Cloud Config、Netflix Eureka、Netflix Hystrix、Netflix Zuul、Netflix Ribbon、Netflix Feign等组件，而这也正是Spring Cloud分布式开发中最核心组件。
 
 Piggymetrics组件架构如下图所示：
 
@@ -180,19 +195,20 @@ Spring Cloud Config可以理解为配置管理开发包，提供解决分布式�
 Spring Cloud Config基于使用中心配置仓库的思想（版本控制），支持Git（默认）、SVN、File等三种储存方式。
 
 #### 业务关系
-    
-     ** 本项目中基于spring cloud config server管理所有服务的配置文件，它简单地从本地类路径加载配置文件，如图
+
+PiggyMetrics通过Spring Cloud config server管理所有服务的配置文件，它简单地从本地类路径加载配置文件，如下图所示：
      
-<div align=center><img width="900" height="" src="./image/piggymetrics-config.png"/></div>
+<div align=center><img width="900" height="" src="./image/pmspringcloudconfig.png"/></div>
+
+我们可以在[config service](https://github.com/cloudframeworks-springcloud/PiggyMetrics/tree/master/config/src/main/resources/shared)中查看shard目录资源，其中`application.yml`被所有客户端应用共享，比如当Notification-service请求配置时，使用`shared/notification-service.yml`和`hared/application.yml`（在所有客户端应用程序之间共享）配置服务响应；这样的好处是所有的配置统一管理，业务应用本身不维护配置文件。
      
-     您可以在项目的config service 查看shard目录资源，其中application.yml被所有客户端应用共享，比如当Notification-service请求配置时，使用shared/notification-service.yml和shared/application.yml（在所有客户端应用程序之间共享）配置服务响应；这样的好处所有的配置统一管理，业务应用本身不维护配置文件
+* 使用方式
      
-     ** 使用方式
+1.在pom.xml中添加spring-cloud-starter-config，它从自动配置中心自动获取配置
+
+2.在资源目录中bootstrap.yml添加    
      
-     1、在pom.xml中添加spring-cloud-starter-config，它从自动配置中心自动获取配置
-     2、在资源目录中bootstrap.yml填加
-     
-        <code>
+```
          spring:
           application:
             name: 服务名
@@ -200,9 +216,9 @@ Spring Cloud Config基于使用中心配置仓库的思想（版本控制），�
             config:
               uri: http://config:8888
               fail-fast: true
-         </code>
-         
-      3、当你的配置文件修改后可以方式 http://DOCKER-HOST:DOCKER-PORT/notifications/refresh 刷新配置，从而不用重启服务
+```
+
+3.当你的配置文件修改后可以方式 http://DOCKER-HOST:DOCKER-PORT/notifications/refresh 刷新配置，从而不用重启服务
      
 
 ### <a name="Netflix-Eureka"></a>Netflix Eureka
@@ -224,9 +240,9 @@ Netflix Eureka使用Java编写，但它会将所有注册信息和心跳连接�
 
 #### 业务关系
 
-     ** 本项目中registy就是eureka server, 代码逻辑比较简单和标准，不用做任何修改，需要注意的时在bootstrap.yml加入配置中心服务地址信息
+PiggyMetrics通过Eureka server实现registy, 代码逻辑比较简单和标准，不用做任何修改，需要注意的是在`bootstrap.yml`加入配置中心服务地址信息。
      
-     <code>
+```
          spring:
           cloud:
             config:
@@ -234,22 +250,24 @@ Netflix Eureka使用Java编写，但它会将所有注册信息和心跳连接�
               fail-fast: true
               password: ${CONFIG_SERVICE_PASSWORD}
               username: user
-     </code>
+```
      
-     ** Eureka server 中的优化参数可以参考[[Eureka Server]](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server)设置
+Eureka server中的优化参数可参考[[Eureka Server]](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server)设置。
      
 
 ### <a name="Netflix-Zuul"></a>Netflix Zuul
 
-[[Netflix Zuul]](https://github.com/cloudframeworks-springcloud/Netflix-Zuul) 提供动态路由、监控、弹性、安全等的边缘服务。
+[[Netflix Zuul]](https://github.com/cloudframeworks-springcloud/Netflix-Zuul)提供动态路由、监控、弹性、安全等的边缘服务。
 
 在通过服务网关统一向外的提供REST API的微服务架构中，Netflix Zuul为微服务机构提供了前门保护的作用，同时将权限控制这些较重的非业务逻辑内容迁移到服务路由层面，使得服务集群主体能够具备更高的可复用性和可测试性。
 
-#### 业务关系 
+#### 业务关系
 
-     ** 本项目中gateway就是zuul的具体实现，它的代码比较简单，基本标准的，不需要修改
+PiggyMetrics借助Netflix Zuul实现gateway，代理授权服务、账户服务、统计服务和通知服务，这里的代码比较简单，基本上是标准的，不需要修改。
+
+我们在实际业务的开发中，用具体业务替换相应的服务即可。
      
-     <code>
+```
         @EnableZuulProxy            ##----------增加zuul proxy代理功能
         public class GatewayApplication {
             public static void main(String[] args) {
@@ -289,19 +307,19 @@ Netflix Eureka使用Java编写，但它会将所有注册信息和心跳连接�
                 serviceId: notification-service
                 stripPrefix: false
                 sensitiveHeaders:
-     </code>
-     
-     本项目中zuul代理授权服务、帐户服务、统计服务和通知服务，可以根据具体业务替换相应的服务即可     
+```
 
 ### <a name="Netflix-Ribbon"></a>Netflix Ribbon
 
 [[Netflix Ribbon]](https://github.com/cloudframeworks-springcloud/Netflix-Ribbon) 是一个客户端负载均衡器，有多种负载均衡策略可选（包括自定义的负载均衡算法），并可配合服务发现及断路器使用。在配置文件中列出Load Balancer后面所有的机器，Ribbon会自动的帮助你基于某种规则（如简单轮询，随机连接等）去连接这些机器。
 
-Netflix Ribbon的主要特点包括：1）负载均衡，2）容错，3）在异步和反应模型中支持多协议（HTTP，TCP，UDP），4）缓存和批处理
+Netflix Ribbon的主要特点包括：1）负载均衡，2）容错，3）在异步和反应模型中支持多协议（HTT、TCP、UDP），4）缓存和批处理
 
 #### 业务关系 
 
-    ** 项目中并没有显式地去定义Ribbon的使用，但是很多组件隐式地使用到如zuul、feign；在实际的项目中如没有特殊需求，不用刻意定义自己的ribbon
+PiggyMetrics并没有显式的去定义Netflix Ribbon的使用，但是很多组件隐式的使用到了如Zuul、Feign等组件。
+
+我们在实际的业务开发中，不需要刻意定义Netflix Ribbon。
 
 ### <a name="Netflix-Hystrix"></a>Netflix Hystrix
 
@@ -309,9 +327,9 @@ Netflix Ribbon的主要特点包括：1）负载均衡，2）容错，3）在异
 
 #### 业务关系 
 
-    ** 项目中统一定义了熔断策略（不涉及代码侵入）：
+* 项目中统一定义了熔断策略（不涉及代码侵入）：
        
-        <code>
+```
             hystrix:
               command:
                 default:
@@ -319,21 +337,28 @@ Netflix Ribbon的主要特点包括：1）负载均衡，2）容错，3）在异
                     isolation:
                       thread:
                         timeoutInMilliseconds: 10000   ## 10000ms 超时限制
-        </code>
+```
         
-     ** 通过代码侵入方式定义你的熔断机制 
-        [[Hystrix 示例]](https://github.com/cloudframeworks-springcloud/Netflix-Hystrix)
+* 通过代码侵入方式定义你的熔断机制 
+
+  [[Netflix Hystrix 示例]](https://github.com/cloudframeworks-springcloud/Netflix-Hystrix)
         
-     ** turbine是聚合服务器发送事件流数据的一个工具，hystrix的监控中，只能监控单个节点，因此可以通过turbine来监控集群下hystrix的metrics情况
-        所有客户端需要将Hystrix命令推送到turbine，客户端只需要引入
-        
+* Netflix Turbine是聚合服务器发送事件流数据的一个工具，Hystrix的监控中，只能监控单个节点，因此可以通过Turbine来监控集群下Hystrix的metrics情况
+
+  所有客户端需要将Hystrix命令推送到Turbine，客户端只需要引入
+
+```
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-netflix-hystrix-stream</artifactId>
         </dependency>
-        
-     ** 使用方式（代码详情见monitoring）
-        http://DOCKER-HOST:9000/hystrix ，输入：http://DOCKER-HOST:8989
+```
+
+* 使用方式（代码详情见monitoring）
+
+访问mointoring：
+
+http://DOCKER-HOST:9000/hystrix ，输入：http://DOCKER-HOST:8989
 
 ### <a name="Netflix-Feign"></a>Netflix Feign
 
@@ -341,9 +366,9 @@ Netflix Ribbon的主要特点包括：1）负载均衡，2）容错，3）在异
 
 #### 业务关系
      
-     ** 在项目中用到次数比较多，比如帐户服务中掉用统计服务和认证服务，如：
+* 在项目中用到次数比较多，比如帐户服务中掉用统计服务和认证服务，如：
      
-     <code>
+```
         @FeignClient(name = "auth-service")      ##声明一个认证服务的一个客户端，通过组册中心去查找auth-service
         public interface AuthServiceClient {
         
@@ -351,11 +376,11 @@ Netflix Ribbon的主要特点包括：1）负载均衡，2）容错，3）在异
             void createUser(User user);
         
         }
-     </code>
+```
      
-     ** feign也可以引用注册中心以外的服务
+* Feign也可以引用注册中心以外的服务
      
-     <code>
+```
         @FeignClient(url = "${rates.url}", name = "rates-client") ##声明一个汇率客户端，根据具体的url（这个可以是外部的服务）
         public interface ExchangeRatesClient {
         
@@ -363,29 +388,31 @@ Netflix Ribbon的主要特点包括：1）负载均衡，2）容错，3）在异
             ExchangeRatesContainer getRates(@RequestParam("base") Currency base);
         
         }
-     </code>
+```
 
 # <a name="如何变成自己的项目"></a>如何变成自己的项目 
 
-     ** git clone项目到本地，并基于该项目创建自己的mvn项目
+**步骤：**
+
+1. git clone项目到本地，并基于该项目创建自己的mvn项目
      
-     ** config、registry、gateway、monitoring 4个组件不用去修改代码
+2. config、registry、gateway、monitoring，这4个组件不需要修改代码
      
-     ** auth-service、account-service、notification-service、statistics-service 替换中自己的服务
+3. auth-service、account-service、notification-service、statistics-service 替换中自己的服务
      
-     ** 去config中修改统一的配置文件，比如新增服务的服务名，端口，等等
+4. 去config中修改统一的配置文件，比如新增服务的服务名、端口等
      
-     ** 通过mvn构建后生成镜像
+5. 通过mvn构建后生成镜像
      
-     ** 运行所有的镜像，参考本例中的快速部署
+6. 运行所有的镜像，可参考[快速部署](#快速部署)
      
 # <a name="生产环境"></a>生产环境
 
-* CI/CD`TODO`
-* 扩容`TODO`
-* 服务容错`TODO`
-* 业务监控／性能分析`TODO`
-* K8s部署`TODO`
+* `TODO` CI/CD
+* `TODO` 扩容
+* `TODO` 服务容错
+* `TODO` 业务监控／性能分析
+* `TODO` K8s部署
 
 # <a name="常见问题"></a>常见问题
 
@@ -396,7 +423,7 @@ Netflix Ribbon的主要特点包括：1）负载均衡，2）容错，3）在异
 ### Roadmap
 
 * `文档`增加在线演示
-* `组件`增加组件内容，如Sleuth、Consul等
+* `组件`增加组件内容，如Spring Cloud Sleuth、Spring Cloud Consul等
 * `生产环境`增加生产环境下各项扩展操作，如性能测试及各类部署、特性、技术实现等
 * `快速部署`增加好雨云帮部署
 * `常见问题`补充问题总结[QA](QA.md)
