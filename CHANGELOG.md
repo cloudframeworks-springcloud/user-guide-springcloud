@@ -1,6 +1,5 @@
 # [云框架]基于Spring Cloud的微服务架构 
 
-## v0.1 （2017.03.28）
+## v0.1 （2017.04.17）
 
-+ `NEW` update user-guide
-+ `NEW` test version 0.1
++ `NEW` v0.1 released
