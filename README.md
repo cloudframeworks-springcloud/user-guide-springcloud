@@ -275,39 +275,37 @@ PiggyMetrics借助Netflix Zuul实现gateway，代理授权服务、账户服务�
    }
    ```
 
-
 在resources目录下增加static录存放你的静态资源(html、css、images等)
      
 在zuul的配置文件中增加代理服务的配置
 
-
    ```
-    zuul:
-    ignoredServices: '*'
-    host:
-      connect-timeout-millis: 20000        ## 超时时间
-       ocket-timeout-millis: 20000
-    routes:
-      auth-service:                        ## 认证服务
-          path: /uaa/**                    ## 匹配路径
-          url: http://auth-service:5000    ## 服务路径（http方式）
-          stripPrefix: false               ## 是否包括前缀
-          sensitiveHeaders:
-      account-service:
-          path: /accounts/**
-          serviceId: account-service       ## 通过服务ID动态查找
-          stripPrefix: false
-          sensitiveHeaders:
-      statistics-service:
-          path: /statistics/**
-          serviceId: statistics-service
-          stripPrefix: false
-          sensitiveHeaders:
-      notification-service:
-          path: /notifications/**
-          serviceId: notification-service
-          stripPrefix: false
-          sensitiveHeaders:
+   zuul:
+   ignoredServices: '*'
+   host:
+     connect-timeout-millis: 20000        ## 超时时间
+      ocket-timeout-millis: 20000
+   routes:
+     auth-service:                        ## 认证服务
+         path: /uaa/**                    ## 匹配路径
+         url: http://auth-service:5000    ## 服务路径（http方式）
+         stripPrefix: false               ## 是否包括前缀
+         sensitiveHeaders:
+     account-service:
+         path: /accounts/**
+         serviceId: account-service       ## 通过服务ID动态查找
+         stripPrefix: false
+         sensitiveHeaders:
+     statistics-service:
+         path: /statistics/**
+         serviceId: statistics-service
+         stripPrefix: false
+         sensitiveHeaders:
+     notification-service:
+         path: /notifications/**
+         serviceId: notification-service
+         stripPrefix: false
+         sensitiveHeaders:
    ```
 
 ### <a name="Netflix-Ribbon"></a>Netflix Ribbon
