@@ -263,7 +263,7 @@ Eureka server中的优化参数可参考[[Eureka Server]](https://github.com/clo
 
 #### 业务关系
 
-PiggyMetrics借助Zuul实现gateway（网关），代理授权服务、账户服务、统计服务和通知服务，这里的代码比较简单，基本上是标准的，不需要修改。
+PiggyMetrics借助Netflix Zuul实现gateway（网关），代理授权服务、账户服务、统计服务和通知服务，这里的代码比较简单，基本上是标准的，不需要修改。
 
 我们在实际业务的开发中，用具体业务替换相应的服务即可。
      
@@ -317,9 +317,9 @@ Netflix Ribbon的主要特点包括：1）负载均衡，2）容错，3）在异
 
 #### 业务关系 
 
-PiggyMetrics并没有显式的去定义Ribbon的使用，但是很多组件隐式的使用到了如Zuul、Feign等组件。
+PiggyMetrics并没有显式的去定义Netflix Ribbon的使用，但是很多组件隐式的使用到了如Zuul、Feign等组件。
 
-我们在实际的业务开发中，不需要刻意定义Ribbon。
+我们在实际的业务开发中，不需要刻意定义Netflix Ribbon。
 
 ### <a name="Netflix-Hystrix"></a>Netflix Hystrix
 
@@ -341,9 +341,9 @@ PiggyMetrics并没有显式的去定义Ribbon的使用，但是很多组件隐�
         
 * 通过代码侵入方式定义你的熔断机制 
 
-  [[Hystrix 示例]](https://github.com/cloudframeworks-springcloud/Netflix-Hystrix)
+  [[Netflix Hystrix 示例]](https://github.com/cloudframeworks-springcloud/Netflix-Hystrix)
         
-* Turbine是聚合服务器发送事件流数据的一个工具，Hystrix的监控中，只能监控单个节点，因此可以通过turbine来监控集群下Hystrix的metrics情况
+* Netflix Turbine是聚合服务器发送事件流数据的一个工具，Hystrix的监控中，只能监控单个节点，因此可以通过Turbine来监控集群下Hystrix的metrics情况
 
   所有客户端需要将Hystrix命令推送到Turbine，客户端只需要引入
 
