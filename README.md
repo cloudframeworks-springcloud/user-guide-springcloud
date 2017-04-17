@@ -1,4 +1,4 @@
-# [云框架]基于Spring Cloud的微服务架构 v0.1
+# [云框架]基于Spring Cloud的微服务架构 v0.2
 
 ![](https://img.shields.io/badge/build-passing-green.svg)
 ![](https://img.shields.io/badge/release-v0.1-red.svg)
