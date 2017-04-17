@@ -263,7 +263,7 @@ Eureka server中的优化参数可参考[[Eureka Server]](https://github.com/clo
 
 #### 业务关系
 
-PiggyMetrics借助Netflix Zuul实现gateway（网关），代理授权服务、账户服务、统计服务和通知服务，这里的代码比较简单，基本上是标准的，不需要修改。
+PiggyMetrics借助Netflix Zuul实现gateway，代理授权服务、账户服务、统计服务和通知服务，这里的代码比较简单，基本上是标准的，不需要修改。
 
 我们在实际业务的开发中，用具体业务替换相应的服务即可。
      
