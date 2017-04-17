@@ -96,9 +96,9 @@
     export STATISTICS_SERVICE_PASSWORD=root
     export ACCOUNT_SERVICE_PASSWORD=root
     export MONGODB_PASSWORD=root
+    ```
     
     mongo_password为必填项，其它变量可以不用设置
-    ```
 
 2. 基于docker-compose运行
 
@@ -240,16 +240,16 @@ Netflix Eureka使用Java编写，但它会将所有注册信息和心跳连接�
 #### 业务关系
 
 PiggyMetrics通过Eureka server实现registy, 代码逻辑比较简单和标准，不用做任何修改，需要注意的是在`bootstrap.yml`加入配置中心服务地址信息。
-    
-    ```
+
+```
     spring:
      cloud:
        config:
          uri: http://config:8888
          fail-fast: true
          password: ${CONFIG_SERVICE_PASSWORD}
-         username: user
-    ```
+         username: user  
+```
 
 Eureka server中的优化参数可参考[[Eureka Server]](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server)设置。
      
@@ -266,20 +266,22 @@ PiggyMetrics借助Netflix Zuul实现gateway，代理授权服务、账户服务�
 
 我们在实际业务的开发中，用具体业务替换相应的服务即可。
 
-    ```
+```
     @EnableZuulProxy            ##----------增加zuul proxy代理功能
     public class GatewayApplication {
         public static void main(String[] args) {
             SpringApplication.run(GatewayApplication.class, args);
         }
     }
-    ```
+```
+
 
 ** 在resources目录下增加static录存放你的静态资源(html、css、images等)
      
 ** 在zuul的配置文件中增加代理服务的配置
 
-    ```
+
+```
     zuul:
     ignoredServices: '*'
     host:
@@ -306,7 +308,7 @@ PiggyMetrics借助Netflix Zuul实现gateway，代理授权服务、账户服务�
           serviceId: notification-service
           stripPrefix: false
           sensitiveHeaders:
-    ```
+```
 
 ### <a name="Netflix-Ribbon"></a>Netflix Ribbon
 
@@ -367,8 +369,8 @@ http://DOCKER-HOST:9000/hystrix ，输入：http://DOCKER-HOST:8989
      
 * 在项目中用到次数比较多，比如帐户服务中掉用统计服务和认证服务，如：
      
-    ```
-    @FeignClient(name = "auth-service")      ## 声明一个认证服务的一个客户端，通过组册中心去查找auth-service
+   ```
+   @FeignClient(name = "auth-service")      ## 声明一个认证服务的一个客户端，通过组册中心去查找auth-service
     public interface AuthServiceClient {
         
         @RequestMapping(method = RequestMethod.POST, value = "/uaa/users", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
