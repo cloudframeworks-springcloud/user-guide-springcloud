@@ -208,13 +208,13 @@ PiggyMetrics通过Spring Cloud config server管理所有服务的配置文件，
 2.在资源目录中bootstrap.yml添加    
      
 ```
-         spring:
-          application:
-            name: 服务名
-          cloud:
-            config:
-              uri: http://config:8888
-              fail-fast: true
+spring:
+application:
+name: 服务名
+cloud:
+config:
+uri: http://config:8888
+fail-fast: true
 ```
 
 3.当你的配置文件修改后可以方式 http://DOCKER-HOST:DOCKER-PORT/notifications/refresh 刷新配置，从而不用重启服务
