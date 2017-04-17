@@ -52,10 +52,12 @@
 
 ```
         1.清除docker 旧版本
+        
           rpm -qa |grep docker
           yum  -y  remove docker* 
             
         2.安装新的docker
+        
           yum install -y docker-engine
             
         3.systemctl  start docker
@@ -67,9 +69,11 @@
 
 ```
         1.更新apt包
+        
           sudo apt-get update
             
         2.安装 Docker
+        
           sudo apt-get install docker-engine
             
         3.sudo service docker start
@@ -191,12 +195,12 @@ Spring Cloud Config可以理解为配置管理开发包，提供解决分布式�
 Spring Cloud Config基于使用中心配置仓库的思想（版本控制），支持Git（默认）、SVN、File等三种储存方式。
 
 #### 业务关系
-    
-* 本项目中基于spring cloud config server管理所有服务的配置文件，它简单地从本地类路径加载配置文件，如图：
+    
+PiggyMetrics通过Spring Cloud config server管理所有服务的配置文件，它简单地从本地类路径加载配置文件，如下图所示：
      
 <div align=center><img width="900" height="" src="./image/piggymetrics-config.png"/></div>
-     
-您可以在项目的config service 查看shard目录资源，其中application.yml被所有客户端应用共享，比如当Notification-service请求配置时，使用shared/notification-service.yml和shared/application.yml（在所有客户端应用程序之间共享）配置服务响应；这样的好处所有的配置统一管理，业务应用本身不维护配置文件
+     
+我们可以在[config service](https://github.com/cloudframeworks-springcloud/PiggyMetrics/tree/master/config/src/main/resources/shared)中查看shard目录资源，其中`application.yml`被所有客户端应用共享，比如当Notification-service请求配置时，使用`shared/notification-service.yml`和`hared/application.yml`（在所有客户端应用程序之间共享）配置服务响应；这样的好处是所有的配置统一管理，业务应用本身不维护配置文件。
      
 * 使用方式
      
@@ -235,7 +239,7 @@ Netflix Eureka使用Java编写，但它会将所有注册信息和心跳连接�
 
 #### 业务关系
 
-本项目中registy就是Eureka server, 代码逻辑比较简单和标准，不用做任何修改，需要注意的是在`bootstrap.yml`加入配置中心服务地址信息
+PiggyMetrics通过Eureka server实现registy, 代码逻辑比较简单和标准，不用做任何修改，需要注意的是在`bootstrap.yml`加入配置中心服务地址信息。
      
 ```
          spring:
@@ -256,7 +260,7 @@ Eureka server中的优化参数可参考[[Eureka Server]](https://github.com/clo
 
 在通过服务网关统一向外的提供REST API的微服务架构中，Netflix Zuul为微服务机构提供了前门保护的作用，同时将权限控制这些较重的非业务逻辑内容迁移到服务路由层面，使得服务集群主体能够具备更高的可复用性和可测试性。
 
-#### 业务关系 
+#### 业务关系
 
 PiggyMetrics借助Zuul实现gateway（网关），代理授权服务、账户服务、统计服务和通知服务，这里的代码比较简单，基本上是标准的，不需要修改。
 
@@ -308,7 +312,7 @@ PiggyMetrics借助Zuul实现gateway（网关），代理授权服务、账户服
 
 [[Netflix Ribbon]](https://github.com/cloudframeworks-springcloud/Netflix-Ribbon) 是一个客户端负载均衡器，有多种负载均衡策略可选（包括自定义的负载均衡算法），并可配合服务发现及断路器使用。在配置文件中列出Load Balancer后面所有的机器，Ribbon会自动的帮助你基于某种规则（如简单轮询，随机连接等）去连接这些机器。
 
-Netflix Ribbon的主要特点包括：1）负载均衡，2）容错，3）在异步和反应模型中支持多协议（HTTP，TCP，UDP），4）缓存和批处理
+Netflix Ribbon的主要特点包括：1）负载均衡，2）容错，3）在异步和反应模型中支持多协议（HTT、TCP、UDP），4）缓存和批处理
 
 #### 业务关系 
 
@@ -335,6 +339,7 @@ PiggyMetrics并没有显式的去定义Ribbon的使用，但是很多组件隐�
 ```
         
 * 通过代码侵入方式定义你的熔断机制 
+
   [[Hystrix 示例]](https://github.com/cloudframeworks-springcloud/Netflix-Hystrix)
         
 * Turbine是聚合服务器发送事件流数据的一个工具，Hystrix的监控中，只能监控单个节点，因此可以通过turbine来监控集群下Hystrix的metrics情况
@@ -350,7 +355,9 @@ PiggyMetrics并没有显式的去定义Ribbon的使用，但是很多组件隐�
 
 * 使用方式（代码详情见monitoring）
 
-        http://DOCKER-HOST:9000/hystrix ，输入：http://DOCKER-HOST:8989
+访问mointoring：
+
+http://DOCKER-HOST:9000/hystrix ，输入：http://DOCKER-HOST:8989
 
 ### <a name="Netflix-Feign"></a>Netflix Feign
 
