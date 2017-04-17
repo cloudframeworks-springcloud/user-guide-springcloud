@@ -50,7 +50,7 @@
 
 * centos
 
-```
+    ```
     1.清除docker 旧版本
     
       rpm -qa |grep docker
@@ -63,11 +63,11 @@
     3.systemctl  start docker
     
     4.docker info 查看docker状态
-```
+    ```
 
 * ubuntu
 
-```
+    ```
     1.更新apt包
     
       sudo apt-get update
@@ -79,7 +79,7 @@
     3.sudo service docker start
     
     4.docker info 查看docker状态
-```
+    ```
 
 * mac
 
@@ -90,7 +90,7 @@
 
 1. 设置环境变量
 
-```
+    ```
     export CONFIG_SERVICE_PASSWORD=root
     export NOTIFICATION_SERVICE_PASSWORD=root
     export STATISTICS_SERVICE_PASSWORD=root
@@ -98,17 +98,17 @@
     export MONGODB_PASSWORD=root
     
     mongo_password为必填项，其它变量可以不用设置
-```
+    ```
 
 2. 基于docker-compose运行
 
-```
+    ```
     docker-compose -f docker-compose.yml up -d
-```
+    ```
 
 3. 通过脚本运行
 
-```
+    ```
     docker run -d -p15672:15672 --name=rabbitmq rabbitmq:3-management
 
     docker run -d -e CONFIG_SERVICE_PASSWORD=${CONFIG_SERVICE_PASSWORD} -p 8888:8888 --name=config goodraincloudframeworks/piggymetrics-config
@@ -134,7 +134,7 @@
     docker run -ti -e CONFIG_SERVICE_PASSWORD=${CONFIG_SERVICE_PASSWORD} --link config:config --link registry:registry --link rabbitmq:rabbitmq --name=monitoring -p 9000:8080 -p 8989:8989 goodraincloudframeworks/piggymetrics-monitoring
     
     docker run -d -e CONFIG_SERVICE_PASSWORD=${CONFIG_SERVICE_PASSWORD} --link config:config --link registry:registry --link auth-service:auth-service --name=gateway -p 80:4000 goodraincloudframeworks/piggymetrics-gateway
-```
+    ```
 
 # <a name="框架说明"></a>框架说明
 
@@ -240,17 +240,17 @@ Netflix Eureka使用Java编写，但它会将所有注册信息和心跳连接�
 #### 业务关系
 
 PiggyMetrics通过Eureka server实现registy, 代码逻辑比较简单和标准，不用做任何修改，需要注意的是在`bootstrap.yml`加入配置中心服务地址信息。
-     
-```
-         spring:
-          cloud:
-            config:
-              uri: http://config:8888
-              fail-fast: true
-              password: ${CONFIG_SERVICE_PASSWORD}
-              username: user
-```
-     
+    
+    ```
+    spring:
+     cloud:
+       config:
+         uri: http://config:8888
+         fail-fast: true
+         password: ${CONFIG_SERVICE_PASSWORD}
+         username: user
+    ```
+
 Eureka server中的优化参数可参考[[Eureka Server]](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server)设置。
      
 
@@ -265,48 +265,48 @@ Eureka server中的优化参数可参考[[Eureka Server]](https://github.com/clo
 PiggyMetrics借助Netflix Zuul实现gateway，代理授权服务、账户服务、统计服务和通知服务，这里的代码比较简单，基本上是标准的，不需要修改。
 
 我们在实际业务的开发中，用具体业务替换相应的服务即可。
-     
-```
-        @EnableZuulProxy            ##----------增加zuul proxy代理功能
-        public class GatewayApplication {
-            public static void main(String[] args) {
-                SpringApplication.run(GatewayApplication.class, args);
-            }
+
+    ```
+    @EnableZuulProxy            ##----------增加zuul proxy代理功能
+    public class GatewayApplication {
+        public static void main(String[] args) {
+            SpringApplication.run(GatewayApplication.class, args);
         }
-     </code>
+    }
+    ```
+
+** 在resources目录下增加static录存放你的静态资源(html、css、images等)
      
-     ** 在resources目录下增加static录存放你的静态资源(html、css、images等)
-     
-     ** 在zuul的配置文件中增加代理服务的配置
-     
-     <code>
-        zuul:
-          ignoredServices: '*'
-          host:
-            connect-timeout-millis: 20000        ##超时时间
-            socket-timeout-millis: 20000
-          routes:
-            auth-service:                        ## 认证服务
-                path: /uaa/**                    ## 匹配路径
-                url: http://auth-service:5000    ## 服务路径（http方式）
-                stripPrefix: false               ## 是否包括前缀
-                sensitiveHeaders:
-            account-service:
-                path: /accounts/**
-                serviceId: account-service       ## 通过服务ID动态查找
-                stripPrefix: false
-                sensitiveHeaders:
-            statistics-service:
-                path: /statistics/**
-                serviceId: statistics-service
-                stripPrefix: false
-                sensitiveHeaders:
-            notification-service:
-                path: /notifications/**
-                serviceId: notification-service
-                stripPrefix: false
-                sensitiveHeaders:
-```
+** 在zuul的配置文件中增加代理服务的配置
+
+    ```
+    zuul:
+    ignoredServices: '*'
+    host:
+      connect-timeout-millis: 20000        ## 超时时间
+       ocket-timeout-millis: 20000
+    routes:
+      auth-service:                        ## 认证服务
+          path: /uaa/**                    ## 匹配路径
+          url: http://auth-service:5000    ## 服务路径（http方式）
+          stripPrefix: false               ## 是否包括前缀
+          sensitiveHeaders:
+      account-service:
+          path: /accounts/**
+          serviceId: account-service       ## 通过服务ID动态查找
+          stripPrefix: false
+          sensitiveHeaders:
+      statistics-service:
+          path: /statistics/**
+          serviceId: statistics-service
+          stripPrefix: false
+          sensitiveHeaders:
+      notification-service:
+          path: /notifications/**
+          serviceId: notification-service
+          stripPrefix: false
+          sensitiveHeaders:
+    ```
 
 ### <a name="Netflix-Ribbon"></a>Netflix Ribbon
 
@@ -328,15 +328,15 @@ PiggyMetrics并没有显式的去定义Netflix Ribbon的使用，但是很多组
 
 * 项目中统一定义了熔断策略（不涉及代码侵入）：
        
-```
-            hystrix:
-              command:
-                default:
-                  execution:
-                    isolation:
-                      thread:
-                        timeoutInMilliseconds: 10000   ## 10000ms 超时限制
-```
+    ```
+    hystrix:
+      command:
+        default:
+          execution:
+            isolation:
+              thread:
+                timeoutInMilliseconds: 10000   ## 10000ms 超时限制
+    ```
         
 * 通过代码侵入方式定义你的熔断机制 
 
@@ -346,12 +346,12 @@ PiggyMetrics并没有显式的去定义Netflix Ribbon的使用，但是很多组
 
   所有客户端需要将Hystrix命令推送到Turbine，客户端只需要引入
 
-```
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-netflix-hystrix-stream</artifactId>
-        </dependency>
-```
+    ```
+    <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-netflix-hystrix-stream</artifactId>
+    </dependency>
+    ```
 
 * 使用方式（代码详情见monitoring）
 
@@ -367,27 +367,27 @@ http://DOCKER-HOST:9000/hystrix ，输入：http://DOCKER-HOST:8989
      
 * 在项目中用到次数比较多，比如帐户服务中掉用统计服务和认证服务，如：
      
-```
-        @FeignClient(name = "auth-service")      ##声明一个认证服务的一个客户端，通过组册中心去查找auth-service
-        public interface AuthServiceClient {
+    ```
+    @FeignClient(name = "auth-service")      ## 声明一个认证服务的一个客户端，通过组册中心去查找auth-service
+    public interface AuthServiceClient {
         
-            @RequestMapping(method = RequestMethod.POST, value = "/uaa/users", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-            void createUser(User user);
+        @RequestMapping(method = RequestMethod.POST, value = "/uaa/users", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+        void createUser(User user);
         
-        }
-```
+    }
+    ```
      
 * Feign也可以引用注册中心以外的服务
      
-```
-        @FeignClient(url = "${rates.url}", name = "rates-client") ##声明一个汇率客户端，根据具体的url（这个可以是外部的服务）
-        public interface ExchangeRatesClient {
+    ```
+    @FeignClient(url = "${rates.url}", name = "rates-client") ## 声明一个汇率客户端，根据具体的url（这个可以是外部的服务）
+    public interface ExchangeRatesClient {
         
-            @RequestMapping(method = RequestMethod.GET, value = "/latest")
-            ExchangeRatesContainer getRates(@RequestParam("base") Currency base);
+        @RequestMapping(method = RequestMethod.GET, value = "/latest")
+        ExchangeRatesContainer getRates(@RequestParam("base") Currency base);
         
-        }
-```
+    }
+    ```
 
 # <a name="如何变成自己的项目"></a>如何变成自己的项目 
 
