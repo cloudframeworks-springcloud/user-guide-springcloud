@@ -192,18 +192,18 @@ Spring Cloud Config基于使用中心配置仓库的思想（版本控制），�
 
 #### 业务关系
     
-     ** 本项目中基于spring cloud config server管理所有服务的配置文件，它简单地从本地类路径加载配置文件，如图
+* 本项目中基于spring cloud config server管理所有服务的配置文件，它简单地从本地类路径加载配置文件，如图：
      
 <div align=center><img width="900" height="" src="./image/piggymetrics-config.png"/></div>
      
-     您可以在项目的config service 查看shard目录资源，其中application.yml被所有客户端应用共享，比如当Notification-service请求配置时，使用shared/notification-service.yml和shared/application.yml（在所有客户端应用程序之间共享）配置服务响应；这样的好处所有的配置统一管理，业务应用本身不维护配置文件
+您可以在项目的config service 查看shard目录资源，其中application.yml被所有客户端应用共享，比如当Notification-service请求配置时，使用shared/notification-service.yml和shared/application.yml（在所有客户端应用程序之间共享）配置服务响应；这样的好处所有的配置统一管理，业务应用本身不维护配置文件
      
-     ** 使用方式
+* 使用方式
      
-     1、在pom.xml中添加spring-cloud-starter-config，它从自动配置中心自动获取配置
-     2、在资源目录中bootstrap.yml填加
+1.在pom.xml中添加spring-cloud-starter-config，它从自动配置中心自动获取配置
+2.在资源目录中bootstrap.yml添加    
      
-        <code>
+```
          spring:
           application:
             name: 服务名
@@ -211,9 +211,9 @@ Spring Cloud Config基于使用中心配置仓库的思想（版本控制），�
             config:
               uri: http://config:8888
               fail-fast: true
-         </code>
-         
-      3、当你的配置文件修改后可以方式 http://DOCKER-HOST:DOCKER-PORT/notifications/refresh 刷新配置，从而不用重启服务
+```
+
+3.当你的配置文件修改后可以方式 http://DOCKER-HOST:DOCKER-PORT/notifications/refresh 刷新配置，从而不用重启服务
      
 
 ### <a name="Netflix-Eureka"></a>Netflix Eureka
@@ -386,15 +386,15 @@ PiggyMetrics并没有显式的去定义Ribbon的使用，但是很多组件隐�
 
 1. git clone项目到本地，并基于该项目创建自己的mvn项目
      
-2. config、registry、gateway、monitoring 4个组件不用去修改代码
+2. config、registry、gateway、monitoring，这4个组件不需要修改代码
      
 3. auth-service、account-service、notification-service、statistics-service 替换中自己的服务
      
-4. 去config中修改统一的配置文件，比如新增服务的服务名，端口，等等
+4. 去config中修改统一的配置文件，比如新增服务的服务名、端口等
      
 5. 通过mvn构建后生成镜像
      
-6. 运行所有的镜像，参考本例中的快速部署
+6. 运行所有的镜像，可参考[快速部署](#快速部署)
      
 # <a name="生产环境"></a>生产环境
 
