@@ -199,7 +199,9 @@ PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
 
 * 认证机制通过Auth service实现，提供基本认证服务。
 
+```
 **需要注意的是Spring Cloud Config、Eureka、Ribbon、Hystrix、Feign以及Turbine均为标准组件，与业务之间没有强关系，不涉及到业务代码，仅需简单配置即可工作。**
+```
 
 ### <a name="Spring-Cloud-Config"></a>Spring Cloud Config
 
