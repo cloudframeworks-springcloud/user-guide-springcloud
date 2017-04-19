@@ -622,15 +622,11 @@ PiggyMetrics借助Netflix Zuul实现gateway，代理授权服务、账户服务�
 
 ### <a name="Netflix-Ribbon"></a>Netflix Ribbon
 
-[[Netflix Ribbon]](https://github.com/cloudframeworks-springcloud/Netflix-Ribbon) 是一个客户端负载均衡器，有多种负载均衡策略可选（包括自定义的负载均衡算法），并可配合服务发现及断路器使用。在配置文件中列出Load Balancer后面所有的机器，Ribbon会自动的帮助你基于某种规则（如简单轮询，随机连接等）去连接这些机器。
+#### 通用说明
 
-Netflix Ribbon的主要特点包括：1）负载均衡，2）容错，3）在异步和反应模型中支持多协议（HTT、TCP、UDP），4）缓存和批处理
+#### 业务配置 
 
-#### 业务关系 
-
-PiggyMetrics并没有显式的去定义Netflix Ribbon的使用，但是很多组件隐式的使用到了如Zuul、Feign等组件。
-
-我们在实际的业务开发中，不需要刻意定义Netflix Ribbon。
+PiggyMetrics并没有显式的去定义Netflix Ribbon的使用，但是在Zuul、Feign等组件中隐式的使用到了Ribbon，我们在实际的业务开发中，也不需要刻意定义Ribbon。
 
 ### <a name="Netflix-Hystrix"></a>Netflix Hystrix
 
@@ -640,32 +636,35 @@ PiggyMetrics并没有显式的去定义Netflix Ribbon的使用，但是很多组
 
 * 项目中统一定义了熔断策略（不涉及代码侵入）：
        
-    ```
-    hystrix:
-      command:
-        default:
-          execution:
-            isolation:
-              thread:
-                timeoutInMilliseconds: 10000   ## 10000ms 超时限制
-    ```
+   ```
+   hystrix:
+     command:
+       default:
+         execution:
+           isolation:
+             thread:
+               timeoutInMilliseconds: 10000   ## 10000ms 超时限制
+   ```
         
 * 通过代码侵入方式定义你的熔断机制 
 
   [[Netflix Hystrix 示例]](https://github.com/cloudframeworks-springcloud/Netflix-Hystrix)
-        
-* Netflix Turbine是聚合服务器发送事件流数据的一个工具，Hystrix的监控中，只能监控单个节点，因此可以通过Turbine来监控集群下Hystrix的metrics情况
 
-  所有客户端需要将Hystrix命令推送到Turbine，客户端只需要引入
+### <a name="Netflix-Turbine"></a>Netflix Turbine
 
-    ```
-    <dependency>
-        <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-netflix-hystrix-stream</artifactId>
-    </dependency>
-    ```
 
-* 使用方式（代码详情见monitoring）
+#### 业务配置
+
+由于Hystrix的监控只针对单个节点，因此PiggyMetrics通过Turbine来监控集群下Hystrix的metrics情况。
+
+实现客户端将Hystrix命令推送到Turbine，只需要在客户端添加如下代码即可，例如[/notification-service/pom.xml](https://github.com/cloudframeworks-springcloud/PiggyMetrics/blob/master/notification-service/pom.xml#L79)。
+
+   ```
+   <dependency>
+       <groupId>org.springframework.cloud</groupId>
+       <artifactId>spring-cloud-netflix-hystrix-stream</artifactId>
+   </dependency>
+   ```
 
 访问mointoring：
 
@@ -673,14 +672,14 @@ http://DOCKER-HOST:9000/hystrix ，输入：http://DOCKER-HOST:8989
 
 ### <a name="Netflix-Feign"></a>Netflix Feign
 
-[[Netflix Feign]](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Feign)是一种声明式、模板化的HTTP客户端。Spring Cloud集成了Netflix Feign，并通过Netflix Ribbon和Netflix Eureka提供负载均衡。
+#### 通用说明
 
 #### 业务关系
-     
-* 在项目中用到次数比较多，比如帐户服务中掉用统计服务和认证服务，如：
-     
+     
+PiggyMetrics多次用到了Feign，使用为在客户端中添加如下代码，例如[StatisticsServiceClient.java](https://github.com/cloudframeworks-springcloud/PiggyMetrics/blob/master/account-service/src/main/java/com/piggymetrics/account/client/StatisticsServiceClient.java)。
+
     ```
-    @FeignClient(name = "auth-service")      ## 声明一个认证服务的一个客户端，通过组册中心去查找auth-service
+    @FeignClient(name = "auth-service")      ## 声明一个认证服务的一个客户端，通过注册中心去查找auth-service
      public interface AuthServiceClient {
         
          @RequestMapping(method = RequestMethod.POST, value = "/uaa/users", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
@@ -688,9 +687,9 @@ http://DOCKER-HOST:9000/hystrix ，输入：http://DOCKER-HOST:8989
         
      }
     ```
-     
-* Feign也可以引用注册中心以外的服务
-     
+     
+Feign同时可以引用注册中心以外的服务没，例如在统计服务模块，Feign引入了一个汇率客户端[ExchangeRatesClient.java](https://github.com/cloudframeworks-springcloud/PiggyMetrics/blob/master/statistics-service/src/main/java/com/piggymetrics/statistics/client/ExchangeRatesClient.java)。
+
     ```
     @FeignClient(url = "${rates.url}", name = "rates-client") ## 声明一个汇率客户端，根据具体的url（这个可以是外部的服务）
     public interface ExchangeRatesClient {
