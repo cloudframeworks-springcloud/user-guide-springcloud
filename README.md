@@ -978,7 +978,7 @@ Netflix Feign是一个声明式、模板化的HTTP客户端，因此编写起来
 
 
 #### 业务关系
-     
+
 PiggyMetrics多次用到了Feign，使用为在客户端中添加如下代码，例如[StatisticsServiceClient.java](https://github.com/cloudframeworks-springcloud/PiggyMetrics/blob/master/account-service/src/main/java/com/piggymetrics/account/client/StatisticsServiceClient.java)。
 
    ```
