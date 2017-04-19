@@ -89,7 +89,9 @@
 
 ### 操作步骤
 
-1. 设置环境变量
+1. 克隆完整代码
+
+2. 设置环境变量
 
     ```
     export CONFIG_SERVICE_PASSWORD=root
@@ -101,13 +103,13 @@
     
     mongo_password为必填项，其它变量可以不用设置
 
-2. 基于docker-compose运行
+3. 基于docker-compose运行:
 
     ```
     docker-compose -f docker-compose.yml up -d
     ```
 
-3. 通过脚本运行
+4. 通过脚本运行：
 
     ```
     docker run -d -p15672:15672 --name=rabbitmq rabbitmq:3-management
@@ -151,8 +153,6 @@ Piggymetrics<a name="业务架构"></a>业务架构如下图所示：
 
 <div align=center><img width="900" height="" src="./image/pm业务架构.png"/></div>
 
-
-
 其中<a name="业务模块"></a>**账户服务**模块包含一般用户输入逻辑和验证：收入/费用项目，储蓄和帐户设置。
 
 方法	| 路径	| 描述	| 用户验证	| UI可用
@@ -187,7 +187,7 @@ Piggymetrics组件架构如下图所示：
 
 <div align=center><img width="900" height="" src="./image/pm组件架构.png"/></div>
 
-账户服务通过远程客户端Feign调用统计服务及通知服务，Feign基于Ribbon实现，在调用过程中增加了断路器的功能，也就是Hystrix。
+账户服务通过远程客户端（Feign，基于Ribbon实现）调用统计服务及通知服务，并在调用过程中增加了断路器（Hystrix）的功能。账户服务、统计服务、通知服务通过注册中心（EUREKA）实现互相发现，发现之后才能调用。API Gateway提供对外统一服务网关，先从注册中心拿到相应服务，再根据服务调用各个服务的真实业务逻辑。在整个调用过程中都需要用到断路器（hystrix），在分布式系统中需要统一的断路收集，turbine通过zmq把所有断路信息统一过来，统一展示出来，在整个过程中每个服务启什么端口，配置什么参数，通过统一配置服务来做的spring cloud config来做的，那么在这个过程中需要加入认证机制，auth service提供基本认证服务。
 
 ### <a name="Spring-Cloud-Config"></a>Spring Cloud Config
 
