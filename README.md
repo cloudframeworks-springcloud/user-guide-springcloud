@@ -989,19 +989,20 @@ PiggyMetrics多次用到了Feign，使用为在客户端中添加如下代码，
         void createUser(User user);
         
     }
-    ```
+    
+   ```
  
 Feign同时可以引用注册中心以外的服务没，例如在统计服务模块，Feign引入了一个汇率客户端[ExchangeRatesClient.java](https://github.com/cloudframeworks-springcloud/PiggyMetrics/blob/master/statistics-service/src/main/java/com/piggymetrics/statistics/client/ExchangeRatesClient.java)。
 
-    ```
-    @FeignClient(url = "${rates.url}", name = "rates-client") ## 声明一个汇率客户端，根据具体的url（这个可以是外部的服务）
-    public interface ExchangeRatesClient {
+   ```
+   @FeignClient(url = "${rates.url}", name = "rates-client") ## 声明一个汇率客户端，根据具体的url（这个可以是外部的服务）
+   public interface ExchangeRatesClient {
         
-        @RequestMapping(method = RequestMethod.GET, value = "/latest")
-        ExchangeRatesContainer getRates(@RequestParam("base") Currency base);
+       @RequestMapping(method = RequestMethod.GET, value = "/latest")
+       ExchangeRatesContainer getRates(@RequestParam("base") Currency base);
         
-    }
-    ```
+   }
+   ```
 
 # <a name="如何变成自己的项目"></a>如何变成自己的项目 
 
