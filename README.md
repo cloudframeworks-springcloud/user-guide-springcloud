@@ -49,7 +49,7 @@
 
 ### Docker环境准备
 
-* centos
+* **centos**
 
     ```
     1.清除docker 旧版本
@@ -66,7 +66,7 @@
     4.docker info 查看docker状态
     ```
 
-* ubuntu
+* **ubuntu**
 
     ```
     1.更新apt包
@@ -82,7 +82,7 @@
     4.docker info 查看docker状态
     ```
 
-* mac
+* **mac**
 
     参考[https://docs.docker.com/docker-for-mac/](https://docs.docker.com/docker-for-mac/)
 
@@ -147,7 +147,7 @@
 
 <a name="业务背景"></a>
 
-Piggymetrics通过Spring Cloud实现微服务架构，应用被分解为账户服务（ACCOUNT SERVICE）、统计服务（STATISTICS SERVICE）、通知服务（NOTIFICATION SERVICE）等三个核心微服务。每个微服务都是围绕业务能力组织的可独立部署的应用程序，拥有独立的数据库并使用同步的REST API实现微服务与微服务之间的通信。
+Piggymetrics通过Spring Cloud实现微服务架构，应用被分解为**账户服务**（ACCOUNT SERVICE）、**统计服务**（STATISTICS SERVICE）、**通知服务**（NOTIFICATION SERVICE）等三个核心微服务。每个微服务都是围绕业务能力组织的可独立部署的应用程序，拥有独立的数据库并使用同步的REST API实现微服务与微服务之间的通信。
 
 <a name="业务架构"></a>业务架构如下图所示：
 
