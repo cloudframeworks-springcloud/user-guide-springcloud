@@ -261,14 +261,13 @@ searchPaths：寻找路径
 获取git上的资源信息遵循如下规则：
     
    ```
-
    /{application}/{profile}[/{label}]
    /{application}-{profile}.yml
    /{label}/{application}-{profile}.yml
    /{application}-{profile}.properties
    /{label}/{application}-{profile}.properties  
    ```
-
+   
 **创建Config client**
 
 * 创建一个mvn工程，起名为config-server,其pom.xml见实例代码，核心依赖如下：
