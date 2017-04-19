@@ -199,6 +199,8 @@ PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
 
 * 认证机制通过Auth service实现，提供基本认证服务。
 
+需要注意的是Spring Cloud Config、Eureka、Ribbon、Hystrix、Feign以及Turbine均为标准组件，与业务之间没有强关系，不涉及到业务代码，仅需简单配置即可工作；
+
 ### <a name="Spring-Cloud-Config"></a>Spring Cloud Config
 
 Spring Cloud Config可以理解为配置管理开发包，提供解决分布式系统的配置管理方案，分config_server、config_client两个模块：
