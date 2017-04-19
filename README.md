@@ -151,6 +151,8 @@ Piggymetrics<a name="业务架构"></a>业务架构如下图所示：
 
 <div align=center><img width="900" height="" src="./image/pm业务架构.png"/></div>
 
+
+
 其中<a name="业务模块"></a>**账户服务**模块包含一般用户输入逻辑和验证：收入/费用项目，储蓄和帐户设置。
 
 方法	| 路径	| 描述	| 用户验证	| UI可用
@@ -184,6 +186,8 @@ PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
 Piggymetrics组件架构如下图所示：
 
 <div align=center><img width="900" height="" src="./image/pm组件架构.png"/></div>
+
+账户服务通过远程客户端Feign调用统计服务及通知服务，Feign基于Ribbon实现，在调用过程中增加了断路器的功能，也就是Hystrix。
 
 ### <a name="Spring-Cloud-Config"></a>Spring Cloud Config
 
