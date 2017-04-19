@@ -49,7 +49,7 @@
 
 1. Docker环境准备
 
-   * centos
+   [centos]
 
    ```
    1.清除docker 旧版本
@@ -66,7 +66,7 @@
    4.docker info 查看docker状态
    ```
 
-   * ubuntu
+   [ubuntu]
 
    ```
    1.更新apt包
@@ -82,7 +82,7 @@
    4.docker info 查看docker状态
    ```
 
-   * mac
+   [mac]
 
    参考[https://docs.docker.com/docker-for-mac/](https://docs.docker.com/docker-for-mac/)
 
@@ -100,8 +100,8 @@
    export ACCOUNT_SERVICE_PASSWORD=root
    export MONGODB_PASSWORD=root
    ```
-    
-    mongo_password为必填项，其它变量可以不用设置
+   
+   mongo_password为必填项，其它变量可以不用设置
 
 4. 基于docker-compose运行:
 
@@ -339,15 +339,15 @@ PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
 
 使用Spring Cloud config需要在[pom.xml](https://github.com/cloudframeworks-springcloud/PiggyMetrics/blob/master/config/pom.xml)中添加spring-cloud-starter-config，它将从配置中心自动获取配置。并在各服务资源目录bootstrap.yml中，例如[moinitoring的bootstrap.yml](https://github.com/cloudframeworks-springcloud/PiggyMetrics/blob/master/monitoring/src/main/resources/bootstrap.yml)中添加如下代码：
 
-    ```
-    spring:
-      application:
-        name: 服务名
-      cloud:
-        config:
-          uri: http://config:8888
-          fail-fast: true
-    ```
+   ```
+   spring:
+     application:
+       name: 服务名
+     cloud:
+       config:
+         uri: http://config:8888
+         fail-fast: true
+   ```
 
 配置文件修改后通过 http://DOCKER-HOST:DOCKER-PORT/xxx/refresh 刷新配置(xxx表示服务根路径)，不需要重启服务。
 
