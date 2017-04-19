@@ -91,7 +91,7 @@
 
 1. 克隆完整代码
 
-    
+   [https://github.com/cloudframeworks-springcloud/PiggyMetrics](https://github.com/cloudframeworks-springcloud/PiggyMetrics)
 
 2. 设置环境变量
 
@@ -149,7 +149,7 @@
 
 Piggymetrics通过Spring Cloud实现微服务架构，应用被分解为账户服务（ACCOUNT SERVICE）、统计服务（STATISTICS SERVICE）、通知服务（NOTIFICATION SERVICE）等三个核心微服务。每个微服务都是围绕业务能力组织的可独立部署的应用程序，拥有独立的数据库并使用同步的REST API实现微服务与微服务之间的通信。
 
-其<a name="业务架构"></a>业务架构如下图所示：
+<a name="业务架构"></a>业务架构如下图所示：
 
 <div align=center><img width="900" height="" src="./image/pm业务架构.png"/></div>
 
@@ -183,19 +183,17 @@ PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
 
 <a name="组件架构"></a>Piggymetrics基础服务设施中用到了Spring Cloud Config、Netflix Eureka、Netflix Hystrix、Netflix Zuul、Netflix Ribbon、Netflix Feign等组件，而这也正是Spring Cloud分布式开发中最核心组件。
 
-其组件架构如下图所示：
+组件架构如下图所示：
 
 <div align=center><img width="900" height="" src="./image/pm组件架构.png"/></div>
 
-* 账户服务通过远程客户端（Feign，基于Ribbon实现负载均衡）调用统计服务及通知服务，并在调用过程中增加了断路器（Hystrix）的功能；
+* 账户服务通过远程客户端（Feign）调用统计服务及通知服务，通过Ribbon实现负载均衡，并在调用过程中增加了断路器（Hystrix）的功能；
 
-* 账户服务、统计服务、通知服务通过注册中心（EUREKA）实现互相发现，发现之后才能调用；
+* 由于服务发现后才能调用，因此账户服务、统计服务、通知服务通过注册中心（EUREKA）实现互相发现；
 
-* API Gateway提供对外统一服务网关，先从注册中心拿到相应服务，再根据服务调用各个服务的真实业务逻辑；
+* API Gateway提供对外统一的服务网关，首先从注册中心（EUREKA）处获取相应服务，再根据服务调用各个服务的真实业务逻辑；
 
-* 在整个调用过程中都需要用到断路器（hystrix），并通过Turbine聚合所有断路信息；
-
-* 在分布式系统中需要统一的断路收集，turbine通过zmq把所有断路信息统一过来，统一展示出来；
+* 服务调用过程通过聚合器（Turbine）统一所有断路信息；
 
 * 整个业务过程中所有服务的配置文件通过Spring Cloud Config来管理，即起什么端口、配置什么参数等；
 
