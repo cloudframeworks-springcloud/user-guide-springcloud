@@ -225,6 +225,8 @@ Spring Cloud Config包含config_server和config_client两个模块，用配置�
 
 配置文件修改后通过 http://DOCKER-HOST:DOCKER-PORT/xxx/refresh 刷新配置(xxx表示服务根路径)，不需要重启服务。
 
+[更详细Spring Cloud Config组件说明请点击查看](https://github.com/cloudframeworks-springcloud/springcloud-config)
+
 -----
 
 Spring Cloud Config可以理解为配置管理开发包，提供解决分布式系统的配置管理方案，分config_server、config_client两个模块：
