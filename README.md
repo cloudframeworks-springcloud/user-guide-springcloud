@@ -198,7 +198,7 @@ Spring Cloud Config基于使用中心配置仓库的思想（版本控制），�
 
 PiggyMetrics通过Spring Cloud config server管理所有服务的配置文件，它简单地从本地类路径加载配置文件，如下图所示：
      
-<div align=center><img width="1200" height="" src="./image/pmspringcloudconfig.png"/></div>
+<div align=center><img width="900" height="" src="./image/pmspringcloudconfig.png"/></div>
 
 我们可以在[config service](https://github.com/cloudframeworks-springcloud/PiggyMetrics/tree/master/config/src/main/resources/shared)中查看shard目录资源，其中`application.yml`被所有客户端应用共享，比如当Notification-service请求配置时，使用`shared/notification-service.yml`和`hared/application.yml`（在所有客户端应用程序之间共享）配置服务响应；这样的好处是所有的配置统一管理，业务应用本身不维护配置文件。
      
