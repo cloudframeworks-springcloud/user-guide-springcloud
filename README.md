@@ -353,52 +353,27 @@ searchPaths：寻找路径
 
 配置文件修改后通过 http://DOCKER-HOST:DOCKER-PORT/xxx/refresh 刷新配置(xxx表示服务根路径)，不需要重启服务。
 
------
-
-Spring Cloud Config可以理解为配置管理开发包，提供解决分布式系统的配置管理方案，分config_server、config_client两个模块：
-
-* [[config_server]](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-client) (配置服务器)：统一配置系统中需要的各种服务
-* [[config_client]](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config-server) (配置客户端)：根据Spring框架的`Environment`和`PropertySource`从config_sever获取各种[[配置文件]](https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config)
-
-Spring Cloud Config基于使用中心配置仓库的思想（版本控制），支持Git（默认）、SVN、File等三种储存方式。
-
-#### 业务关系
-
-PiggyMetrics通过Spring Cloud config server管理所有服务的配置文件，它简单地从本地类路径加载配置文件，如下图所示：
-     
-<div align=center><img width="900" height="" src="./image/pmspringcloudconfig.png"/></div>
-
-我们可以在[config service](https://github.com/cloudframeworks-springcloud/PiggyMetrics/tree/master/config/src/main/resources/shared)中查看shard目录资源，其中`application.yml`被所有客户端应用共享，比如当Notification-service请求配置时，使用`shared/notification-service.yml`和`hared/application.yml`（在所有客户端应用程序之间共享）配置服务响应；这样的好处是所有的配置统一管理，业务应用本身不维护配置文件。
-     
-* 使用方式
-     
-    1.在pom.xml中添加spring-cloud-starter-config，它从自动配置中心自动获取配置
-    
-    2.在资源目录中bootstrap.yml添加    
-         
-    ```
-    spring:
-      application:
-        name: 服务名
-      cloud:
-        config:
-          uri: http://config:8888
-          fail-fast: true
-    ```
-    
-    3.当你的配置文件修改后可以方式 http://DOCKER-HOST:DOCKER-PORT/xxx/refresh 刷新配置(xxx服务根路径)，从而不用重启服务 
-     
-
 ### <a name="Netflix-Eureka"></a>Netflix Eureka
+
+#### 通用说明
 
 相比传统SOA架构，微服务架构中的服务粒度更小、服务数量更多，如何有效管理各个服务就显得尤为重要，也因此出现了服务注册的概念，它的本质是1）简单易用，对用户透明；2）高可用，满足CAP理论；3）多语言支持。
 
-在基于Spring Cloud的微服务架构中，通常采用Netflix Eureka([[Eureka Server]](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server)[[ureka service]](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-service))作为注册中心，某些情况下也会采用Zookeeper作为替代。
+在基于Spring Cloud的微服务架构中，通常采用Eureka作为注册中心，包含两个重要组件：
 
-Netflix Eureka的易用性体现在两方面：
+* @EnableEurekaClient: 该注解表明应用既作为eureka实例又为eureka client 可以发现注册的服务
+* @EnableEurekaServer: 该注解表明应用为eureka服务，有可以联合多个服务作为集群，对外提供服务注册以及发现功能
+
+Eureka的易用性体现在两方面：
 
 * 通过与Spring Boot(Cloud)结合达到只用注解和Maven依赖即可部署和启动服务的效果
 * Netflix Eureka自带Client包，使得使用Eureka作为注册中心的客户端（即服务）不需要关心自己与Eureka的通讯机制，只需要引入Client依赖即可，当然前提是使用Java
+
+Eureka的特点如下：
+
+* Eureka服务：用以提供服务注册、发现. 建议至少3个节点。在CAP理论中，它是AP的实践，只有一个节点也是可用的，数据持久化在内存，不会到磁盘.
+* Eureka-server：相对client端的服务端，为客户端提供服务，通常情况下为一个集群
+* Eureka-client：客户端，通过向eureka服务发现注册的可用的eureka-server，向后端发送请求
 
 Netflix Eureka通过“伙伴”机制实现高可用，每一台Eureka都需要在配置中指定另一个Eureka的地址作为伙伴，Eureka启动时会向自己的伙伴节点获取当前已经存在的注册列表，这样在向Eureka集群中增加新机器时就不需要担心注册列表不完整的问题，在CAP理论中满足AP原则。
 
@@ -406,9 +381,182 @@ Netflix Eureka通过“伙伴”机制实现高可用，每一台Eureka都需要
 
 Netflix Eureka使用Java编写，但它会将所有注册信息和心跳连接地址都暴露为HTTP REST接口，客户端实际是通过HTTP请求与Server进行通讯的，因此Client完全可以使用其它语言进行编写，只需要即时调用注册服务、注销服务、获取服务列表和心跳请求的HTTP REST接口即可。
 
-#### 业务关系
+**创建Eureka server**
 
-PiggyMetrics通过Eureka server实现registy, 代码逻辑比较简单和标准，不用做任何修改，需要注意的是在`bootstrap.yml`加入配置中心服务地址信息。
+* 步骤
+
+   1. 下载Netflix Eureka server
+
+   Git地址：[https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server.git](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server.git)
+
+   命令：`Git clone` [https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server.git](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server.git)
+
+   2. 构建Netflix Eureka server镜像
+
+   命令：`cd  Netflix-Eureka-server && docker build -t eureka-server .`
+
+   3. 运行Netflix Eureka server
+
+   命令：`docker run -d -p 8761:8761 eureka-server`
+
+   4. 访问[http://127.0.0.1:8761](http://127.0.0.1:8761)
+
+   [完整代码]
+
+   ```
+   git clone https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server.git
+        
+   cd  Netflix-Eureka-server && docker build -t eureka-server .
+        
+   docker run -d -p 8761:8761 eureka-server
+   ```
+
+* 注册一个服务到Eureka server
+
+   1. 创建普通的应用服务
+
+   2. 将该服务注册到Netflix Eureka中（通过`@EnableDiscoveryClient`）
+
+   3. 设置Eureka server的地址
+
+   修改配置文件(根据自己的环境设置`EUREKA_HOST`和`EUREKA_PORT`)
+
+   `eureka.client.serviceUrl.defaultZone=http://127.0.0.1:5000/eureka/v2/`
+
+   4. 运行Netflix Eureka service
+
+   5. 去Netflix Eureka中查看是否已注册成功(备注：用户可以定义自己的业务逻辑)
+
+   [完整代码]
+
+   ```
+   git https://github.com/cloudframeworks-springcloud/Netflix-Eureka-service.git
+        
+   cd  Netflix-Eureka-service && docker build -t eureka-service .
+        
+   docker run -ti -e "EUREKA_HOST=172.17.0.4" -e "EUREKA_PORT=8761" -p 5000:5000 eureka-service
+   ```
+
+* 部署方式
+
+   通过@EnableEurekaServer去创建一个注册中心，默认情况下也将自己自己作为客户端进行注册，所以我们需要禁用它的客户端注册行为，只需要在 application.properties 中问增加如下配置：
+
+   ```
+   eureka.client.register-with-eureka=false
+          
+   eureka.client.fetch-registry=false
+   ```
+ 
+* 结构分析
+   
+   ```
+   @SpringBootApplication
+   @EnableEurekaServer
+   public class EurekaApplication {
+    
+       public static void main(String[] args) {
+           SpringApplication.run(EurekaApplication.class, args);
+       }
+   }
+   ```
+    
+   @EnableEurekaServer：启动注册中心
+    
+   ```
+   spring.application.name=eureka-server
+   server.port=5000
+   eureka.client.registerWithEureka=false
+   eureka.client.fetchRegistry=false
+   eureka.client.region=default
+   eureka.server.enableSelfPreservation=false
+   eureka.server.renewalPercentThreshold=0.9
+   eureka.server.evictionIntervalTimerInMs=4000
+   eureka.instance.leaseRenewalIntervalInSeconds=1
+   eureka.instance.leaseExpirationDurationInSeconds=2
+   eureka.instance.preferIpAddress=true
+   ```
+
+   registerWithEureka：false 
+    
+   fetchRegistry：false
+
+**Eureka service说明**
+
+* 创建一个application
+
+   ```
+   @SpringBootApplication
+   @EnableDiscoveryClient
+   public class DemoServiceApplication {
+        
+       public static void main(String[] args) {
+           SpringApplication.run(DemoServiceApplication.class, args);
+       }
+   }
+   ```
+    
+   @SpringBootApplication：相当于@Configuration
+
+   @EnableAutoConfiguration：详见spring开发
+
+   @ComponentScan：详见spring开发
+    
+   @EnableDiscoveryClient：将服务注册实例到服务发现中
+
+* 创建restful api
+    
+   ```
+   @RequestMapping("/demo")
+   @RestController
+   public class DemoController {
+        
+       @RequestMapping("/show")
+       public String show() {
+           return "demo show";
+       }
+            
+       @RequestMapping("/index")
+       public String index() {
+           return "demo index";
+       }
+   } 
+   ```
+    
+   创建一个／demo/show 和／demo/index的restful api
+    
+* 设置配置文件(application.properties)
+
+   ```
+   spring.application.name=demo-service
+   server.port=5000
+   eureka.region=default
+   eureka.preferSameZone=false
+   eureka.shouldUseDns=false
+   eureka.client.serviceUrl.defaultZone=http://${EUREKA_HOST}:${EUREKA_PORT}/eureka/v2/
+   eureka.instance.hostname=${POD_NET_IP}
+   ```
+   
+   `eureka.client.serviceUrl.defaultZone`：设置EUREKA服务访问地址
+    
+   `eureka.instance.hostname`： 实例名用ip地址（POD_NET_IP）代替
+
+
+* 定义了3个示例资源
+
+   http://127.0.0.1:5000/
+
+   http://127.0.0.1:5000/demo/show
+
+   http://127.0.0.1:5000/demo/index
+
+   http://127.0.0.1:5000/user/online
+
+   http://127.0.0.1:5000/user/offline
+
+
+#### 业务配置
+
+PiggyMetrics通过Eureka server实现registy, 代码逻辑比较简单和标准，不用做任何修改，需要注意的是在[bootstrap.yml](https://github.com/cloudframeworks-springcloud/PiggyMetrics/blob/master/registry/src/main/resources/bootstrap.yml)加入配置中心服务地址信息。
 
    ```
    spring:
@@ -420,20 +568,15 @@ PiggyMetrics通过Eureka server实现registy, 代码逻辑比较简单和标准�
         username: user
    ```
 
-Eureka server中的优化参数可参考[[Eureka Server]](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server)设置。
-     
-
 ### <a name="Netflix-Zuul"></a>Netflix Zuul
 
-[[Netflix Zuul]](https://github.com/cloudframeworks-springcloud/Netflix-Zuul)提供动态路由、监控、弹性、安全等的边缘服务。
+#### 通用说明
 
-在通过服务网关统一向外的提供REST API的微服务架构中，Netflix Zuul为微服务机构提供了前门保护的作用，同时将权限控制这些较重的非业务逻辑内容迁移到服务路由层面，使得服务集群主体能够具备更高的可复用性和可测试性。
-
-#### 业务关系
+#### 业务配置
 
 PiggyMetrics借助Netflix Zuul实现gateway，代理授权服务、账户服务、统计服务和通知服务，这里的代码比较简单，基本上是标准的，不需要修改。
 
-我们在实际业务的开发中，用具体业务替换相应的服务即可。
+我们在实际业务的开发中，在[GatewayApplication.java](https://github.com/cloudframeworks-springcloud/PiggyMetrics/blob/master/gateway/src/main/java/com/piggymetrics/gateway/GatewayApplication.java)用具体业务替换相应的服务即可。
 
    ```
    @EnableZuulProxy            ##----------增加zuul proxy代理功能
@@ -444,9 +587,9 @@ PiggyMetrics借助Netflix Zuul实现gateway，代理授权服务、账户服务�
    }
    ```
 
-在resources目录下增加static录存放你的静态资源(html、css、images等)
+在resources目录下增加[static](https://github.com/cloudframeworks-springcloud/PiggyMetrics/tree/master/gateway/src/main/resources/static)录存放你的静态资源(如html、css、images等)
      
-在zuul的配置文件中增加代理服务的配置
+在zuul的配置文件[gateway.yml](https://github.com/cloudframeworks-springcloud/PiggyMetrics/blob/master/config/src/main/resources/shared/gateway.yml)中增加代理服务的配置
 
    ```
    zuul:
