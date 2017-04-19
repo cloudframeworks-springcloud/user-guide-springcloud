@@ -47,53 +47,51 @@
 
 ## <a name="镜像部署"></a>镜像部署
 
-### Docker环境准备
+1. Docker环境准备
 
-* **centos**
+   * centos
 
-    ```
-    1.清除docker 旧版本
+   ```
+   1.清除docker 旧版本
     
-      rpm -qa |grep docker
-      yum  -y  remove docker* 
+     rpm -qa |grep docker
+     yum  -y  remove docker* 
         
-    2.安装新的docker
+   2.安装新的docker
     
-      yum install -y docker-engine
+     yum install -y docker-engine
         
-    3.systemctl  start docker
+   3.systemctl  start docker
     
-    4.docker info 查看docker状态
-    ```
+   4.docker info 查看docker状态
+   ```
 
-* **ubuntu**
+   * ubuntu
 
-    ```
-    1.更新apt包
+   ```
+   1.更新apt包
     
-      sudo apt-get update
+     sudo apt-get update
         
-    2.安装 Docker
+   2.安装 Docker
     
-      sudo apt-get install docker-engine
+     sudo apt-get install docker-engine
         
-    3.sudo service docker start
+   3.sudo service docker start
     
-    4.docker info 查看docker状态
-    ```
+   4.docker info 查看docker状态
+   ```
 
-* **mac**
+   * mac
 
-    参考[https://docs.docker.com/docker-for-mac/](https://docs.docker.com/docker-for-mac/)
+   参考[https://docs.docker.com/docker-for-mac/](https://docs.docker.com/docker-for-mac/)
 
 
-### 操作步骤
-
-1. 克隆完整代码
+2. 克隆完整代码
 
    git clone [https://github.com/cloudframeworks-springcloud/PiggyMetrics](https://github.com/cloudframeworks-springcloud/PiggyMetrics)
 
-2. 设置环境变量
+3. 设置环境变量
 
    ```
    export CONFIG_SERVICE_PASSWORD=root
@@ -105,13 +103,13 @@
     
     mongo_password为必填项，其它变量可以不用设置
 
-3. 基于docker-compose运行:
+4. 基于docker-compose运行:
 
    ```
    docker-compose -f docker-compose.yml up -d
    ```
 
-4. 通过脚本运行：
+5. 通过脚本运行：
 
    ```
    docker run -d -p15672:15672 --name=rabbitmq rabbitmq:3-management
@@ -143,7 +141,7 @@
 
 # <a name="框架说明"></a>框架说明
 
-## <a name="业务"></a>业务
+# <a name="业务"></a>业务
 
 <a name="业务背景"></a>
 
@@ -179,7 +177,7 @@ PUT	| /statistics/{account}	| 创建或更新时间系列数据点指定的帐�
 GET	| /notifications/settings/current	| 获取当前账户通知设置	| × | ×	
 PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
 
-## <a name="组件"></a>组件
+# <a name="组件"></a>组件
 
 <a name="组件架构"></a>Piggymetrics基础服务设施中用到了Spring Cloud Config、Netflix Eureka、Netflix Hystrix、Netflix Zuul、Netflix Ribbon、Netflix Feign等组件，而这也正是Spring Cloud分布式开发中最核心组件。
 
@@ -201,9 +199,9 @@ PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
 
 **需要注意的是Spring Cloud Config、Eureka、Ribbon、Hystrix、Feign以及Turbine均为标准组件，与业务之间没有强关系，不涉及到业务代码，仅需简单配置即可工作。**
 
-### <a name="Spring-Cloud-Config"></a>Spring Cloud Config
+## <a name="Spring-Cloud-Config"></a>Spring Cloud Config
 
-#### 通用说明
+### 通用说明
 
 在分布式系统中，Spring Cloud Config通过config-server（服务端）和config-client（客户端）提供可扩展的配置服务，并用配置服务中心集中管理所有服务的各种环境配置文件。Spring Cloud Config基于使用中心配置仓库的思想（版本控制），支持Git（默认）、SVN、File等三种储存方式。
 
@@ -331,7 +329,7 @@ PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
 
    http://DOCKER_HOST:DOCKER_PORT/from
 
-#### 业务配置
+### 业务配置
 
 在PiggyMetrics项目中，config_server从本地类路径加载配置文件：
 
@@ -353,9 +351,9 @@ PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
 
 配置文件修改后通过 http://DOCKER-HOST:DOCKER-PORT/xxx/refresh 刷新配置(xxx表示服务根路径)，不需要重启服务。
 
-### <a name="Netflix-Eureka"></a>Netflix Eureka
+## <a name="Netflix-Eureka"></a>Netflix Eureka
 
-#### 通用说明
+### 通用说明
 
 相比传统SOA架构，微服务架构中的服务粒度更小、服务数量更多，如何有效管理各个服务就显得尤为重要，也因此出现了服务注册的概念，它的本质是1）简单易用，对用户透明；2）高可用，满足CAP理论；3）多语言支持。
 
@@ -554,7 +552,7 @@ Netflix Eureka使用Java编写，但它会将所有注册信息和心跳连接�
    http://127.0.0.1:5000/user/offline
 
 
-#### 业务配置
+### 业务配置
 
 PiggyMetrics通过Eureka server实现registy, 代码逻辑比较简单和标准，不用做任何修改，需要注意的是在[bootstrap.yml](https://github.com/cloudframeworks-springcloud/PiggyMetrics/blob/master/registry/src/main/resources/bootstrap.yml)加入配置中心服务地址信息。
 
@@ -568,9 +566,9 @@ PiggyMetrics通过Eureka server实现registy, 代码逻辑比较简单和标准�
         username: user
    ```
 
-### <a name="Netflix-Zuul"></a>Netflix Zuul
+## <a name="Netflix-Zuul"></a>Netflix Zuul
 
-#### 通用说明
+### 通用说明
 
 Netflix Zuul提供动态路由、监控、弹性、安全等的边缘服务。
 
@@ -669,7 +667,7 @@ Netflix Zuul提供动态路由、监控、弹性、安全等的边缘服务。
    ribbon：路由策略
 
 
-#### 业务配置
+### 业务配置
 
 PiggyMetrics借助Netflix Zuul实现gateway，代理授权服务、账户服务、统计服务和通知服务，这里的代码比较简单，基本上是标准的，不需要修改。
 
@@ -717,9 +715,9 @@ PiggyMetrics借助Netflix Zuul实现gateway，代理授权服务、账户服务�
          sensitiveHeaders:
    ```
 
-### <a name="Netflix-Ribbon"></a>Netflix Ribbon
+## <a name="Netflix-Ribbon"></a>Netflix Ribbon
 
-#### 通用说明
+### 通用说明
 
 简单来说，Netflix Ribbon是一个客户端负载均衡器，有多种负载均衡策略可选（包括自定义的负载均衡算法），并可配合服务发现及断路器使用。在配置文件中列出Load Balancer后面所有的机器，Ribbon会自动的帮助你基于某种规则（如简单轮询，随机连接等）去连接这些机器。
 
@@ -787,13 +785,13 @@ PiggyMetrics借助Netflix Zuul实现gateway，代理授权服务、账户服务�
    defaultZone：erueka server地址
 
 
-#### 业务配置 
+### 业务配置 
 
 PiggyMetrics并没有显式的去定义Netflix Ribbon的使用，但是在Zuul、Feign等组件中隐式的使用到了Ribbon，我们在实际的业务开发中，也不需要刻意定义Ribbon。
 
-### <a name="Netflix-Hystrix"></a>Netflix Hystrix
+## <a name="Netflix-Hystrix"></a>Netflix Hystrix
 
-#### 通用说明
+### 通用说明
 
 Netflix Hystrix是一个延迟和容错库，旨在隔离远程系统，服务和第三方库的访问点，停止级联故障，并在不可避免的故障的复杂分布式系统中启用弹性。
 
@@ -865,7 +863,7 @@ Netflix Hystrix是一个延迟和容错库，旨在隔离远程系统，服务�
     
    defaultZone：erueka server地址
 
-#### 业务关系 
+### 业务关系 
 
 * 项目中统一定义了熔断策略（不涉及代码侵入）：
        
@@ -879,13 +877,13 @@ Netflix Hystrix是一个延迟和容错库，旨在隔离远程系统，服务�
                timeoutInMilliseconds: 10000   ## 10000ms 超时限制
    ```
 
-### <a name="Netflix-Turbine"></a>Netflix Turbine
+## <a name="Netflix-Turbine"></a>Netflix Turbine
 
-#### 通用说明
+### 通用说明
 
 
 
-#### 业务配置
+### 业务配置
 
 由于Hystrix的监控只针对单个节点，因此PiggyMetrics通过Turbine来监控集群下Hystrix的metrics情况。
 
@@ -902,9 +900,9 @@ Netflix Hystrix是一个延迟和容错库，旨在隔离远程系统，服务�
 
 http://DOCKER-HOST:9000/hystrix ，输入：http://DOCKER-HOST:8989
 
-### <a name="Netflix-Feign"></a>Netflix Feign
+## <a name="Netflix-Feign"></a>Netflix Feign
 
-#### 通用说明
+### 通用说明
 
 Spring Cloud集成Netflix Ribbon和Netflix Eureka提供的负载均衡的HTTP客户端Netflix Feign.
 
@@ -974,10 +972,9 @@ Netflix Feign是一个声明式、模板化的HTTP客户端，因此编写起来
          defaultZone: http://${EUREKA_HOST}:${EUREKA_PORT}/eureka/
    ```
     
-**defaultZone**：erueka server地址
+   defaultZone：erueka server地址
 
-
-#### 业务关系
+### 业务关系
 
 PiggyMetrics多次用到了Feign，使用为在客户端中添加如下代码，例如[StatisticsServiceClient.java](https://github.com/cloudframeworks-springcloud/PiggyMetrics/blob/master/account-service/src/main/java/com/piggymetrics/account/client/StatisticsServiceClient.java)。
 
