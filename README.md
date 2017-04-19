@@ -254,11 +254,11 @@ PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
              searchPaths: config        
    ```
 
-uri：配置文件所存放的git地址
+   uri：配置文件所存放的git地址
 
-searchPaths：寻找路径
+   searchPaths：寻找路径
 
-获取git上的资源信息遵循如下规则：
+   获取git上的资源信息遵循如下规则：
     
    ```
    /{application}/{profile}[/{label}]
@@ -419,9 +419,9 @@ Netflix Eureka使用Java编写，但它会将所有注册信息和心跳连接�
 
    3. 设置Eureka server的地址
 
-   修改配置文件(根据自己的环境设置`EUREKA_HOST`和`EUREKA_PORT`)
+      修改配置文件(根据自己的环境设置`EUREKA_HOST`和`EUREKA_PORT`)
 
-   `eureka.client.serviceUrl.defaultZone=http://127.0.0.1:5000/eureka/v2/`
+      `eureka.client.serviceUrl.defaultZone=http://127.0.0.1:5000/eureka/v2/`
 
    4. 运行Netflix Eureka service
 
@@ -572,6 +572,103 @@ PiggyMetrics通过Eureka server实现registy, 代码逻辑比较简单和标准�
 
 #### 通用说明
 
+Netflix Zuul提供动态路由、监控、弹性、安全等的边缘服务。
+
+在通过服务网关统一向外的提供REST API的微服务架构中，Netflix Zuul为微服务机构提供了前门保护的作用，同时将权限控制这些较重的非业务逻辑内容迁移到服务路由层面，使得服务集群主体能够具备更高的可复用性和可测试性。
+
+* 如何创建一个Netflix Zuul
+
+   1. 创建普通的应用
+
+   2. 将该应用主类中加入`@EnableZuulProxy`
+
+   3. 修改配置文件(根据自己的环境设置`EUREKA_HOST`和`EUREKA_PORT`)
+
+   4. 构建镜像，运行service
+
+   [完整代码]
+
+   ```
+   git https://github.com/cloudframeworks-springcloud/Netflix-Zuul.git
+        
+   cd  Netflix-Zuul && docker build -t zuul .
+        
+   docker run -ti -e "EUREKA_HOST=172.17.0.4" -e "EUREKA_PORT=8761" -p 5000:5000 zuul
+   ```
+
+* 创建一个application
+
+   ```
+   @SpringBootApplication
+   @EnableZuulProxy
+   @EnableDiscoveryClient
+   @EnableFeignClients
+   public class ZuulProxyDemoApplication {
+        
+       public static void main(String[] args) {
+           SpringApplication.run(ZuulProxyDemoApplication.class, args);
+       }
+            
+       @Bean
+       public AuthFilter authFilter() {
+         return new AuthFilter();
+       }
+   }
+   ```
+    
+   @EnableZuulProxy：注释zuul代理
+    
+   authFilter：定义filter
+
+* 配置文件application.yml
+    
+   ```
+   server:
+     port: 5000
+        
+   spring:
+     application:
+       name: zuul
+        
+   eureka:
+     client:
+       service-url:
+         defaultZone: http://${EUREKA_HOST}:${EUREKA_PORT}/eureka/v2/
+        
+   zuul:
+     ignoredServices: '*'
+     routes:
+       demo:
+         path: /demo/**
+         serviceId: demo-service
+         stripPrefix: false
+         sensitiveHeaders: Cookie,Set-Cookie,Authorization
+       user:
+         path: /user/**
+         serviceId: demo-service
+         stripPrefix: false
+         sensitiveHeaders: Cookie,Set-Cookie,Authorization
+       outer:
+         path: /baidu/**
+         url: http://www.baidu.com
+        
+        
+   ribbon:
+     MaxAutoRetries: 1
+     MaxAutoRetriesNextServer: 1
+     OkToRetryOnAllOperations: true
+     ServerListRefreshInterval: 2000
+     ConnectTimeout: 3000
+     ReadTimeout: 3000
+     #ListOfServers: server1:80,server2:80,server3:80    
+     #EnablePrimeConnections: true 
+   ```
+    
+   routes：配置响应的路由
+    
+   ribbon：路由策略
+
+
 #### 业务配置
 
 PiggyMetrics借助Netflix Zuul实现gateway，代理授权服务、账户服务、统计服务和通知服务，这里的代码比较简单，基本上是标准的，不需要修改。
@@ -624,13 +721,150 @@ PiggyMetrics借助Netflix Zuul实现gateway，代理授权服务、账户服务�
 
 #### 通用说明
 
+简单来说，Netflix Ribbon是一个客户端负载均衡器，有多种负载均衡策略可选（包括自定义的负载均衡算法），并可配合服务发现及断路器使用。在配置文件中列出Load Balancer后面所有的机器，Ribbon会自动的帮助你基于某种规则（如简单轮询，随机连接等）去连接这些机器。
+
+* 特点：1）负载均衡、2）容错、3）在异步和反应模型中支持多协议（HTTP、TCP、UDP）、4）缓存和批处理
+
+* 使用向导
+
+   1. 创建普通的应用
+
+   2. 将该应用主类中加入`@EnableFeignClients`
+
+   3. 在service中用`@FeignClient`(服务ID)注解来绑定该接口对应服务
+
+   4. 修改配置文件(根据自己的环境设置`EUREKA_HOST`和`EUREKA_PORT`) 
+
+   5. 构建镜像，运行service
+
+   [完整代码]
+
+   ```
+   git https://github.com/cloudframeworks-springcloud/Netflix-Ribbon.git
+        
+   cd  Netflix-Ribbon && docker build -t ribbon .
+        
+   docker run -ti -e "EUREKA_HOST=172.17.0.4" -e "EUREKA_PORT=8761" -p 5000:5000 ribbon
+   ```
+
+* 创建一个application
+
+   ```
+   @SpringBootApplication
+   @EnableDiscoveryClient
+   public class RibbonApplication {
+            
+       @Bean
+       @LoadBalanced
+       RestTemplate restTemplate() {
+           return new RestTemplate();
+       }
+        
+       public static void main(String[] args) {
+           SpringApplication.run(RibbonApplication.class, args);
+       }
+   }
+   ```
+    
+   @LoadBalanced：声明LoadBalanced
+
+* 配置文件application.yml
+    
+   ```
+   server:
+     port: 5000
+        
+   spring:
+     application:
+       name: ribbon
+        
+   eureka:
+     client:
+       service-url:
+         defaultZone: http://${EUREKA_HOST}:${EUREKA_PORT}/eureka/v2/
+   ```
+    
+   defaultZone：erueka server地址
+
+
 #### 业务配置 
 
 PiggyMetrics并没有显式的去定义Netflix Ribbon的使用，但是在Zuul、Feign等组件中隐式的使用到了Ribbon，我们在实际的业务开发中，也不需要刻意定义Ribbon。
 
 ### <a name="Netflix-Hystrix"></a>Netflix Hystrix
 
-[[Netflix Hystrix]](https://github.com/cloudframeworks-springcloud/Netflix-Hystrix)是一个延迟和容错库，旨在隔离远程系统，服务和第三方库的访问点，停止级联故障，并在不可避免的故障的复杂分布式系统中启用弹性。
+#### 通用说明
+
+Netflix Hystrix是一个延迟和容错库，旨在隔离远程系统，服务和第三方库的访问点，停止级联故障，并在不可避免的故障的复杂分布式系统中启用弹性。
+
+* 使用向导
+
+   1. 创建普通的应用
+
+   2. 将该应用主类中加入`@EnableFeignClients`
+
+   3. 在service中用`@HystrixCommand`来设置熔断
+
+   4. 修改配置文件(根据自己的环境设置EUREKA_HOST和EUREKA_PORT)
+
+   5. 构建镜像，运行service
+
+   [完整代码]
+
+   ```
+   git https://github.com/cloudframeworks-springcloud/Netflix-Hystrix.git
+        
+   cd  Netflix-Hystrix && docker build -t hystrix .
+        
+   docker run -ti -e "EUREKA_HOST=172.17.0.4" -e "EUREKA_PORT=8761" -p 5000:5000 hystrix
+   ```
+
+* 创建一个hystrix controller
+
+   ```
+   @RestController
+   @RequestMapping("/first")
+   public class HystrixHelloController {
+        
+       @Autowired
+       private RemoteInvokerService remoteInvokerService;
+        
+       @RequestMapping("hystrix")
+       @HystrixCommand(fallbackMethod = "failme", groupKey = "Demo", commandKey = "first", commandProperties = { @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "10000") })
+       public String remoteHello() {
+           return remoteInvokerService.remoteInvoker();
+       }
+            
+       protected String failme() {
+           return "failed invoked Method";
+       }
+   }
+   ```
+    
+   @HystrixCommand：hystrix命令
+    
+   fallbackMethod：失败触发的方法
+    
+   commandProperties：命令属性
+    
+
+* 配置文件application.yml
+    
+   ```
+   server:
+     port: 5000
+        
+   spring:
+     application:
+       name: hystrix
+        
+   eureka:
+     client:
+       service-url:
+         defaultZone: http://${EUREKA_HOST}:${EUREKA_PORT}/eureka/v2/
+   ```
+    
+   defaultZone：erueka server地址
 
 #### 业务关系 
 
@@ -651,6 +885,9 @@ PiggyMetrics并没有显式的去定义Netflix Ribbon的使用，但是在Zuul�
   [[Netflix Hystrix 示例]](https://github.com/cloudframeworks-springcloud/Netflix-Hystrix)
 
 ### <a name="Netflix-Turbine"></a>Netflix Turbine
+
+#### 通用说明
+
 
 
 #### 业务配置
@@ -673,6 +910,77 @@ http://DOCKER-HOST:9000/hystrix ，输入：http://DOCKER-HOST:8989
 ### <a name="Netflix-Feign"></a>Netflix Feign
 
 #### 通用说明
+
+Spring Cloud集成Netflix Ribbon和Netflix Eureka提供的负载均衡的HTTP客户端Netflix Feign.
+
+Netflix Feign是一个声明式、模板化的HTTP客户端，因此编写起来会更容易一些。Spring Cloud集成了Netflix Feign，并通过Netflix Ribbon和Netflix Eureka提供负载均衡。
+
+使用Netflix Feign创建一个接口并对它进行注解（可插拔的注解支持，包括Feign注解），在应用主类中通过`@EnableFeignClients`注解开启Feign功能，并使用`@FeignClient`(服务ID)注解来绑定该接口对应服务。
+
+* 如何创建一个Netflix Feign
+
+   1. 创建普通的应用
+
+   2. 将该应用主类中加入`@EnableFeignClients`
+
+   3. 在service中用`@FeignClient`(服务ID)注解来绑定该接口对应服务
+
+   4. 修改配置文件(根据自己的环境设置`EUREKA_HOST`和`EUREKA_PORT`)
+
+   `eureka.client.serviceUrl.defaultZone=http://127.0.0.1:5000/eureka/v2/`
+
+   5. 构建镜像，运行service
+
+   [完整代码]
+
+   ```
+   git https://github.com/cloudframeworks-springcloud/Spring-Cloud-Feign.git
+        
+   cd  Spring-Cloud-Feign && docker build -t feign .
+        
+   docker run -ti -e "EUREKA_HOST=172.17.0.4" -e "EUREKA_PORT=8761" -p 5000:5000 feign
+   ```
+
+* 创建一个application
+
+   ```
+   @SpringBootApplication
+   @EnableDiscoveryClient
+   @EnableFeignClients
+   public class FeignDemoApplication {
+            
+      @Bean
+      @LoadBalanced
+      public RestTemplate restTemplate() {
+           return new RestTemplate();
+       }
+            
+       public static void main(String[] args) {
+           SpringApplication.run(FeignDemoApplication.class, args);
+       }
+   }
+   ```
+    
+   @EnableFeignClients：开启feign功能
+
+* 配置文件application.yml
+    
+   ```
+   server:
+     port: 5000
+        
+   spring:
+     application:
+       name: feign
+        
+   eureka:
+     client:
+       service-url:
+         defaultZone: http://${EUREKA_HOST}:${EUREKA_PORT}/eureka/
+   ```
+    
+**defaultZone**：erueka server地址
+
 
 #### 业务关系
      
