@@ -199,9 +199,33 @@ PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
 
 * 认证机制通过Auth service实现，提供基本认证服务。
 
-需要注意的是Spring Cloud Config、Eureka、Ribbon、Hystrix、Feign以及Turbine均为标准组件，与业务之间没有强关系，不涉及到业务代码，仅需简单配置即可工作；
+**需要注意的是Spring Cloud Config、Eureka、Ribbon、Hystrix、Feign以及Turbine均为标准组件，与业务之间没有强关系，不涉及到业务代码，仅需简单配置即可工作。**
 
 ### <a name="Spring-Cloud-Config"></a>Spring Cloud Config
+
+Spring Cloud Config包含config_server和config_client两个模块，用配置服务中心集中管理所有服务的各种环境配置文件。基于使用中心配置仓库的思想（版本控制），支持git（默认）、SVN、File等三种储存方式。
+
+如下图所示，config_server从本地类路径加载配置文件：
+
+<div align=center><img width="900" height="" src="./image/pmspringcloudconfig.png"/></div>
+
+我们可以在[config service](https://github.com/cloudframeworks-springcloud/PiggyMetrics/tree/master/config/src/main/resources/shared)中查看shard目录资源，其中`application.yml`被所有客户端应用共享，比如当Notification-service请求配置时，使用`shared/notification-service.yml`和`shared/application.yml`（在所有客户端应用程序之间共享）配置服务响应；这样的好处是所有的配置统一管理，业务应用本身不维护配置文件。
+
+使用Spring Cloud config需要在[pom.xml](https://github.com/cloudframeworks-springcloud/PiggyMetrics/blob/master/config/pom.xml)中添加spring-cloud-starter-config，它将从配置中心自动获取配置。并在各服务资源目录bootstrap.yml中，例如[moinitoring的bootstrap.yml](https://github.com/cloudframeworks-springcloud/PiggyMetrics/blob/master/monitoring/src/main/resources/bootstrap.yml)中添加如下代码：
+
+    ```
+    spring:
+      application:
+        name: 服务名
+      cloud:
+        config:
+          uri: http://config:8888
+          fail-fast: true
+    ```
+
+配置文件修改后通过 http://DOCKER-HOST:DOCKER-PORT/xxx/refresh 刷新配置(xxx表示服务根路径)，不需要重启服务。
+
+-----
 
 Spring Cloud Config可以理解为配置管理开发包，提供解决分布式系统的配置管理方案，分config_server、config_client两个模块：
 
