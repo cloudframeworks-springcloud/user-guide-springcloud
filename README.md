@@ -846,7 +846,6 @@ Netflix Hystrix是一个延迟和容错库，旨在隔离远程系统，服务�
    fallbackMethod：失败触发的方法
     
    commandProperties：命令属性
-    
 
 * 配置文件application.yml
     
@@ -879,10 +878,6 @@ Netflix Hystrix是一个延迟和容错库，旨在隔离远程系统，服务�
              thread:
                timeoutInMilliseconds: 10000   ## 10000ms 超时限制
    ```
-        
-* 通过代码侵入方式定义你的熔断机制 
-
-  [[Netflix Hystrix 示例]](https://github.com/cloudframeworks-springcloud/Netflix-Hystrix)
 
 ### <a name="Netflix-Turbine"></a>Netflix Turbine
 
@@ -986,16 +981,16 @@ Netflix Feign是一个声明式、模板化的HTTP客户端，因此编写起来
      
 PiggyMetrics多次用到了Feign，使用为在客户端中添加如下代码，例如[StatisticsServiceClient.java](https://github.com/cloudframeworks-springcloud/PiggyMetrics/blob/master/account-service/src/main/java/com/piggymetrics/account/client/StatisticsServiceClient.java)。
 
-    ```
-    @FeignClient(name = "auth-service")      ## 声明一个认证服务的一个客户端，通过注册中心去查找auth-service
-     public interface AuthServiceClient {
+   ```
+   @FeignClient(name = "auth-service")      ## 声明一个认证服务的一个客户端，通过注册中心去查找auth-service
+    public interface AuthServiceClient {
         
-         @RequestMapping(method = RequestMethod.POST, value = "/uaa/users", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-         void createUser(User user);
+        @RequestMapping(method = RequestMethod.POST, value = "/uaa/users", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+        void createUser(User user);
         
-     }
+    }
     ```
-     
+ 
 Feign同时可以引用注册中心以外的服务没，例如在统计服务模块，Feign引入了一个汇率客户端[ExchangeRatesClient.java](https://github.com/cloudframeworks-springcloud/PiggyMetrics/blob/master/statistics-service/src/main/java/com/piggymetrics/statistics/client/ExchangeRatesClient.java)。
 
     ```
