@@ -201,7 +201,7 @@ PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
 
 **需要注意的是Spring Cloud Config、Eureka、Ribbon、Hystrix、Feign以及Turbine均为标准组件，与业务之间没有强关系，不涉及到业务代码，仅需简单配置即可工作。**
 
-### <a name="Spring-Cloud-Config"></a>Spring Cloud Config
+### <a name="Spring-Cloud-Config"></a>[Spring Cloud Config](https://github.com/cloudframeworks-springcloud/springcloud-config)
 
 Spring Cloud Config包含config_server和config_client两个模块，用配置服务中心集中管理所有服务的各种环境配置文件。基于使用中心配置仓库的思想（版本控制），支持git（默认）、SVN、File等三种储存方式。
 
@@ -224,8 +224,6 @@ Spring Cloud Config包含config_server和config_client两个模块，用配置�
     ```
 
 配置文件修改后通过 http://DOCKER-HOST:DOCKER-PORT/xxx/refresh 刷新配置(xxx表示服务根路径)，不需要重启服务。
-
-[更详细Spring Cloud Config组件说明请点击查看](https://github.com/cloudframeworks-springcloud/springcloud-config)
 
 -----
 
