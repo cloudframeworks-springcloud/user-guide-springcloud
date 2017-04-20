@@ -1,6 +1,5 @@
 # [云框架]基于Spring Cloud的微服务架构 v0.1
 
-![](https://img.shields.io/badge/build-passing-green.svg)
 ![](https://img.shields.io/badge/release-v0.1-red.svg)
 [![](https://img.shields.io/badge/CHANGELOG-v0.1-yellow.svg)](CHANGELOG.md)
 ![](https://img.shields.io/badge/License-Apache_2.0-blue.svg)
@@ -214,8 +213,7 @@ PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
    <dependency>
        <groupId>org.springframework.cloud</groupId>
        <artifactId>spring-cloud-config-server</artifactId>
-    </dependency>
-        
+    </dependency> 
    ```
 
 * 在程序的入口Application类加上@EnableConfigServer注解开启配置服务器。
