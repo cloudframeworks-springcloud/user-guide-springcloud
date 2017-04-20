@@ -49,7 +49,7 @@
 
 1. Docker环境准备
 
-   [centos]
+   * centos
 
    ```
    1.清除docker 旧版本
@@ -66,7 +66,7 @@
    4.docker info 查看docker状态
    ```
 
-   [ubuntu]
+   * ubuntu
 
    ```
    1.更新apt包
@@ -82,7 +82,7 @@
    4.docker info 查看docker状态
    ```
 
-   [mac]
+   * mac
 
    参考[https://docs.docker.com/docker-for-mac/](https://docs.docker.com/docker-for-mac/)
 
