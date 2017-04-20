@@ -433,7 +433,7 @@ Netflix Eureka使用Java编写，但它会将所有注册信息和心跳连接�
 
 * 创建2个restful接口
 
-普通的demo程序，提供/demo/show 和 /demo/index 接口
+   普通的demo程序，提供/demo/show 和 /demo/index 接口
     
    ```
    @RequestMapping("/demo")
@@ -452,7 +452,7 @@ Netflix Eureka使用Java编写，但它会将所有注册信息和心跳连接�
    }
    ```
     
-user程序，提供/user/online 和 /user/offline 接口, 其中EurekaDiscoveryClientConfiguration 管理改服务在注册中心的声明周期(下线和上线)
+   user程序，提供/user/online和/user/offline 接口, 其中EurekaDiscoveryClientConfiguration管理改服务在注册中心的声明周期(下线和上线)
     
    ```
    @RequestMapping("/user")
