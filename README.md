@@ -80,8 +80,7 @@
 
    * mac
 
-   请参考[https://docs.docker.com/docker-for-mac/](https://docs.docker.com/docker-for-mac/)
-
+   请参考[https://docs.docker.com/docker-for-mac/](https://docs.docker.com/docker-for-mac/)
 
 2. 克隆完整代码
 
@@ -89,13 +88,7 @@
 
 3. 设置环境变量
 
-   ```
-   export CONFIG_SERVICE_PASSWORD=root
-   export NOTIFICATION_SERVICE_PASSWORD=root
-   export STATISTICS_SERVICE_PASSWORD=root
-   export ACCOUNT_SERVICE_PASSWORD=root
-   export MONGODB_PASSWORD=root          ##----------必填，其他变量可不设置
-   ```
+
 
 4. 基于docker-compose运行如下命令（[docker-compose.yml](https://github.com/cloudframeworks-springcloud/PiggyMetrics/blob/master/docker-compose.yml)）
 
@@ -231,7 +224,6 @@ PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
 * 配置文件
 
    ```
-    
    server:
      port: 8888
     
@@ -242,8 +234,8 @@ PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
        config:
          server:
            git:
-             uri:                       ## 配置文件所存放的git地址
-             searchPaths: config        ## 寻找路径
+             uri:                        ## 配置文件所存放的git地址
+             searchPaths: config         ## 寻找路径
         
    ```
 
@@ -622,7 +614,7 @@ PiggyMetrics借助Netflix Zuul实现gateway，代理授权服务、账户服务�
 我们在实际业务的开发中，在[GatewayApplication.java](https://github.com/cloudframeworks-springcloud/PiggyMetrics/blob/master/gateway/src/main/java/com/piggymetrics/gateway/GatewayApplication.java)用具体业务替换相应的服务即可。
 
    ```
-   @EnableZuulProxy            ##----------增加zuul proxy代理功能
+   @EnableZuulProxy        ## 增加zuul proxy代理功能
    public class GatewayApplication {
        public static void main(String[] args) {
            SpringApplication.run(GatewayApplication.class, args);
