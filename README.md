@@ -6,7 +6,7 @@
 ![](https://img.shields.io/badge/License-Apache_2.0-blue.svg)
 [![](https://img.shields.io/badge/Prodcuer-Bin%20Zhang-orange.svg)](CONTRIBUTORS.md)
 
-[微服务](https://martinfowler.com/articles/microservices.html)与传统架构模式相比，具有语言无关性、独立进程通讯、高度解耦、任务边界固定、按需扩展等特点，非常适合互联网公司快速交付、响应变化、不断试错的需求，也因此受到了像Twitter、Netflix、Amazon、eBay这样的科技巨头的青睐（[案例](https://mp.weixin.qq.com/s?__biz=MzIwMDA2OTI0Mw==&mid=2653449136&idx=2&sn=0e6bc2215646064c9a35398a8fb00299&chksm=8d5e12a4ba299bb2bf75f5b8aebb645c186932b6507dbd2ca9372dbd5b0f4d0a5a43e9fce72d#rd)）。
+[微服务](https://martinfowler.com/articles/microservices.html)与传统架构模式相比，具有语言无关性、独立进程通讯、高度解耦、任务边界固定、按需扩展等特点，非常适合互联网公司快速交付、响应变化、不断试错的需求，也因此受到了像Twitter、Netflix、Amazon、eBay这样的科技巨头的青睐。
 
 目前主流微服务框架包括Spring Cloud、Dubbo、API Gateway等，其中[Spring Cloud](http://projects.spring.io/spring-cloud/)利用Spring Boot的开发便利性，为JVM云应用开发中的配置管理、服务发现、断路器、智能路由、微代理、控制总线、全局锁、决策竞选、分布式会话和集群状态管理等操作提供了一种简单的实现方式。
 
@@ -203,9 +203,7 @@ PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
 
 **创建Config Server**
 
-* 创建一个mvn工程，起名为config-server，参考[pom.xml](https://github.com/cloudframeworks-springcloud/PiggyMetrics/blob/master/config/pom.xml)。
-
-  核心依赖：
+* 创建一个mvn工程，起名为config-server，核心依赖：
 
    ```
    <dependency>
@@ -220,7 +218,7 @@ PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
         
    ```
 
-* 在程序的入口Application类加上@EnableConfigServer注解开启配置服务器，参考[ConfigApplication.java](https://github.com/cloudframeworks-springcloud/PiggyMetrics/blob/master/config/src/main/java/com/piggymetrics/config/ConfigApplication.java)。
+* 在程序的入口Application类加上@EnableConfigServer注解开启配置服务器。
 
    ```
    @EnableConfigServer
@@ -250,10 +248,6 @@ PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
              searchPaths: config          ##----------寻找路径
    ```
 
-   uri：配置文件所存放的git地址
-
-   searchPaths：寻找路径
-
    获取git上的资源信息遵循如下规则：
     
    ```
@@ -266,7 +260,7 @@ PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
    
 **创建Config client**
 
-* 创建一个mvn工程，起名为config-server,其pom.xml见实例代码，核心依赖如下：
+* 创建一个mvn工程，起名为config-client，核心依赖：
 
    ```
    <dependency>
@@ -347,29 +341,18 @@ PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
          fail-fast: true
    ```
 
-配置文件修改后通过 http://DOCKER-HOST:DOCKER-PORT/xxx/refresh 刷新配置(xxx表示服务根路径)，不需要重启服务。
+配置文件修改后可通过 http://DOCKER-HOST:DOCKER-PORT/xxx/refresh 刷新配置(xxx表示服务根路径)，不需要重启服务。
 
 ## <a name="Netflix-Eureka"></a>Netflix Eureka
 
 ### 通用说明
 
-相比传统SOA架构，微服务架构中的服务粒度更小、服务数量更多，如何有效管理各个服务就显得尤为重要，也因此出现了服务注册的概念，它的本质是1）简单易用，对用户透明；2）高可用，满足CAP理论；3）多语言支持。
+微服务架构比传统SOA架构中的服务粒度更小、服务数量更多，为了有效管理各个服务，服务注册的概念应运而生。它的特点是1）简单易用，对用户透明；2）高可用，满足CAP理论；3）多语言支持。
 
-在基于Spring Cloud的微服务架构中，通常采用Eureka作为注册中心，包含两个重要组件：
-
-* @EnableEurekaClient: 该注解表明应用既作为eureka实例又为eureka client 可以发现注册的服务
-* @EnableEurekaServer: 该注解表明应用为eureka服务，有可以联合多个服务作为集群，对外提供服务注册以及发现功能
-
-Eureka的易用性体现在两方面：
+在基于Spring Cloud的微服务架构中，通常采用Netflix Eureka作为注册中心，它的易用性体现在：
 
 * 通过与Spring Boot(Cloud)结合达到只用注解和Maven依赖即可部署和启动服务的效果
 * Netflix Eureka自带Client包，使得使用Eureka作为注册中心的客户端（即服务）不需要关心自己与Eureka的通讯机制，只需要引入Client依赖即可，当然前提是使用Java
-
-Eureka的特点如下：
-
-* Eureka服务：用以提供服务注册、发现. 建议至少3个节点。在CAP理论中，它是AP的实践，只有一个节点也是可用的，数据持久化在内存，不会到磁盘.
-* Eureka-server：相对client端的服务端，为客户端提供服务，通常情况下为一个集群
-* Eureka-client：客户端，通过向eureka服务发现注册的可用的eureka-server，向后端发送请求
 
 Netflix Eureka通过“伙伴”机制实现高可用，每一台Eureka都需要在配置中指定另一个Eureka的地址作为伙伴，Eureka启动时会向自己的伙伴节点获取当前已经存在的注册列表，这样在向Eureka集群中增加新机器时就不需要担心注册列表不完整的问题，在CAP理论中满足AP原则。
 
@@ -379,7 +362,7 @@ Netflix Eureka使用Java编写，但它会将所有注册信息和心跳连接�
 
 **创建Eureka Server**
 
-* 创建一个mvn工程，起名为eureka-server,其pom.xml见实例代码，核心依赖如下：
+* 创建一个mvn工程，起名为eureka-server，核心依赖：
 
    ```
    <dependency>
@@ -405,8 +388,7 @@ Netflix Eureka使用Java编写，但它会将所有注册信息和心跳连接�
 
 * 配置文件
 
-   ```
-    
+   ```    
    server:
      port: 8761
    spring:
@@ -430,7 +412,7 @@ Netflix Eureka使用Java编写，但它会将所有注册信息和心跳连接�
 
 **创建Eureka service**
 
-* 创建一个mvn工程，起名为eureka-service,其pom.xml见实例代码，核心依赖如下：
+* 创建一个mvn工程，起名为eureka-service，核心依赖：
 
    ```
    <dependency>
@@ -553,7 +535,7 @@ Netflix Zuul提供动态路由、监控、弹性、安全等的边缘服务。
 
 **创建zuul service**
 
-* 创建一个mvn工程，起名为zuul,其pom.xml见实例代码，核心依赖如下：
+* 创建一个mvn工程，起名为zuul，核心依赖：
 
    ```
     <dependency>
@@ -692,7 +674,7 @@ Ribbon的主要特点包括：1）负载均衡，2）容错，3）在异步和�
 
 **创建Ribbon service**
 
-* 创建一个mvn工程，起名为ribbon,其pom.xml见实例代码，核心依赖如下：
+* 创建一个mvn工程，起名为ribbon，核心依赖如下：
 
    ```
     <dependency>
@@ -771,7 +753,7 @@ Netflix Hystrix是一个延迟和容错库，旨在隔离远程系统，服务�
 
 **创建Hystrix service**
 
-* 创建一个mvn工程，起名为hystrix-service,其pom.xml见实例代码，核心依赖如下：
+* 创建一个mvn工程，起名为hystrix-service，核心依赖如下：
 
    ```
    <dependency>
@@ -794,7 +776,7 @@ Netflix Hystrix是一个延迟和容错库，旨在隔离远程系统，服务�
    }   
    ```
 
-* 创建一个远程掉用服务
+* 创建一个远程调用服务
 
    ```
    @Service
@@ -816,9 +798,9 @@ Netflix Hystrix是一个延迟和容错库，旨在隔离远程系统，服务�
 
    @HystrixCommand： 自定义拦截机制
     
-   EUREKA-SERVICE：是我们在eureka模块中注册的服务
+   EUREKA-SERVICE：在eureka模块中注册的服务
     
-* 创建另一个远程掉用服务
+* 创建另一个远程调用服务
 
    ```
    @RestController
@@ -842,7 +824,7 @@ Netflix Hystrix是一个延迟和容错库，旨在隔离远程系统，服务�
 
    @HystrixCommand： 自定义拦截机制
 
-   EUREKA-SERVICE：是我们在eureka模块中注册的服务
+   EUREKA-SERVICE：在eureka模块中注册的服务
 
 * 配置文件
 
@@ -865,7 +847,7 @@ Netflix Hystrix是一个延迟和容错库，旨在隔离远程系统，服务�
 
 **创建Hystrix monitoring**
 
-* 创建一个mvn工程，起名为hystrix-monitoring,其pom.xml见实例代码，核心依赖如下：
+* 创建一个mvn工程，起名为hystrix-monitoring，核心依赖：
 
    ```
    <dependency>
@@ -952,9 +934,9 @@ Netflix Hystrix是一个延迟和容错库，旨在隔离远程系统，服务�
 
 ### 通用说明
 
-Feign是一个声明式、模板化的HTTP客户端，它使得写web服务变得更简单。使用Feign,只需要创建一个接口并注解。它具有可插拔的注解特性，包括Feign 注解和JAX-RS注解。Feign同时支持可插拔的编码器和解码器。当我们使用feign的时候，spring cloud 整和了Ribbon和eureka去提供负载均衡。
+Feign是一个声明式、模板化的HTTP客户端，它使得写web服务变得更简单。使用Feign,只需要创建一个接口并注解。它具有可插拔的注解特性，包括Feign 注解和JAX-RS注解。Feign同时支持可插拔的编码器和解码器。当我们使用feign的时候，spring cloud 整和了Ribbon和Eureka去提供负载均衡。
 
-简而言之：1）feign采用的是接口加注解；2）feign 整合了ribbon
+简而言之：1）feign采用的是接口加注解；2）feign 整合了Ribbon。
 
 
 **创建feign service**
