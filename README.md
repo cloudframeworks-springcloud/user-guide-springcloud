@@ -338,7 +338,7 @@ PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
          fail-fast: true
    ```
 
-配置文件修改后可通过 http://DOCKER-HOST:DOCKER-PORT/xxx/refresh 刷新配置(xxx表示服务根路径)，不需要重启服务。
+配置文件修改后可通过 http://DOCKER-HOST:DOCKER-PORT/xxx/refresh 刷新配置(xxx表示服务根路径)，无需重启服务。
 
 ## <a name="Netflix-Eureka"></a>Netflix Eureka
 
@@ -506,7 +506,6 @@ user程序，提供/user/online 和 /user/offline 接口, 其中EurekaDiscoveryC
 * 访问注册中心可以看到eureka-service已注册
 
    http://EUREKA_HOST:EUREKA_PORT/eureka/
-
 
 ### 业务配置
 
@@ -838,9 +837,9 @@ Netflix Hystrix是一个延迟和容错库，旨在隔离远程系统，服务�
 
 * 访问地址
 
-    http://DOCKER_HOST:DOCKER_PORT/first
+   http://DOCKER_HOST:DOCKER_PORT/first
 
-    http://DOCKER_HOST:DOCKER_PORT/second
+   http://DOCKER_HOST:DOCKER_PORT/second
 
 **创建Hystrix monitoring**
 
