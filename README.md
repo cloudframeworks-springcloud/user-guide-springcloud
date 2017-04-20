@@ -1,9 +1,8 @@
 # [云框架]基于Spring Cloud的微服务架构 v0.1
 
 ![](https://img.shields.io/badge/release-v0.1-red.svg)
-[![](https://img.shields.io/badge/CHANGELOG-v0.1-yellow.svg)](CHANGELOG.md)
 ![](https://img.shields.io/badge/License-Apache_2.0-blue.svg)
-[![](https://img.shields.io/badge/Prodcuer-Bin%20Zhang-orange.svg)](CONTRIBUTORS.md)
+[![](https://img.shields.io/badge/Prodcuer-elvis2002-orange.svg)](CONTRIBUTORS.md)
 
 [微服务](https://martinfowler.com/articles/microservices.html)与传统架构模式相比，具有语言无关性、独立进程通讯、高度解耦、任务边界固定、按需扩展等特点，非常适合互联网公司快速交付、响应变化、不断试错的需求，也因此受到了像Twitter、Netflix、Amazon、eBay这样的科技巨头的青睐。
 
