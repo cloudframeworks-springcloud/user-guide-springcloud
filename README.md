@@ -1031,9 +1031,9 @@ Feign同时可以引用注册中心以外的服务没，例如在统计服务模
      
 2. config、registry、gateway、monitoring，这4个组件不需要修改代码
      
-3. auth-service、account-service、notification-service、statistics-service 替换中自己的服务
+3. auth-service、account-service、notification-service、statistics-service 替换成自己的服务
      
-4. 去config中修改统一的配置文件，比如新增服务的服务名、端口等
+4. 在config中修改统一的配置文件，比如新增服务的服务名、端口等
      
 5. 通过mvn构建后生成镜像
      
