@@ -793,7 +793,7 @@ Netflix Hystrix是一个延迟和容错库，旨在隔离远程系统，服务�
    ```
 
    @HystrixCommand： 自定义拦截机制
-    
+
    EUREKA-SERVICE：在eureka模块中注册的服务
     
 * 创建另一个远程调用服务
