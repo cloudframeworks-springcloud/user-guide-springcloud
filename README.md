@@ -513,6 +513,7 @@ user程序，提供/user/online 和 /user/offline 接口, 其中EurekaDiscoveryC
    ```
     
    EUREKA_HOST：注册中心ip
+   
    EUREKA_PORT：注册中心端口
     
 * 访问地址
@@ -556,11 +557,11 @@ Netflix Zuul提供动态路由、监控、弹性、安全等的边缘服务。
 
 * 创建一个mvn工程，起名为zuul,其pom.xml见实例代码，核心依赖如下：
 
-  ```
-  <dependency>
-     <groupId>org.springframework.cloud</groupId>
-     <artifactId>spring-cloud-starter-zuul</artifactId>
- </dependency>       
+   ```
+    <dependency>
+       <groupId>org.springframework.cloud</groupId>
+       <artifactId>spring-cloud-starter-zuul</artifactId>
+   </dependency>       
    ```
 
 * 在程序的入口Application类加上@EnableZuulProxy注解开启配置服务器
@@ -687,82 +688,75 @@ PiggyMetrics借助Netflix Zuul实现gateway，代理授权服务、账户服务�
 
 ### 通用说明
 
-Ribbon是一个客户端负载均衡器，有多种负载均衡策略可选（包括自定义的负载均衡算法），并可配合服务发现及断路器使用。在配置文件中列出Load Balancer后面所有的机器，Ribbon会自动的帮助你基于某种规则（如简单轮询，随机连接等）去连接这些机器。
+Ribbon是一个客户端负载均衡器，有多种负载均衡策略可选（包括自定义的负载均衡算法），并可配合服务发现及断路器使用。在配置文件中列出Load Balancer后面所有的机器，Ribbon会自动的帮助你基于某种规则（如简单轮询、随机连接等）去连接这些机器。
 
 Ribbon的主要特点包括：1）负载均衡，2）容错，3）在异步和反应模型中支持多协议（HTT、TCP、UDP），4）缓存和批处理
 
-
-## 创建ribbon service
+**创建Ribbon service**
 
 * 创建一个mvn工程，起名为ribbon,其pom.xml见实例代码，核心依赖如下：
 
    ```
-   <dependency>
-      <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-starter-ribbon</artifactId>
-   </dependency>
+    <dependency>
+       <groupId>org.springframework.cloud</groupId>
+       <artifactId>spring-cloud-starter-ribbon</artifactId>
+   </dependency>     
    ```
 
 * 程序的入口Application类
 
-```
-    
-    @SpringBootApplication
-    @EnableDiscoveryClient
-    public class RibbonApplication {
+   ``` 
+   @SpringBootApplication
+   @EnableDiscoveryClient
+   public class RibbonApplication {
         
-        @Bean
-        @LoadBalanced
-        RestTemplate restTemplate() {
-            return new RestTemplate();
-        }
+       @Bean
+       @LoadBalanced
+       RestTemplate restTemplate() {
+           return new RestTemplate();
+       }
     
-        public static void main(String[] args) {
-            SpringApplication.run(RibbonApplication.class, args);
-        }
-    }
-
-        
-```
+       public static void main(String[] args) {
+           SpringApplication.run(RibbonApplication.class, args);
+       }
+   }     
+   ```
     
-    @LoadBalanced：声明一个loadBalanced模版
+   @LoadBalanced：声明一个loadBalanced模版
 
-* 创建一个远程掉用服务
+* 创建一个远程调用服务
 
-```
-
-    @RestController
-    public class DemoController {
+   ```
+   @RestController
+   public class DemoController {
     
-        @Autowired
-        RestTemplate restTemplate;
+       @Autowired
+       RestTemplate restTemplate;
     
-        @RequestMapping(value = "/ribbon", method = RequestMethod.GET)
-        public String add() {
-            return restTemplate.getForEntity("http://EUREKA-SERVICE/demo/show", String.class).getBody();
-        }
-    }
+       @RequestMapping(value = "/ribbon", method = RequestMethod.GET)
+       public String add() {
+           return restTemplate.getForEntity("http://EUREKA-SERVICE/demo/show", String.class).getBody();
+       }
+   }
+   ```
 
-```
-
-    EUREKA-SERVICE： 是我们在eureka模块中注册的服务
+   EUREKA-SERVICE： 是我们在eureka模块中注册的服务
     
-    远程调用/demo/show这个rest接口，也可以改成／demo/index 等
+   远程调用/demo/show这个rest接口，也可以改成／demo/index 等
 
 * 配置文件
 
-```
+   ``` 
+   spring.application.name=ribbon
+   server.port=5000
+   eureka.client.serviceUrl.defaultZone=http://${EUREKA_HOST}:${EUREKA_PORT}/eureka/
+   eureka.instance.preferIpAddress=true     
+   ```
     
-    spring.application.name=ribbon
-    server.port=5000
-    eureka.client.serviceUrl.defaultZone=http://${EUREKA_HOST}:${EUREKA_PORT}/eureka/
-    eureka.instance.preferIpAddress=true
-        
-```
-    
-    EUREKA_HOST：注册中心ip
-    EUREKA_PORT：注册中心端口
-    
+   EUREKA_HOST：注册中心ip
+
+   EUREKA_PORT：注册中心端口
+
 * 访问地址
 
     http://DOCKER_HOST:DOCKER_PORT/ribbon
@@ -777,75 +771,161 @@ PiggyMetrics并没有显式的去定义Netflix Ribbon的使用，但是在Zuul�
 
 Netflix Hystrix是一个延迟和容错库，旨在隔离远程系统，服务和第三方库的访问点，停止级联故障，并在不可避免的故障的复杂分布式系统中启用弹性。
 
-* 使用向导
+**创建Hystrix service**
 
-   1. 创建普通的应用
-
-   2. 将该应用主类中加入`@EnableFeignClients`
-
-   3. 在service中用`@HystrixCommand`来设置熔断
-
-   4. 修改配置文件(根据自己的环境设置EUREKA_HOST和EUREKA_PORT)
-
-   5. 构建镜像，运行service
-
-   [完整代码]
+* 创建一个mvn工程，起名为hystrix-service,其pom.xml见实例代码，核心依赖如下：
 
    ```
-   git https://github.com/cloudframeworks-springcloud/Netflix-Hystrix.git
-        
-   cd  Netflix-Hystrix && docker build -t hystrix .
-        
-   docker run -ti -e "EUREKA_HOST=172.17.0.4" -e "EUREKA_PORT=8761" -p 5000:5000 hystrix
+   <dependency>
+       <groupId>org.springframework.cloud</groupId>
+       <artifactId>spring-cloud-netflix-hystrix-stream</artifactId>
+   </dependency>       
    ```
 
-* 创建一个hystrix controller
+* 在程序的入口Application
+
+   ```
+   @SpringBootApplication
+   @EnableDiscoveryClient
+   @EnableFeignClients
+   public class HystrixDemoApplication {
+        
+       public static void main(String[] args) {
+           SpringApplication.run(HystrixDemoApplication.class, args);
+       }
+   }   
+   ```
+
+* 创建一个远程掉用服务
+
+   ```
+   @Service
+   public class RemoteShowService {
+        
+       @Autowired
+       private RestTemplate restTemplate;
+        
+       @HystrixCommand(fallbackMethod = "reliable", groupKey = "Demo", commandKey = "Show", commandProperties = { @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "1000") })
+       public String remoteShow() {
+           return restTemplate.getForObject("http://EUREKA-SERVICE/demo/show", String.class);
+       }
+    
+       public String reliable() {
+           return "fallback Method";
+       }
+   }
+   ```
+
+   @HystrixCommand： 自定义拦截机制
+    
+   EUREKA-SERVICE：是我们在eureka模块中注册的服务
+    
+* 创建另一个远程掉用服务
 
    ```
    @RestController
    @RequestMapping("/first")
    public class HystrixHelloController {
-        
+    
        @Autowired
        private RemoteInvokerService remoteInvokerService;
-        
+    
        @RequestMapping("hystrix")
        @HystrixCommand(fallbackMethod = "failme", groupKey = "Demo", commandKey = "first", commandProperties = { @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "10000") })
        public String remoteHello() {
            return remoteInvokerService.remoteInvoker();
        }
-            
+        
        protected String failme() {
            return "failed invoked Method";
        }
    }
    ```
-    
-   @HystrixCommand：hystrix命令
-    
-   fallbackMethod：失败触发的方法
-    
-   commandProperties：命令属性
 
-* 配置文件application.yml
-    
+   @HystrixCommand： 自定义拦截机制
+
+   EUREKA-SERVICE：是我们在eureka模块中注册的服务
+
+* 配置文件
+
    ```
-   server:
-     port: 5000
-        
+   spring.application.name=hystrix-service
+   server.port=5000
+   eureka.client.serviceUrl.defaultZone=http://${EUREKA_HOST}:${EUREKA_PORT}/eureka/
+   eureka.instance.preferIpAddress=true    
+   ```
+    
+   EUREKA_HOST：注册中心ip
+
+   EUREKA_PORT：注册中心端口
+
+* 访问地址
+
+    http://DOCKER_HOST:DOCKER_PORT/first
+
+    http://DOCKER_HOST:DOCKER_PORT/second
+
+**创建Hystrix monitoring**
+
+* 创建一个mvn工程，起名为hystrix-monitoring,其pom.xml见实例代码，核心依赖如下：
+
+   ```
+   <dependency>
+       <groupId>org.springframework.cloud</groupId>
+       <artifactId>spring-cloud-starter-turbine-stream</artifactId>
+   </dependency>
+   <dependency>
+       <groupId>org.springframework.cloud</groupId>
+       <artifactId>spring-cloud-starter-stream-rabbit</artifactId>
+   </dependency>
+   <dependency>
+       <groupId>org.springframework.cloud</groupId>
+       <artifactId>spring-cloud-starter-hystrix-dashboard</artifactId>
+   </dependency>        
+   ```
+
+   基于rabbitmq去收集聚合
+
+* 在程序的入口Application，加入@EnableTurbineStream 和 @EnableHystrixDashboard
+
+   ```
+   @@SpringBootApplication
+   @EnableTurbineStream
+   @EnableHystrixDashboard
+   public class MonitoringApplication {
+    
+       public static void main(String[] args) {
+           SpringApplication.run(MonitoringApplication.class, args);
+       }
+   }      
+   ```
+
+* 配置文件
+
+   ```
+   eureka:
+     instance:
+       prefer-ip-address: true
+     client:
+       serviceUrl:
+         defaultZone: http://EUREKA_HOST:EUREKA_PORT/eureka/
+    
    spring:
      application:
-       name: hystrix
-        
-   eureka:
-     client:
-       service-url:
-         defaultZone: http://${EUREKA_HOST}:${EUREKA_PORT}/eureka/v2/
+       name: hystrix-monitor
+     rabbitmq:
+       host: rabbitmq     
    ```
-    
-   defaultZone：erueka server地址
 
-### 业务关系 
+   EUREKA_HOST：注册中心ip
+
+   EUREKA_PORT：注册中心端口
+
+* 访问地址
+
+   http://DOCKER_HOST:8080/hystrix 页面中加入 http://DOCKER_HOST:8989/
+
+### 业务配置
 
 * 项目中统一定义了熔断策略（不涉及代码侵入）：
        
@@ -859,15 +939,7 @@ Netflix Hystrix是一个延迟和容错库，旨在隔离远程系统，服务�
                timeoutInMilliseconds: 10000   ## 10000ms 超时限制
    ```
 
-## <a name="Netflix-Turbine"></a>Netflix Turbine
-
-### 通用说明
-
-
-
-### 业务配置
-
-由于Hystrix的监控只针对单个节点，因此PiggyMetrics通过Turbine来监控集群下Hystrix的metrics情况。
+由于Hystrix的监控只针对单个节点，因此PiggyMetrics通过**Netflix Turbine**来监控集群下Hystrix的metrics情况。
 
 实现客户端将Hystrix命令推送到Turbine，只需要在客户端添加如下代码即可，例如[/notification-service/pom.xml](https://github.com/cloudframeworks-springcloud/PiggyMetrics/blob/master/notification-service/pom.xml#L79)。
 
@@ -878,83 +950,75 @@ Netflix Hystrix是一个延迟和容错库，旨在隔离远程系统，服务�
    </dependency>
    ```
 
-访问mointoring：
-
-http://DOCKER-HOST:9000/hystrix ，输入：http://DOCKER-HOST:8989
-
 ## <a name="Netflix-Feign"></a>Netflix Feign
 
 ### 通用说明
 
-Spring Cloud集成Netflix Ribbon和Netflix Eureka提供的负载均衡的HTTP客户端Netflix Feign.
+Feign是一个声明式、模板化的HTTP客户端，它使得写web服务变得更简单。使用Feign,只需要创建一个接口并注解。它具有可插拔的注解特性，包括Feign 注解和JAX-RS注解。Feign同时支持可插拔的编码器和解码器。当我们使用feign的时候，spring cloud 整和了Ribbon和eureka去提供负载均衡。
 
-Netflix Feign是一个声明式、模板化的HTTP客户端，因此编写起来会更容易一些。Spring Cloud集成了Netflix Feign，并通过Netflix Ribbon和Netflix Eureka提供负载均衡。
+简而言之：1）feign采用的是接口加注解；2）feign 整合了ribbon
 
-使用Netflix Feign创建一个接口并对它进行注解（可插拔的注解支持，包括Feign注解），在应用主类中通过`@EnableFeignClients`注解开启Feign功能，并使用`@FeignClient`(服务ID)注解来绑定该接口对应服务。
 
-* 如何创建一个Netflix Feign
+**创建feign service**
 
-   1. 创建普通的应用
-
-   2. 将该应用主类中加入`@EnableFeignClients`
-
-   3. 在service中用`@FeignClient`(服务ID)注解来绑定该接口对应服务
-
-   4. 修改配置文件(根据自己的环境设置`EUREKA_HOST`和`EUREKA_PORT`)
-
-   `eureka.client.serviceUrl.defaultZone=http://127.0.0.1:5000/eureka/v2/`
-
-   5. 构建镜像，运行service
-
-   [完整代码]
+* 创建一个mvn工程，起名为feign,其pom.xml见实例代码，核心依赖如下：
 
    ```
-   git https://github.com/cloudframeworks-springcloud/Spring-Cloud-Feign.git
-        
-   cd  Spring-Cloud-Feign && docker build -t feign .
-        
-   docker run -ti -e "EUREKA_HOST=172.17.0.4" -e "EUREKA_PORT=8761" -p 5000:5000 feign
+   <dependency>
+       <groupId>org.springframework.cloud</groupId>
+       <artifactId>spring-cloud-starter-ribbon</artifactId>
+   </dependency>
+   <dependency>
+       <groupId>org.springframework.cloud</groupId>
+       <artifactId>spring-cloud-starter-feign</artifactId>
+   </dependency>       
    ```
 
-* 创建一个application
+* 在程序的入口Application类加上@EnableFeignClients注解开启配置服务器
 
    ```
    @SpringBootApplication
    @EnableDiscoveryClient
    @EnableFeignClients
    public class FeignDemoApplication {
-            
-      @Bean
-      @LoadBalanced
-      public RestTemplate restTemplate() {
-           return new RestTemplate();
-       }
-            
+        
        public static void main(String[] args) {
            SpringApplication.run(FeignDemoApplication.class, args);
        }
+   }     
+   ```
+
+* 创建一个远程掉用服务
+
+   ```
+   @FeignClient("eureka-service")
+   public interface RemoteInvokerService {
+        
+       @RequestMapping(value = "/demo/show", method = RequestMethod.GET)
+       public String remoteInvoker();
    }
    ```
-    
-   @EnableFeignClients：开启feign功能
 
-* 配置文件application.yml
-    
+   eureka-service： 是我们在eureka模块中注册的服务
+
+   远程掉用/demo/show这个rest接口，也可以改成／demo/index 等
+
+* 配置文件
+
    ```
-   server:
-     port: 5000
-        
-   spring:
-     application:
-       name: feign
-        
-   eureka:
-     client:
-       service-url:
-         defaultZone: http://${EUREKA_HOST}:${EUREKA_PORT}/eureka/
+   spring.application.name=feign
+   server.port=5000
+   eureka.client.serviceUrl.defaultZone=http://${EUREKA_HOST}:${EUREKA_PORT}/eureka/
+   eureka.instance.preferIpAddress=true      
    ```
     
-   defaultZone：erueka server地址
+   EUREKA_HOST：注册中心ip
+
+   EUREKA_PORT：注册中心端口
+
+* 访问地址
+
+   http://DOCKER_HOST:DOCKER_PORT/feign
 
 ### 业务关系
 
