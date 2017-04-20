@@ -229,23 +229,6 @@ PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
    }       
    ```
 
-* 配置文件
-
-   ```
-   server:
-     port: 8888
-    
-   spring:
-     application:
-       name: config-server
-     cloud:
-       config:
-         server:
-           git:
-             uri:                         ##----------配置文件所存放的git地址
-             searchPaths: config          ##----------寻找路径
-   ```
-
    获取git上的资源信息遵循如下规则：
 
    ```
