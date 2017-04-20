@@ -379,74 +379,20 @@ Netflix Eureka通过“伙伴”机制实现高可用，每一台Eureka都需要
 
 Netflix Eureka使用Java编写，但它会将所有注册信息和心跳连接地址都暴露为HTTP REST接口，客户端实际是通过HTTP请求与Server进行通讯的，因此Client完全可以使用其它语言进行编写，只需要即时调用注册服务、注销服务、获取服务列表和心跳请求的HTTP REST接口即可。
 
-**创建Eureka server**
+**创建Eureka Server**
 
-* 步骤
-
-   1. 下载Netflix Eureka server
-
-   Git地址：[https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server.git](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server.git)
-
-   命令：`Git clone` [https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server.git](https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server.git)
-
-   2. 构建Netflix Eureka server镜像
-
-   命令：`cd  Netflix-Eureka-server && docker build -t eureka-server .`
-
-   3. 运行Netflix Eureka server
-
-   命令：`docker run -d -p 8761:8761 eureka-server`
-
-   4. 访问[http://127.0.0.1:8761](http://127.0.0.1:8761)
-
-   [完整代码]
+* 创建一个mvn工程，起名为eureka-server,其pom.xml见实例代码，核心依赖如下：
 
    ```
-   git clone https://github.com/cloudframeworks-springcloud/Netflix-Eureka-server.git
+   <dependency>
+       <groupId>org.springframework.cloud</groupId>
+       <artifactId>spring-cloud-starter-eureka-server</artifactId>
+   </dependency>
         
-   cd  Netflix-Eureka-server && docker build -t eureka-server .
-        
-   docker run -d -p 8761:8761 eureka-server
    ```
 
-* 注册一个服务到Eureka server
+* 在程序的入口Application类加上@EnableEurekaServer注解开启配置服务器
 
-   1. 创建普通的应用服务
-
-   2. 将该服务注册到Netflix Eureka中（通过`@EnableDiscoveryClient`）
-
-   3. 设置Eureka server的地址
-
-      修改配置文件(根据自己的环境设置`EUREKA_HOST`和`EUREKA_PORT`)
-
-      `eureka.client.serviceUrl.defaultZone=http://127.0.0.1:5000/eureka/v2/`
-
-   4. 运行Netflix Eureka service
-
-   5. 去Netflix Eureka中查看是否已注册成功(备注：用户可以定义自己的业务逻辑)
-
-   [完整代码]
-
-   ```
-   git https://github.com/cloudframeworks-springcloud/Netflix-Eureka-service.git
-        
-   cd  Netflix-Eureka-service && docker build -t eureka-service .
-        
-   docker run -ti -e "EUREKA_HOST=172.17.0.4" -e "EUREKA_PORT=8761" -p 5000:5000 eureka-service
-   ```
-
-* 部署方式
-
-   通过@EnableEurekaServer去创建一个注册中心，默认情况下也将自己自己作为客户端进行注册，所以我们需要禁用它的客户端注册行为，只需要在 application.properties 中问增加如下配置：
-
-   ```
-   eureka.client.register-with-eureka=false
-          
-   eureka.client.fetch-registry=false
-   ```
- 
-* 结构分析
-   
    ```
    @SpringBootApplication
    @EnableEurekaServer
@@ -456,100 +402,132 @@ Netflix Eureka使用Java编写，但它会将所有注册信息和心跳连接�
            SpringApplication.run(EurekaApplication.class, args);
        }
    }
-   ```
-    
-   @EnableEurekaServer：启动注册中心
-    
-   ```
-   spring.application.name=eureka-server
-   server.port=5000
-   eureka.client.registerWithEureka=false
-   eureka.client.fetchRegistry=false
-   eureka.client.region=default
-   eureka.server.enableSelfPreservation=false
-   eureka.server.renewalPercentThreshold=0.9
-   eureka.server.evictionIntervalTimerInMs=4000
-   eureka.instance.leaseRenewalIntervalInSeconds=1
-   eureka.instance.leaseExpirationDurationInSeconds=2
-   eureka.instance.preferIpAddress=true
+        
    ```
 
-   registerWithEureka：false 
+* 配置文件
+
+   ```
     
-   fetchRegistry：false
+   server:
+     port: 8761
+   spring:
+     application:
+       name: eureka-server
+   eureka:
+     instance:
+       prefer-ip-address: true
+     client:
+       registerWithEureka: false
+       fetchRegistry: false
+       serviceUrl:
+         defaultZone: http://127.0.0.1:8761/eureka/
+       server:
+         waitTimeInMsWhenSyncEmpty: 0
+     server
+       eviction-interval-timer-in-ms: 4000
+       enableSelfPreservation: false
+       renewalPercentThreshold: 0.9       
+   ```
 
-**Eureka service说明**
+**创建Eureka service**
 
-* 创建一个application
+* 创建一个mvn工程，起名为eureka-service,其pom.xml见实例代码，核心依赖如下：
+
+   ```
+   <dependency>
+       <groupId>org.springframework.cloud</groupId>
+       <artifactId>spring-cloud-starter-eureka</artifactId>
+   </dependency>
+   ```
+
+* 在程序的入口Application类加上@EnableDiscoveryClient注解开启配置服务器
 
    ```
    @SpringBootApplication
    @EnableDiscoveryClient
    public class DemoServiceApplication {
-        
+    
        public static void main(String[] args) {
            SpringApplication.run(DemoServiceApplication.class, args);
        }
-   }
+   }     
    ```
-    
-   @SpringBootApplication：相当于@Configuration
 
-   @EnableAutoConfiguration：详见spring开发
+* 创建2个restful接口
 
-   @ComponentScan：详见spring开发
-    
-   @EnableDiscoveryClient：将服务注册实例到服务发现中
-
-* 创建restful api
+普通的demo程序，提供/demo/show 和 /demo/index 接口
     
    ```
    @RequestMapping("/demo")
    @RestController
    public class DemoController {
-        
+    
        @RequestMapping("/show")
        public String show() {
            return "demo show";
        }
-            
+        
        @RequestMapping("/index")
        public String index() {
            return "demo index";
        }
-   } 
+   }
    ```
     
-   创建一个／demo/show 和／demo/index的restful api
+user程序，提供/user/online 和 /user/offline 接口, 其中EurekaDiscoveryClientConfiguration 管理改服务在注册中心的声明周期(下线和上线)
     
-* 设置配置文件(application.properties)
+   ```
+   @RequestMapping("/user")
+   @RestController
+   public class UserController {
+       @Autowired
+       private EurekaDiscoveryClientConfiguration lifecycle;
+    
+       @RequestMapping("/online")
+       public String online() {
+           this.lifecycle.start();
+           return "user online method";
+       }
+    
+       @RequestMapping("/offline")
+       public String offline() {
+           this.lifecycle.stop();
+           return "user offline method";
+       }
+   }    
+   ```
+
+* 配置文件
 
    ```
-   spring.application.name=demo-service
+   spring.application.name=eureka-service
    server.port=5000
    eureka.region=default
    eureka.preferSameZone=false
    eureka.shouldUseDns=false
-   eureka.client.serviceUrl.defaultZone=http://${EUREKA_HOST}:${EUREKA_PORT}/eureka/v2/
-   eureka.instance.hostname=${POD_NET_IP}
+   eureka.client.serviceUrl.defaultZone=http://${EUREKA_HOST}:${EUREKA_PORT}/eureka/
+   eureka.instance.preferIpAddress=true
+   eureka.instance.leaseRenewalIntervalInSeconds=10
+   eureka.instance.leaseExpirationDurationInSeconds=20       
    ```
-   
-   `eureka.client.serviceUrl.defaultZone`：设置EUREKA服务访问地址
     
-   `eureka.instance.hostname`： 实例名用ip地址（POD_NET_IP）代替
+   EUREKA_HOST：注册中心ip
+   EUREKA_PORT：注册中心端口
+    
+* 访问地址
 
+   http://DOCKER_HOST:DOCKER_PORT/demo/index
+       
+   http://DOCKER_HOST:DOCKER_PORT/demo/show
+       
+   http://DOCKER_HOST:DOCKER_PORT/user/online
+       
+   http://DOCKER_HOST:DOCKER_PORT/user/offline
+   
+* 访问注册中心可以看到eureka-service已注册
 
-* 定义了3个示例资源
-
-   http://127.0.0.1:5000/
-
-   http://127.0.0.1:5000/demo/show
-
-   http://127.0.0.1:5000/demo/index
-
-   http://127.0.0.1:5000/user/online
-
-   http://127.0.0.1:5000/user/offline
+   http://EUREKA_HOST:EUREKA_PORT/eureka/
 
 
 ### 业务配置
@@ -574,98 +552,88 @@ Netflix Zuul提供动态路由、监控、弹性、安全等的边缘服务。
 
 在通过服务网关统一向外的提供REST API的微服务架构中，Netflix Zuul为微服务机构提供了前门保护的作用，同时将权限控制这些较重的非业务逻辑内容迁移到服务路由层面，使得服务集群主体能够具备更高的可复用性和可测试性。
 
-* 如何创建一个Netflix Zuul
+**创建zuul service**
 
-   1. 创建普通的应用
+* 创建一个mvn工程，起名为zuul,其pom.xml见实例代码，核心依赖如下：
 
-   2. 将该应用主类中加入`@EnableZuulProxy`
-
-   3. 修改配置文件(根据自己的环境设置`EUREKA_HOST`和`EUREKA_PORT`)
-
-   4. 构建镜像，运行service
-
-   [完整代码]
-
-   ```
-   git https://github.com/cloudframeworks-springcloud/Netflix-Zuul.git
-        
-   cd  Netflix-Zuul && docker build -t zuul .
-        
-   docker run -ti -e "EUREKA_HOST=172.17.0.4" -e "EUREKA_PORT=8761" -p 5000:5000 zuul
+  ```
+  <dependency>
+     <groupId>org.springframework.cloud</groupId>
+     <artifactId>spring-cloud-starter-zuul</artifactId>
+ </dependency>       
    ```
 
-* 创建一个application
+* 在程序的入口Application类加上@EnableZuulProxy注解开启配置服务器
 
-   ```
+   ``` 
    @SpringBootApplication
-   @EnableZuulProxy
    @EnableDiscoveryClient
-   @EnableFeignClients
-   public class ZuulProxyDemoApplication {
-        
+   @EnableZuulProxy
+   public class GatewayApplication {
+    
        public static void main(String[] args) {
-           SpringApplication.run(ZuulProxyDemoApplication.class, args);
+           SpringApplication.run(GatewayApplication.class, args);
        }
-            
-       @Bean
-       public AuthFilter authFilter() {
-         return new AuthFilter();
-       }
-   }
+   }     
    ```
-    
-   @EnableZuulProxy：注释zuul代理
-    
-   authFilter：定义filter
 
-* 配置文件application.yml
-    
-   ```
+* 配置文件
+
+   ``` 
    server:
      port: 5000
-        
+    
    spring:
      application:
        name: zuul
-        
+    
    eureka:
      client:
        service-url:
-         defaultZone: http://${EUREKA_HOST}:${EUREKA_PORT}/eureka/v2/
-        
+         defaultZone: http://${EUREKA_HOST}:${EUREKA_PORT}/eureka/
+    
+   hystrix:
+     command:
+       default:
+         execution:
+           isolation:
+             thread:
+               timeoutInMilliseconds: 20000
+    
+   ribbon:
+     ReadTimeout: 20000
+     ConnectTimeout: 20000
+    
    zuul:
      ignoredServices: '*'
+     host:
+       connect-timeout-millis: 20000
+       socket-timeout-millis: 20000
+    
      routes:
+       routes:
        demo:
          path: /demo/**
-         serviceId: demo-service
+         serviceId: eureka-service
          stripPrefix: false
          sensitiveHeaders: Cookie,Set-Cookie,Authorization
        user:
          path: /user/**
-         serviceId: demo-service
+         serviceId: eureka-service
          stripPrefix: false
          sensitiveHeaders: Cookie,Set-Cookie,Authorization
        outer:
          path: /baidu/**
          url: http://www.baidu.com
-        
-        
-   ribbon:
-     MaxAutoRetries: 1
-     MaxAutoRetriesNextServer: 1
-     OkToRetryOnAllOperations: true
-     ServerListRefreshInterval: 2000
-     ConnectTimeout: 3000
-     ReadTimeout: 3000
-     #ListOfServers: server1:80,server2:80,server3:80    
-     #EnablePrimeConnections: true 
    ```
     
-   routes：配置响应的路由
+   EUREKA_HOST：注册中心ip
+   
+   EUREKA_PORT：注册中心端口
     
-   ribbon：路由策略
+* 访问地址
 
+   http://DOCKER_HOST:DOCKER_PORT/feign
 
 ### 业务配置
 
@@ -719,71 +687,85 @@ PiggyMetrics借助Netflix Zuul实现gateway，代理授权服务、账户服务�
 
 ### 通用说明
 
-简单来说，Netflix Ribbon是一个客户端负载均衡器，有多种负载均衡策略可选（包括自定义的负载均衡算法），并可配合服务发现及断路器使用。在配置文件中列出Load Balancer后面所有的机器，Ribbon会自动的帮助你基于某种规则（如简单轮询，随机连接等）去连接这些机器。
+Ribbon是一个客户端负载均衡器，有多种负载均衡策略可选（包括自定义的负载均衡算法），并可配合服务发现及断路器使用。在配置文件中列出Load Balancer后面所有的机器，Ribbon会自动的帮助你基于某种规则（如简单轮询，随机连接等）去连接这些机器。
 
-* 特点：1）负载均衡、2）容错、3）在异步和反应模型中支持多协议（HTTP、TCP、UDP）、4）缓存和批处理
+Ribbon的主要特点包括：1）负载均衡，2）容错，3）在异步和反应模型中支持多协议（HTT、TCP、UDP），4）缓存和批处理
 
-* 使用向导
 
-   1. 创建普通的应用
+## 创建ribbon service
 
-   2. 将该应用主类中加入`@EnableFeignClients`
-
-   3. 在service中用`@FeignClient`(服务ID)注解来绑定该接口对应服务
-
-   4. 修改配置文件(根据自己的环境设置`EUREKA_HOST`和`EUREKA_PORT`) 
-
-   5. 构建镜像，运行service
-
-   [完整代码]
+* 创建一个mvn工程，起名为ribbon,其pom.xml见实例代码，核心依赖如下：
 
    ```
-   git https://github.com/cloudframeworks-springcloud/Netflix-Ribbon.git
-        
-   cd  Netflix-Ribbon && docker build -t ribbon .
-        
-   docker run -ti -e "EUREKA_HOST=172.17.0.4" -e "EUREKA_PORT=8761" -p 5000:5000 ribbon
+   <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-ribbon</artifactId>
+   </dependency>
    ```
 
-* 创建一个application
+* 程序的入口Application类
 
-   ```
-   @SpringBootApplication
-   @EnableDiscoveryClient
-   public class RibbonApplication {
-            
-       @Bean
-       @LoadBalanced
-       RestTemplate restTemplate() {
-           return new RestTemplate();
-       }
-        
-       public static void main(String[] args) {
-           SpringApplication.run(RibbonApplication.class, args);
-       }
-   }
-   ```
+```
     
-   @LoadBalanced：声明LoadBalanced
-
-* 配置文件application.yml
-    
-   ```
-   server:
-     port: 5000
+    @SpringBootApplication
+    @EnableDiscoveryClient
+    public class RibbonApplication {
         
-   spring:
-     application:
-       name: ribbon
-        
-   eureka:
-     client:
-       service-url:
-         defaultZone: http://${EUREKA_HOST}:${EUREKA_PORT}/eureka/v2/
-   ```
+        @Bean
+        @LoadBalanced
+        RestTemplate restTemplate() {
+            return new RestTemplate();
+        }
     
-   defaultZone：erueka server地址
+        public static void main(String[] args) {
+            SpringApplication.run(RibbonApplication.class, args);
+        }
+    }
 
+        
+```
+    
+    @LoadBalanced：声明一个loadBalanced模版
+
+* 创建一个远程掉用服务
+
+```
+
+    @RestController
+    public class DemoController {
+    
+        @Autowired
+        RestTemplate restTemplate;
+    
+        @RequestMapping(value = "/ribbon", method = RequestMethod.GET)
+        public String add() {
+            return restTemplate.getForEntity("http://EUREKA-SERVICE/demo/show", String.class).getBody();
+        }
+    }
+
+```
+
+    EUREKA-SERVICE： 是我们在eureka模块中注册的服务
+    
+    远程调用/demo/show这个rest接口，也可以改成／demo/index 等
+
+* 配置文件
+
+```
+    
+    spring.application.name=ribbon
+    server.port=5000
+    eureka.client.serviceUrl.defaultZone=http://${EUREKA_HOST}:${EUREKA_PORT}/eureka/
+    eureka.instance.preferIpAddress=true
+        
+```
+    
+    EUREKA_HOST：注册中心ip
+    EUREKA_PORT：注册中心端口
+    
+* 访问地址
+
+    http://DOCKER_HOST:DOCKER_PORT/ribbon
 
 ### 业务配置 
 
