@@ -6,18 +6,16 @@
 ![](https://img.shields.io/badge/License-Apache_2.0-blue.svg)
 [![](https://img.shields.io/badge/Prodcuer-Bin%20Zhang-orange.svg)](CONTRIBUTORS.md)
 
-[微服务](https://martinfowler.com/articles/microservices.html)近年来受到了众多开发者的追捧。相比传统架构模式，微服务架构具有语言无关性、独立进程通讯、高度解耦、任务边界固定、按需扩展等特点，非常适合互联网公司快速交付、响应变化、不断试错的需求，也因此受到了像Twitter、Netflix、Amazon、eBay这样的科技巨头的青睐（[案例](https://mp.weixin.qq.com/s?__biz=MzIwMDA2OTI0Mw==&mid=2653449136&idx=2&sn=0e6bc2215646064c9a35398a8fb00299&chksm=8d5e12a4ba299bb2bf75f5b8aebb645c186932b6507dbd2ca9372dbd5b0f4d0a5a43e9fce72d#rd)）。
+[微服务](https://martinfowler.com/articles/microservices.html)与传统架构模式相比，具有语言无关性、独立进程通讯、高度解耦、任务边界固定、按需扩展等特点，非常适合互联网公司快速交付、响应变化、不断试错的需求，也因此受到了像Twitter、Netflix、Amazon、eBay这样的科技巨头的青睐（[案例](https://mp.weixin.qq.com/s?__biz=MzIwMDA2OTI0Mw==&mid=2653449136&idx=2&sn=0e6bc2215646064c9a35398a8fb00299&chksm=8d5e12a4ba299bb2bf75f5b8aebb645c186932b6507dbd2ca9372dbd5b0f4d0a5a43e9fce72d#rd)）。
 
-目前主流微服务框架包括Spring Cloud、Dubbo、API Gateway等，其中[Spring Cloud](http://projects.spring.io/spring-cloud/)是Pivotal提供的云应用开发工具，利用Spring Boot的开发便利性，Spring Cloud为JVM云应用开发中的配置管理、服务发现、断路器、智能路由、微代理、控制总线、全局锁、决策竞选、分布式会话和集群状态管理等操作提供了一种简单的实现方式。
+目前主流微服务框架包括Spring Cloud、Dubbo、API Gateway等，其中[Spring Cloud](http://projects.spring.io/spring-cloud/)利用Spring Boot的开发便利性，为JVM云应用开发中的配置管理、服务发现、断路器、智能路由、微代理、控制总线、全局锁、决策竞选、分布式会话和集群状态管理等操作提供了一种简单的实现方式。
 
 相比Dubbo等RPC（远程过程调用协议）框架，Spring Cloud是一个比较新的微服务架构基础框架选择，2016年才推出的1.0 release版本，不过Spring Cloud的方案完整度非常高，各个子项目几乎覆盖了微服务架构的方方面面。从目前的关注度和活跃度来看，Spring Cloud很可能会成为微服务架构的标准。
 
-本篇[云框架](ABOUT.md)目的不在于重复造轮，而是总结过去数十个微服务架构项目的成功经验，绕过前人踩过的坑，结合典型案例，为开发者提供微服务落地的最佳实践。
+本篇[云框架](ABOUT.md)总结过去数十个微服务架构项目的成功经验，并结合典型案例[PiggyMetrics](https://github.com/cloudframeworks-springcloud/PiggyMetrics)（一款个人财务管理应用），为开发者提供基于Spring Cloud的微服务架构落地最佳实践。
 
-* 对于初学者来说，可以通过结合实例的代码、文档快速学习Spring Cloud及微服务，并在社群中交流讨论；
-* 对于已有一定了解，想要使用的开发者来说，不必从零开始开发，仅需在云框架基础上替换部分业务代码，就可以将[基于Spring Cloud的微服务架构](README.md)应用于生产环境并立即产生价值。
-
-**以下内容以[PiggyMetrics](https://github.com/cloudframeworks-springcloud/PiggyMetrics)（一款个人财务管理应用）为例说明**
+* 初学者可通过实例代码、文档快速学习Spring Cloud及微服务，并在社群中交流讨论；
+* 已有一定了解的开发者，不必从零开始开发，仅需在云框架基础上替换部分业务代码，即可将最佳实践应用于生产环境并立即产生价值。
 
 # 内容概览
 
@@ -84,7 +82,7 @@
 
    * mac
 
-   参考[https://docs.docker.com/docker-for-mac/](https://docs.docker.com/docker-for-mac/)
+   请参考[https://docs.docker.com/docker-for-mac/](https://docs.docker.com/docker-for-mac/)
 
 
 2. 克隆完整代码
@@ -98,12 +96,10 @@
    export NOTIFICATION_SERVICE_PASSWORD=root
    export STATISTICS_SERVICE_PASSWORD=root
    export ACCOUNT_SERVICE_PASSWORD=root
-   export MONGODB_PASSWORD=root
-   ```
-   
-   mongo_password为必填项，其它变量可以不用设置
+   export MONGODB_PASSWORD=root          ##----------必填，其他变量可不设置
+   ```
 
-4. 基于docker-compose运行:
+4. 基于docker-compose运行如下命令（[docker-compose.yml](https://github.com/cloudframeworks-springcloud/PiggyMetrics/blob/master/docker-compose.yml)）
 
    ```
    docker-compose -f docker-compose.yml up -d
@@ -145,13 +141,13 @@
 
 <a name="业务背景"></a>
 
-Piggymetrics通过Spring Cloud实现微服务架构，应用被分解为**账户服务**（ACCOUNT SERVICE）、**统计服务**（STATISTICS SERVICE）、**通知服务**（NOTIFICATION SERVICE）等三个核心微服务。每个微服务都是围绕业务能力组织的可独立部署的应用程序，拥有独立的数据库并使用同步的REST API实现微服务与微服务之间的通信。
+Piggymetrics通过Spring Cloud实现微服务架构，应用被分解为**账户服务**（[ACCOUNT SERVICE](https://github.com/cloudframeworks-springcloud/PiggyMetrics/tree/master/account-service)）、**统计服务**（[STATISTICS SERVICE](https://github.com/cloudframeworks-springcloud/PiggyMetrics/tree/master/statistics-service)）、**通知服务**（[NOTIFICATION SERVICE](https://github.com/cloudframeworks-springcloud/PiggyMetrics/tree/master/notification-service)）等三个核心微服务。每个微服务都是围绕业务能力组织的可独立部署的应用程序，拥有独立的数据库并使用同步的[REST API](http://www.restapitutorial.com/)实现微服务与微服务之间的通信。
 
-<a name="业务架构"></a>业务架构如下图所示：
+<a name="业务架构"></a>PiggyMetrics业务架构如下图所示：
 
 <div align=center><img width="900" height="" src="./image/pm业务架构.png"/></div>
 
-其中<a name="业务模块"></a>**账户服务**模块包含一般用户输入逻辑和验证：收入/费用项目，储蓄和帐户设置。
+<a name="业务模块"></a>**账户服务**模块包含一般用户输入逻辑和验证：收入/费用项目，储蓄和帐户设置。
 
 方法	| 路径	| 描述	| 用户验证	| UI可用
 ------------- | ------------------------- | ------------- |:-------------:|:----------------:|
@@ -161,7 +157,7 @@ GET	| /accounts/demo	| 获取demo账户数据 (预填充收入/支出项目等)	
 PUT	| /accounts/current	| 保存当前账户数据	| × | ×
 POST	| /accounts/	| 注册新账户	|   | ×
 
-**统计服务**模块对主要统计参数执行计算，并为每个帐户的时间序列。数据点包含基准货币和时间段的值。此数据用于跟踪帐户生命周期中的现金流动动态（尚未在UI中实现的花式图表）。
+**统计服务**模块执行主要统计参数的计算，并捕获每个帐户的时间序列。
 
 方法	| 路径	| 描述 | 用户验证	| UI可用
 ------------- | ------------------------- | ------------- |:-------------:|:----------------:|
@@ -170,7 +166,7 @@ GET	| /statistics/current	| 获取当前账户统计	| × | ×
 GET	| /statistics/demo	| 获取demo账户统计	|   | × 
 PUT	| /statistics/{account}	| 创建或更新时间系列数据点指定的帐户	|   | 
 
-**通知服务**模块存储用户联系信息和通知设置（如提醒和备份频率）。计划工作人员从其他服务收集所需的信息，并向订阅的客户发送电子邮件。
+**通知服务**模块存储用户联系信息和通知设置（如提醒和备份频率），计划工作人员从其他服务收集所需的信息，并向订阅的客户发送电子邮件。
 
 方法	| 路径	| 描述	| 用户验证	| UI可用
 ------------- | ------------------------- | ------------- |:-------------:|:----------------:|
@@ -179,7 +175,7 @@ PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
 
 # <a name="组件"></a>组件
 
-<a name="组件架构"></a>Piggymetrics基础服务设施中用到了Spring Cloud Config、Netflix Eureka、Netflix Hystrix、Netflix Zuul、Netflix Ribbon、Netflix Feign等组件，而这也正是Spring Cloud分布式开发中最核心组件。
+<a name="组件架构"></a>Piggymetrics基础服务设施中用到了Spring Cloud Config、Netflix Eureka、Netflix Hystrix、Netflix Zuul、Netflix Ribbon、Netflix Feign等组件，而这也正是Spring Cloud分布式开发中最核心的组件。
 
 组件架构如下图所示：
 
@@ -197,17 +193,19 @@ PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
 
 * 认证机制通过Auth service实现，提供基本认证服务。
 
-**需要注意的是Spring Cloud Config、Eureka、Ribbon、Hystrix、Feign以及Turbine均为标准组件，与业务之间没有强关系，不涉及到业务代码，仅需简单配置即可工作。**
+> **需要注意的是Spring Cloud Config、Eureka、Ribbon、Hystrix、Feign以及Turbine均为标准组件，与业务之间没有强关系，不涉及到业务代码，仅需简单配置即可工作。**
 
 ## <a name="Spring-Cloud-Config"></a>Spring Cloud Config
 
 ### 通用说明
 
-在分布式系统中，Spring Cloud Config通过config-server（服务端）和config-client（客户端）提供可扩展的配置服务，并用配置服务中心集中管理所有服务的各种环境配置文件。Spring Cloud Config基于使用中心配置仓库的思想（版本控制），支持Git（默认）、SVN、File等三种储存方式。
+在分布式系统中，Spring Cloud Config通过config-server（服务端）和config-client（客户端）提供可扩展的配置服务，并利用配置服务中心集中管理所有服务的各种环境配置文件。Spring Cloud Config基于使用中心配置仓库的思想（版本控制），支持Git（默认）、SVN、File等三种储存方式。
 
 **创建Config Server**
 
-* 创建一个mvn工程，起名为config-server，其pom.xml见实例代码，核心依赖如下：
+* 创建一个mvn工程，起名为config-server，参考[pom.xml](https://github.com/cloudframeworks-springcloud/PiggyMetrics/blob/master/config/pom.xml)。
+
+  核心依赖：
 
    ```
    <dependency>
@@ -222,7 +220,7 @@ PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
         
    ```
 
-* 在程序的入口Application类加上@EnableConfigServer注解开启配置服务器
+* 在程序的入口Application类加上@EnableConfigServer注解开启配置服务器，参考[ConfigApplication.java](https://github.com/cloudframeworks-springcloud/PiggyMetrics/blob/master/config/src/main/java/com/piggymetrics/config/ConfigApplication.java)。
 
    ```
    @EnableConfigServer
@@ -248,9 +246,9 @@ PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
        config:
          server:
            git:
-             uri: https://github.com/cloudframeworks-springcloud/Spring-Cloud-Config.git
-             searchPaths: config        
-   ```
+             uri:                         ##----------配置文件所存放的git地址
+             searchPaths: config          ##----------寻找路径
+   ```
 
    uri：配置文件所存放的git地址
 
