@@ -247,7 +247,7 @@ PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
              uri:
              searchPaths: config
    ```
-   
+
    uri：配置文件所存放的git地址
    
    searchParhs：寻找路径
@@ -261,7 +261,7 @@ PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
    /{application}-{profile}.properties
    /{label}/{application}-{profile}.properties  
    ```
-   
+
 **创建Config client**
 
 * 创建一个mvn工程，起名为config-client，核心依赖：
