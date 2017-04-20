@@ -88,7 +88,13 @@
 
 3. 设置环境变量
 
-
+   ```
+   export CONFIG_SERVICE_PASSWORD=root
+   export NOTIFICATION_SERVICE_PASSWORD=root
+   export STATISTICS_SERVICE_PASSWORD=root
+   export ACCOUNT_SERVICE_PASSWORD=root
+   export MONGODB_PASSWORD=root         ## 必填，其他变量可不设置
+   ```
 
 4. 基于docker-compose运行如下命令（[docker-compose.yml](https://github.com/cloudframeworks-springcloud/PiggyMetrics/blob/master/docker-compose.yml)）
 
