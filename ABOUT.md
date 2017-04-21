@@ -1,8 +1,6 @@
 ![20170421149274059411420.png](http://oe5ahutux.bkt.clouddn.com/20170421149274059411420.png)
 
-云框架（Cloud Frameworks）是即插即用的云端技术框架，用户仅需替换部分业务代码，即可将面向真实业务场景的技术最佳实践应用于生产环境并立即产生价值。
-
-云框架结合具有代表性的业务，有代码和文档可以看，有完整实例可以参考，并提供多种向导式部署和使用方式。
+云框架（Cloud Frameworks）是即插即用的云端技术框架，通过典型实例梳理知识结构，帮助开发者快速掌握新技术，仅需替换部分业务代码，即可将最佳实践应用于生产环境并立即产生价值。
 
 ## 特性简介
 
@@ -45,7 +43,7 @@ Cloud frameworks
 
 ### user-guide
 
-云框架主题展现为Github上的组织（organization），组织中仓库（repository）包括“user-guide”及一个或多个“组件”。
+云框架主题展现为Github上的组织（organization），组织中仓库（repository）包括“user-guide-xxx”及一个或多个“组件”。
 
 在user-guide仓库中，你可以很方便的找到帮助了解和使用云框架的文档，并根据“[README](README.md)”快速开始。
 
