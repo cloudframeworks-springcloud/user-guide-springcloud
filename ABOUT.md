@@ -1,4 +1,4 @@
-[![Goodrain Cloud Frameworks](http://7xihe6.com1.z0.glb.clouddn.com/CLOUDFRAMEWORKS9x3d.jpg)](http://app.goodrain.com)
+![20170421149274059411420.png](http://oe5ahutux.bkt.clouddn.com/20170421149274059411420.png)
 
 云框架（Cloud Frameworks）是即插即用的云端技术框架，用户仅需替换部分业务代码，即可将面向真实业务场景的技术最佳实践应用于生产环境并立即产生价值。
 
