@@ -320,7 +320,7 @@ PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
 
 ### 业务配置
 
-在PiggyMetrics项目中，config_server从本地类路径加载配置文件：
+在PiggyMetrics项目中，[config_server](https://github.com/cloudframeworks-springcloud/PiggyMetrics/tree/master/config)从本地类路径加载配置文件：
 
 <div align=center><img width="900" height="" src="./image/pmspringcloudconfig.png"/></div>
 
@@ -509,7 +509,7 @@ Netflix Eureka使用Java编写，但它会将所有注册信息和心跳连接�
 
 ### 业务配置
 
-PiggyMetrics通过Eureka server实现registy, 代码逻辑比较简单和标准，不用做任何修改，需要注意的是在[bootstrap.yml](https://github.com/cloudframeworks-springcloud/PiggyMetrics/blob/master/registry/src/main/resources/bootstrap.yml)加入配置中心服务地址信息。
+PiggyMetrics通过Eureka server实现[registy](https://github.com/cloudframeworks-springcloud/PiggyMetrics/tree/master/registry), 代码逻辑比较简单和标准，不用做任何修改，需要注意的是在[bootstrap.yml](https://github.com/cloudframeworks-springcloud/PiggyMetrics/blob/master/registry/src/main/resources/bootstrap.yml)加入配置中心服务地址信息。
 
    ```
    spring:
@@ -614,7 +614,7 @@ Netflix Zuul提供动态路由、监控、弹性、安全等的边缘服务。
 
 ### 业务配置
 
-PiggyMetrics借助Netflix Zuul实现gateway，代理授权服务、账户服务、统计服务和通知服务，这里的代码比较简单，基本上是标准的，不需要修改。
+PiggyMetrics借助Netflix Zuul实现[gateway](https://github.com/cloudframeworks-springcloud/PiggyMetrics/tree/master/gateway)，代理授权服务、账户服务、统计服务和通知服务，这里的代码比较简单，基本上是标准的，不需要修改。
 
 我们在实际业务的开发中，在[GatewayApplication.java](https://github.com/cloudframeworks-springcloud/PiggyMetrics/blob/master/gateway/src/main/java/com/piggymetrics/gateway/GatewayApplication.java)用具体业务替换相应的服务即可。
 
