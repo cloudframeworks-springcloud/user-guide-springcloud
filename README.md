@@ -132,6 +132,18 @@
    docker run -d -e CONFIG_SERVICE_PASSWORD=${CONFIG_SERVICE_PASSWORD} --link config:config --link registry:registry --link auth-service:auth-service --name=gateway -p 80:4000 goodraincloudframeworks/piggymetrics-gateway
    ```
 
+> **Endpoints**
+>
+> http://DOCKER-HOST:80 - Gateway
+> 
+> http://DOCKER-HOST:8761 - Eureka Dashboard
+>  
+> http://DOCKER-HOST:9000/hystrix - Hystrix Dashboard
+> 
+> http://DOCKER-HOST:8989 - Turbine stream (source for the Hystrix Dashboard)
+> 
+> http://DOCKER-HOST:15672 - RabbitMq management (默认账号guest／默认密码guest)
+
 # <a name="框架说明"></a>框架说明
 
 # <a name="业务"></a>业务
