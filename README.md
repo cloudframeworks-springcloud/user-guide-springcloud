@@ -1069,9 +1069,9 @@ Feign同时可以引用注册中心以外的服务没，例如在统计服务模
 
 # <a name="加入社群"></a>加入社群
 
++ QQ群1: 531980120
 + [订阅邮件](http://goodrain.us15.list-manage.com/subscribe?u=1874f1de4ed82a52890cefb4c&id=b88f73ca56)
 + [联系我们](mailto:info@goodrain.com)
-+ QQ群1: 531980120
 
 -------
 
