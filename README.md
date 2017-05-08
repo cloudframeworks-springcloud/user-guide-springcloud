@@ -3,6 +3,7 @@
 ![](https://img.shields.io/badge/release-v1.0-green.svg)
 [![](https://img.shields.io/badge/Producer-elvis2002-orange.svg)](CONTRIBUTORS.md)
 ![](https://img.shields.io/badge/License-Apache_2.0-blue.svg)
+[![](https://img.shields.io/badge/Group-QQ-brightgreen.svg)](<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=08656cfa0add38f98157b017d0f66b6b076fc48d354cd43b8cf2321aa7436f9d"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="Cloudframeworks-spring cloud" title="Cloudframeworks-spring cloud"></a>)
 
 [微服务](https://martinfowler.com/articles/microservices.html)与传统架构模式相比，具有语言无关性、独立进程通讯、高度解耦、任务边界固定、按需扩展等特点，非常适合互联网公司快速交付、响应变化、不断试错的需求，也因此受到了像Twitter、Netflix、Amazon、eBay这样的科技巨头的青睐。
 
