@@ -1,10 +1,8 @@
 # [云框架]基于Spring Cloud的微服务架构 v1.0
 
-![](https://img.shields.io/badge/release-v1.0-green.svg)
+![](https://img.shields.io/badge/Release-v1.0-green.svg)
 [![](https://img.shields.io/badge/Producer-elvis2002-orange.svg)](CONTRIBUTORS.md)
 ![](https://img.shields.io/badge/License-Apache_2.0-blue.svg)
-[![](https://img.shields.io/badge/Chat-Gitter-yellow.svg)](https://gitter.im/cloudframeworks-springcloud?utm_source=share-link&utm_medium=link&utm_campaign=share-link)
-<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=08656cfa0add38f98157b017d0f66b6b076fc48d354cd43b8cf2321aa7436f9d"><img border="0" src="https://img.shields.io/badge/Group-QQ-brightgreen.svg" alt="Cloudframeworks-spring cloud" title="Cloudframeworks-spring cloud"></a>
 
 [微服务](https://martinfowler.com/articles/microservices.html)与传统架构模式相比，具有语言无关性、独立进程通讯、高度解耦、任务边界固定、按需扩展等特点，非常适合互联网公司快速交付、响应变化、不断试错的需求，也因此受到了像Twitter、Netflix、Amazon、eBay这样的科技巨头的青睐。
 
@@ -323,6 +321,7 @@ Feign同时可以引用注册中心以外的服务没，例如在统计服务模
 # <a name="加入社群"></a>加入社群
 
 + QQ群1: 531980120
++ [Gitter](https://gitter.im/cloudframeworks-springcloud?utm_source=share-link&utm_medium=link&utm_campaign=share-link)
 + [订阅邮件](http://goodrain.us15.list-manage.com/subscribe?u=1874f1de4ed82a52890cefb4c&id=b88f73ca56)
 + [联系我们](mailto:info@goodrain.com)
 
