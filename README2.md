@@ -333,7 +333,7 @@ Feign同时可以引用注册中心以外的服务没，例如在统计服务模
 
 # <a name="社群贡献"></a>社群贡献
 
-+ QQ群: [531980120](<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=c48fadcabb19866336ab176c8a5043b67dc185eea954f0dc03e6a36392ea7b49"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="Cloudframeworks-spring cloud" title="Cloudframeworks-spring cloud"></a>)
++ QQ群: 531980120
 + [如何成为云框架贡献者](CONTRIBUTING.md)
 + [联系我们](mailto:info@goodrain.com)
 
