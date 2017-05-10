@@ -83,8 +83,6 @@ PiggyMetrics业务架构如下图所示：
 
 <div align=center><img width="900" height="" src="./image/pm业务架构.png"/></div>
 
-(**点击展开**)
-
 <details>
 
 <summary> 账户服务模块包含一般用户输入逻辑和验证：收入/费用项目，储蓄和帐户设置。 </summary>
