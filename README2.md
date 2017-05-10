@@ -31,7 +31,7 @@
 * [如何变成自己的项目](#如何变成自己的项目)
 * [生产环境](#生产环境)
 * [常见问题](#常见问题)
-* [ROADMAP](#ROADMAP)
+* [更新计划](#更新计划)
 * [参与贡献](#参与贡献)
 * [加入社群](#加入社群)
 
@@ -83,9 +83,11 @@ PiggyMetrics业务架构如下图所示：
 
 <div align=center><img width="900" height="" src="./image/pm业务架构.png"/></div>
 
+(**点击展开**)
+
 <details>
 
-<summary> 账户服务模块包含一般用户输入逻辑和验证：收入/费用项目，储蓄和帐户设置。(**点击展开**) </summary>
+<summary> 账户服务模块包含一般用户输入逻辑和验证：收入/费用项目，储蓄和帐户设置。 </summary>
 
 方法	| 路径	| 描述	| 用户验证	| UI可用
 ------------- | ------------------------- | ------------- |:-------------:|:----------------:|
@@ -321,7 +323,7 @@ Feign同时可以引用注册中心以外的服务没，例如在统计服务模
 
 任何相关问题均可通过[GitHub ISSUE](https://github.com/cloudframeworks-springcloud/user-guide/issues)提交或讨论，问题总结请查看[[QA](QA.md)]
 
-# <a name="ROADMAP"></a>ROADMAP
+# <a name="更新计划"></a>更新计划
 
 * `文档` 增加在线演示
 * `组件` 增加组件内容，如Spring Cloud Sleuth、Spring Cloud Consul等
