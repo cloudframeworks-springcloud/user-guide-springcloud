@@ -85,7 +85,7 @@ PiggyMetrics业务架构如下图所示：
 
 <details>
 
-<summary> 账户服务模块包含一般用户输入逻辑和验证：收入/费用项目，储蓄和帐户设置。 </summary>
+<summary> 账户服务模块包含一般用户输入逻辑和验证：收入/费用项目，储蓄和帐户设置。（点击展开） </summary>
 
 方法	| 路径	| 描述	| 用户验证	| UI可用
 ------------- | ------------------------- | ------------- |:-------------:|:----------------:|
@@ -337,7 +337,7 @@ Feign同时可以引用注册中心以外的服务没，例如在统计服务模
 
 # <a name="加入社群"></a>加入社群
 
-+ QQ群1: 531980120
++ QQ群: 531980120
 + [Gitter](https://gitter.im/cloudframeworks-springcloud?utm_source=share-link&utm_medium=link&utm_campaign=share-link)
 + [订阅邮件](http://goodrain.us15.list-manage.com/subscribe?u=1874f1de4ed82a52890cefb4c&id=b88f73ca56)
 + [联系我们](mailto:info@goodrain.com)
