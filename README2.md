@@ -31,7 +31,7 @@
 * [如何变成自己的项目](#如何变成自己的项目)
 * [生产环境](#生产环境)
 * [常见问题](#常见问题)
-* [更新计划](#更新计划)
+* [ROADMAP](#ROADMAP)
 * [参与贡献](#参与贡献)
 * [加入社群](#加入社群)
 
@@ -309,9 +309,7 @@ Feign同时可以引用注册中心以外的服务没，例如在统计服务模
 
 任何相关问题均可通过[GitHub ISSUE](https://github.com/cloudframeworks-springcloud/user-guide/issues)提交或讨论，问题总结请查看[[QA](QA.md)]
 
-# <a name="更新计划"></a>更新计划
-
-## Roadmap
+# <a name="ROADMAP"></a>ROADMAP
 
 * `文档` 增加在线演示
 * `组件` 增加组件内容，如Spring Cloud Sleuth、Spring Cloud Consul等
