@@ -18,8 +18,8 @@
 # 内容概览
 
 * [快速部署](#快速部署)
-* [业务说明](#业务说明)
-* [组件说明](#组件说明)
+* [框架说明-业务](#框架说明-业务)
+* [框架说明-组件](#框架说明-组件)
    * [组件架构](#组件架构)
    * [配置Spring Cloud Config](#Spring-Cloud-Config)
    * [配置Netflix Eureka](#Netflix-Eureka)
@@ -71,7 +71,7 @@
    
    http://DOCKER-HOST:15672 - RabbitMq management (默认账号guest／默认密码guest)
 
-# <a name="业务说明"></a>业务说明
+# <a name="框架说明-业务"></a>框架说明-业务
 
 Piggymetrics通过Spring Cloud实现微服务架构，应用被分解为**账户服务**（[ACCOUNT SERVICE](https://github.com/cloudframeworks-springcloud/PiggyMetrics/tree/master/account-service)）、**统计服务**（[STATISTICS SERVICE](https://github.com/cloudframeworks-springcloud/PiggyMetrics/tree/master/statistics-service)）、**通知服务**（[NOTIFICATION SERVICE](https://github.com/cloudframeworks-springcloud/PiggyMetrics/tree/master/notification-service)）等三个核心微服务。每个微服务都是围绕业务能力组织的可独立部署的应用程序，拥有独立的数据库并使用同步的[REST API](http://www.restapitutorial.com/)实现微服务与微服务之间的通信。
 
@@ -117,7 +117,7 @@ PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
 
 </details>
 
-# <a name="组件说明"></a>组件说明
+# <a name="框架说明-组件"></a>框架说明-组件
 
 <a name="组件架构"></a>Piggymetrics基础服务设施中用到了Spring Cloud Config、Netflix Eureka、Netflix Hystrix、Netflix Zuul、Netflix Ribbon、Netflix Feign等组件，而这也正是Spring Cloud分布式开发中最核心的组件。
 
