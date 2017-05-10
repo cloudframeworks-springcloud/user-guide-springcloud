@@ -22,12 +22,12 @@
    * [业务](#业务)
    * [组件](#组件)
       * [组件架构](#组件架构)
-      * [Spring Cloud Config](#Spring-Cloud-Config)
-      * [Netflix Eureka](#Netflix-Eureka)
-      * [Netflix Zuul](#Netflix-Zuul)
-      * [Netflix Ribbon](#Netflix-Ribbon)
-      * [Netflix Hystrix](#Netflix-Hystrix)
-      * [Netflix Feign](#Netflix-Feign)
+      * [配置Spring Cloud Config](#Spring-Cloud-Config)
+      * [配置Netflix Eureka](#Netflix-Eureka)
+      * [配置Netflix Zuul](#Netflix-Zuul)
+      * [配置Netflix Ribbon](#Netflix-Ribbon)
+      * [配置Netflix Hystrix](#Netflix-Hystrix)
+      * [配置Netflix Feign](#Netflix-Feign)
 * [如何变成自己的项目](#如何变成自己的项目)
 * [生产环境](#生产环境)
 * [常见问题](#常见问题)
@@ -143,7 +143,9 @@ PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
 
 * Spring Cloud Config、Eureka、Ribbon、Hystrix、Feign以及Turbine均为标准组件，与业务之间没有强关系，不涉及到业务代码，仅需简单配置即可工作。
 
-### <a name="Spring-Cloud-Config"></a>配置Spring Cloud Config（[查看通用说明](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/spring%20cloud%20config%20basic.md)）
+### <a name="Spring-Cloud-Config"></a>配置Spring Cloud Config
+
+[查看通用说明](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/spring%20cloud%20config%20basic.md)
 
 在PiggyMetrics项目中，[config_server](https://github.com/cloudframeworks-springcloud/PiggyMetrics/tree/master/config)从本地类路径加载配置文件：
 
@@ -165,7 +167,9 @@ PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
 
 配置文件修改后可通过 http://DOCKER-HOST:DOCKER-PORT/xxx/refresh 刷新配置(xxx表示服务根路径)，无需重启服务。
 
-### <a name="Netflix-Eureka"></a>配置Netflix Eureka([查看通用说明](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/netflix%20eureka%20basic.md))
+### <a name="Netflix-Eureka"></a>配置Netflix Eureka
+
+[查看通用说明](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/netflix%20eureka%20basic.md)
 
 PiggyMetrics通过Eureka server实现[registy](https://github.com/cloudframeworks-springcloud/PiggyMetrics/tree/master/registry), 代码逻辑比较简单和标准，不用做任何修改，需要注意的是在[bootstrap.yml](https://github.com/cloudframeworks-springcloud/PiggyMetrics/blob/master/registry/src/main/resources/bootstrap.yml)加入配置中心服务地址信息。
 
@@ -179,7 +183,9 @@ PiggyMetrics通过Eureka server实现[registy](https://github.com/cloudframework
         username: user
    ```
 
-### <a name="Netflix-Zuul"></a>配置Netflix Zuul([查看通用说明](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/netflix%20zuul%20basic.md))
+### <a name="Netflix-Zuul"></a>配置Netflix Zuul
+
+[查看通用说明](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/netflix%20zuul%20basic.md)
 
 PiggyMetrics借助Netflix Zuul实现[gateway](https://github.com/cloudframeworks-springcloud/PiggyMetrics/tree/master/gateway)，代理授权服务、账户服务、统计服务和通知服务，这里的代码比较简单，基本上是标准的，不需要修改。
 
@@ -227,7 +233,9 @@ PiggyMetrics借助Netflix Zuul实现[gateway](https://github.com/cloudframeworks
          sensitiveHeaders:
    ```
 
-### <a name="Netflix-Ribbon"></a>配置Netflix Ribbon([查看通用说明](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/netflix%20ribbon%20basic.md))
+### <a name="Netflix-Ribbon"></a>配置Netflix Ribbon
+
+[查看通用说明](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/netflix%20ribbon%20basic.md)
 
 PiggyMetrics并没有显式的去定义Netflix Ribbon的使用，但是在Zuul、Feign等组件中隐式的使用到了Ribbon，我们在实际的业务开发中，也不需要刻意定义Ribbon。
 
@@ -256,7 +264,9 @@ PiggyMetrics并没有显式的去定义Netflix Ribbon的使用，但是在Zuul�
    </dependency>
    ```
 
-### 配置Netflix Feign([查看通用说明](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/netflix%20feign%20basic.md))
+### <a name="Netflix-Feign"></a>配置Netflix Feign
+
+[查看通用说明](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/netflix%20feign%20basic.md)
 
 PiggyMetrics多次用到了Feign，使用为在客户端中添加如下代码，例如[StatisticsServiceClient.java](https://github.com/cloudframeworks-springcloud/PiggyMetrics/blob/master/account-service/src/main/java/com/piggymetrics/account/client/StatisticsServiceClient.java)。
 
