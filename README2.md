@@ -45,7 +45,7 @@
 
 ## <a name="镜像部署"></a>镜像部署
 
-1. Docker环境准备
+1. [Docker环境准备](./READMORE/install docker.md)
 
 2. 克隆完整代码
 
