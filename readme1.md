@@ -1068,10 +1068,6 @@ Feign同时可以引用注册中心以外的服务没，例如在统计服务模
 * `TODO` 业务监控／性能分析
 * `TODO` K8s部署
 
-## 常见问题
-
-任何相关问题均可通过[GitHub ISSUE](https://github.com/cloudframeworks-springcloud/user-guide/issues)提交或讨论，问题总结请查看[[QA](QA.md)]
-
 ## 更新计划
 
 * `文档` 增加在线演示
@@ -1079,18 +1075,13 @@ Feign同时可以引用注册中心以外的服务没，例如在统计服务模
 * `生产环境` 增加生产环境下各项扩展操作，如性能测试及各类部署、特性、技术实现等
 * `快速部署` 增加好雨云帮部署
 * `常见问题` 补充问题总结[QA](QA.md)
+* `历史更新` [点击查看](CHANGELOG.md)
 
-点击查看[历史更新](CHANGELOG.md)
+任何相关问题均可通过[GitHub ISSUE](https://github.com/cloudframeworks-springcloud/user-guide/issues)提交或讨论，问题总结请查看[[QA](QA.md)]
 
-## 参与贡献
+参与贡献请查看[如何成为云框架贡献者](CONTRIBUTING.md)
 
-[如何成为云框架贡献者](CONTRIBUTING.md)
-
-## 加入社群
-
-+ QQ群1: 531980120
-+ [订阅邮件](http://goodrain.us15.list-manage.com/subscribe?u=1874f1de4ed82a52890cefb4c&id=b88f73ca56)
-+ [联系我们](mailto:info@goodrain.com)
+欢迎通过QQ群（群1:531980120）或[Gitter](https://gitter.im/cloudframeworks-springcloud?utm_source=share-link&utm_medium=link&utm_campaign=share-link)论或提问
 
 -------
 
