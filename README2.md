@@ -239,7 +239,9 @@ PiggyMetrics借助Netflix Zuul实现[gateway](https://github.com/cloudframeworks
 
 PiggyMetrics并没有显式的去定义Netflix Ribbon的使用，但是在Zuul、Feign等组件中隐式的使用到了Ribbon，我们在实际的业务开发中，也不需要刻意定义Ribbon。
 
-### <a name="Netflix-Hystrix"></a>配置Netflix Hystrix([查看通用说明](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/netflix%20hystrix%20basic.md))
+### <a name="Netflix-Hystrix"></a>配置Netflix Hystrix
+
+[查看通用说明](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/netflix%20hystrix%20basic.md)
 
 项目中统一定义了熔断策略（不涉及代码侵入）：
        
