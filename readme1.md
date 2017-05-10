@@ -17,11 +17,11 @@
 * 初学者可通过实例代码、文档快速学习Spring Cloud及微服务，并在社群中交流讨论；
 * 已有一定了解的开发者，不必从零开始开发，仅需在云框架基础上替换部分业务代码，即可将最佳实践应用于生产环境并立即产生价值。
 
-# Docker环境准备
+## 环境准备
 
 <details>
 
-<summary> centos </summary>
+<summary> centos搭建docker环境 </summary>
 
    ```
    1.清除docker 旧版本
@@ -42,7 +42,7 @@
 
 <details>
 
-<summary> ubuntu </summary>
+<summary> ubuntu搭建docker环境 </summary>
 
    ```
    1.更新apt包
@@ -62,13 +62,13 @@
 
 <details>
 
-<summary> mac </summary>
+<summary> mac搭建docker环境 </summary>
 
    请参考[https://docs.docker.com/docker-for-mac/](https://docs.docker.com/docker-for-mac/)
 
 </details>
 
-# 快速部署
+## 快速部署
 
 <details>
 
@@ -113,7 +113,7 @@ http://DOCKER-HOST:15672 - RabbitMq management (默认账号guest／默认密码
 
 </details>
 
-# 业务说明
+## 业务说明
 
 <details>
 
@@ -159,7 +159,7 @@ PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
 
 </details>
 
-# 组件说明
+## 组件说明
 
 <details>
 
@@ -1043,7 +1043,7 @@ Feign同时可以引用注册中心以外的服务没，例如在统计服务模
 </details>
 
 
-# 如何变成自己的项目
+## 如何变成自己的项目
 
    ```
 1. git clone项目到本地，并基于该项目创建自己的mvn项目
@@ -1059,7 +1059,7 @@ Feign同时可以引用注册中心以外的服务没，例如在统计服务模
 6. 运行所有的镜像，可参考[快速部署](#快速部署)
    ```
 
-# 生产环境
+## 生产环境
 
 * `TODO` 性能测试
 * `TODO` CI/CD
@@ -1068,11 +1068,11 @@ Feign同时可以引用注册中心以外的服务没，例如在统计服务模
 * `TODO` 业务监控／性能分析
 * `TODO` K8s部署
 
-# 常见问题
+## 常见问题
 
 任何相关问题均可通过[GitHub ISSUE](https://github.com/cloudframeworks-springcloud/user-guide/issues)提交或讨论，问题总结请查看[[QA](QA.md)]
 
-# 更新计划
+## 更新计划
 
 * `文档` 增加在线演示
 * `组件` 增加组件内容，如Spring Cloud Sleuth、Spring Cloud Consul等
@@ -1082,11 +1082,11 @@ Feign同时可以引用注册中心以外的服务没，例如在统计服务模
 
 点击查看[历史更新](CHANGELOG.md)
 
-# 参与贡献
+## 参与贡献
 
 [如何成为云框架贡献者](CONTRIBUTING.md)
 
-# 加入社群
+## 加入社群
 
 + QQ群1: 531980120
 + [订阅邮件](http://goodrain.us15.list-manage.com/subscribe?u=1874f1de4ed82a52890cefb4c&id=b88f73ca56)
