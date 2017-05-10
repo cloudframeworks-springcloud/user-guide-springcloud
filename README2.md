@@ -297,16 +297,16 @@ Feign同时可以引用注册中心以外的服务没，例如在统计服务模
 # <a name="如何变成自己的项目"></a>如何变成自己的项目 
 
 1. git clone项目到本地，并基于该项目创建自己的mvn项目
+
+2. 将auth-service、account-service、notification-service、statistics-service 替换成自己的服务
+
+   * *config、registry、gateway、monitoring代码无需修改*
+
+3. 在config中修改统一的配置文件，比如新增服务的服务名、端口等
      
-2. config、registry、gateway、monitoring，这4个组件不需要修改代码
+4. 通过mvn构建后生成镜像
      
-3. auth-service、account-service、notification-service、statistics-service 替换成自己的服务
-     
-4. 在config中修改统一的配置文件，比如新增服务的服务名、端口等
-     
-5. 通过mvn构建后生成镜像
-     
-6. 运行所有的镜像，可参考[快速部署](#快速部署)
+5. 运行所有的镜像，可参考[快速部署](#快速部署)
      
 # <a name="生产环境"></a>生产环境
 
