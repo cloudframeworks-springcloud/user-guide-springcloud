@@ -45,13 +45,11 @@
 
 ## <a name="镜像部署"></a>镜像部署
 
-1. [Docker环境准备](./READMORE/install docker.md)
+1. [Docker环境准备](user-guide-springcloud/READMORE/install docker.md)
 
 2. 克隆完整代码
 
-   ```
    git clone https://github.com/cloudframeworks-springcloud/PiggyMetrics
-   ```
 
 3. 设置环境变量
 
