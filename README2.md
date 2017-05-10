@@ -43,8 +43,6 @@
 
 # <a name="快速部署"></a>快速部署
 
-## <a name="镜像部署"></a>镜像部署
-
 1. [Docker环境准备](user-guide-springcloud/READMORE/install-docker.md)
 
 2. 克隆完整代码
@@ -81,9 +79,9 @@
    
    http://DOCKER-HOST:15672 - RabbitMq management (默认账号guest／默认密码guest)
 
-## <a name="框架说明"></a>框架说明
+# <a name="框架说明"></a>框架说明
 
-#### <a name="业务"></a>业务
+## <a name="业务"></a>业务
 
 <a name="业务背景"></a>
 
@@ -119,7 +117,7 @@ PUT	| /statistics/{account}	| 创建或更新时间系列数据点指定的帐�
 GET	| /notifications/settings/current	| 获取当前账户通知设置	| × | ×	
 PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
 
-#### <a name="组件"></a>组件
+## <a name="组件"></a>组件
 
 <a name="组件架构"></a>Piggymetrics基础服务设施中用到了Spring Cloud Config、Netflix Eureka、Netflix Hystrix、Netflix Zuul、Netflix Ribbon、Netflix Feign等组件，而这也正是Spring Cloud分布式开发中最核心的组件。
 
@@ -139,9 +137,9 @@ PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
 
 * 认证机制通过Auth service实现，提供基本认证服务。
 
-> **需要注意的是Spring Cloud Config、Eureka、Ribbon、Hystrix、Feign以及Turbine均为标准组件，与业务之间没有强关系，不涉及到业务代码，仅需简单配置即可工作。**
+> 需要注意的是Spring Cloud Config、Eureka、Ribbon、Hystrix、Feign以及Turbine均为标准组件，与业务之间没有强关系，不涉及到业务代码，仅需简单配置即可工作。
 
-<a name="Spring-Cloud-Config"></a>**配置Spring Cloud Config**
+#### <a name="Spring-Cloud-Config"></a>配置Spring Cloud Config
 
 在PiggyMetrics项目中，[config_server](https://github.com/cloudframeworks-springcloud/PiggyMetrics/tree/master/config)从本地类路径加载配置文件：
 
@@ -163,7 +161,7 @@ PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
 
 配置文件修改后可通过 http://DOCKER-HOST:DOCKER-PORT/xxx/refresh 刷新配置(xxx表示服务根路径)，无需重启服务。
 
-<a name="Netflix-Eureka"></a>**配置Netflix Eureka**
+#### <a name="Netflix-Eureka"></a>配置Netflix Eureka
 
 PiggyMetrics通过Eureka server实现[registy](https://github.com/cloudframeworks-springcloud/PiggyMetrics/tree/master/registry), 代码逻辑比较简单和标准，不用做任何修改，需要注意的是在[bootstrap.yml](https://github.com/cloudframeworks-springcloud/PiggyMetrics/blob/master/registry/src/main/resources/bootstrap.yml)加入配置中心服务地址信息。
 
@@ -177,7 +175,7 @@ PiggyMetrics通过Eureka server实现[registy](https://github.com/cloudframework
         username: user
    ```
 
-<a name="Netflix-Zuul"></a>**配置Netflix Zuul**
+#### <a name="Netflix-Zuul"></a>配置Netflix Zuul
 
 PiggyMetrics借助Netflix Zuul实现[gateway](https://github.com/cloudframeworks-springcloud/PiggyMetrics/tree/master/gateway)，代理授权服务、账户服务、统计服务和通知服务，这里的代码比较简单，基本上是标准的，不需要修改。
 
@@ -225,11 +223,11 @@ PiggyMetrics借助Netflix Zuul实现[gateway](https://github.com/cloudframeworks
          sensitiveHeaders:
    ```
 
-<a name="Netflix-Ribbon"></a>**配置Netflix Ribbon**
+#### <a name="Netflix-Ribbon"></a>配置Netflix Ribbon
 
 PiggyMetrics并没有显式的去定义Netflix Ribbon的使用，但是在Zuul、Feign等组件中隐式的使用到了Ribbon，我们在实际的业务开发中，也不需要刻意定义Ribbon。
 
-<a name="Netflix-Hystrix"></a>**配置Netflix Hystrix**
+#### <a name="Netflix-Hystrix"></a>配置Netflix Hystrix
 
 * 项目中统一定义了熔断策略（不涉及代码侵入）：
        
@@ -281,7 +279,7 @@ Feign同时可以引用注册中心以外的服务没，例如在统计服务模
    }
    ```
 
-## <a name="如何变成自己的项目"></a>如何变成自己的项目 
+# <a name="如何变成自己的项目"></a>如何变成自己的项目 
 
 1. git clone项目到本地，并基于该项目创建自己的mvn项目
      
@@ -295,7 +293,7 @@ Feign同时可以引用注册中心以外的服务没，例如在统计服务模
      
 6. 运行所有的镜像，可参考[快速部署](#快速部署)
      
-## <a name="生产环境"></a>生产环境
+# <a name="生产环境"></a>生产环境
 
 * `TODO` CI/CD
 * `TODO` 扩容
@@ -303,13 +301,13 @@ Feign同时可以引用注册中心以外的服务没，例如在统计服务模
 * `TODO` 业务监控／性能分析
 * `TODO` K8s部署
 
-## <a name="常见问题"></a>常见问题
+# <a name="常见问题"></a>常见问题
 
 任何相关问题均可通过[GitHub ISSUE](https://github.com/cloudframeworks-springcloud/user-guide/issues)提交或讨论，问题总结请查看[[QA](QA.md)]
 
-## <a name="更新计划"></a>更新计划
+# <a name="更新计划"></a>更新计划
 
-#### Roadmap
+## Roadmap
 
 * `文档` 增加在线演示
 * `组件` 增加组件内容，如Spring Cloud Sleuth、Spring Cloud Consul等
@@ -319,11 +317,11 @@ Feign同时可以引用注册中心以外的服务没，例如在统计服务模
 
 点击查看[历史更新](CHANGELOG.md)
 
-## <a name="参与贡献"></a>参与贡献
+# <a name="参与贡献"></a>参与贡献
 
 [如何成为云框架贡献者](CONTRIBUTING.md)
 
-## <a name="加入社群"></a>加入社群
+# <a name="加入社群"></a>加入社群
 
 + QQ群1: 531980120
 + [订阅邮件](http://goodrain.us15.list-manage.com/subscribe?u=1874f1de4ed82a52890cefb4c&id=b88f73ca56)
