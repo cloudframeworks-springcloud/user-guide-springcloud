@@ -79,9 +79,7 @@ PiggyMetrics业务架构如下图所示：
 
 <div align=center><img width="900" height="" src="./image/pm业务架构.png"/></div>
 
-<details>
-
-<summary> 账户服务模块包含一般用户输入逻辑和验证：收入/费用项目，储蓄和帐户设置。（点击展开） </summary>
+账户服务模块包含一般用户输入逻辑和验证：收入/费用项目，储蓄和帐户设置。
 
 方法	| 路径	| 描述	| 用户验证	| UI可用
 ------------- | ------------------------- | ------------- |:-------------:|:----------------:|
@@ -91,11 +89,7 @@ GET	| /accounts/demo	| 获取demo账户数据 (预填充收入/支出项目等)	
 PUT	| /accounts/current	| 保存当前账户数据	| × | ×
 POST	| /accounts/	| 注册新账户	|   | ×
 
-</details>
-
-<details>
-
-<summary> 统计服务模块执行主要统计参数的计算，并捕获每个帐户的时间序列。 </summary>
+统计服务模块执行主要统计参数的计算，并捕获每个帐户的时间序列。
 
 方法	| 路径	| 描述 | 用户验证	| UI可用
 ------------- | ------------------------- | ------------- |:-------------:|:----------------:|
@@ -104,18 +98,12 @@ GET	| /statistics/current	| 获取当前账户统计	| × | ×
 GET	| /statistics/demo	| 获取demo账户统计	|   | × 
 PUT	| /statistics/{account}	| 创建或更新时间系列数据点指定的帐户	|   | 
 
-</details>
-
-<details>
-
-<summary> 通知服务模块存储用户联系信息和通知设置（如提醒和备份频率），计划工作人员从其他服务收集所需的信息，并向订阅的客户发送电子邮件。 </summary>
+通知服务模块存储用户联系信息和通知设置（如提醒和备份频率），计划工作人员从其他服务收集所需的信息，并向订阅的客户发送电子邮件。
 
 方法	| 路径	| 描述	| 用户验证	| UI可用
 ------------- | ------------------------- | ------------- |:-------------:|:----------------:|
 GET	| /notifications/settings/current	| 获取当前账户通知设置	| × | ×	
 PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
-
-</details>
 
 # <a name="框架说明-组件"></a>框架说明-组件
 
@@ -139,7 +127,7 @@ PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
 
 * Spring Cloud Config、Eureka、Ribbon、Hystrix、Feign以及Turbine均为标准组件，与业务之间没有强关系，不涉及到业务代码，仅需简单配置即可工作。
 
-## <a name="Spring-Cloud-Config"></a>配置Spring Cloud Config（[查看通用说明](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/spring%20cloud%20config%20basic.md)）
+## <a name="Spring-Cloud-Config"></a>配置Spring Cloud Config
 
 在PiggyMetrics项目中，[config_server](https://github.com/cloudframeworks-springcloud/PiggyMetrics/tree/master/config)从本地类路径加载配置文件：
 
@@ -161,9 +149,9 @@ PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
 
 配置文件修改后可通过 http://DOCKER-HOST:DOCKER-PORT/xxx/refresh 刷新配置(xxx表示服务根路径)，无需重启服务。
 
-## <a name="Netflix-Eureka"></a>配置Netflix Eureka
+[进一步了解Spring Cloud Config](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/spring%20cloud%20config%20basic.md)）
 
-[查看通用说明](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/netflix%20eureka%20basic.md)
+## <a name="Netflix-Eureka"></a>配置Netflix Eureka
 
 PiggyMetrics通过Eureka server实现[registy](https://github.com/cloudframeworks-springcloud/PiggyMetrics/tree/master/registry), 代码逻辑比较简单和标准，不用做任何修改，需要注意的是在[bootstrap.yml](https://github.com/cloudframeworks-springcloud/PiggyMetrics/blob/master/registry/src/main/resources/bootstrap.yml)加入配置中心服务地址信息。
 
@@ -177,9 +165,9 @@ PiggyMetrics通过Eureka server实现[registy](https://github.com/cloudframework
         username: user
    ```
 
-## <a name="Netflix-Zuul"></a>配置Netflix Zuul
+[进一步了解Netflix Eureka](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/netflix%20eureka%20basic.md)
 
-[查看通用说明](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/netflix%20zuul%20basic.md)
+## <a name="Netflix-Zuul"></a>配置Netflix Zuul
 
 PiggyMetrics借助Netflix Zuul实现[gateway](https://github.com/cloudframeworks-springcloud/PiggyMetrics/tree/master/gateway)，代理授权服务、账户服务、统计服务和通知服务，这里的代码比较简单，基本上是标准的，不需要修改。
 
@@ -227,15 +215,15 @@ PiggyMetrics借助Netflix Zuul实现[gateway](https://github.com/cloudframeworks
          sensitiveHeaders:
    ```
 
-## <a name="Netflix-Ribbon"></a>配置Netflix Ribbon
+[进一步了解Netflix Zuul](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/netflix%20zuul%20basic.md)
 
-[查看通用说明](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/netflix%20ribbon%20basic.md)
+## <a name="Netflix-Ribbon"></a>配置Netflix Ribbon
 
 PiggyMetrics并没有显式的去定义Netflix Ribbon的使用，但是在Zuul、Feign等组件中隐式的使用到了Ribbon，我们在实际的业务开发中，也不需要刻意定义Ribbon。
 
-## <a name="Netflix-Hystrix"></a>配置Netflix Hystrix
+[进一步了解Netflix Ribbon](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/netflix%20ribbon%20basic.md)
 
-[查看通用说明](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/netflix%20hystrix%20basic.md)
+## <a name="Netflix-Hystrix"></a>配置Netflix Hystrix
 
 项目中统一定义了熔断策略（不涉及代码侵入）：
        
@@ -260,9 +248,9 @@ PiggyMetrics并没有显式的去定义Netflix Ribbon的使用，但是在Zuul�
    </dependency>
    ```
 
-## <a name="Netflix-Feign"></a>配置Netflix Feign
+[进一步了解Netflix Hystrix](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/netflix%20hystrix%20basic.md)
 
-[查看通用说明](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/netflix%20feign%20basic.md)
+## <a name="Netflix-Feign"></a>配置Netflix Feign
 
 PiggyMetrics多次用到了Feign，使用为在客户端中添加如下代码，例如[StatisticsServiceClient.java](https://github.com/cloudframeworks-springcloud/PiggyMetrics/blob/master/account-service/src/main/java/com/piggymetrics/account/client/StatisticsServiceClient.java)。
 
@@ -288,6 +276,8 @@ Feign同时可以引用注册中心以外的服务没，例如在统计服务模
         
    }
    ```
+
+[进一步了解Netflix Feign](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/netflix%20feign%20basic.md)
 
 # <a name="如何变成自己的项目"></a>如何变成自己的项目 
 
