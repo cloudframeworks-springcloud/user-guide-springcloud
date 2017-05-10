@@ -80,17 +80,15 @@
 
 ## <a name="业务"></a>业务
 
-<a name="业务背景"></a>
-
 Piggymetrics通过Spring Cloud实现微服务架构，应用被分解为**账户服务**（[ACCOUNT SERVICE](https://github.com/cloudframeworks-springcloud/PiggyMetrics/tree/master/account-service)）、**统计服务**（[STATISTICS SERVICE](https://github.com/cloudframeworks-springcloud/PiggyMetrics/tree/master/statistics-service)）、**通知服务**（[NOTIFICATION SERVICE](https://github.com/cloudframeworks-springcloud/PiggyMetrics/tree/master/notification-service)）等三个核心微服务。每个微服务都是围绕业务能力组织的可独立部署的应用程序，拥有独立的数据库并使用同步的[REST API](http://www.restapitutorial.com/)实现微服务与微服务之间的通信。
 
-<a name="业务架构"></a>PiggyMetrics业务架构如下图所示：
+PiggyMetrics业务架构如下图所示：
 
 <div align=center><img width="900" height="" src="./image/pm业务架构.png"/></div>
 
 <details>
 
-<summary> 账户服务模块包含一般用户输入逻辑和验证：收入/费用项目，储蓄和帐户设置。(<font color="#0000FF">点击展开</font>) </summary>
+<summary> 账户服务模块包含一般用户输入逻辑和验证：收入/费用项目，储蓄和帐户设置。(点击展开) </summary>
 
 方法	| 路径	| 描述	| 用户验证	| UI可用
 ------------- | ------------------------- | ------------- |:-------------:|:----------------:|
