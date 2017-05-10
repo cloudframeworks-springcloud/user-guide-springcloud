@@ -139,9 +139,7 @@ PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
 
 * Spring Cloud Config、Eureka、Ribbon、Hystrix、Feign以及Turbine均为标准组件，与业务之间没有强关系，不涉及到业务代码，仅需简单配置即可工作。
 
-## <a name="Spring-Cloud-Config"></a>配置Spring Cloud Config
-
-[查看通用说明](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/spring%20cloud%20config%20basic.md)
+## <a name="Spring-Cloud-Config"></a>配置Spring Cloud Config（[查看通用说明](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/spring%20cloud%20config%20basic.md)）
 
 在PiggyMetrics项目中，[config_server](https://github.com/cloudframeworks-springcloud/PiggyMetrics/tree/master/config)从本地类路径加载配置文件：
 
