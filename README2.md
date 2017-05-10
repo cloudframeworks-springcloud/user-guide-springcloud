@@ -100,6 +100,7 @@ PUT	| /accounts/current	| 保存当前账户数据	| × | ×
 POST	| /accounts/	| 注册新账户	|   | ×
 
 </details>
+</br>
 
 统计服务模块执行主要统计参数的计算，并捕获每个帐户的时间序列。
 <details>
@@ -112,6 +113,7 @@ GET	| /statistics/demo	| 获取demo账户统计	|   | ×
 PUT	| /statistics/{account}	| 创建或更新时间系列数据点指定的帐户	|   | 
 
 </details>
+</br>
 
 通知服务模块存储用户联系信息和通知设置（如提醒和备份频率），计划工作人员从其他服务收集所需的信息，并向订阅的客户发送电子邮件。
 <details>
