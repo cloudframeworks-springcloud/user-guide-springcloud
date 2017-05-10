@@ -2,7 +2,7 @@
 
 在分布式系统中，Spring Cloud Config通过config-server（服务端）和config-client（客户端）提供可扩展的配置服务，并利用配置服务中心集中管理所有服务的各种环境配置文件。Spring Cloud Config基于使用中心配置仓库的思想（版本控制），支持Git（默认）、SVN、File等三种储存方式。
 
-**创建Config Server**
+#### 创建Config Server
 
 * 创建一个mvn工程，起名为config-server，核心依赖：
 
@@ -59,7 +59,7 @@
    /{label}/{application}-{profile}.properties  
    ```
 
-**创建Config client**
+#### 创建Config client
 
 * 创建一个mvn工程，起名为config-client，核心依赖：
 
