@@ -1074,16 +1074,15 @@ Feign同时可以引用注册中心以外的服务没，例如在统计服务模
 * `组件` 增加组件内容，如Spring Cloud Sleuth、Spring Cloud Consul等
 * `生产环境` 增加生产环境下各项扩展操作，如性能测试及各类部署、特性、技术实现等
 * `快速部署` 增加好雨云帮部署
-* `常见问题` 补充问题总结[QA](QA.md)
-* `[点击查看历史更新](CHANGELOG.md)`
+* `历史更新` [点击查看](CHANGELOG.md)
 
 -------
+
+欢迎通过QQ群（群1:531980120）或[Gitter](https://gitter.im/cloudframeworks-springcloud?utm_source=share-link&utm_medium=link&utm_campaign=share-link)论或提问
 
 任何相关问题均可通过[GitHub ISSUE](https://github.com/cloudframeworks-springcloud/user-guide/issues)提交或讨论，问题总结请查看[[QA](QA.md)]
 
 参与贡献请查看[如何成为云框架贡献者](CONTRIBUTING.md)
-
-欢迎通过QQ群（群1:531980120）或[Gitter](https://gitter.im/cloudframeworks-springcloud?utm_source=share-link&utm_medium=link&utm_campaign=share-link)论或提问
 
 -------
 
