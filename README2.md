@@ -89,7 +89,6 @@ Piggymetrics通过Spring Cloud实现微服务架构，应用被分解为**账户
 <div align=center><img width="900" height="" src="./image/pm业务架构.png"/></div>
 
 <a name="业务模块"></a>账户服务模块包含一般用户输入逻辑和验证：收入/费用项目，储蓄和帐户设置。
-
 <details>
 
 方法	| 路径	| 描述	| 用户验证	| UI可用
@@ -103,7 +102,6 @@ POST	| /accounts/	| 注册新账户	|   | ×
 </details>
 
 统计服务模块执行主要统计参数的计算，并捕获每个帐户的时间序列。
-
 <details>
 
 方法	| 路径	| 描述 | 用户验证	| UI可用
@@ -116,7 +114,6 @@ PUT	| /statistics/{account}	| 创建或更新时间系列数据点指定的帐�
 </details>
 
 通知服务模块存储用户联系信息和通知设置（如提醒和备份频率），计划工作人员从其他服务收集所需的信息，并向订阅的客户发送电子邮件。
-
 <details>
 
 方法	| 路径	| 描述	| 用户验证	| UI可用
