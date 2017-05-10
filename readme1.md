@@ -35,7 +35,9 @@
 
 <summary> 镜像部署 </summary>
 
-1. docker环境准备
+1. 准备环境
+
+   参考[docker环境准备](docker环境准备.md)
 
 2. 克隆完整代码
 
