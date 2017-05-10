@@ -1049,7 +1049,7 @@ Feign同时可以引用注册中心以外的服务没，例如在统计服务模
 
 <summary> 操作步骤 </summary>
 
-   ```
+   ```
 1. git clone项目到本地，并基于该项目创建自己的mvn项目
      
 2. config、registry、gateway、monitoring，这4个组件不需要修改代码
@@ -1075,7 +1075,6 @@ Feign同时可以引用注册中心以外的服务没，例如在统计服务模
 
 ## 生产环境
 
-* `TODO` 性能测试
 * `TODO` CI/CD
 * `TODO` 扩容
 * `TODO` 服务容错
