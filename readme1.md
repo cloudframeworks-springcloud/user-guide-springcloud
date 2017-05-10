@@ -1075,7 +1075,9 @@ Feign同时可以引用注册中心以外的服务没，例如在统计服务模
 * `生产环境` 增加生产环境下各项扩展操作，如性能测试及各类部署、特性、技术实现等
 * `快速部署` 增加好雨云帮部署
 * `常见问题` 补充问题总结[QA](QA.md)
-* `历史更新` [点击查看](CHANGELOG.md)
+* `[点击查看历史更新](CHANGELOG.md)`
+
+-------
 
 任何相关问题均可通过[GitHub ISSUE](https://github.com/cloudframeworks-springcloud/user-guide/issues)提交或讨论，问题总结请查看[[QA](QA.md)]
 
