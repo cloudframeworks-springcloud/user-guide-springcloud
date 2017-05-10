@@ -91,7 +91,7 @@ Piggymetrics通过Spring Cloud实现微服务架构，应用被分解为**账户
 
 <div align=center><img width="900" height="" src="./image/pm业务架构.png"/></div>
 
-<a name="业务模块"></a>**账户服务**模块包含一般用户输入逻辑和验证：收入/费用项目，储蓄和帐户设置。
+<a name="业务模块"></a>账户服务模块包含一般用户输入逻辑和验证：收入/费用项目，储蓄和帐户设置。
 
 方法	| 路径	| 描述	| 用户验证	| UI可用
 ------------- | ------------------------- | ------------- |:-------------:|:----------------:|
@@ -101,7 +101,7 @@ GET	| /accounts/demo	| 获取demo账户数据 (预填充收入/支出项目等)	
 PUT	| /accounts/current	| 保存当前账户数据	| × | ×
 POST	| /accounts/	| 注册新账户	|   | ×
 
-**统计服务**模块执行主要统计参数的计算，并捕获每个帐户的时间序列。
+统计服务模块执行主要统计参数的计算，并捕获每个帐户的时间序列。
 
 方法	| 路径	| 描述 | 用户验证	| UI可用
 ------------- | ------------------------- | ------------- |:-------------:|:----------------:|
@@ -110,7 +110,7 @@ GET	| /statistics/current	| 获取当前账户统计	| × | ×
 GET	| /statistics/demo	| 获取demo账户统计	|   | × 
 PUT	| /statistics/{account}	| 创建或更新时间系列数据点指定的帐户	|   | 
 
-**通知服务**模块存储用户联系信息和通知设置（如提醒和备份频率），计划工作人员从其他服务收集所需的信息，并向订阅的客户发送电子邮件。
+通知服务模块存储用户联系信息和通知设置（如提醒和备份频率），计划工作人员从其他服务收集所需的信息，并向订阅的客户发送电子邮件。
 
 方法	| 路径	| 描述	| 用户验证	| UI可用
 ------------- | ------------------------- | ------------- |:-------------:|:----------------:|
@@ -135,9 +135,9 @@ PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
 
 * 整个业务过程中所有服务的配置文件通过Spring Cloud Config来管理，即起什么端口、配置什么参数等；
 
-* 认证机制通过Auth service实现，提供基本认证服务。
+* 认证机制通过Auth service实现，提供基本认证服务；
 
-> 需要注意的是Spring Cloud Config、Eureka、Ribbon、Hystrix、Feign以及Turbine均为标准组件，与业务之间没有强关系，不涉及到业务代码，仅需简单配置即可工作。
+* Spring Cloud Config、Eureka、Ribbon、Hystrix、Feign以及Turbine均为标准组件，与业务之间没有强关系，不涉及到业务代码，仅需简单配置即可工作。
 
 #### <a name="Spring-Cloud-Config"></a>配置Spring Cloud Config（[查看通用说明](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/spring%20cloud%20config%20basic.md)）
 
