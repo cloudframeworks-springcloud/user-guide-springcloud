@@ -18,16 +18,15 @@
 # 内容概览
 
 * [快速部署](#快速部署)
-* [框架说明](#框架说明) 
-   * [业务](#业务)
-   * [组件](#组件)
-      * [组件架构](#组件架构)
-      * [配置Spring Cloud Config](#Spring-Cloud-Config)
-      * [配置Netflix Eureka](#Netflix-Eureka)
-      * [配置Netflix Zuul](#Netflix-Zuul)
-      * [配置Netflix Ribbon](#Netflix-Ribbon)
-      * [配置Netflix Hystrix](#Netflix-Hystrix)
-      * [配置Netflix Feign](#Netflix-Feign)
+* [业务说明](#业务说明)
+* [组件说明](#组件说明)
+   * [组件架构](#组件架构)
+   * [配置Spring Cloud Config](#Spring-Cloud-Config)
+   * [配置Netflix Eureka](#Netflix-Eureka)
+   * [配置Netflix Zuul](#Netflix-Zuul)
+   * [配置Netflix Ribbon](#Netflix-Ribbon)
+   * [配置Netflix Hystrix](#Netflix-Hystrix)
+   * [配置Netflix Feign](#Netflix-Feign)
 * [如何变成自己的项目](#如何变成自己的项目)
 * [生产环境](#生产环境)
 * [常见问题](#常见问题)
@@ -72,9 +71,7 @@
    
    http://DOCKER-HOST:15672 - RabbitMq management (默认账号guest／默认密码guest)
 
-# <a name="框架说明"></a>框架说明
-
-## <a name="业务"></a>业务
+# <a name="业务说明"></a>业务说明
 
 Piggymetrics通过Spring Cloud实现微服务架构，应用被分解为**账户服务**（[ACCOUNT SERVICE](https://github.com/cloudframeworks-springcloud/PiggyMetrics/tree/master/account-service)）、**统计服务**（[STATISTICS SERVICE](https://github.com/cloudframeworks-springcloud/PiggyMetrics/tree/master/statistics-service)）、**通知服务**（[NOTIFICATION SERVICE](https://github.com/cloudframeworks-springcloud/PiggyMetrics/tree/master/notification-service)）等三个核心微服务。每个微服务都是围绕业务能力组织的可独立部署的应用程序，拥有独立的数据库并使用同步的[REST API](http://www.restapitutorial.com/)实现微服务与微服务之间的通信。
 
@@ -120,7 +117,7 @@ PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
 
 </details>
 
-## <a name="组件"></a>组件
+# <a name="组件说明"></a>组件说明
 
 <a name="组件架构"></a>Piggymetrics基础服务设施中用到了Spring Cloud Config、Netflix Eureka、Netflix Hystrix、Netflix Zuul、Netflix Ribbon、Netflix Feign等组件，而这也正是Spring Cloud分布式开发中最核心的组件。
 
@@ -142,7 +139,7 @@ PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
 
 * Spring Cloud Config、Eureka、Ribbon、Hystrix、Feign以及Turbine均为标准组件，与业务之间没有强关系，不涉及到业务代码，仅需简单配置即可工作。
 
-### <a name="Spring-Cloud-Config"></a>配置Spring Cloud Config
+## <a name="Spring-Cloud-Config"></a>配置Spring Cloud Config
 
 [查看通用说明](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/spring%20cloud%20config%20basic.md)
 
@@ -166,7 +163,7 @@ PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
 
 配置文件修改后可通过 http://DOCKER-HOST:DOCKER-PORT/xxx/refresh 刷新配置(xxx表示服务根路径)，无需重启服务。
 
-### <a name="Netflix-Eureka"></a>配置Netflix Eureka
+## <a name="Netflix-Eureka"></a>配置Netflix Eureka
 
 [查看通用说明](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/netflix%20eureka%20basic.md)
 
@@ -182,7 +179,7 @@ PiggyMetrics通过Eureka server实现[registy](https://github.com/cloudframework
         username: user
    ```
 
-### <a name="Netflix-Zuul"></a>配置Netflix Zuul
+## <a name="Netflix-Zuul"></a>配置Netflix Zuul
 
 [查看通用说明](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/netflix%20zuul%20basic.md)
 
@@ -232,13 +229,13 @@ PiggyMetrics借助Netflix Zuul实现[gateway](https://github.com/cloudframeworks
          sensitiveHeaders:
    ```
 
-### <a name="Netflix-Ribbon"></a>配置Netflix Ribbon
+## <a name="Netflix-Ribbon"></a>配置Netflix Ribbon
 
 [查看通用说明](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/netflix%20ribbon%20basic.md)
 
 PiggyMetrics并没有显式的去定义Netflix Ribbon的使用，但是在Zuul、Feign等组件中隐式的使用到了Ribbon，我们在实际的业务开发中，也不需要刻意定义Ribbon。
 
-### <a name="Netflix-Hystrix"></a>配置Netflix Hystrix
+## <a name="Netflix-Hystrix"></a>配置Netflix Hystrix
 
 [查看通用说明](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/netflix%20hystrix%20basic.md)
 
@@ -265,7 +262,7 @@ PiggyMetrics并没有显式的去定义Netflix Ribbon的使用，但是在Zuul�
    </dependency>
    ```
 
-### <a name="Netflix-Feign"></a>配置Netflix Feign
+## <a name="Netflix-Feign"></a>配置Netflix Feign
 
 [查看通用说明](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/netflix%20feign%20basic.md)
 
