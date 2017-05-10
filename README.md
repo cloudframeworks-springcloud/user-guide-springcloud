@@ -8,8 +8,10 @@
 
 <details>
 
-<summary> Why Spring Cloud? </summary>
-   
+**<summary> Why Spring Cloud? </summary>**
+
+&nbsp;
+
 [微服务](https://martinfowler.com/articles/microservices.html)与传统架构模式相比，具有语言无关性、独立进程通讯、高度解耦、任务边界固定、按需扩展等特点，非常适合互联网公司快速交付、响应变化、不断试错的需求，也因此受到了像Twitter、Netflix、Amazon、eBay这样的科技巨头的青睐。
 
 目前主流微服务框架包括Spring Cloud、Dubbo、API Gateway等，其中[Spring Cloud](http://projects.spring.io/spring-cloud/)利用Spring Boot的开发便利性，为JVM云应用开发中的配置管理、服务发现、断路器、智能路由、微代理、控制总线、全局锁、决策竞选、分布式会话和集群状态管理等操作提供了一种简单的实现方式。
@@ -25,7 +27,9 @@
 
 <details>
 
-<summary> 环境准备 </summary>
+**<summary> 环境准备 </summary>**
+
+&nbsp;
 
 Docker环境准备
 
@@ -70,13 +74,15 @@ Docker环境准备
 
 <details>
 
-<summary> 快速部署 </summary>
+**<summary> 快速部署 </summary>**
 
-2. 克隆完整代码
+&nbsp;
+
+1. 克隆完整代码
 
    git clone [https://github.com/cloudframeworks-springcloud/PiggyMetrics](https://github.com/cloudframeworks-springcloud/PiggyMetrics)
 
-3. 设置环境变量
+2. 设置环境变量
 
    ```
    export CONFIG_SERVICE_PASSWORD=root
@@ -86,40 +92,10 @@ Docker环境准备
    export MONGODB_PASSWORD=root         ## 必填，其他变量可不设置
    ```
 
-4. 基于[docker-compose](https://docs.docker.com/compose/install/)运行如下命令（[docker-compose.yml](https://github.com/cloudframeworks-springcloud/PiggyMetrics/blob/master/docker-compose.yml)）
+3. 基于[docker-compose](https://docs.docker.com/compose/install/)运行如下命令（[docker-compose.yml](https://github.com/cloudframeworks-springcloud/PiggyMetrics/blob/master/docker-compose.yml)）
 
    ```
    docker-compose -f docker-compose.yml up -d
-   ```
-
-5. 通过脚本运行：
-
-   ```
-   docker run -d -p15672:15672 --name=rabbitmq rabbitmq:3-management
-
-   docker run -d -e CONFIG_SERVICE_PASSWORD=${CONFIG_SERVICE_PASSWORD} -p 8888:8888 --name=config goodraincloudframeworks/piggymetrics-config
-    
-   docker run -d -e CONFIG_SERVICE_PASSWORD=${CONFIG_SERVICE_PASSWORD} --link config:config --name=registry -p 8761:8761 goodraincloudframeworks/piggymetrics-registry
-    
-   docker run -d -e MONGODB_PASSWORD=${MONGODB_PASSWORD} --name auth-mongodb goodraincloudframeworks/piggymetrics-mongodb
-    
-   docker run -d  -e CONFIG_SERVICE_PASSWORD=${CONFIG_SERVICE_PASSWORD} -e NOTIFICATION_SERVICE_PASSWORD=${NOTIFICATION_SERVICE_PASSWORD} -e STATISTICS_SERVICE_PASSWORD=${STATISTICS_SERVICE_PASSWORD} -e ACCOUNT_SERVICE_PASSWORD=${ACCOUNT_SERVICE_PASSWORD} -e MONGODB_PASSWORD=${MONGODB_PASSWORD} --link config:config --link auth-mongodb:auth-mongodb --link registry:registry --name=auth-service goodraincloudframeworks/piggymetrics-auth-service
-    
-   docker run -d -e MONGODB_PASSWORD=${MONGODB_PASSWORD} --name account-mongodb goodraincloudframeworks/piggymetrics-mongodb
-
-   docker run -d -e CONFIG_SERVICE_PASSWORD=${CONFIG_SERVICE_PASSWORD} -e ACCOUNT_SERVICE_PASSWORD=${ACCOUNT_SERVICE_PASSWORD} -e MONGODB_PASSWORD=${MONGODB_PASSWORD} --link config:config --link account-mongodb:account-mongodb --link registry:registry --link auth-service:auth-service --link rabbitmq:rabbitmq --name=account-service goodraincloudframeworks/piggymetrics-account-service
-    
-   docker run -d -e MONGODB_PASSWORD=${MONGODB_PASSWORD} --name statistics-mongodb goodraincloudframeworks/piggymetrics-mongodb
-
-   docker run -d -e CONFIG_SERVICE_PASSWORD=${CONFIG_SERVICE_PASSWORD} -e STATISTICS_SERVICE_PASSWORD=${STATISTICS_SERVICE_PASSWORD} -e MONGODB_PASSWORD=${MONGODB_PASSWORD} --link config:config --link statistics-mongodb:statistics-mongodb --link registry:registry --link auth-service:auth-service --link rabbitmq:rabbitmq --name=statistics-service goodraincloudframeworks/piggymetrics-statistics-service
-    
-   docker run -d -e MONGODB_PASSWORD=${MONGODB_PASSWORD} --name notification-mongodb goodraincloudframeworks/piggymetrics-mongodb
-    
-   docker run -d -e CONFIG_SERVICE_PASSWORD=${CONFIG_SERVICE_PASSWORD} -e NOTIFICATION_SERVICE_PASSWORD=${NOTIFICATION_SERVICE_PASSWORD} -e MONGODB_PASSWORD=${MONGODB_PASSWORD} --link config:config --link statistics-mongodb:statistics-mongodb --link registry:registry --link auth-service:auth-service --link rabbitmq:rabbitmq --name=notification-service goodraincloudframeworks/piggymetrics-notification-service
-    
-   docker run -ti -e CONFIG_SERVICE_PASSWORD=${CONFIG_SERVICE_PASSWORD} --link config:config --link registry:registry --link rabbitmq:rabbitmq --name=monitoring -p 9000:8080 -p 8989:8989 goodraincloudframeworks/piggymetrics-monitoring
-    
-   docker run -d -e CONFIG_SERVICE_PASSWORD=${CONFIG_SERVICE_PASSWORD} --link config:config --link registry:registry --link auth-service:auth-service --name=gateway -p 80:4000 goodraincloudframeworks/piggymetrics-gateway
    ```
 
 > **Endpoints**
@@ -138,7 +114,9 @@ Docker环境准备
 
 <details>
 
-<summary> 业务说明 </summary>
+**<summary> 业务说明 </summary>**
+
+&nbsp;
 
 Piggymetrics通过Spring Cloud实现微服务架构，应用被分解为**账户服务**（[ACCOUNT SERVICE](https://github.com/cloudframeworks-springcloud/PiggyMetrics/tree/master/account-service)）、**统计服务**（[STATISTICS SERVICE](https://github.com/cloudframeworks-springcloud/PiggyMetrics/tree/master/statistics-service)）、**通知服务**（[NOTIFICATION SERVICE](https://github.com/cloudframeworks-springcloud/PiggyMetrics/tree/master/notification-service)）等三个核心微服务。每个微服务都是围绕业务能力组织的可独立部署的应用程序，拥有独立的数据库并使用同步的[REST API](http://www.restapitutorial.com/)实现微服务与微服务之间的通信。
 
@@ -176,7 +154,9 @@ PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
 
 <details>
 
-<summary> 组件说明 </summary>
+**<summary> 组件说明 </summary>**
+
+&nbsp;
 
 <a name="组件架构"></a>Piggymetrics基础服务设施中用到了Spring Cloud Config、Netflix Eureka、Netflix Hystrix、Netflix Zuul、Netflix Ribbon、Netflix Feign等组件，而这也正是Spring Cloud分布式开发中最核心的组件。
 
@@ -1033,7 +1013,11 @@ Feign同时可以引用注册中心以外的服务没，例如在统计服务模
 
 <details>
 
-<summary> 如何变成自己的项目 </summary>
+**<summary> 如何变成自己的项目 </summary>**
+
+&nbsp;
+
+步骤：
 
 1. git clone项目到本地，并基于该项目创建自己的mvn项目
      
@@ -1051,15 +1035,17 @@ Feign同时可以引用注册中心以外的服务没，例如在统计服务模
 
 <details>
 
-<summary> 性能测试 </summary>
+**<summary> 性能测试 </summary>**
 
-xxx
+`TODO`
 
 </details>
 
 <details>
 
-<summary> 生产环境 </summary>
+**<summary> 生产环境 </summary>**
+
+&nbsp;
 
 * `TODO` CI/CD
 * `TODO` 扩容
@@ -1071,7 +1057,9 @@ xxx
 
 <details>
 
-<summary> 常见问题 </summary>
+**<summary> 常见问题 </summary>**
+
+&nbsp;
 
 任何相关问题均可通过[GitHub ISSUE](https://github.com/cloudframeworks-springcloud/user-guide/issues)提交或讨论，问题总结请查看[[QA](QA.md)]
 
@@ -1079,7 +1067,9 @@ xxx
 
 <details>
 
-<summary> 更新计划 </summary>
+**<summary> 更新计划 </summary>**
+
+&nbsp;
 
 * `文档` 增加在线演示
 * `组件` 增加组件内容，如Spring Cloud Sleuth、Spring Cloud Consul等
@@ -1093,7 +1083,9 @@ xxx
 
 <details>
 
-<summary> 参与贡献 </summary>
+**<summary> 参与贡献 </summary>**
+
+&nbsp;
 
 [如何成为云框架贡献者](CONTRIBUTING.md)
 
@@ -1101,7 +1093,9 @@ xxx
 
 <details>
 
-<summary> 加入社群 </summary>
+**<summary> 加入社群 </summary>**
+
+&nbsp;
 
 + QQ群1: 531980120
 + [订阅邮件](http://goodrain.us15.list-manage.com/subscribe?u=1874f1de4ed82a52890cefb4c&id=b88f73ca56)
