@@ -45,7 +45,7 @@
 
 ## <a name="镜像部署"></a>镜像部署
 
-1. [Docker环境准备](/READMORE/install-docker.md)
+1. [Docker环境准备](./READMORE/install-docker.md)
 
 2. 克隆完整代码
 
@@ -63,13 +63,13 @@
    export MONGODB_PASSWORD=root         ## 必填，其他变量可不设置
    ```
 
-4. 使用docker compose（[如何安装docker-compose？](https://docs.docker.com/compose/install/)）运行如下命令（[docker-compose.yml](https://github.com/cloudframeworks-springcloud/PiggyMetrics/blob/master/docker-compose.yml)）
+4. 使用[docker-compose](https://docs.docker.com/compose/install/)运行如下命令（[docker-compose.yml](https://github.com/cloudframeworks-springcloud/PiggyMetrics/blob/master/docker-compose.yml)）
 
    ```
    docker-compose -f docker-compose.yml up -d
    ```
    
-   或通过[脚本运行](/READMORE/deploy-via-script.md)
+   *也可以通过[脚本运行](./READMORE/deploy-via-script.md)
 
 5. 访问路径
 
