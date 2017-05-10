@@ -293,9 +293,9 @@ Feign同时可以引用注册中心以外的服务没，例如在统计服务模
 
 # <a name="如何变成自己的项目"></a>如何变成自己的项目 
 
-1. git clone项目到本地，并基于该项目创建自己的mvn项目
+1. git clone项目到本地，并基于该项目创建自己的[mvn](http://www.oracle.com/technetwork/cn/community/java/apache-maven-getting-started-1-406235-zhs.html)项目
 
-2. 将auth-service、account-service、notification-service、statistics-service 替换成自己的服务
+2. 将auth-service、account-service、notification-service、statistics-service替换成自己的服务
 
    * *config、registry、gateway、monitoring代码无需修改*
 
@@ -303,7 +303,7 @@ Feign同时可以引用注册中心以外的服务没，例如在统计服务模
      
 4. 通过mvn构建后生成镜像
      
-5. 运行所有的镜像，可参考[快速部署](#快速部署)
+5. 运行所有的镜像，参考[快速部署](#快速部署)
      
 # <a name="生产环境"></a>生产环境
 
