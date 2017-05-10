@@ -149,7 +149,7 @@ PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
 
 配置文件修改后可通过 http://DOCKER-HOST:DOCKER-PORT/xxx/refresh 刷新配置(xxx表示服务根路径)，无需重启服务。
 
-[进一步了解Spring Cloud Config](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/spring%20cloud%20config%20basic.md)）
+**[进一步了解Spring Cloud Config](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/spring%20cloud%20config%20basic.md)**
 
 ## <a name="Netflix-Eureka"></a>配置Netflix Eureka
 
@@ -165,7 +165,7 @@ PiggyMetrics通过Eureka server实现[registy](https://github.com/cloudframework
         username: user
    ```
 
-[进一步了解Netflix Eureka](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/netflix%20eureka%20basic.md)
+**[进一步了解Netflix Eureka](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/netflix%20eureka%20basic.md)**
 
 ## <a name="Netflix-Zuul"></a>配置Netflix Zuul
 
@@ -215,13 +215,13 @@ PiggyMetrics借助Netflix Zuul实现[gateway](https://github.com/cloudframeworks
          sensitiveHeaders:
    ```
 
-[进一步了解Netflix Zuul](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/netflix%20zuul%20basic.md)
+**[进一步了解Netflix Zuul](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/netflix%20zuul%20basic.md)**
 
 ## <a name="Netflix-Ribbon"></a>配置Netflix Ribbon
 
 PiggyMetrics并没有显式的去定义Netflix Ribbon的使用，但是在Zuul、Feign等组件中隐式的使用到了Ribbon，我们在实际的业务开发中，也不需要刻意定义Ribbon。
 
-[进一步了解Netflix Ribbon](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/netflix%20ribbon%20basic.md)
+**[进一步了解Netflix Ribbon](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/netflix%20ribbon%20basic.md)**
 
 ## <a name="Netflix-Hystrix"></a>配置Netflix Hystrix
 
@@ -248,7 +248,7 @@ PiggyMetrics并没有显式的去定义Netflix Ribbon的使用，但是在Zuul�
    </dependency>
    ```
 
-[进一步了解Netflix Hystrix](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/netflix%20hystrix%20basic.md)
+**[进一步了解Netflix Hystrix](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/netflix%20hystrix%20basic.md)**
 
 ## <a name="Netflix-Feign"></a>配置Netflix Feign
 
@@ -277,7 +277,7 @@ Feign同时可以引用注册中心以外的服务没，例如在统计服务模
    }
    ```
 
-[进一步了解Netflix Feign](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/netflix%20feign%20basic.md)
+**[进一步了解Netflix Feign](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/netflix%20feign%20basic.md)**
 
 # <a name="如何变成自己的项目"></a>如何变成自己的项目 
 
