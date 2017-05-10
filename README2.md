@@ -40,7 +40,7 @@
 
 # <a name="快速部署"></a>快速部署
 
-1. Docker环境准备[:link:](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/install%20docker%20.md)
+1. Docker环境准备[:mag:](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/install%20docker%20.md)
 
 2. 克隆完整代码
 
