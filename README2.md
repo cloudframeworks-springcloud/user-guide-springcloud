@@ -45,11 +45,13 @@
 
 ## <a name="镜像部署"></a>镜像部署
 
-1. [Docker环境准备](user-guide-springcloud/READMORE/install docker.md)
+1. [Docker环境准备](./user-guide-springcloud/READMORE/install docker.md)
 
 2. 克隆完整代码
 
-   git clone https://github.com/cloudframeworks-springcloud/PiggyMetrics
+   ```
+   git clone https://github.com/cloudframeworks-springcloud/PiggyMetrics
+   ```
 
 3. 设置环境变量
 
@@ -61,57 +63,21 @@
    export MONGODB_PASSWORD=root         ## 必填，其他变量可不设置
    ```
 
-4. 基于[docker-compose](https://docs.docker.com/compose/install/)运行如下命令（[docker-compose.yml](https://github.com/cloudframeworks-springcloud/PiggyMetrics/blob/master/docker-compose.yml)）
+4. 使用docker compose（[如何安装docker-compose？](https://docs.docker.com/compose/install/)）运行如下命令（[docker-compose.yml](https://github.com/cloudframeworks-springcloud/PiggyMetrics/blob/master/docker-compose.yml)）
 
    ```
    docker-compose -f docker-compose.yml up -d
    ```
+   
+   或通过[脚本运行](./user-guide-springcloud/READMORE/deploy via script.md)
 
-<details>
+5. 访问路径
 
-<summary> 或通过脚本运行 </summary>
-
-   ```
-   docker run -d -p15672:15672 --name=rabbitmq rabbitmq:3-management
-
-   docker run -d -e CONFIG_SERVICE_PASSWORD=${CONFIG_SERVICE_PASSWORD} -p 8888:8888 --name=config goodraincloudframeworks/piggymetrics-config
-    
-   docker run -d -e CONFIG_SERVICE_PASSWORD=${CONFIG_SERVICE_PASSWORD} --link config:config --name=registry -p 8761:8761 goodraincloudframeworks/piggymetrics-registry
-    
-   docker run -d -e MONGODB_PASSWORD=${MONGODB_PASSWORD} --name auth-mongodb goodraincloudframeworks/piggymetrics-mongodb
-    
-   docker run -d  -e CONFIG_SERVICE_PASSWORD=${CONFIG_SERVICE_PASSWORD} -e NOTIFICATION_SERVICE_PASSWORD=${NOTIFICATION_SERVICE_PASSWORD} -e STATISTICS_SERVICE_PASSWORD=${STATISTICS_SERVICE_PASSWORD} -e ACCOUNT_SERVICE_PASSWORD=${ACCOUNT_SERVICE_PASSWORD} -e MONGODB_PASSWORD=${MONGODB_PASSWORD} --link config:config --link auth-mongodb:auth-mongodb --link registry:registry --name=auth-service goodraincloudframeworks/piggymetrics-auth-service
-    
-   docker run -d -e MONGODB_PASSWORD=${MONGODB_PASSWORD} --name account-mongodb goodraincloudframeworks/piggymetrics-mongodb
-
-   docker run -d -e CONFIG_SERVICE_PASSWORD=${CONFIG_SERVICE_PASSWORD} -e ACCOUNT_SERVICE_PASSWORD=${ACCOUNT_SERVICE_PASSWORD} -e MONGODB_PASSWORD=${MONGODB_PASSWORD} --link config:config --link account-mongodb:account-mongodb --link registry:registry --link auth-service:auth-service --link rabbitmq:rabbitmq --name=account-service goodraincloudframeworks/piggymetrics-account-service
-    
-   docker run -d -e MONGODB_PASSWORD=${MONGODB_PASSWORD} --name statistics-mongodb goodraincloudframeworks/piggymetrics-mongodb
-
-   docker run -d -e CONFIG_SERVICE_PASSWORD=${CONFIG_SERVICE_PASSWORD} -e STATISTICS_SERVICE_PASSWORD=${STATISTICS_SERVICE_PASSWORD} -e MONGODB_PASSWORD=${MONGODB_PASSWORD} --link config:config --link statistics-mongodb:statistics-mongodb --link registry:registry --link auth-service:auth-service --link rabbitmq:rabbitmq --name=statistics-service goodraincloudframeworks/piggymetrics-statistics-service
-    
-   docker run -d -e MONGODB_PASSWORD=${MONGODB_PASSWORD} --name notification-mongodb goodraincloudframeworks/piggymetrics-mongodb
-    
-   docker run -d -e CONFIG_SERVICE_PASSWORD=${CONFIG_SERVICE_PASSWORD} -e NOTIFICATION_SERVICE_PASSWORD=${NOTIFICATION_SERVICE_PASSWORD} -e MONGODB_PASSWORD=${MONGODB_PASSWORD} --link config:config --link statistics-mongodb:statistics-mongodb --link registry:registry --link auth-service:auth-service --link rabbitmq:rabbitmq --name=notification-service goodraincloudframeworks/piggymetrics-notification-service
-    
-   docker run -ti -e CONFIG_SERVICE_PASSWORD=${CONFIG_SERVICE_PASSWORD} --link config:config --link registry:registry --link rabbitmq:rabbitmq --name=monitoring -p 9000:8080 -p 8989:8989 goodraincloudframeworks/piggymetrics-monitoring
-    
-   docker run -d -e CONFIG_SERVICE_PASSWORD=${CONFIG_SERVICE_PASSWORD} --link config:config --link registry:registry --link auth-service:auth-service --name=gateway -p 80:4000 goodraincloudframeworks/piggymetrics-gateway
-   ```
-
-</details>
-
-> **Endpoints**
->
-> http://DOCKER-HOST:80 - Gateway
-> 
-> http://DOCKER-HOST:8761 - Eureka Dashboard
->  
-> http://DOCKER-HOST:9000/hystrix - Hystrix Dashboard
-> 
-> http://DOCKER-HOST:8989 - Turbine stream (source for the Hystrix Dashboard)
-> 
-> http://DOCKER-HOST:15672 - RabbitMq management (默认账号guest／默认密码guest)
+   http://DOCKER-HOST:80 - Gateway
+   http://DOCKER-HOST:8761 - Eureka Dashboard
+   http://DOCKER-HOST:9000/hystrix - Hystrix Dashboard
+   http://DOCKER-HOST:8989 - Turbine stream (source for the Hystrix Dashboard)
+   http://DOCKER-HOST:15672 - RabbitMq management (默认账号guest／默认密码guest)
 
 # <a name="框架说明"></a>框架说明
 
