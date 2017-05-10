@@ -1103,13 +1103,13 @@ Feign同时可以引用注册中心以外的服务没，例如在统计服务模
 
 -------
 
-欢迎通过一下方式讨论或提问，常见问题汇总请查看[[QA](QA.md)]
+欢迎通过以下方式讨论或提问，常见问题汇总请查看[[QA](QA.md)]
 
 * QQ群1: 531980120
 * [Gitter](https://gitter.im/cloudframeworks-springcloud?utm_source=share-link&utm_medium=link&utm_campaign=share-link)
 * [GitHub ISSUE](https://github.com/cloudframeworks-springcloud/user-guide/issues)
 
-参与贡献请查看[如何成为云框架贡献者](CONTRIBUTING.md)
+参与贡献请查看[[如何成为云框架贡献者](CONTRIBUTING.md)]
 
 -------
 
