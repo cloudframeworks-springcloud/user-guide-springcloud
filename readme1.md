@@ -29,68 +29,19 @@
 
 </details>
 
-## Docker环境准备
-
-<details>
-
-<summary> centos </summary>
-
-   ```
-   1.清除docker 旧版本
-    
-     rpm -qa |grep docker
-     yum  -y  remove docker* 
-        
-   2.安装新的docker
-    
-     yum install -y docker-engine
-        
-   3.systemctl  start docker
-    
-   4.docker info 查看docker状态
-   ```
-
-</details>
-
-<details>
-
-<summary> ubuntu </summary>
-
-   ```
-   1.更新apt包
-    
-     sudo apt-get update
-        
-   2.安装 Docker
-    
-     sudo apt-get install docker-engine
-        
-   3.sudo service docker start
-    
-   4.docker info 查看docker状态
-   ```
-
-</details>
-
-<details>
-
-<summary> mac </summary>
-
-   请参考[https://docs.docker.com/docker-for-mac/](https://docs.docker.com/docker-for-mac/)
-
-</details>
-
 ## 快速部署
 
 <details>
 
 <summary> 镜像部署 </summary>
 
-1. 克隆完整代码
+1. docker环境准备
+
+2. 克隆完整代码
 
    git clone [https://github.com/cloudframeworks-springcloud/PiggyMetrics](https://github.com/cloudframeworks-springcloud/PiggyMetrics)
 
-2. 设置环境变量
+3. 设置环境变量
 
    ```
    export CONFIG_SERVICE_PASSWORD=root
@@ -100,7 +51,7 @@
    export MONGODB_PASSWORD=root         ## 必填，其他变量可不设置
    ```
 
-3. 基于[docker-compose](https://docs.docker.com/compose/install/)运行如下命令（[docker-compose.yml](https://github.com/cloudframeworks-springcloud/PiggyMetrics/blob/master/docker-compose.yml)）
+4. 基于[docker-compose](https://docs.docker.com/compose/install/)运行如下命令（[docker-compose.yml](https://github.com/cloudframeworks-springcloud/PiggyMetrics/blob/master/docker-compose.yml)）
 
    ```
    docker-compose -f docker-compose.yml up -d
