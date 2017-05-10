@@ -45,7 +45,7 @@
 
 ## <a name="镜像部署"></a>镜像部署
 
-1. [Docker环境准备](./user-guide-springcloud/READMORE/install docker.md)
+1. [Docker环境准备](user-guide-springcloud/READMORE/install-docker.md)
 
 2. 克隆完整代码
 
@@ -69,7 +69,7 @@
    docker-compose -f docker-compose.yml up -d
    ```
    
-   或通过[脚本运行](./user-guide-springcloud/READMORE/deploy via script.md)
+   或通过[脚本运行](/user-guide-springcloud/READMORE/deploy-via-script.md)
 
 5. 访问路径
 
