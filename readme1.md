@@ -17,11 +17,11 @@
 * 初学者可通过实例代码、文档快速学习Spring Cloud及微服务，并在社群中交流讨论；
 * 已有一定了解的开发者，不必从零开始开发，仅需在云框架基础上替换部分业务代码，即可将最佳实践应用于生产环境并立即产生价值。
 
-## 环境准备
+## Docker环境准备
 
 <details>
 
-<summary> centos搭建docker环境 </summary>
+<summary> centos </summary>
 
    ```
    1.清除docker 旧版本
@@ -42,7 +42,7 @@
 
 <details>
 
-<summary> ubuntu搭建docker环境 </summary>
+<summary> ubuntu </summary>
 
    ```
    1.更新apt包
@@ -62,7 +62,7 @@
 
 <details>
 
-<summary> mac搭建docker环境 </summary>
+<summary> mac </summary>
 
    请参考[https://docs.docker.com/docker-for-mac/](https://docs.docker.com/docker-for-mac/)
 
