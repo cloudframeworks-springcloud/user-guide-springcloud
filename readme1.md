@@ -941,6 +941,108 @@ Netflix Hystrix是一个延迟和容错库，旨在隔离远程系统，服务�
 
 </details>
 
+<details>
+
+<summary> Netflix Feign </summary>
+
+
+### 通用说明
+
+Feign是一个声明式、模板化的HTTP客户端，它使得写web服务变得更简单。使用Feign,只需要创建一个接口并注解。它具有可插拔的注解特性，包括Feign 注解和JAX-RS注解。Feign同时支持可插拔的编码器和解码器。当我们使用feign的时候，spring cloud 整和了Ribbon和Eureka去提供负载均衡。
+
+简而言之：1）feign采用的是接口加注解；2）feign 整合了Ribbon。
+
+**创建feign service**
+
+* 创建一个mvn工程，起名为feign,其pom.xml见实例代码，核心依赖如下：
+
+   ```
+   <dependency>
+       <groupId>org.springframework.cloud</groupId>
+       <artifactId>spring-cloud-starter-ribbon</artifactId>
+   </dependency>
+   <dependency>
+       <groupId>org.springframework.cloud</groupId>
+       <artifactId>spring-cloud-starter-feign</artifactId>
+   </dependency>       
+   ```
+
+* 在程序的入口Application类加上@EnableFeignClients注解开启配置服务器
+
+   ```
+   @SpringBootApplication
+   @EnableDiscoveryClient
+   @EnableFeignClients
+   public class FeignDemoApplication {
+        
+       public static void main(String[] args) {
+           SpringApplication.run(FeignDemoApplication.class, args);
+       }
+   }     
+   ```
+
+* 创建一个远程掉用服务
+
+   ```
+   @FeignClient("eureka-service")
+   public interface RemoteInvokerService {
+        
+       @RequestMapping(value = "/demo/show", method = RequestMethod.GET)
+       public String remoteInvoker();
+   }
+   ```
+
+   eureka-service： 是我们在eureka模块中注册的服务
+
+   远程掉用/demo/show这个rest接口，也可以改成／demo/index 等
+
+* 配置文件
+
+   ```
+   spring.application.name=feign
+   server.port=5000
+   eureka.client.serviceUrl.defaultZone=http://${EUREKA_HOST}:${EUREKA_PORT}/eureka/
+   eureka.instance.preferIpAddress=true      
+   ```
+    
+   EUREKA_HOST：注册中心ip
+
+   EUREKA_PORT：注册中心端口
+
+* 访问地址
+
+   http://DOCKER_HOST:DOCKER_PORT/feign
+
+### 业务关系
+
+PiggyMetrics多次用到了Feign，使用为在客户端中添加如下代码，例如[StatisticsServiceClient.java](https://github.com/cloudframeworks-springcloud/PiggyMetrics/blob/master/account-service/src/main/java/com/piggymetrics/account/client/StatisticsServiceClient.java)。
+
+   ```
+   @FeignClient(name = "auth-service")      ## 声明一个认证服务的一个客户端，通过注册中心去查找auth-service
+    public interface AuthServiceClient {
+        
+        @RequestMapping(method = RequestMethod.POST, value = "/uaa/users", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+        void createUser(User user);
+        
+    }
+    
+   ```
+ 
+Feign同时可以引用注册中心以外的服务没，例如在统计服务模块，Feign引入了一个汇率客户端[ExchangeRatesClient.java](https://github.com/cloudframeworks-springcloud/PiggyMetrics/blob/master/statistics-service/src/main/java/com/piggymetrics/statistics/client/ExchangeRatesClient.java)。
+
+   ```
+   @FeignClient(url = "${rates.url}", name = "rates-client") ## 声明一个汇率客户端，根据具体的url（这个可以是外部的服务）
+   public interface ExchangeRatesClient {
+        
+       @RequestMapping(method = RequestMethod.GET, value = "/latest")
+       ExchangeRatesContainer getRates(@RequestParam("base") Currency base);
+        
+   }
+   ```
+
+</details>
+
+
 # 如何变成自己的项目
 
 1. git clone项目到本地，并基于该项目创建自己的mvn项目
