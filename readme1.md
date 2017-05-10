@@ -109,7 +109,7 @@
 
 <details>
 
-<summary> Endpoints </summary>
+<summary> 访问路径 </summary>
 
    ```
 http://DOCKER-HOST:80 - Gateway
