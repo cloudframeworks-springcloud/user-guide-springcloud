@@ -45,7 +45,7 @@
 
 ## <a name="镜像部署"></a>镜像部署
 
-1. [Docker环境准备](./user-guide-springcloud/READMORE/install-docker.md)
+1. [Docker环境准备](/READMORE/install-docker.md)
 
 2. 克隆完整代码
 
@@ -69,14 +69,18 @@
    docker-compose -f docker-compose.yml up -d
    ```
    
-   或通过[脚本运行](/user-guide-springcloud/READMORE/deploy-via-script.md)
+   或通过[脚本运行](/READMORE/deploy-via-script.md)
 
 5. 访问路径
 
    http://DOCKER-HOST:80 - Gateway
+   
    http://DOCKER-HOST:8761 - Eureka Dashboard
+   
    http://DOCKER-HOST:9000/hystrix - Hystrix Dashboard
+   
    http://DOCKER-HOST:8989 - Turbine stream (source for the Hystrix Dashboard)
+   
    http://DOCKER-HOST:15672 - RabbitMq management (默认账号guest／默认密码guest)
 
 # <a name="框架说明"></a>框架说明
