@@ -1045,7 +1045,11 @@ Feign同时可以引用注册中心以外的服务没，例如在统计服务模
 
 ## 如何变成自己的项目
 
-   ```
+<details>
+
+<summary> 操作步骤 </summary>
+
+   ```
 1. git clone项目到本地，并基于该项目创建自己的mvn项目
      
 2. config、registry、gateway、monitoring，这4个组件不需要修改代码
@@ -1058,6 +1062,16 @@ Feign同时可以引用注册中心以外的服务没，例如在统计服务模
      
 6. 运行所有的镜像，可参考[快速部署](#快速部署)
    ```
+
+</details>
+
+<details>
+
+<summary> 性能测试 </summary>
+
+`TODO`
+
+</details>
 
 ## 生产环境
 
