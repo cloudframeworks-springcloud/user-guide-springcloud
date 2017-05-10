@@ -47,46 +47,11 @@
 
 1. Docker环境准备
 
-   * centos
-
-   ```
-   1.清除docker 旧版本
-    
-     rpm -qa |grep docker
-     yum  -y  remove docker* 
-        
-   2.安装新的docker
-    
-     yum install -y docker-engine
-        
-   3.systemctl  start docker
-    
-   4.docker info 查看docker状态
-   ```
-
-   * ubuntu
-
-   ```
-   1.更新apt包
-    
-     sudo apt-get update
-        
-   2.安装 Docker
-    
-     sudo apt-get install docker-engine
-        
-   3.sudo service docker start
-    
-   4.docker info 查看docker状态
-   ```
-
-   * mac
-
-   请参考[https://docs.docker.com/docker-for-mac/](https://docs.docker.com/docker-for-mac/)
-
 2. 克隆完整代码
 
-   git clone [https://github.com/cloudframeworks-springcloud/PiggyMetrics](https://github.com/cloudframeworks-springcloud/PiggyMetrics)
+   ```
+   git clone https://github.com/cloudframeworks-springcloud/PiggyMetrics
+   ```
 
 3. 设置环境变量
 
@@ -104,7 +69,9 @@
    docker-compose -f docker-compose.yml up -d
    ```
 
-5. 通过脚本运行：
+<details>
+
+<summary> 或通过脚本运行 </summary>
 
    ```
    docker run -d -p15672:15672 --name=rabbitmq rabbitmq:3-management
@@ -133,6 +100,8 @@
     
    docker run -d -e CONFIG_SERVICE_PASSWORD=${CONFIG_SERVICE_PASSWORD} --link config:config --link registry:registry --link auth-service:auth-service --name=gateway -p 80:4000 goodraincloudframeworks/piggymetrics-gateway
    ```
+
+</details>
 
 > **Endpoints**
 >
