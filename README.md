@@ -10,8 +10,6 @@
 
 **<summary> Why Spring Cloud? </summary>**
 
-&nbsp;
-
 [微服务](https://martinfowler.com/articles/microservices.html)与传统架构模式相比，具有语言无关性、独立进程通讯、高度解耦、任务边界固定、按需扩展等特点，非常适合互联网公司快速交付、响应变化、不断试错的需求，也因此受到了像Twitter、Netflix、Amazon、eBay这样的科技巨头的青睐。
 
 目前主流微服务框架包括Spring Cloud、Dubbo、API Gateway等，其中[Spring Cloud](http://projects.spring.io/spring-cloud/)利用Spring Boot的开发便利性，为JVM云应用开发中的配置管理、服务发现、断路器、智能路由、微代理、控制总线、全局锁、决策竞选、分布式会话和集群状态管理等操作提供了一种简单的实现方式。
@@ -28,8 +26,6 @@
 <details>
 
 **<summary> 环境准备 </summary>**
-
-&nbsp;
 
 Docker环境准备
 
@@ -76,8 +72,6 @@ Docker环境准备
 
 **<summary> 快速部署 </summary>**
 
-&nbsp;
-
 1. 克隆完整代码
 
    git clone [https://github.com/cloudframeworks-springcloud/PiggyMetrics](https://github.com/cloudframeworks-springcloud/PiggyMetrics)
@@ -116,8 +110,6 @@ Docker环境准备
 
 **<summary> 业务说明 </summary>**
 
-&nbsp;
-
 Piggymetrics通过Spring Cloud实现微服务架构，应用被分解为**账户服务**（[ACCOUNT SERVICE](https://github.com/cloudframeworks-springcloud/PiggyMetrics/tree/master/account-service)）、**统计服务**（[STATISTICS SERVICE](https://github.com/cloudframeworks-springcloud/PiggyMetrics/tree/master/statistics-service)）、**通知服务**（[NOTIFICATION SERVICE](https://github.com/cloudframeworks-springcloud/PiggyMetrics/tree/master/notification-service)）等三个核心微服务。每个微服务都是围绕业务能力组织的可独立部署的应用程序，拥有独立的数据库并使用同步的[REST API](http://www.restapitutorial.com/)实现微服务与微服务之间的通信。
 
 <a name="业务架构"></a>PiggyMetrics业务架构如下图所示：
@@ -155,8 +147,6 @@ PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
 <details>
 
 **<summary> 组件说明 </summary>**
-
-&nbsp;
 
 <a name="组件架构"></a>Piggymetrics基础服务设施中用到了Spring Cloud Config、Netflix Eureka、Netflix Hystrix、Netflix Zuul、Netflix Ribbon、Netflix Feign等组件，而这也正是Spring Cloud分布式开发中最核心的组件。
 
@@ -1015,8 +1005,6 @@ Feign同时可以引用注册中心以外的服务没，例如在统计服务模
 
 **<summary> 如何变成自己的项目 </summary>**
 
-&nbsp;
-
 步骤：
 
 1. git clone项目到本地，并基于该项目创建自己的mvn项目
@@ -1035,17 +1023,13 @@ Feign同时可以引用注册中心以外的服务没，例如在统计服务模
 
 <details>
 
-**<summary> 性能测试 </summary>**
-
-`TODO`
+**<summary> 性能测试`TODO` </summary>**
 
 </details>
 
 <details>
 
 **<summary> 生产环境 </summary>**
-
-&nbsp;
 
 * `TODO` CI/CD
 * `TODO` 扩容
@@ -1059,8 +1043,6 @@ Feign同时可以引用注册中心以外的服务没，例如在统计服务模
 
 **<summary> 常见问题 </summary>**
 
-&nbsp;
-
 任何相关问题均可通过[GitHub ISSUE](https://github.com/cloudframeworks-springcloud/user-guide/issues)提交或讨论，问题总结请查看[[QA](QA.md)]
 
 </details>
@@ -1068,8 +1050,6 @@ Feign同时可以引用注册中心以外的服务没，例如在统计服务模
 <details>
 
 **<summary> 更新计划 </summary>**
-
-&nbsp;
 
 * `文档` 增加在线演示
 * `组件` 增加组件内容，如Spring Cloud Sleuth、Spring Cloud Consul等
@@ -1085,8 +1065,6 @@ Feign同时可以引用注册中心以外的服务没，例如在统计服务模
 
 **<summary> 参与贡献 </summary>**
 
-&nbsp;
-
 [如何成为云框架贡献者](CONTRIBUTING.md)
 
 </details>
@@ -1094,8 +1072,6 @@ Feign同时可以引用注册中心以外的服务没，例如在统计服务模
 <details>
 
 **<summary> 加入社群 </summary>**
-
-&nbsp;
 
 + QQ群1: 531980120
 + [订阅邮件](http://goodrain.us15.list-manage.com/subscribe?u=1874f1de4ed82a52890cefb4c&id=b88f73ca56)
