@@ -303,7 +303,7 @@ Feign同时可以引用注册中心以外的服务没，例如在统计服务模
 
 # <a name="常见问题"></a>常见问题
 
-任何相关问题均可通过[GitHub ISSUE](https://github.com/cloudframeworks-springcloud/user-guide/issues)提交或讨论，问题总结请查看[[QA](QA.md)]
+任何相关问题均可通过[GitHub ISSUE](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/issues/new)提交或讨论，问题总结请查看[[QA](QA.md)]
 
 # <a name="更新计划"></a>更新计划
 
