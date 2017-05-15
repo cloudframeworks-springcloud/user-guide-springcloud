@@ -1,4 +1,4 @@
-## netflix zuul通用说明
+## 进一步了解Netflix Zuul
 
 Netflix Zuul提供动态路由、监控、弹性、安全等的边缘服务。
 
