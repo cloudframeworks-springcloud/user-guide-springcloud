@@ -1,4 +1,4 @@
-## netflix hystrix通用说明
+## 进一步了解Netflix Hystrix
 
 Netflix Hystrix是一个延迟和容错库，旨在隔离远程系统，服务和第三方库的访问点，停止级联故障，并在不可避免的故障的复杂分布式系统中启用弹性。
 
