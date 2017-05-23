@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: rabbitmq
+  namespace: springcloud
+  annotations:
+    serverPort: "15672"
+spec:
+  rules:
+    http:
+      paths:
+        path: /
+        backend:
+          serviceName: rabbitmq
+          servicePort: 15672

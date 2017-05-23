@@ -1,0 +1,39 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: config
+  namespace: springcloud
+  labels:
+    name: config
+spec:
+  replicas: 1
+  revisionHistoryLimit: 1
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  template:
+    metadata:
+      labels:
+        name: config
+    spec:
+      terminationGracePeriodSeconds: 120
+      containers:
+      - name: config
+        image: goodraincloudframeworks/piggymetrics-config
+        imagePullPolicy: IfNotPresent
+        readinessProbe:
+          failureThreshold: 3
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          successThreshold: 1
+          tcpSocket:
+            port: 8888
+          timeoutSeconds: 5
+        resources:
+          requests:
+            cpu: 100m
+            memory: 300Mi
+          limits:
+            cpu: 1000m
+            memory: 1000Mi

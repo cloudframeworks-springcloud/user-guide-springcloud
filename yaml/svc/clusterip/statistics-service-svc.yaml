@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: statistics-service
+  name: statistics-service
+  namespace: springcloud
+spec:
+  type: ClusterIP
+  ports:
+  - port: 8888
+    protocol: TCP
+    targetPort: 8888
+  selector:
+    name: statistics-service

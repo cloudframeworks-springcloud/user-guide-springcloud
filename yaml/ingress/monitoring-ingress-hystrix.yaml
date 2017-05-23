@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: monitoring-hystrix
+  namespace: springcloud
+  annotations:
+    serverPort: "8089"
+spec:
+  rules:
+    http:
+      paths:
+        path: /
+        backend:
+          serviceName: monitoring
+          servicePort: 8089

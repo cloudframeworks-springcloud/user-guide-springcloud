@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: account-service
+  name: account-service
+  namespace: springcloud
+spec:
+  type: ClusterIP
+  ports:
+  - port: 6000
+    protocol: TCP
+    targetPort: 6000
+  selector:
+    name: account-service

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: notification-service
+  name: notification-service
+  namespace: springcloud
+spec:
+  type: ClusterIP
+  ports:
+  - port: 8000
+    protocol: TCP
+    targetPort: 8000
+  selector:
+    name: notification-service

@@ -1,0 +1,39 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: account-mongodb
+  namespace: springcloud
+  labels:
+    name: account-mongodb
+spec:
+  replicas: 1
+  revisionHistoryLimit: 1
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  template:
+    metadata:
+      labels:serverPort
+        name: account-mongodb
+    spec:
+      terminationGracePeriodSeconds: 120
+      containers:
+      - name: account-mongodb
+        image: goodraincloudframeworks/piggymetrics-mongodb
+        imagePullPolicy: IfNotPresent
+        readinessProbe:
+          failureThreshold: 3
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          successThreshold: 1
+          tcpSocket:
+            port: 27017
+          timeoutSeconds: 5
+        resources:
+          requests:
+            cpu: 500m
+            memory: 500Mi
+          limits:
+            cpu: 2000m
+            memory: 2000Mi

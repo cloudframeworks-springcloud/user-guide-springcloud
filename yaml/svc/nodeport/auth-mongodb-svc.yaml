@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: auth-mongodb
+  name: auth-mongodb
+  namespace: springcloud
+spec:
+  type: ClusterIP
+  ports:
+  - port: 27017
+    protocol: TCP
+    targetPort: 27017
+  selector:
+    name: auth-mongodb

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: registry
+  name: registry
+  namespace: springcloud
+spec:
+  type: ClusterIP
+  ports:
+  - port: 8761
+    protocol: TCP
+    targetPort: 8761
+  selector:
+    name: registry

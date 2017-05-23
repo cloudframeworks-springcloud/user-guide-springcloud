@@ -1,0 +1,39 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: statistics-service
+  namespace: springcloud
+  labels:
+    name: statistics-service
+spec:
+  replicas: 1
+  revisionHistoryLimit: 1
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  template:
+    metadata:
+      labels:
+        name: statistics-service
+    spec:
+      terminationGracePeriodSeconds: 120
+      containers:
+      - name: statistics-service
+        image: goodraincloudframeworks/piggymetrics-statistics-service
+        imagePullPolicy: IfNotPresent
+        readinessProbe:
+          failureThreshold: 3
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          successThreshold: 1
+          tcpSocket:
+            port: 15672
+          timeoutSeconds: 5
+        resources:
+          requests:
+            cpu: 100m
+            memory: 300Mi
+          limits:
+            cpu: 1000m
+            memory: 1000Mi
