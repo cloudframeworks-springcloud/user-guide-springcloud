@@ -313,7 +313,7 @@ Feign同时可以引用注册中心以外的服务没，例如在统计服务模
 
 对于微服务架构，推荐使用`Docker`+`Kubernetes`PaaS平台搭建，合理结构如下：
 
-<div align=center><img width="900" height="" src="../image/生产环境搭建整体结构.png"/></div>
+<div align=center><img width="900" height="" src="./image/生产环境搭建整体结构.png"/></div>
 
 [为什么使用Docker？](https://yeasy.gitbooks.io/docker_practice/content/introduction/why.html)
    
@@ -333,7 +333,7 @@ Kubernetes提供了多种详尽的安装方式，此处不再赘述，建议参�
 
 在部署应用至Kubernetes之前，我们需要对应用的生命周期有一定了解。
 
-<div align=center><img width="900" height="" src="../image/应用生命周期.png"/></div>
+<div align=center><img width="900" height="" src="./image/应用生命周期.png"/></div>
 
    * 使用Git进行代码版本管理（重点在于Git是分布式，[Git vs SVN](http://stackoverflow.com/questions/871/why-is-git-better-than-subversion)）
    
@@ -347,7 +347,7 @@ Kubernetes提供了多种详尽的安装方式，此处不再赘述，建议参�
 
 回到PiggyMetrics，其应用结构如下图所示：
 
-<div align=center><img width="900" height="" src="../image/piggymetrics应用结构图.png"/></div>
+<div align=center><img width="900" height="" src="./image/piggymetrics应用结构图.png"/></div>
 
 （PiggyMetrics部署示范）
 
@@ -359,7 +359,7 @@ Kubernetes提供了多种详尽的安装方式，此处不再赘述，建议参�
 
 结构图如下：
 
-<div align=center><img width="900" height="" src="../image/配置中心高可用部署图.png"/></div>
+<div align=center><img width="900" height="" src="./image/配置中心高可用部署图.png"/></div>
 
 ### 服务注册发现机制
 
@@ -367,7 +367,7 @@ Kubernetes提供了多种详尽的安装方式，此处不再赘述，建议参�
 
 结构图如下：
 
-<div align=center><img width="900" height="" src="../image/注册服务发现机制.png"/></div>
+<div align=center><img width="900" height="" src="./image/注册服务发现机制.png"/></div>
 
 ### 服务容错机制
 
@@ -375,7 +375,7 @@ Kubernetes提供了多种详尽的安装方式，此处不再赘述，建议参�
 
 结构如下图所示：
 
-<div align=center><img width="900" height="" src="../image/springcloud服务容错机制.png"/></div>
+<div align=center><img width="900" height="" src="./image/springcloud服务容错机制.png"/></div>
 
 ### K8s服务编排
 
@@ -395,7 +395,7 @@ Kubernetes将组成应用的容器组合为逻辑单元，以便于管理和发�
 
 结构如下图所示：
 
-<div align=center><img width="900" height="" src="../image/springcloud日志采集.png"/></div>
+<div align=center><img width="900" height="" src="./image/springcloud日志采集.png"/></div>
 
 ### 监控体系
 
@@ -403,7 +403,7 @@ Kubernetes将组成应用的容器组合为逻辑单元，以便于管理和发�
 
 结构如下图所示：
 
-<div align=center><img width="900" height="" src="../image/springcloud监控体系.png"/></div>
+<div align=center><img width="900" height="" src="./image/springcloud监控体系.png"/></div>
 
 ## Spring Cloud性能优化
 
