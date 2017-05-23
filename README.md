@@ -297,8 +297,6 @@ Feign同时可以引用注册中心以外的服务没，例如在统计服务模
      
 # <a name="生产环境"></a>生产环境
 
-## 生产环境搭建
-
 生产环境中的应用服务需要满足以下基本特征：
 
    1. 部分软件、硬件或网络异常后，应用依然能够可靠工作
@@ -349,7 +347,7 @@ Kubernetes提供了多种详尽的安装方式，此处不再赘述，建议参�
 
 <div align=center><img width="900" height="" src="./image/piggymetrics应用结构图.png"/></div>
 
-（PiggyMetrics部署示范）
+**[查看PiggyMetrics完整Yaml文件](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/tree/master/yaml)**
 
 ## 功能特性实现
 
