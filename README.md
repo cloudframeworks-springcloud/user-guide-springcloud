@@ -329,6 +329,10 @@ Kubernetes提供了多种详尽的安装方式，此处不再赘述，建议参�
 
 ## 部署应用至Kubernetes
 
+服务编排（Service Orchestration）是**设计、创建和提供端到端服务的过程**，常常出现在面向服务架构、虚拟化、配置、融合基础架构、动态数据中心等等相关内容中，目前最流行的服务编排工具非Kubernetes（K8s）莫属。
+
+Kubernetes将组成应用的容器组合为逻辑单元，以便于管理和发现。它的功能十分完善，提供包括资源调度、服务发现、运行监控、扩容缩容、负载均衡、灰度升级、失败冗余、容灾恢复、DevOps等一系列选项，帮助实现大规模、分布式、高可用的Docker集群，为解决业务的分布式架构、服务化设计，完整定义了构建业务系统的标准化架构层，即Cluster、Node、Pod、Label等一系列的抽象都是定义好的，为服务编排提供了一个简单、轻量级的方式。[Kubernetes: a platform for automating deployment, scaling, and operations](https://www.slideshare.net/BrianGrant11/wso2con-us-2015-kubernetes-a-platform-for-automating-deployment-scaling-and-operations)
+
 在部署应用至Kubernetes之前，我们需要对应用的生命周期有一定了解。
 
 <div align=center><img width="900" height="" src="./image/应用生命周期.png"/></div>
@@ -374,18 +378,6 @@ Kubernetes提供了多种详尽的安装方式，此处不再赘述，建议参�
 结构如下图所示：
 
 <div align=center><img width="900" height="" src="./image/springcloud服务容错机制.png"/></div>
-
-### K8s服务编排
-
-1. 什么是服务编排？
-
-服务编排（Service Orchestration）是**设计、创建和提供端到端服务的过程**，常常出现在面向服务架构、虚拟化、配置、融合基础架构、动态数据中心等等相关内容中。
-
-2. K8s如何进行服务编排？
-
-Kubernetes将组成应用的容器组合为逻辑单元，以便于管理和发现。它的功能十分完善，提供包括资源调度、服务发现、运行监控、扩容缩容、负载均衡、灰度升级、失败冗余、容灾恢复、DevOps等一系列选项，帮助实现大规模、分布式、高可用的Docker集群，为解决业务的分布式架构、服务化设计，完整定义了构建业务系统的标准化架构层，即Cluster、Node、Pod、Label等一系列的抽象都是定义好的，为服务编排提供了一个简单、轻量级的方式。[Kubernetes: a platform for automating deployment, scaling, and operations](https://www.slideshare.net/BrianGrant11/wso2con-us-2015-kubernetes-a-platform-for-automating-deployment-scaling-and-operations)
-
-3. 服务编排详细信息(通过yaml文件描述)
 
 ### 日志采集
 
