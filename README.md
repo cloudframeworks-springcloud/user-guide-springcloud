@@ -363,19 +363,19 @@ Kubernetes将组成应用的容器组合为逻辑单元，以便于管理和发�
     kubectl -s 127.0.0.1:8080 create namespace springcloud
     ```
 
-3. 配置容器DNS [dns/dns-addon.yaml文件](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/tree/master/yaml/dns)
+3. 配置容器DNS ([dns/dns-addon.yaml文件](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/tree/master/yaml/dns))
 
     ```
     kubectl -s 127.0.0.1:8080 create －f dns/dns-addon.yaml文件 --namespace=springcloud
     ```
 
-4. 创建服务 [svc/yaml文件](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/tree/master/yaml/svc)
+4. 创建服务 ([svc/yaml文件](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/tree/master/yaml/svc))
 
     ```
     kubectl -s 127.0.0.1:8080 create -f svc/yaml文件 --namespace=springcloud
     ```
 
-5. 创建应用部署 [deployment/yaml文件](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/tree/master/yaml/deployment)
+5. 创建应用部署 ([deployment/yaml文件](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/tree/master/yaml/deployment))
 
     ```
     kubectl -s 127.0.0.1:8080 create -f deployment/yaml文件 --namespace=springcloud
