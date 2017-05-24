@@ -353,6 +353,8 @@ Kubernetes将组成应用的容器组合为逻辑单元，以便于管理和发�
 
 [查看PiggyMetrics完整Yaml文件](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/tree/master/yaml)
 
+**步骤：**
+
 1. 安装Kubernetes、Docker环境
 
 2. 创建命名空间
