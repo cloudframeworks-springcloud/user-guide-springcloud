@@ -347,13 +347,11 @@ Kubernetes将组成应用的容器组合为逻辑单元，以便于管理和发�
    
    * 根据实际业务需求选择适合的发布机制（[灰度发布、AB测试、蓝绿部署、金丝雀部署](http://blog.christianposta.com/deploy/blue-green-deployments-a-b-testing-and-canary-releases/)）
 
-
+**部署PiggyMetrics至Kubernetes**
 
 [查看PiggyMetrics应用结构图](./image/piggymetrics应用结构图.png)
 
-[查看PiggyMetrics完整Yaml文件](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/tree/master/yaml)**
-
-**部署步骤**
+[查看PiggyMetrics完整Yaml文件](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/tree/master/yaml)
 
 1. 安装Kubernetes、Docker环境
 
