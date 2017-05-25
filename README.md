@@ -1,6 +1,6 @@
-# [云框架]基于Spring Cloud的微服务架构 v1.0
+# [云框架]基于Spring Cloud的微服务架构 v1.5
 
-![](https://img.shields.io/badge/Release-v1.0-green.svg)
+![](https://img.shields.io/badge/Release-v1.5-green.svg)
 [![](https://img.shields.io/badge/Producer-elvis2002-orange.svg)](CONTRIBUTORS.md)
 ![](https://img.shields.io/badge/License-Apache_2.0-blue.svg)
 
@@ -297,11 +297,180 @@ Feign同时可以引用注册中心以外的服务没，例如在统计服务模
      
 # <a name="生产环境"></a>生产环境
 
-* `TODO` CI/CD
-* `TODO` 扩容
-* `TODO` 服务容错
-* `TODO` 业务监控／性能分析
-* `TODO` K8s部署
+生产环境中的应用服务需要满足以下基本特征：
+
+   1. 部分软件、硬件或网络异常后，应用依然能够可靠工作
+   
+   2. 多用户支持下应用继续工作
+   
+   3. 可添加或删除资源来适应不同需求变化
+   
+   4. 便于部署和监控
+
+换句话说，在生产环境下，我们需要考虑更多、更复杂的因素以满足实际业务及支持业务的特性。
+
+对于微服务架构，推荐使用`Docker`+`Kubernetes`PaaS平台搭建，合理结构如下：
+
+<div align=center><img width="900" height="" src="./image/生产环境搭建整体结构.png"/></div>
+
+[为什么使用Docker？](https://yeasy.gitbooks.io/docker_practice/content/introduction/why.html)
+   
+[为什么使用Kubernetes？](https://blog.gcp.expert/kubernetes-gke-introduction/)
+
+[Container, Docker, and Kubernetes](https://collectiveidea.com/blog/archives/2017/01/27/containers-docker-and-kubernetes-part-1)
+
+## 安装Kubernetes
+
+Kubernetes提供了多种详尽的安装方式，此处不再赘述，建议参考：
+   
+   * [Kubernetes官方文档：Picking the Right Solution](https://kubernetes.io/docs/setup/pick-right-solution/)
+   
+   * [Kubernetes學習筆記](https://gcpug-tw.gitbooks.io/kuberbetes-in-action/content/)
+
+## 部署应用至Kubernetes
+
+服务编排（Service Orchestration）是**设计、创建和提供端到端服务的过程**，常常出现在面向服务架构、虚拟化、配置、融合基础架构、动态数据中心等等相关内容中，目前最流行的服务编排工具非Kubernetes（K8s）莫属。
+
+Kubernetes将组成应用的容器组合为逻辑单元，以便于管理和发现。它的功能十分完善，提供包括资源调度、服务发现、运行监控、扩容缩容、负载均衡、灰度升级、失败冗余、容灾恢复、DevOps等一系列选项，帮助实现大规模、分布式、高可用的Docker集群，为解决业务的分布式架构、服务化设计，完整定义了构建业务系统的标准化架构层，即Cluster、Node、Pod、Label等一系列的抽象都是定义好的，为服务编排提供了一个简单、轻量级的方式。[Kubernetes: a platform for automating deployment, scaling, and operations](https://www.slideshare.net/BrianGrant11/wso2con-us-2015-kubernetes-a-platform-for-automating-deployment-scaling-and-operations)
+
+在部署应用至Kubernetes之前，我们需要对应用的生命周期有一定了解。
+
+<div align=center><img width="900" height="" src="./image/应用生命周期.png"/></div>
+
+   * 使用Git进行代码版本管理（重点在于Git是分布式，[Git vs SVN](http://stackoverflow.com/questions/871/why-is-git-better-than-subversion)）
+   
+   * 明确服务的构建规则
+   
+   * 采用Image或Binary应用包管理
+   
+   * 制定包括开发、测试、生产及审核在内的服务部署规则
+   
+   * 根据实际业务需求选择适合的发布机制（[灰度发布、AB测试、蓝绿部署、金丝雀部署](http://blog.christianposta.com/deploy/blue-green-deployments-a-b-testing-and-canary-releases/)）
+
+**部署PiggyMetrics至Kubernetes**
+
+[查看PiggyMetrics应用结构图](./image/piggymetrics应用结构图.png)
+
+[查看PiggyMetrics完整Yaml文件](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/tree/master/yaml)
+
+**步骤：**
+
+1. 安装Kubernetes、Docker环境
+
+2. 创建命名空间
+
+    ```
+    kubectl -s 127.0.0.1:8080 create namespace springcloud
+    ```
+
+3. 配置容器DNS ([查看dns/dns-addon.yaml文件](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/tree/master/yaml/dns))
+
+    ```
+    kubectl -s 127.0.0.1:8080 create －f dns/dns-addon.yaml文件 --namespace=springcloud
+    ```
+
+4. 创建服务 ([查看svc/yaml文件](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/tree/master/yaml/svc))
+
+    ```
+    kubectl -s 127.0.0.1:8080 create -f svc/yaml文件 --namespace=springcloud
+    ```
+
+5. 创建应用部署 ([查看deployment/yaml文件](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/tree/master/yaml/deployment))
+
+    ```
+    kubectl -s 127.0.0.1:8080 create -f deployment/yaml文件 --namespace=springcloud
+    ```
+
+    备注：
+    
+    127.0.0.1:8080－－－－kubernetes api server
+    
+    svc/yaml文件－－－－svc部署yaml文件
+    
+    deployment/yaml文件－－－－deployment部署yaml文件
+
+## 功能特性实现
+
+### 配置中心高可用
+
+在生产环境中服务从配置中心读取文件，而配置中心从Gitlab读取配置文件，将配置中心做成一个集群化微服务即可实现高可用，满足大量服务的需求。
+
+结构图如下：
+
+<div align=center><img width="900" height="" src="./image/配置中心高可用部署图.png"/></div>
+
+### 服务注册发现机制
+
+在生产环境中服务注册发现管理采用Eureka Server进行，并**采用3个对等节点进行两两注册以实现高可用**。
+
+结构图如下：
+
+<div align=center><img width="900" height="" src="./image/注册服务发现机制.png"/></div>
+
+### 服务容错机制
+
+通过Hystrix进行熔断处理，同时通过Hystrix Dashboard实现图形化展示，并**加入RabbitMQ使其由默认的主动“拉”的方式，变为通过MQ消息队列进行“推”的模式**，以保证简单结构和实时效率。
+
+结构如下图所示：
+
+<div align=center><img width="900" height="" src="./image/springcloud服务容错机制.png"/></div>
+
+### 日志采集
+
+在生产环境中通过**EFKA**（elasticsearch fluentd kibana kafka）进行日志收集和展示。
+
+结构如下图所示：
+
+<div align=center><img width="900" height="" src="./image/springcloud日志采集.png"/></div>
+
+### 监控体系
+
+通过实时的日志收集系统获取日志信息，并利用时间窗口的技术进行日志分析。
+
+结构如下图所示：
+
+<div align=center><img width="900" height="" src="./image/springcloud监控体系.png"/></div>
+
+## Spring Cloud性能优化
+
+在生产环境中，我们可按照以下几点进行性能优化:
+
+1、注册中心配置优化
+
+    eureka:
+      instance:
+        prefer-ip-address: true
+      client:
+        registerWithEureka: false
+        fetchRegistry: false
+        server:
+          waitTimeInMsWhenSyncEmpty: 0
+      server
+        eviction-interval-timer-in-ms: 4000
+        enableSelfPreservation: false
+        renewalPercentThreshold: 0.9
+        
+2、zuul配置优化
+
+    ribbon:
+      ReadTimeout: 20000
+      ConnectTimeout: 20000
+      MaxAutoRetries: 1
+      
+    zuul:
+      host:
+        connect-timeout-millis: 20000
+        socket-timeout-millis: 20000
+        
+3、Feign配置
+
+    #请求和响应GZIP压缩支持
+    feign.compression.request.enabled=true
+    feign.compression.response.enabled=true
+    #支持压缩的mime types
+    feign.compression.request.enabled=true
+    feign.compression.request.mime-types=text/xml,application/xml,application/json
+    feign.compression.request.min-request-size=2048
 
 # <a name="常见问题"></a>常见问题
 
@@ -310,9 +479,8 @@ Feign同时可以引用注册中心以外的服务没，例如在统计服务模
 # <a name="更新计划"></a>更新计划
 
 * `文档` 增加在线演示
-* `组件` 增加组件内容，如Spring Cloud Sleuth、Spring Cloud Consul等
-* `生产环境` 增加生产环境下各项扩展操作，如性能测试及各类部署、特性、技术实现等
-* `快速部署` 增加好雨云帮部署
+* `文档` 增加&完善文档外链
+* `组件` 单个组件深入讲解
 * `常见问题` 问题汇总
 
 点击查看[历史更新](CHANGELOG.md)
