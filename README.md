@@ -79,7 +79,7 @@ Piggymetrics通过Spring Cloud实现微服务架构，应用被分解为**账户
 
 PiggyMetrics业务架构如下图所示：
 
-<div align=center><img width="900" height="" src="https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/image/pm%E4%B8%9A%E5%8A%A1%E6%9E%B6%E6%9E%84.png"/></div>
+<div align=center><img width="900" height="" src="./image/pm业务架构.png"/></div>
 
 账户服务模块包含一般用户输入逻辑和验证：收入/费用项目，储蓄和帐户设置。
 
