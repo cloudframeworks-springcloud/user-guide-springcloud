@@ -1,4 +1,4 @@
-## deploy via script
+## 通过脚本分别部署每个组件，命令如下
 
    ```
    docker run -d -p15672:15672 --name=rabbitmq rabbitmq:3-management
