@@ -1,5 +1,10 @@
 # [云框架]基于Spring Cloud的微服务架构
 
+## v1.5 (2017.06.16)
+
++ `NEW` 新增英文版README
++ `NEW` README in English avaiable
+
 ## v1.5 (2017.06.06)
 
 + `NEW` 增加通过脚本分别部署每个组件命令（快速部署第4步）
