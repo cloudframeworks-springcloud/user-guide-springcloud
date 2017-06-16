@@ -184,7 +184,7 @@ PiggyMetrics借助Netflix Zuul实现[gateway](https://github.com/cloudframeworks
    }
    ```
 
-在resources目录下增加[static](https://github.com/cloudframeworks-springcloud/PiggyMetrics/tree/master/gateway/src/main/resources/static)录存放你的静态资源(如html、css、images等)
+在resources目录下增加[static](https://github.com/cloudframeworks-springcloud/PiggyMetrics/tree/master/gateway/src/main/resources/static)存放你的静态资源(如html、css、images等)
      
 在zuul的配置文件[gateway.yml](https://github.com/cloudframeworks-springcloud/PiggyMetrics/blob/master/config/src/main/resources/shared/gateway.yml)中增加代理服务的配置
 
@@ -254,7 +254,7 @@ PiggyMetrics并没有显式的去定义Netflix Ribbon的使用，但是在Zuul�
 
 ## <a name="Netflix-Feign"></a>配置Netflix Feign
 
-PiggyMetrics多次用到了Feign，使用为在客户端中添加如下代码，例如[StatisticsServiceClient.java](https://github.com/cloudframeworks-springcloud/PiggyMetrics/blob/master/account-service/src/main/java/com/piggymetrics/account/client/StatisticsServiceClient.java)。
+PiggyMetrics多次用到了Feign，使用方法为在客户端中添加如下代码，例如[StatisticsServiceClient.java](https://github.com/cloudframeworks-springcloud/PiggyMetrics/blob/master/account-service/src/main/java/com/piggymetrics/account/client/StatisticsServiceClient.java)。
 
    ```
    @FeignClient(name = "auth-service")      ## 声明一个认证服务的一个客户端，通过注册中心去查找auth-service
