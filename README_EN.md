@@ -4,6 +4,8 @@
 [![](https://img.shields.io/badge/Producer-elvis2002-orange.svg)](CONTRIBUTORS.md)
 ![](https://img.shields.io/badge/License-Apache_2.0-blue.svg)
 
+**README in Chinese available, see [README_EN](README_CN.md)**
+
 Compared with the traditional architecture model, [microservices](https://martinfowler.com/articles/microservices.html) has the characteristics of language independence, independent process communication, high decoupling, fixed task boundary and on-demand expansion. It's perfect for internet business that require fast delivery，quick response and constantly testing，tech gaints such as Twitter, Netflix, Amazon and eBay are all mircoservices architecture's loyal users.
 
 At present, Three mainstream microservice framework are Spring Cloud, Dubbo and API Gateway. [Spring Cloud](http://projects.spring.io/spring-cloud/) is a set of tools for rapid construction of distributed systems. Thanks to Spring Boot's development convenience, Spring Cloud provides JVM cloud application development a simple way to do configuration, service discovery, circuit breakers, intelligent routing, micro-agents, control buses, global locks, decision-making campaigns, distributed sessions, cluster state management and more.
