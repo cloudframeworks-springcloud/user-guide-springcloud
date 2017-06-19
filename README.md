@@ -4,7 +4,7 @@
 [![](https://img.shields.io/badge/Producer-elvis2002-orange.svg)](CONTRIBUTORS.md)
 ![](https://img.shields.io/badge/License-Apache_2.0-blue.svg)
 
-**README in Chinese available, see [README_EN](README_CN.md)**
+**README in Chinese available, see [README_CN](README_CN.md)**
 
 Compared with the traditional architecture model, [microservices](https://martinfowler.com/articles/microservices.html) has the characteristics of language independence, independent process communication, high decoupling, fixed task boundary and on-demand expansion. It's perfect for internet business that require fast delivery，quick response and constantly testing，tech gaints such as Twitter, Netflix, Amazon and eBay are all mircoservices architecture's loyal users.
 
