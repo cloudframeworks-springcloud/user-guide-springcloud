@@ -80,9 +80,9 @@ Related CloudFramework: [[CloudFrameworks]KONG API Gateway](https://github.com/c
 
 # <a name="framework-details-business"></a>Framework Details - Business
 
-Piggymetrics implement microservices architecture with Spring Cloud, and the application is divideed into three micro-services, [ACCOUNT SERVICE](https://github.com/cloudframeworks-springcloud/PiggyMetrics/tree/master/account-service)、[STATISTICS SERVICE](https://github.com/cloudframeworks-springcloud/PiggyMetrics/tree/master/statistics-service)、[NOTIFICATION SERVICE](https://github.com/cloudframeworks-springcloud/PiggyMetrics/tree/master/notification-service). Each micro-service is an independently deployable application with separate database that is organized around business capabilities, and uses synchronized [REST API](http://www.restapitutorial.com/) to communicate between micro-services.
+Piggymetrics implement microservices architecture with Spring Cloud, and the application is divided into three micro-services, [ACCOUNT SERVICE](https://github.com/cloudframeworks-springcloud/PiggyMetrics/tree/master/account-service)、[STATISTICS SERVICE](https://github.com/cloudframeworks-springcloud/PiggyMetrics/tree/master/statistics-service)、[NOTIFICATION SERVICE](https://github.com/cloudframeworks-springcloud/PiggyMetrics/tree/master/notification-service). Each micro-service is an independently deployable application with separate database that is organized around business capabilities, and uses synchronized [REST API](http://www.restapitutorial.com/) to communicate between micro-services.
 
-PiggyMetrics's buiness architecture：
+PiggyMetrics's business architecture：
 
 <div align=center><img width="900" height="" src="./image/pm业务架构.png"/></div>
 
