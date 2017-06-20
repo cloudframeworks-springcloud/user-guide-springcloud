@@ -498,6 +498,6 @@ Use [GitHub ISSUE](https://github.com/cloudframeworks-springcloud/user-guide-spr
 
 -------
 
-A [CloudFrameworks](ABOUT.md) project, Following [APACHE LICENSE 2.0](LICENSE.md)
+A [CloudFrameworks](ABOUT.md) project, released under the [APACHE LICENSE 2.0](LICENSE.md)
 
 
