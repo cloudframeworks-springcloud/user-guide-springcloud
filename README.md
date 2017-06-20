@@ -6,16 +6,19 @@
 
 **README in Chinese available, see [README_CN](README_CN.md)**
 
-Compared with the traditional architecture model, [microservices](https://martinfowler.com/articles/microservices.html) has the characteristics of language independence, independent process communication, high decoupling, fixed task boundary and on-demand expansion. It's perfect for internet business that require fast delivery，quick response and constantly testing，tech gaints such as Twitter, Netflix, Amazon and eBay are all mircoservices architecture's loyal users.
+Compared with the traditional architecture model, [microservices](https://martinfowler.com/articles/microservices.html) enjoy advantages on the following aspects:language independence, independent process communication, high decoupling, fixed task boundary and on-demand expansion. It's a perfect tool for internet business which requires fast delivery，quick response and constantly testing.Tech gaints such as Twitter, Netflix, Amazon and eBay are all loyal customers of the mircoservices architecture model.
 
-At present, Three mainstream microservice framework are Spring Cloud, Dubbo and API Gateway. [Spring Cloud](http://projects.spring.io/spring-cloud/) is a set of tools for rapid construction of distributed systems. Thanks to Spring Boot's development convenience, Spring Cloud provides JVM cloud application development a simple way to do configuration, service discovery, circuit breakers, intelligent routing, micro-agents, control buses, global locks, decision-making campaigns, distributed sessions, cluster state management and more.
+At present, three mainstream microservice frameworks are named Spring Cloud, Dubbo and API Gateway. [Spring Cloud](http://projects.spring.io/spring-cloud/) is a set of tools for rapid construction of distributed systems. Thanks to Spring Boot's development convenience, Spring Cloud provides JVM cloud application which could provide a simple way forconfiguration, service discovery, circuit breakers, intelligent routing, micro-agents, control buses, global locks, decision-making campaigns, distributed sessions, cluster state management and many other functions.
+
+Compared to Dubbo and other RPC frameworks, Spring Cloud is a pretty new choice among microservice architecture frameworks. Version 1.0 was released in 2016, integrity of the Spring Cloud's programis very high, sub-projects of the program could cover almost every part of micro-service architecture. Considering its high degree of attention received and frequency of activities, Spring Cloud is likely to become the micro service architecture standard. ([Spring Cloud技术分析](http://tech.lede.com/2017/03/15/rd/server/SpringCloud0/))
 
 Compared to Dubbo and other RPC framework, Spring Cloud is a pretty new microservice architecture frameworks choice. Released version 1.0 in 2016, Spring Cloud's program integrity is very high, it's sub-projects almost covered every part of micro-service architecture. Considering it's high degree of attention and activity, Spring Cloud is likely to become the micro service architecture standards. ([Spring Cloud技术分析](http://tech.lede.com/2017/03/15/rd/server/SpringCloud0/))
 
-This [CloudFramework](ABOUT.md) summarizes the successful experiences of dozens of micro service architecture projects in the past, combined with a typical case [PiggyMetrics](https://github.com/cloudframeworks-springcloud/PiggyMetrics) (a personal financial management application), to provide best practices of Microservices Architecture with Spring Cloud.
+This [CloudFramework](ABOUT.md) summarizes the successful experiences of dozens of micro service architecture projects in the past. Combined with a typical case [PiggyMetrics](https://github.com/cloudframeworks-springcloud/PiggyMetrics) (a personal financial management application), Spring Cloud is promised to provide best practices of Microservices Architecture.
 
-* Beginners can learn Spring Cloud and microservices quickly through this project, and discuss in community
-* Developers who have a certain understanding do not have to start developing from scratch, only need to replace some business code to apply best practices to the production environment and generate value immediately
+* Beginners can master Spring Cloud and microservices techniques quickly through this project, and open discussions are welcome in this community
+
+* Developers with preknowledge and relavent backgrounddo not have to start from scratch, you only need to replace some business code to apply the best practice to the production environment and value will be generated immediately
 
 Related CloudFramework: [[CloudFrameworks]KONG API Gateway](https://github.com/cloudframeworks-apigateway/user-guide-apigateway)
 
