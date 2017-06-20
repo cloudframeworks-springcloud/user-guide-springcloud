@@ -6,7 +6,7 @@
 
 **README in Chinese available, see [README_CN](README_CN.md)**
 
-Compared with the traditional architecture model, [microservices](https://martinfowler.com/articles/microservices.html) enjoy advantages on the following aspects:language independence, independent process communication, high decoupling, fixed task boundary and on-demand expansion. It's a perfect tool for internet business which requires fast delivery，quick response and constantly testing. Tech gaints such as Twitter, Netflix, Amazon and eBay are all loyal customers of the mircoservices architecture model.
+Compared with the traditional architecture model, [microservices](https://martinfowler.com/articles/microservices.html) enjoy advantages on the following aspects:language independence, independent process communication, high decoupling, fixed task boundary and on-demand expansion. It's a perfect tool for internet business which requires fast delivery, quick response and constantly testing. Tech gaints such as Twitter, Netflix, Amazon and eBay are all loyal customers of the mircoservices architecture model.
 
 At present, three mainstream microservice frameworks are named Spring Cloud, Dubbo and API Gateway. [Spring Cloud](http://projects.spring.io/spring-cloud/) is a set of tools for rapid construction of distributed systems. Thanks to Spring Boot's development convenience, Spring Cloud provides JVM cloud application which could provide a simple way forconfiguration, service discovery, circuit breakers, intelligent routing, micro-agents, control buses, global locks, decision-making campaigns, distributed sessions, cluster state management and many other functions.
 
