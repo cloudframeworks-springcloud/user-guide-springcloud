@@ -142,7 +142,7 @@ In PiggyMetrics，[config_server](https://github.com/cloudframeworks-springcloud
 
 We can check Shard directory resource in [config service](https://github.com/cloudframeworks-springcloud/PiggyMetrics/tree/master/config/src/main/resources/shared), where `application.yml` is shared by all client applications, for example, when Notification-service request configuration, use `shared/notification-service.yml` and `shared/application.yml` to config service responses.
 
-To use Spring Cloud config, we need add spring-cloud-starter-config (it will get configurations from config center automatically) into [pom.xml](https://github.com/cloudframeworks-springcloud/PiggyMetrics/blob/master/config/pom.xml)中and add following code into the resource directory bootstrap.yml，for example add into [moinitoring bootstrap.yml](https://github.com/cloudframeworks-springcloud/PiggyMetrics/blob/master/monitoring/src/main/resources/bootstrap.yml):
+To use Spring Cloud config, we need add spring-cloud-starter-config (it will get configurations from config center automatically) into [pom.xml](https://github.com/cloudframeworks-springcloud/PiggyMetrics/blob/master/config/pom.xml) and add following code into the resource directory bootstrap.yml, for example add into [monitoring bootstrap.yml](https://github.com/cloudframeworks-springcloud/PiggyMetrics/blob/master/monitoring/src/main/resources/bootstrap.yml):
 
    ```
    spring:
