@@ -114,7 +114,7 @@ PUT	| /notifications/settings/current	| Save current account notification settin
 
 # <a name="framework-details-component"></a>Framework Details Components
 
-<a name="components-architecture"></a>Piggymetrics uses Spring Cloud Config、Netflix Eureka、Netflix Hystrix、Netflix Zuul、Netflix Ribbon、Netflix Feign in its infrastructure service，these are also core components of Spring Cloud distributed developemnt.
+<a name="components-architecture"></a>Piggymetrics uses Spring Cloud Config、Netflix Eureka、Netflix Hystrix、Netflix Zuul、Netflix Ribbon、Netflix Feign in its infrastructure service, these are also core components of Spring Cloud distributed development.
 
 Components architecture is shown below：
 
