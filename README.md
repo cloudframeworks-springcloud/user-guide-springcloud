@@ -160,7 +160,7 @@ After that, we can refresh configurations through http://DOCKER-HOST:DOCKER-PORT
 
 ## <a name="netflix-eureka-configuration"></a>Netflix Eureka Configuration
 
-PiggyMetrics uses Eureka server for [registy](https://github.com/cloudframeworks-springcloud/PiggyMetrics/tree/master/registry), code logic is simple and standard, we don't need to make any changes, but should be noted to add configuration center service address infomation into [bootstrap.yml](https://github.com/cloudframeworks-springcloud/PiggyMetrics/blob/master/registry/src/main/resources/bootstrap.yml).
+PiggyMetrics uses Eureka server for [registy](https://github.com/cloudframeworks-springcloud/PiggyMetrics/tree/master/registry), code logic is simple and standard, we don't need to make any changes, but should be noted to add configuration center service address information into [bootstrap.yml](https://github.com/cloudframeworks-springcloud/PiggyMetrics/blob/master/registry/src/main/resources/bootstrap.yml).
 
    ```
    spring:
@@ -191,7 +191,7 @@ In development, replace the corresponding service in [GatewayApplication.java](h
 
 Add [static](https://github.com/cloudframeworks-springcloud/PiggyMetrics/tree/master/gateway/src/main/resources/static) in resources directory to restore yout statics resources (html、css、images etc.).
      
-Ass proxy service configuration in Zuul's configuration file [gateway.yml](https://github.com/cloudframeworks-springcloud/PiggyMetrics/blob/master/config/src/main/resources/shared/gateway.yml).
+Add proxy service configuration in Zuul's configuration file [gateway.yml](https://github.com/cloudframeworks-springcloud/PiggyMetrics/blob/master/config/src/main/resources/shared/gateway.yml).
 
    ```
    zuul:
