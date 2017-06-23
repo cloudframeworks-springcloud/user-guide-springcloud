@@ -12,8 +12,6 @@ At present, three mainstream microservice frameworks are named Spring Cloud, Dub
 
 Compared to Dubbo and other RPC frameworks, Spring Cloud is a pretty new choice among microservice architecture frameworks. Version 1.0 was released in 2016, integrity of the Spring Cloud's programis very high, sub-projects of the program could cover almost every part of micro-service architecture. Considering its high degree of attention received and frequency of activities, Spring Cloud is likely to become the micro service architecture standard. ([Spring Cloud技术分析](http://tech.lede.com/2017/03/15/rd/server/SpringCloud0/))
 
-Compared to Dubbo and other RPC framework, Spring Cloud is a pretty new microservice architecture frameworks choice. Released version 1.0 in 2016, Spring Cloud's program integrity is very high, it's sub-projects almost covered every part of micro-service architecture. Considering it's high degree of attention and activity, Spring Cloud is likely to become the micro service architecture standards. ([Spring Cloud技术分析](http://tech.lede.com/2017/03/15/rd/server/SpringCloud0/))
-
 This [CloudFramework](ABOUT.md) summarizes the successful experiences of dozens of micro service architecture projects in the past. Combined with a typical case [PiggyMetrics](https://github.com/cloudframeworks-springcloud/PiggyMetrics) (a personal financial management application), Spring Cloud is promised to provide best practices of Microservices Architecture.
 
 * Beginners can master Spring Cloud and microservices techniques quickly through this project, and open discussions are welcome in this community
