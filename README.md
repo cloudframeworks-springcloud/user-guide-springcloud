@@ -25,6 +25,8 @@ Related CloudFramework: [[CloudFrameworks]KONG API Gateway](https://github.com/c
 # Overview
 
 * [Quick Deploy](#quick-deploy)
+    * [One Click Deployment](#one-click-deployment)
+    * [Local Deployment](#local-deployment)
 * [Framework details - Business](#framework-details-business)
 * [Framework details - Components](#framework-details-components)
    * [Components Architecture](#components-architecture)
@@ -41,6 +43,12 @@ Related CloudFramework: [[CloudFrameworks]KONG API Gateway](https://github.com/c
 * [Community & Contribution](#community-and-contribution)
 
 # <a name="quick-deploy"></a>Quick Deploy
+
+## <a name="one-click-deployment"></a>One Click Deployment
+
+[One Click deployment with Goodrain Cloudbang](http://app.goodrain.com/group/detail/15/)
+
+## <a name="local-deployment"></a>Local Deployment
 
 1. [Docker preparation](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/install%20docker.md)
 
@@ -420,7 +428,7 @@ The structure is as follows:
 
 <div align=center><img width="900" height="" src="./image/springcloud服务容错机制.png"/></div>
 
-### Log
+### Logs collection
 
 Logs are collected and displayed via EFKA (elasticsearch fluentd kibana kafka) in production environment.
 

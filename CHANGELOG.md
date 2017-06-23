@@ -1,9 +1,72 @@
+# [Cloud Frameworks]Microservices Architecture with Spring Cloud 
+
+## v1.5 (2017.06.23)
+
++ `NEW` One click development with Goodrain Cloudbang
+
+## v1.5 (2017.06.16)
+
++ `NEW` README in English available
+
+## v1.5 (2017.06.06)
+
++ `NEW` step by step development script (step 4 of local developemnt)
+
+## v1.5 (2017.05.25)
+
+**best practices in production environment available**
+
++ `NEW` K8s deployment
+
++ `NEW` configuration center high availability
+
++ `NEW` Service registration discovery mechanism
+
++ `NEW` Fault tolerance mechanism
+
++ `NEW` Logs collection
+
++ `NEW` Monitoring
+
++ `NEW` Performance Optimization
+
++ `NEW` more related reading links
+
+## v1.5 pre-release (2017.05.24)
+
++ `Production` K8s deployment available
+
++ `Production` Configuration center high availability, Service registration discovery mechanism, Fault tolerance mechanism, Logs collection, Monitoring
+
++ `Production` Performance Optimization
+
+## v1.0 (2017.05.10)
+
++ `docs` docs revised
+
+## v1.0 （2017.05.02）
+
++ `UPGRADE` 1.4.5 and cam
+
+## v1.0 （2017.04.25）
+
++ `NEW` v1.0 released
+
+## v0.1 （2017.04.17）
+
++ `NEW` v0.1 released
+
+----------
+
 # [云框架]基于Spring Cloud的微服务架构
+
+## v1.5 (2017.06.23)
+
++ `NEW` 新增一键部署（好雨云帮）
 
 ## v1.5 (2017.06.16)
 
 + `NEW` 新增英文版README
-+ `NEW` README in English avaiable
 
 ## v1.5 (2017.06.06)
 
@@ -47,8 +110,10 @@
 
 ## v1.0 （2017.04.25）
 
-+ `NEW` v1.0 released
++ `NEW` v1.0 发布
 
 ## v0.1 （2017.04.17）
 
-+ `NEW` v0.1 released
++ `NEW` v0.1 发布
+
+
