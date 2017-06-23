@@ -1,4 +1,7 @@
-# [Cloud Frameworks]Microservices Architecture with Spring Cloud 
+* [Changelog EN](#EN)
+* [Changelog 中文](#CN)
+
+# <a name="EN"></a>[Cloud Frameworks]Microservices Architecture with Spring Cloud 
 
 ## v1.5 (2017.06.23)
 
@@ -58,7 +61,7 @@
 
 ----------
 
-# [云框架]基于Spring Cloud的微服务架构
+# <a name="CN"></a>[云框架]基于Spring Cloud的微服务架构
 
 ## v1.5 (2017.06.23)
 
