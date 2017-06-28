@@ -489,7 +489,6 @@ Use [GitHub ISSUE](https://github.com/cloudframeworks-springcloud/user-guide-spr
 
 # <a name="roadmap"></a>Roadmap
 
-* `README` add online demo
 * `README` add related information links
 * `Component` add detailed information for components
 * `FAQ` add questions and answers
