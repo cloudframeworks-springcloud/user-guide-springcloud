@@ -65,7 +65,7 @@ Related CloudFramework: [[CloudFrameworks]KONG API Gateway](https://github.com/c
    export MONGODB_PASSWORD=root         ## MUST
    ```
 
-4. Run the following command with [docker-compose](https://docs.docker.com/compose/install/)（[docker-compose.yml](docker-compose.yml)）（or check [Deploy via script](./READMORE/deploy-via-script.md)）
+4. Run the following command with [docker-compose](https://docs.docker.com/compose/install/)([docker-compose.yml](https://github.com/cloudframeworks-springcloud/PiggyMetrics/blob/master/docker-compose.yml))（or check [Deploy via script](./READMORE/deploy-via-script.md)）
 
    ```
    docker-compose -f docker-compose.yml up -d
