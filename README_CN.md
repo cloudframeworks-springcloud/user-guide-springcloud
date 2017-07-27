@@ -64,7 +64,7 @@
    export MONGODB_PASSWORD=root         ## 必填，其他变量可不设置
    ```
 
-4. 使用[docker-compose](https://docs.docker.com/compose/install/)运行如下命令（[docker-compose.yml](docker-compose.yml)）（或查看[通过脚本分别部署每个组件](./READMORE_CN/deploy-via-script.md)）
+4. 使用[docker-compose](https://docs.docker.com/compose/install/)运行如下命令（[docker-compose.yml](https://github.com/cloudframeworks-springcloud/PiggyMetrics/blob/master/docker-compose.yml)）（或查看[通过脚本分别部署每个组件](./READMORE_CN/deploy-via-script.md)）
 
    ```
    docker-compose -f docker-compose.yml up -d
