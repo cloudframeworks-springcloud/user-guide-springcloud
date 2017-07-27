@@ -1,12 +1,12 @@
-## 进一步了解Netflix Feign
+## Read more about Netflix Feign
 
-Feign是一个声明式、模板化的HTTP客户端，它使得写web服务变得更简单。使用Feign,只需要创建一个接口并注解。它具有可插拔的注解特性，包括Feign 注解和JAX-RS注解。Feign同时支持可插拔的编码器和解码器。当我们使用feign的时候，spring cloud 整和了Ribbon和Eureka去提供负载均衡。
+Feign is a declarative, templated HTTP client that makes building web service easier. We can use Feign by create a interface and annotate it. Feign supports pluggable annotation, includes Feign annotate and JAX-RS annotate. Feign support pluggable encoders and decoders. When we use Feign, Spring Cloud integrated Ribbon and Eureka to provide load balancing.
 
-简而言之：1）feign采用的是接口加注解；2）feign 整合了Ribbon。
+In short: 1) Feign is using interface annotation; 2) Feign is integrated with Ribbon 
 
-#### 创建feign service
+#### Build Feign service
 
-* 创建一个mvn工程，起名为feign,其pom.xml见实例代码，核心依赖如下：
+* Build mvn and name it feign (check pom.xml in example code), core dependencies:
 
    ```
    <dependency>
@@ -19,7 +19,7 @@ Feign是一个声明式、模板化的HTTP客户端，它使得写web服务变�
    </dependency>       
    ```
 
-* 在程序的入口Application类加上@EnableFeignClients注解开启配置服务器
+* Start the configuration server by adding @EnableFeignServer in the Application class of application entry
 
    ```
    @SpringBootApplication
@@ -33,7 +33,7 @@ Feign是一个声明式、模板化的HTTP客户端，它使得写web服务变�
    }     
    ```
 
-* 创建一个远程掉用服务
+* Create a remote call service
 
    ```
    @FeignClient("eureka-service")
@@ -44,11 +44,11 @@ Feign是一个声明式、模板化的HTTP客户端，它使得写web服务变�
    }
    ```
 
-   eureka-service： 是我们在eureka模块中注册的服务
+   eureka-service is the service that we register in the eureka module
 
-   远程掉用/demo/show这个rest接口，也可以改成／demo/index 等
+   remote call /demo/show REST interface, can replace it with ／demo/index etc.
 
-* 配置文件
+* Configuration
 
    ```
    spring.application.name=feign
@@ -57,10 +57,12 @@ Feign是一个声明式、模板化的HTTP客户端，它使得写web服务变�
    eureka.instance.preferIpAddress=true      
    ```
     
-   EUREKA_HOST：注册中心ip
+   EUREKA_HOST：registry ip
 
-   EUREKA_PORT：注册中心端口
+   EUREKA_PORT：registry interface
 
-* 访问地址
+* Address
 
    http://DOCKER_HOST:DOCKER_PORT/feign
+
+

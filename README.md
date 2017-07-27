@@ -36,7 +36,6 @@ Related CloudFramework: [[CloudFrameworks]KONG API Gateway](https://github.com/c
    * [Netflix Feign Configuration](#netflix-feign)
 * [Make It Your Own Project](#make-it-your-own-project)
 * [Production Environment](#production-environment)
-* [FAQ](#faq)
 * [Roadmap](#roadmap)
 * [Community & Contribution](#community-and-contribution)
 
@@ -48,7 +47,7 @@ Related CloudFramework: [[CloudFrameworks]KONG API Gateway](https://github.com/c
 
 ## <a name="local-deployment"></a>Local Deployment
 
-1. [Docker preparation](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/install%20docker.md)
+1. [Docker preparation](./READMORE/install-docker.md)
 
 2. Clone code
 
@@ -66,7 +65,7 @@ Related CloudFramework: [[CloudFrameworks]KONG API Gateway](https://github.com/c
    export MONGODB_PASSWORD=root         ## MUST
    ```
 
-4. Run the following command with [docker-compose](https://docs.docker.com/compose/install/)（[docker-compose.yml](https://github.com/cloudframeworks-springcloud/PiggyMetrics/blob/master/docker-compose.yml)）（or check [Deploy via script](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/deploy%20via%20script.md)）
+4. Run the following command with [docker-compose](https://docs.docker.com/compose/install/)（[docker-compose.yml](docker-compose.yml)）（or check [Deploy via script](./READMORE/deploy-via-script.md)）
 
    ```
    docker-compose -f docker-compose.yml up -d
@@ -82,7 +81,7 @@ Related CloudFramework: [[CloudFrameworks]KONG API Gateway](https://github.com/c
    
    http://DOCKER-HOST:8989 - Turbine stream (source for the Hystrix Dashboard)
    
-   http://DOCKER-HOST:15672 - RabbitMq management (默认账号guest／默认密码guest)
+   http://DOCKER-HOST:15672 - RabbitMq management (default account: guest／default pwd: guest)
 
 # <a name="framework-details-business"></a>Framework Details - Business
 
@@ -90,7 +89,7 @@ Piggymetrics implement microservices architecture with Spring Cloud, and the app
 
 PiggyMetrics's business architecture：
 
-<div align=center><img width="900" height="" src="./image/pm业务架构.png"/></div>
+<div align=center><img width="900" height="" src="./image/business-architecture.png"/></div>
 
 The account service module contains general user input logic and validation: revenue / expense items, savings, and account settings.
 
@@ -124,7 +123,7 @@ PUT	| /notifications/settings/current	| Save current account notification settin
 
 Components architecture is shown below：
 
-<div align=center><img width="900" height="" src="./image/pm组件架构.png"/></div>
+<div align=center><img width="900" height="" src="./image/components-architecture.png"/></div>
 
 * The account service invokes the statistics service and notification service through the remote client (Feign), implements load balancing through the Ribbon, and adds the function of the circuit breaker (Hystrix) during the call;
 
@@ -144,7 +143,7 @@ Components architecture is shown below：
 
 In PiggyMetrics，[config_server](https://github.com/cloudframeworks-springcloud/PiggyMetrics/tree/master/config) load configuration file from local classpath:
 
-<div align=center><img width="900" height="" src="./image/pmspringcloudconfig.png"/></div>
+<div align=center><img width="900" height="" src="./image/pm-spring-cloud-config.png"/></div>
 
 We can check Shard directory resource in [config service](https://github.com/cloudframeworks-springcloud/PiggyMetrics/tree/master/config/src/main/resources/shared), where `application.yml` is shared by all client applications, for example, when Notification-service request configuration, use `shared/notification-service.yml` and `shared/application.yml` to config service responses.
 
@@ -162,7 +161,7 @@ To use Spring Cloud config, we need add spring-cloud-starter-config (it will get
 
 After that, we can refresh configurations through http://DOCKER-HOST:DOCKER-PORT/xxx/refresh (xxx is service root path) without restart.
 
-**[Read more about Spring Cloud Config](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/spring%20cloud%20config%20basic.md)**
+**[Read more about Spring Cloud Config](./READMORE/spring-cloud-config.md)**
 
 ## <a name="netflix-eureka-configuration"></a>Netflix Eureka Configuration
 
@@ -178,7 +177,7 @@ PiggyMetrics uses Eureka server for [registy](https://github.com/cloudframeworks
         username: user
    ```
 
-**[Read more about Netflix Eureka](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/netflix%20eureka%20basic.md)**
+**[Read more about Netflix Eureka](./READMORE/netflix-eureka.md)**
 
 ## <a name="netflix-zuul-configuration"></a>Netflix Zuul Configuration
 
@@ -228,13 +227,13 @@ Add proxy service configuration in Zuul's configuration file [gateway.yml](https
          sensitiveHeaders:
    ```
 
-**[Read more about Netflix Zuul](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/netflix%20zuul%20basic.md)**
+**[Read more about Netflix Zuul](./READMORE/netflix-zuul.md)**
 
 ## <a name="netflix-ribbon-configuration"></a>Netflix Ribbon Configuration
 
 PiggyMetrics does not explicitly define the use of Netflix Ribbon, but in Zuul, Feign and other components use Ribbon implicitly. In actual development, no need to deliberately define the Ribbon.
 
-**[Read more about Netflix Ribbon](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/netflix%20ribbon%20basic.md)**
+**[Read more about Netflix Ribbon](./READMORE/netflix-ribbon.md)**
 
 ## <a name="netflix-hystrix-configuration"></a>Netflix Hystrix Configuration
 
@@ -261,7 +260,7 @@ Add following code into client, client will be able to push Hystrix command to T
    </dependency>
    ```
 
-**[Read more about Netflix Hystrix](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/netflix%20hystrix%20basic.md)**
+**[Read more about Netflix Hystrix](./READMORE/netflix-hystrix.md)**
 
 ## <a name="netflix-feign-configuration"></a>Netflix Feign Configuration
 
@@ -290,7 +289,7 @@ Feign can also appoint external services, for example in statistics module, Feig
    }
    ```
 
-**[Read more about Netflix Feign](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/netflix%20feign%20basic.md)**
+**[Read more about Netflix Feign](./READMORE/netflix-feign.md)**
 
 # <a name="make-it-your-own-project"></a>Make It Your Own Project 
 
@@ -322,7 +321,7 @@ In other words, in the production environment, we need to consider more and more
 
 For the micro service architecture, it is recommended to use `Docker`+`Kubernetes` PaaS, reasonable structure is as follows:
 
-<div align=center><img width="900" height="" src="./image/生产环境搭建整体结构.png"/></div>
+<div align=center><img width="900" height="" src="./image/production-environment.png"/></div>
 
 [Why Docker？](https://yeasy.gitbooks.io/docker_practice/content/introduction/why.html)
    
@@ -346,7 +345,7 @@ Kubernetes combines the containers that make up the application into logical uni
 
 Before deploying application on Kubernetes, we need to understand the lifecycle of application.
 
-<div align=center><img width="900" height="" src="./image/应用生命周期-en.png"/></div>
+<div align=center><img width="900" height="" src="./image/app-lifecycle.png"/></div>
 
    * Use Git to manage code version (with Git being distributed, [Git vs SVN](http://stackoverflow.com/questions/871/why-is-git-better-than-subversion))
    
@@ -360,7 +359,7 @@ Before deploying application on Kubernetes, we need to understand the lifecycle 
 
 **Deploy PiggyMetrics on Kubernetes**
 
-[Check PiggyMetrics application architecture](./image/piggymetrics应用结构图.png)
+[Check PiggyMetrics application architecture](./image/piggymetrics-k8s.png)
 
 [Check PiggyMetrics Yaml files](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/tree/master/yaml)
 
@@ -408,7 +407,7 @@ In the production environment, services read configuration file from the configu
 
 The structure is as follows:
 
-<div align=center><img width="900" height="" src="./image/配置中心高可用部署图.png"/></div>
+<div align=center><img width="900" height="" src="./image/config-ha.png"/></div>
 
 ### Service registration discovery mechanism
 
@@ -416,7 +415,7 @@ In the production environment, service registration discovery management is carr
 
 The structure is as follows:
 
-<div align=center><img width="900" height="" src="./image/注册服务发现机制.png"/></div>
+<div align=center><img width="900" height="" src="./image/register-and-discovery-mechanism.png"/></div>
 
 ### Fault tolerance mechanism
 
@@ -424,7 +423,7 @@ Implement circuit breaker with Hystrix, and get graphical dispaly with Hystrix D
 
 The structure is as follows:
 
-<div align=center><img width="900" height="" src="./image/springcloud服务容错机制.png"/></div>
+<div align=center><img width="900" height="" src="./image/fault-tolerance.png"/></div>
 
 ### Logs collection
 
@@ -432,7 +431,7 @@ Logs are collected and displayed via EFKA (elasticsearch fluentd kibana kafka) i
 
 The structure is as follows:
 
-<div align=center><img width="900" height="" src="./image/springcloud日志采集.png"/></div>
+<div align=center><img width="900" height="" src="./image/logs-collection.png"/></div>
 
 ### Monitoring
 
@@ -440,7 +439,7 @@ Get log infomations through the real-time log collection system, and use time wi
 
 The structure is as follows:
 
-<div align=center><img width="900" height="" src="./image/springcloud监控体系.png"/></div>
+<div align=center><img width="900" height="" src="./image/monitoring-system.png"/></div>
 
 ## Spring Cloud Performance Optimization
 
@@ -482,10 +481,6 @@ In production environment, follow the following tips to do performance optimizat
     feign.compression.request.enabled=true
     feign.compression.request.mime-types=text/xml,application/xml,application/json
     feign.compression.request.min-request-size=2048
-
-# <a name="faq"></a>FAQ
-
-Use [GitHub ISSUE](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/issues/new) to discuss, and see[[QA](QA.md)]
 
 # <a name="roadmap"></a>Roadmap
 

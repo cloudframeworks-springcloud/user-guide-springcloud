@@ -1,4 +1,37 @@
-# 如何成为云框架贡献者？
+* [Changelog EN](#EN)
+* [Changelog 中文](#CN)
+
+# <a name="EN"></a>How to contribute
+
+Read [Contributing to Open Source on GitHub](https://guides.github.com/activities/contributing-to-open-source/) before contribute.
+
+## Bug
+
+When you find a bug, or have questions about code, documents and project, use **ISSUE** to report and discuss.
+
+## Feature
+
+If you are able to fix bugs or add feature for Cloudframeworks, your **Pull Request** are welcome!
+
+Check Pull Request is another way to contribute.
+
+## Documents
+
+When you find any typo or you have awesome contents to supplement, you can also use **Pull Request**.
+
+## Simple way to contribute
+
+The fragrance always stays in the hand that gives the rose.
+
+Help people solve their problems is the easiest way to contribute.
+
+## To be a Cloudframeworks author
+
+If you want to be a Cloudframeworks author, responsible for the creation and operation of Cloudframeworks topics, you can contact us via [Mail](mailto:info@goodrain.com)
+
+----------
+
+# <a name="CN"></a>如何成为云框架贡献者？
 
 如果你没有相关经验，建议花几分钟阅读一下[Contributing to Open Source on GitHub](https://guides.github.com/activities/contributing-to-open-source/)。
 
@@ -27,3 +60,5 @@
 ## 成为云框架作者
 
 如果你想要成为云框架作者，负责某一技术主题的创作和运营，可以通过[邮件](mailto:info@goodrain.com)联系我们。
+
+

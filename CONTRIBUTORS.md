@@ -1,7 +1,11 @@
-# 贡献者
+# Contributors
 
-[如何成为云框架贡献者？](CONTRIBUTING.md)
+[How to contribute](CONTRIBUTING.md)
 
-## 出品人
+## Author
 
 **[elvis2002](https://github.com/elvis2002)**
+
+## Contributor
+
+

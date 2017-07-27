@@ -35,7 +35,6 @@
    * [配置Netflix Feign](#Netflix-Feign)
 * [如何变成自己的项目](#如何变成自己的项目)
 * [生产环境](#生产环境)
-* [常见问题](#常见问题)
 * [更新计划](#更新计划)
 * [社群贡献](#社群贡献)
 
@@ -47,7 +46,7 @@
 
 ## <a name="本地部署"></a>本地部署
 
-1. [准备Docker环境](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/install%20docker.md)
+1. [准备Docker环境](./READMORE_CN/install-docker.md)
 
 2. 克隆完整代码
 
@@ -65,7 +64,7 @@
    export MONGODB_PASSWORD=root         ## 必填，其他变量可不设置
    ```
 
-4. 使用[docker-compose](https://docs.docker.com/compose/install/)运行如下命令（[docker-compose.yml](https://github.com/cloudframeworks-springcloud/PiggyMetrics/blob/master/docker-compose.yml)）（或查看[通过脚本分别部署每个组件](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/deploy%20via%20script.md)）
+4. 使用[docker-compose](https://docs.docker.com/compose/install/)运行如下命令（[docker-compose.yml](docker-compose.yml)）（或查看[通过脚本分别部署每个组件](./READMORE_CN/deploy-via-script.md)）
 
    ```
    docker-compose -f docker-compose.yml up -d
@@ -89,7 +88,7 @@ Piggymetrics通过Spring Cloud实现微服务架构，应用被分解为**账户
 
 PiggyMetrics业务架构如下图所示：
 
-<div align=center><img width="900" height="" src="./image/pm业务架构.png"/></div>
+<div align=center><img width="900" height="" src="./image/business-architecture.png"/></div>
 
 账户服务模块包含一般用户输入逻辑和验证：收入/费用项目，储蓄和帐户设置。
 
@@ -123,7 +122,7 @@ PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
 
 组件架构如下图所示：
 
-<div align=center><img width="900" height="" src="./image/pm组件架构.png"/></div>
+<div align=center><img width="900" height="" src="./image/components-architecture.png"/></div>
 
 * 账户服务通过远程客户端（Feign）调用统计服务及通知服务，通过Ribbon实现负载均衡，并在调用过程中增加了断路器（Hystrix）的功能；
 
@@ -143,7 +142,7 @@ PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
 
 在PiggyMetrics项目中，[config_server](https://github.com/cloudframeworks-springcloud/PiggyMetrics/tree/master/config)从本地类路径加载配置文件：
 
-<div align=center><img width="900" height="" src="./image/pmspringcloudconfig.png"/></div>
+<div align=center><img width="900" height="" src="./image/pm-spring-cloud-config.png"/></div>
 
 我们可以在[config service](https://github.com/cloudframeworks-springcloud/PiggyMetrics/tree/master/config/src/main/resources/shared)中查看shard目录资源，其中`application.yml`被所有客户端应用共享，比如当Notification-service请求配置时，使用`shared/notification-service.yml`和`shared/application.yml`配置服务响应。
 
@@ -161,7 +160,7 @@ PUT	| /notifications/settings/current	| 保存当前账户通知设置	| × | ×
 
 配置文件修改后可通过 http://DOCKER-HOST:DOCKER-PORT/xxx/refresh 刷新配置(xxx表示服务根路径)，无需重启服务。
 
-**[进一步了解Spring Cloud Config](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/spring%20cloud%20config%20basic.md)**
+**[进一步了解Spring Cloud Config](./READMORE_CN/spring-cloud-config.md)**
 
 ## <a name="Netflix-Eureka"></a>配置Netflix Eureka
 
@@ -177,7 +176,7 @@ PiggyMetrics通过Eureka server实现[registy](https://github.com/cloudframework
         username: user
    ```
 
-**[进一步了解Netflix Eureka](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/netflix%20eureka%20basic.md)**
+**[进一步了解Netflix Eureka](./READMORE_CN/netflix-eureka.md)**
 
 ## <a name="Netflix-Zuul"></a>配置Netflix Zuul
 
@@ -227,13 +226,13 @@ PiggyMetrics借助Netflix Zuul实现[gateway](https://github.com/cloudframeworks
          sensitiveHeaders:
    ```
 
-**[进一步了解Netflix Zuul](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/netflix%20zuul%20basic.md)**
+**[进一步了解Netflix Zuul](./READMORE_CN/netflix-zuul.md)**
 
 ## <a name="Netflix-Ribbon"></a>配置Netflix Ribbon
 
 PiggyMetrics并没有显式的去定义Netflix Ribbon的使用，但是在Zuul、Feign等组件中隐式的使用到了Ribbon，我们在实际的业务开发中，也不需要刻意定义Ribbon。
 
-**[进一步了解Netflix Ribbon](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/netflix%20ribbon%20basic.md)**
+**[进一步了解Netflix Ribbon](./READMORE_CN/netflix-ribbon.md)**
 
 ## <a name="Netflix-Hystrix"></a>配置Netflix Hystrix
 
@@ -260,7 +259,7 @@ PiggyMetrics并没有显式的去定义Netflix Ribbon的使用，但是在Zuul�
    </dependency>
    ```
 
-**[进一步了解Netflix Hystrix](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/netflix%20hystrix%20basic.md)**
+**[进一步了解Netflix Hystrix](./READMORE_CN/netflix-hystrix.md)**
 
 ## <a name="Netflix-Feign"></a>配置Netflix Feign
 
@@ -289,7 +288,7 @@ Feign同时可以引用注册中心以外的服务没，例如在统计服务模
    }
    ```
 
-**[进一步了解Netflix Feign](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/blob/master/READMORE/netflix%20feign%20basic.md)**
+**[进一步了解Netflix Feign](./READMORE_CN/netflix-feign.md)**
 
 # <a name="如何变成自己的项目"></a>如何变成自己的项目 
 
@@ -321,7 +320,7 @@ Feign同时可以引用注册中心以外的服务没，例如在统计服务模
 
 对于微服务架构，推荐使用`Docker`+`Kubernetes`PaaS平台搭建，合理结构如下：
 
-<div align=center><img width="900" height="" src="./image/生产环境搭建整体结构.png"/></div>
+<div align=center><img width="900" height="" src="./image/production-environment.png"/></div>
 
 [为什么使用Docker？](https://yeasy.gitbooks.io/docker_practice/content/introduction/why.html)
    
@@ -345,7 +344,7 @@ Kubernetes将组成应用的容器组合为逻辑单元，以便于管理和发�
 
 在部署应用至Kubernetes之前，我们需要对应用的生命周期有一定了解。
 
-<div align=center><img width="900" height="" src="./image/应用生命周期.png"/></div>
+<div align=center><img width="900" height="" src="./image/app-lifecycle.png"/></div>
 
    * 使用Git进行代码版本管理（重点在于Git是分布式，[Git vs SVN](http://stackoverflow.com/questions/871/why-is-git-better-than-subversion)）
    
@@ -359,7 +358,7 @@ Kubernetes将组成应用的容器组合为逻辑单元，以便于管理和发�
 
 **部署PiggyMetrics至Kubernetes**
 
-[查看PiggyMetrics应用结构图](./image/piggymetrics应用结构图.png)
+[查看PiggyMetrics应用结构图](./image/piggymetrics-k8s.png)
 
 [查看PiggyMetrics完整Yaml文件](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/tree/master/yaml)
 
@@ -407,7 +406,7 @@ Kubernetes将组成应用的容器组合为逻辑单元，以便于管理和发�
 
 结构图如下：
 
-<div align=center><img width="900" height="" src="./image/配置中心高可用部署图.png"/></div>
+<div align=center><img width="900" height="" src="./image/config-ha.png"/></div>
 
 ### 服务注册发现机制
 
@@ -415,7 +414,7 @@ Kubernetes将组成应用的容器组合为逻辑单元，以便于管理和发�
 
 结构图如下：
 
-<div align=center><img width="900" height="" src="./image/注册服务发现机制.png"/></div>
+<div align=center><img width="900" height="" src="./image/register-and-discovery-mechanism.png"/></div>
 
 ### 服务容错机制
 
@@ -423,7 +422,7 @@ Kubernetes将组成应用的容器组合为逻辑单元，以便于管理和发�
 
 结构如下图所示：
 
-<div align=center><img width="900" height="" src="./image/springcloud服务容错机制.png"/></div>
+<div align=center><img width="900" height="" src="./image/fault-tolerance.png"/></div>
 
 ### 日志采集
 
@@ -431,7 +430,7 @@ Kubernetes将组成应用的容器组合为逻辑单元，以便于管理和发�
 
 结构如下图所示：
 
-<div align=center><img width="900" height="" src="./image/springcloud日志采集.png"/></div>
+<div align=center><img width="900" height="" src="./image/logs-collection.png"/></div>
 
 ### 监控体系
 
@@ -439,7 +438,7 @@ Kubernetes将组成应用的容器组合为逻辑单元，以便于管理和发�
 
 结构如下图所示：
 
-<div align=center><img width="900" height="" src="./image/springcloud监控体系.png"/></div>
+<div align=center><img width="900" height="" src="./image/monitoring-system.png"/></div>
 
 ## Spring Cloud性能优化
 
@@ -481,10 +480,6 @@ Kubernetes将组成应用的容器组合为逻辑单元，以便于管理和发�
     feign.compression.request.enabled=true
     feign.compression.request.mime-types=text/xml,application/xml,application/json
     feign.compression.request.min-request-size=2048
-
-# <a name="常见问题"></a>常见问题
-
-任何相关问题均可通过[GitHub ISSUE](https://github.com/cloudframeworks-springcloud/user-guide-springcloud/issues/new)提交或讨论，问题总结请查看[[QA](QA.md)]
 
 # <a name="更新计划"></a>更新计划
 
