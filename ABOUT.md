@@ -3,7 +3,7 @@
 * [Changelog EN](#EN)
 * [Changelog 中文](#CN)
 
-# <a name="EN"></a>[Cloud Frameworks]About Cloud Frameworks
+# <a name="EN"></a>About Cloudframeworks
 
 Cloudframeworks (云框架) is 'plug&play'able cloud-native frameworks, combine knowledge structures with typical **examples** to help developers quickly master new technologies. Just replace some code of Cloudframeworks project to apply best practices in production environment and generate value immediately.
 
@@ -18,7 +18,7 @@ Cloudframeworks provides:
 ### Directory of Repo
 
 ```
-Cloud frameworks
+Cloudframeworks
 |-- user-guide
     |--README.md
     |--CHANGELOG.md
@@ -50,9 +50,9 @@ Released under [Apache License 2.0](LICENSE.md)
 
 ----------
 
-# <a name="CN"></a>[Cloud Frameworks]关于云框架
+# <a name="CN"></a>关于云框架
 
-云框架（Cloud Frameworks）是即插即用的云端技术框架，通过典型实例梳理知识结构，帮助开发者快速掌握新技术，仅需替换部分业务代码，即可将最佳实践应用于生产环境并立即产生价值。
+云框架（Cloudframeworks）是即插即用的云端技术框架，通过典型实例梳理知识结构，帮助开发者快速掌握新技术，仅需替换部分业务代码，即可将最佳实践应用于生产环境并立即产生价值。
 
 云框架旨在解决新技术**学习**、**使用**、**学以致用**的问题，帮助不懂技术想学习的人快速掌握技术原理并能把技术用起来，协助懂技术想要使用的人花费最小代价将技术应用于生产环境。为用户提供：
 
@@ -63,7 +63,7 @@ Released under [Apache License 2.0](LICENSE.md)
 ### 目录结构
 
 ```
-Cloud frameworks
+Cloudframeworks
 |-- user-guide
     |--README.md
     |--CHANGELOG.md
