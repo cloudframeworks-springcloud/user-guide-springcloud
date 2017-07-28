@@ -44,6 +44,10 @@ You can find documents you need in user-guide-xxx repository, and quick start wi
 
 [How to contribute](CONTRIBUTING.md)
 
+## License
+
+Released under [Apache License 2.0](LICENSE.md)
+
 ----------
 
 # <a name="CN"></a>[Cloud Frameworks]关于云框架
