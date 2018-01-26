@@ -43,7 +43,7 @@ Related CloudFramework: [[CloudFrameworks]KONG API Gateway](https://github.com/c
 
 ## <a name="one-click-deployment"></a>One Click Deployment
 
-[One Click deployment with Goodrain Cloudbang](http://app.goodrain.com/group/detail/15/)
+[One Click deployment with Rainbond](https://www.goodrain.com/#/app/detail/15)
 
 ## <a name="local-deployment"></a>Local Deployment
 
