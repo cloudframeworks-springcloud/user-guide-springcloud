@@ -1,5 +1,5 @@
-* [Changelog EN](#EN)
-* [Changelog 中文](#CN)
+* [EN](#EN)
+* [中文](#CN)
 
 # <a name="EN"></a>How to contribute
 
