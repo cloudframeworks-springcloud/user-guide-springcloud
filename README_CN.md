@@ -454,7 +454,7 @@ Kubernetes将组成应用的容器组合为逻辑单元，以便于管理和发�
         fetchRegistry: false
         server:
           waitTimeInMsWhenSyncEmpty: 0
-      server
+      server:
         eviction-interval-timer-in-ms: 4000
         enableSelfPreservation: false
         renewalPercentThreshold: 0.9
